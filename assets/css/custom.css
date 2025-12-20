@@ -1,0 +1,119 @@
+/* Custom styles for homepage */
+
+.feature__wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.feature__item {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+  background: #fff;
+}
+
+.feature__item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.feature__item .archive__item-title {
+  margin-top: 0;
+  font-size: 1.25rem;
+}
+
+.feature__item .archive__item-title a {
+  color: #2e7d32;
+  text-decoration: none;
+}
+
+.feature__item .archive__item-title a:hover {
+  color: #1b5e20;
+  text-decoration: underline;
+}
+
+.feature__item .archive__item-excerpt {
+  color: #666;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* Button styles */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  margin: 1rem 0;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.btn--primary {
+  background-color: #2e7d32;
+  color: #fff;
+  border: 2px solid #2e7d32;
+}
+
+.btn--primary:hover {
+  background-color: #1b5e20;
+  border-color: #1b5e20;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(46, 125, 50, 0.3);
+}
+
+.btn--large {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+}
+
+/* Homepage sections */
+.homepage-section {
+  margin: 3rem 0;
+  padding: 2rem 0;
+}
+
+.homepage-section h2 {
+  border-bottom: 2px solid #2e7d32;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Quick links styling */
+.quick-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.quick-links a {
+  color: #2e7d32;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border: 1px solid #2e7d32;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.quick-links a:hover {
+  background-color: #2e7d32;
+  color: #fff;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .feature__wrapper {
+    grid-template-columns: 1fr;
+  }
+  
+  .btn--large {
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
