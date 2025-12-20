@@ -1,0 +1,258 @@
+# Company Details - Leadership Experience
+# Muchammad Fikri Izzuddin
+
+companies:
+  - id: "garudamedia"
+    name: "GarudaMedia"
+    tagline: "Affiliate & Ads Publisher Empire"
+    role: "Technical Lead / Engineering Manager"
+    period: "2019 - 2021"
+    location: "Jakarta, Indonesia"
+    team_size: "3000+"
+    industry: "Digital Marketing & Advertising"
+    
+    description: |
+      GarudaMedia is one of Indonesia's largest affiliate marketing and advertising publisher companies,
+      managing a network of over 3000 employees across multiple regions. As a key technical leader,
+      I was responsible for architecting and scaling the technology infrastructure to support
+      massive traffic and transaction volumes.
+    
+    key_metrics:
+      - metric: "Team Size"
+        value: "3000+"
+        description: "Employees managed across multiple departments"
+      - metric: "Traffic"
+        value: "100M+"
+        description: "Monthly page views across network"
+      - metric: "Revenue"
+        value: "Confidential"
+        description: "Multi-million dollar annual revenue"
+      - metric: "Publishers"
+        value: "500+"
+        description: "Active affiliate publishers in network"
+    
+    achievements:
+      - "Led technical team of 50+ engineers across backend, frontend, and infrastructure"
+      - "Architected scalable affiliate tracking system handling 100M+ monthly events"
+      - "Implemented real-time analytics dashboard for publisher performance monitoring"
+      - "Reduced infrastructure costs by 40% through optimization and cloud migration"
+      - "Built automated fraud detection system, reducing invalid traffic by 60%"
+      - "Established CI/CD pipeline, reducing deployment time from hours to minutes"
+      - "Mentored junior developers and established coding standards across organization"
+    
+    technologies:
+      - PHP
+      - Laravel
+      - MySQL
+      - Redis
+      - JavaScript
+      - React
+      - AWS
+      - Docker
+      - Nginx
+    
+    challenges:
+      - challenge: "Scaling Infrastructure"
+        solution: "Implemented microservices architecture and horizontal scaling with load balancing"
+      - challenge: "Fraud Detection"
+        solution: "Built ML-based fraud detection analyzing user behavior patterns and traffic sources"
+      - challenge: "Real-time Analytics"
+        solution: "Deployed Kafka + ClickHouse for real-time event processing and analytics"
+
+  - id: "solomon-mining"
+    name: "Solomon Mining"
+    tagline: "Indonesia's First Legal Crypto Mining Operation"
+    role: "CTO / Technical Lead"
+    period: "2021 - 2022"
+    location: "Jakarta, Indonesia"
+    team_size: "50+"
+    industry: "Cryptocurrency & Blockchain"
+    
+    description: |
+      Solomon Mining pioneered legal cryptocurrency mining in Indonesia, establishing the first
+      fully compliant mining operation in the country. As CTO, I led the technical infrastructure,
+      from hardware optimization to blockchain integration and regulatory compliance systems.
+    
+    key_metrics:
+      - metric: "Hash Rate"
+        value: "500+ TH/s"
+        description: "Peak mining capacity across facilities"
+      - metric: "Efficiency"
+        value: "+20%"
+        description: "Performance improvement through optimization"
+      - metric: "Uptime"
+        value: "99.5%"
+        description: "Mining operation uptime"
+      - metric: "ROI"
+        value: "Confidential"
+        description: "Return on investment for investors"
+    
+    achievements:
+      - "Established Indonesia's first legal cryptocurrency mining operation"
+      - "Designed and deployed mining infrastructure with 500+ TH/s capacity"
+      - "Optimized mining hardware performance, achieving 20% efficiency increase"
+      - "Built automated monitoring system for real-time hardware health tracking"
+      - "Implemented pool switching algorithm to maximize profitability"
+      - "Developed investor dashboard for transparent ROI reporting"
+      - "Ensured full regulatory compliance with Indonesian cryptocurrency laws"
+      - "Managed team of 50+ including engineers, operations, and compliance staff"
+    
+    technologies:
+      - Python
+      - Bash
+      - PowerShell
+      - Blockchain APIs
+      - MQTT
+      - InfluxDB
+      - Grafana
+      - Linux
+      - Custom Mining Software
+    
+    challenges:
+      - challenge: "Hardware Optimization"
+        solution: "Developed custom firmware and overclocking profiles for optimal hash/watt ratio"
+      - challenge: "Heat Management"
+        solution: "Designed advanced cooling system with temperature-based fan control"
+      - challenge: "Regulatory Compliance"
+        solution: "Built comprehensive KYC/AML system and reporting tools for authorities"
+
+  - id: "berkahkarya"
+    name: "BerkahKarya"
+    tagline: "Talent & Digital Marketing Powerhouse"
+    role: "Technical Lead / Head of Engineering"
+    period: "2022 - 2023"
+    location: "Jakarta, Indonesia"
+    team_size: "200+"
+    industry: "Talent Management & Digital Marketing"
+    
+    description: |
+      BerkahKarya is a leading talent management and digital marketing agency with over 5 billion IDR
+      in monthly turnover. As Head of Engineering, I led the development of proprietary platforms
+      for talent management, campaign automation, and analytics that powered the agency's growth.
+    
+    key_metrics:
+      - metric: "Monthly Revenue"
+        value: "5B+ IDR"
+        description: "Monthly turnover (~$330K USD)"
+      - metric: "Talent Network"
+        value: "1000+"
+        description: "Managed influencers and content creators"
+      - metric: "Campaigns"
+        value: "500+/month"
+        description: "Active marketing campaigns managed"
+      - metric: "Team Growth"
+        value: "3x"
+        description: "Engineering team growth under leadership"
+    
+    achievements:
+      - "Led engineering team of 30+ developers building proprietary talent management platform"
+      - "Architected campaign automation system handling 500+ concurrent campaigns"
+      - "Built influencer analytics platform tracking 1000+ creators across multiple platforms"
+      - "Implemented AI-powered content recommendation engine, increasing engagement by 45%"
+      - "Developed automated reporting system saving 100+ hours/month of manual work"
+      - "Scaled platform to support 5B+ IDR monthly transaction volume"
+      - "Established agile development process, increasing delivery speed by 60%"
+      - "Mentored and grew engineering team from 10 to 30+ members"
+    
+    technologies:
+      - Node.js
+      - React
+      - PostgreSQL
+      - MongoDB
+      - Redis
+      - Python
+      - TensorFlow
+      - AWS
+      - Docker
+      - Kubernetes
+    
+    challenges:
+      - challenge: "Platform Scalability"
+        solution: "Migrated to microservices architecture with Kubernetes orchestration"
+      - challenge: "Data Integration"
+        solution: "Built unified API layer integrating 10+ social media platforms"
+      - challenge: "Real-time Analytics"
+        solution: "Implemented streaming analytics pipeline with Apache Kafka and Elasticsearch"
+
+  - id: "aitradepulse"
+    name: "AiTradePulse"
+    tagline: "Perfect Algorithmic Trading Platform"
+    role: "Founder & Lead Developer"
+    period: "2023 - Present"
+    location: "Remote / Indonesia"
+    team_size: "15+"
+    industry: "FinTech & Algorithmic Trading"
+    
+    description: |
+      AiTradePulse is a cutting-edge algorithmic and quantitative trading platform achieving
+      consistent 90%+ win rates through advanced AI and machine learning strategies. As founder
+      and lead developer, I architected the entire trading infrastructure from strategy development
+      to execution and risk management.
+    
+    key_metrics:
+      - metric: "Win Rate"
+        value: "90%+"
+        description: "Consistent win rate across strategies"
+      - metric: "Strategies"
+        value: "50+"
+        description: "Active trading algorithms"
+      - metric: "Assets Managed"
+        value: "Confidential"
+        description: "Total assets under management"
+      - metric: "Latency"
+        value: "<10ms"
+        description: "Average order execution latency"
+    
+    achievements:
+      - "Developed proprietary trading algorithms achieving 90%+ win rate"
+      - "Built low-latency trading infrastructure with <10ms execution time"
+      - "Implemented advanced risk management system with real-time position monitoring"
+      - "Created AI-powered market prediction models using deep learning"
+      - "Integrated with 15+ cryptocurrency exchanges via WebSocket and REST APIs"
+      - "Developed backtesting framework processing 5+ years of historical data"
+      - "Built real-time monitoring dashboard for strategy performance and risk metrics"
+      - "Established automated deployment pipeline for strategy updates"
+      - "Led team of 15+ including quant researchers, developers, and traders"
+    
+    technologies:
+      - Python
+      - NumPy
+      - Pandas
+      - TensorFlow
+      - PyTorch
+      - C++
+      - WebSocket
+      - PostgreSQL
+      - TimescaleDB
+      - Redis
+      - Docker
+      - Kubernetes
+      - Grafana
+    
+    challenges:
+      - challenge: "Low Latency Execution"
+        solution: "Optimized critical path with C++ and implemented direct exchange connections"
+      - challenge: "Market Prediction Accuracy"
+        solution: "Developed ensemble ML models combining LSTM, GRU, and transformer architectures"
+      - challenge: "Risk Management"
+        solution: "Built multi-layered risk system with position limits, stop-loss, and portfolio correlation analysis"
+
+# Summary Statistics
+summary:
+  total_companies: 4
+  total_team_members_led: "3000+"
+  years_of_leadership: "7+"
+  industries:
+    - "Digital Marketing"
+    - "Blockchain & Cryptocurrency"
+    - "Talent Management"
+    - "FinTech & Trading"
+  
+  key_achievements:
+    - "Led teams from 15 to 3000+ members"
+    - "Managed 5B+ IDR monthly revenue operations"
+    - "Pioneered legal crypto mining in Indonesia"
+    - "Achieved 90%+ win rate in algorithmic trading"
+    - "Scaled infrastructure handling 100M+ monthly events"
+    - "Reduced costs by 40% through optimization"
+    - "Increased efficiency by 20-60% across organizations"

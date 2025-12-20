@@ -1,0 +1,193 @@
+:root {
+  --term-color: #00ff41;
+  --term-bg: #0d0d0d;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--term-bg);
+  overflow: hidden;
+}
+
+.terminal-wrapper {
+  width: 100vw;
+  height: 100vh;
+  padding: 10px;
+  box-sizing: border-box;
+  background-color: var(--term-bg);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.terminal-container {
+  width: 100%;
+  max-width: 1200px;
+  height: 100%;
+  border: 1px solid rgba(0, 255, 65, 0.2);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  position: relative;
+  z-index: 2;
+  border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+  .terminal-wrapper {
+    padding: 0;
+  }
+
+  .terminal-container {
+    border: none;
+    border-radius: 0;
+  }
+}
+
+/* CRT Scanline Effect */
+.crt-scanline {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%,
+      rgba(0, 0, 0, 0.1) 50%),
+    linear-gradient(90deg,
+      rgba(255, 0, 0, 0.02),
+      rgba(0, 255, 0, 0.01),
+      rgba(0, 0, 255, 0.02));
+  background-size: 100% 4px, 3px 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* CRT Flicker */
+@keyframes flicker {
+  0% {
+    opacity: 0.97;
+  }
+
+  5% {
+    opacity: 0.95;
+  }
+
+  10% {
+    opacity: 0.9;
+  }
+
+  15% {
+    opacity: 0.98;
+  }
+
+  25% {
+    opacity: 0.95;
+  }
+
+  30% {
+    opacity: 0.9;
+  }
+
+  35% {
+    opacity: 0.99;
+  }
+
+  45% {
+    opacity: 0.95;
+  }
+
+  50% {
+    opacity: 0.9;
+  }
+
+  60% {
+    opacity: 0.98;
+  }
+
+  70% {
+    opacity: 0.95;
+  }
+
+  80% {
+    opacity: 0.9;
+  }
+
+  90% {
+    opacity: 0.98;
+  }
+
+  100% {
+    opacity: 0.97;
+  }
+}
+
+.crt-active {
+  animation: flicker 0.15s infinite;
+}
+
+/* Matrix Canvas */
+.matrix-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Glitch Effect */
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+  }
+
+  20% {
+    transform: translate(-2px, 2px);
+  }
+
+  40% {
+    transform: translate(-2px, -2px);
+  }
+
+  60% {
+    transform: translate(2px, 2px);
+  }
+
+  80% {
+    transform: translate(2px, -2px);
+  }
+
+  100% {
+    transform: translate(0);
+  }
+}
+
+.glitch-effect {
+  animation: glitch 0.2s cubic-bezier(.25, .46, .45, .94) both infinite;
+  filter: hue-rotate(90deg);
+}
+
+/* Phosphor Glow */
+.xterm-rows {
+  text-shadow: 0 0 5px var(--term-color);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--term-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 255, 65, 0.2);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 255, 65, 0.4);
+}
