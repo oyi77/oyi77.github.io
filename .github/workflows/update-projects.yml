@@ -1,0 +1,118 @@
+name: Update GitHub Pages Projects
+
+on:
+  schedule:
+    # Run daily at 2 AM UTC
+    - cron: '0 2 * * *'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  update-projects:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.x'
+        cache: 'pip'
+        
+    - name: Install dependencies
+      run: |
+        pip install pyyaml requests
+        
+    - name: Fetch GitHub Pages projects
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_USERNAME: oyi77
+      run: |
+        python << 'EOF'
+        import json
+        import os
+        import requests
+        from datetime import datetime
+        
+        username = os.environ.get('GITHUB_USERNAME', 'oyi77')
+        token = os.environ.get('GITHUB_TOKEN')
+        
+        headers = {}
+        if token:
+            headers['Authorization'] = f'token {token}'
+        
+        projects = []
+        page = 1
+        per_page = 100
+        
+        while True:
+            url = f'https://api.github.com/users/{username}/repos'
+            params = {
+                'per_page': per_page,
+                'page': page,
+                'sort': 'updated',
+                'type': 'all'
+            }
+            
+            response = requests.get(url, headers=headers, params=params)
+            response.raise_for_status()
+            repos = response.json()
+            
+            if not repos:
+                break
+            
+            for repo in repos:
+                # Skip private repos if we can't access them
+                if repo.get('private', False) and not token:
+                    continue
+                
+                # Check if repo has pages enabled
+                has_pages = repo.get('has_pages', False)
+                
+                if has_pages:
+                    # Determine pages URL
+                    if repo['name'] == f'{username}.github.io':
+                        pages_url = f'https://{username}.github.io'
+                    else:
+                        pages_url = f'https://{username}.github.io/{repo["name"]}'
+                    
+                    projects.append({
+                        'name': repo['name'],
+                        'description': repo.get('description', 'No description'),
+                        'url': repo['html_url'],
+                        'pagesUrl': pages_url,
+                        'language': repo.get('language', 'Unknown'),
+                        'stars': repo.get('stargazers_count', 0),
+                        'updated': repo.get('updated_at', '')
+                    })
+            
+            # Check if there are more pages
+            if len(repos) < per_page:
+                break
+            page += 1
+        
+        # Sort by updated date (most recent first)
+        projects.sort(key=lambda x: x['updated'], reverse=True)
+        
+        # Write to file
+        output_path = '_data/projects.json'
+        with open(output_path, 'w') as f:
+            json.dump(projects, f, indent=2)
+        
+        print(f'Found {len(projects)} GitHub Pages projects')
+        EOF
+        
+    - name: Commit and push if changed
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add _data/projects.json
+        if ! git diff --staged --quiet; then
+          git commit -m "Update GitHub Pages projects [skip ci]"
+          git push
+          echo "✅ Updated projects.json with $(python -c "import json; print(len(json.load(open('_data/projects.json'))))") projects"
+        else
+          echo "ℹ️ No changes to projects.json"
+        fi
+
