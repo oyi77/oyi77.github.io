@@ -1,0 +1,476 @@
+class TerminalOS {
+  constructor(containerId) {
+    this.container = document.getElementById(containerId);
+    this.terminal = null;
+    this.filesystem = null;
+    this.windowManager = null;
+    this.themeManager = null;
+    this.effects = null;
+    this.currentPath = '/home/user';
+    this.commandHistory = [];
+    this.historyIndex = -1;
+    this.currentInput = '';
+    
+    // Advanced addons
+    this.searchAddon = null;
+    this.serializeAddon = null;
+    this.imageAddon = null;
+    this.unicode11Addon = null;
+    
+    // Web3OS integration
+    this.web3os = null;
+
+    this.init();
+  }
+
+  async init() {
+    // Initialize xterm.js
+    const { Terminal } = window;
+    this.terminal = new Terminal({
+      cursorBlink: true,
+      theme: {
+        background: '#0d0d0d',
+        foreground: '#00ff41',
+        cursor: '#00ff41',
+        selection: '#003b00',
+        black: '#000000',
+        red: '#ff0000',
+        green: '#00ff41',
+        yellow: '#ffff00',
+        blue: '#0000ff',
+        magenta: '#ff00ff',
+        cyan: '#00ffff',
+        white: '#ffffff'
+      },
+      fontSize: window.innerWidth < 768 ? 12 : 14,
+      fontFamily: 'Monaco, Menlo, "Ubuntu Mono", monospace',
+      letterSpacing: 0,
+      lineHeight: 1.1,
+      scrollback: 1000,
+    });
+
+    this.terminal.open(this.container);
+
+    // Load addons - FitAddon for auto-resize
+    this.fitAddon = null;
+    if (window.FitAddon) {
+      try {
+        const FitAddonClass = window.FitAddon.FitAddon || window.FitAddon;
+        if (FitAddonClass) {
+          this.fitAddon = new FitAddonClass();
+          this.terminal.loadAddon(this.fitAddon);
+          this.fitAddon.fit();
+
+          window.addEventListener('resize', () => {
+            if (this.fitAddon) {
+              this.terminal.options.fontSize = window.innerWidth < 768 ? 12 : 14;
+              this.fitAddon.fit();
+            }
+          });
+        }
+      } catch (e) {
+        console.warn('FitAddon not available');
+      }
+    }
+
+    // WebLinks Addon - clickable links
+    if (window.WebLinksAddon) {
+      try {
+        const WebLinksAddonClass = window.WebLinksAddon.WebLinksAddon || window.WebLinksAddon;
+        this.terminal.loadAddon(new WebLinksAddonClass());
+      } catch (e) {
+        console.warn('WebLinksAddon not available');
+      }
+    }
+
+    // Webgl/Canvas Addon - high performance rendering
+    if (window.WebglAddon) {
+      try {
+        const WebglAddonClass = window.WebglAddon.WebglAddon || window.WebglAddon;
+        const webgl = new WebglAddonClass();
+        this.terminal.loadAddon(webgl);
+      } catch (e) {
+        console.warn('WebGL not supported, falling back to DOM renderer');
+      }
+    } else if (window.CanvasAddon) {
+      try {
+        const CanvasAddonClass = window.CanvasAddon.CanvasAddon || window.CanvasAddon;
+        this.terminal.loadAddon(new CanvasAddonClass());
+      } catch (e) {
+        console.warn('CanvasAddon not available');
+      }
+    }
+
+    // Unicode11 Addon - Enhanced Unicode support
+    if (window.Unicode11Addon) {
+      try {
+        const Unicode11AddonClass = window.Unicode11Addon.Unicode11Addon || window.Unicode11Addon;
+        this.unicode11Addon = new Unicode11AddonClass();
+        this.terminal.loadAddon(this.unicode11Addon);
+      } catch (e) {
+        console.warn('Unicode11Addon not available');
+      }
+    }
+
+    // Search Addon - Terminal content search
+    if (window.SearchAddon) {
+      try {
+        const SearchAddonClass = window.SearchAddon.SearchAddon || window.SearchAddon;
+        this.searchAddon = new SearchAddonClass();
+        this.terminal.loadAddon(this.searchAddon);
+        this.setupSearchHandlers();
+      } catch (e) {
+        console.warn('SearchAddon not available');
+      }
+    }
+
+    // Serialize Addon - Terminal state serialization
+    if (window.SerializeAddon) {
+      try {
+        const SerializeAddonClass = window.SerializeAddon.SerializeAddon || window.SerializeAddon;
+        this.serializeAddon = new SerializeAddonClass();
+        this.terminal.loadAddon(this.serializeAddon);
+      } catch (e) {
+        console.warn('SerializeAddon not available');
+      }
+    }
+
+    // Image Addon - Image display support
+    if (window.ImageAddon) {
+      try {
+        const ImageAddonClass = window.ImageAddon.ImageAddon || window.ImageAddon;
+        this.imageAddon = new ImageAddonClass();
+        this.terminal.loadAddon(this.imageAddon);
+      } catch (e) {
+        console.warn('ImageAddon not available');
+      }
+    }
+
+    // Initialize Web3OS integration (wait a bit for loader to initialize)
+    setTimeout(async () => {
+      if (window.Web3OSIntegration) {
+        try {
+          this.web3os = new Web3OSIntegration();
+          await this.web3os.init();
+        } catch (e) {
+          console.warn('Web3OS integration not available:', e);
+        }
+      }
+    }, 1000); // Give Web3OS loader time to initialize
+
+    // Initialize systems
+    this.filesystem = new VirtualFileSystem();
+    this.windowManager = new WindowManager(this.terminal);
+    this.themeManager = new ThemeManager(this.terminal);
+    this.effects = new TerminalEffects(this.terminal);
+
+    // Set up input handling but don't start prompt yet
+    this.setupInputHandling();
+
+    // Start Boot Sequence
+    const boot = new BootSequence(this.terminal, async () => {
+      // Show Matrix-style terminal visuals
+      this.effects.addScanline();
+
+      // Load user preferences
+      const savedTheme = localStorage.getItem('term-theme') || 'matrix';
+      this.themeManager.setTheme(savedTheme);
+
+      // Show welcome message
+      await this.showWelcome();
+      this.prompt();
+    });
+
+    await boot.start();
+  }
+
+  setupSearchHandlers() {
+    if (!this.searchAddon) return;
+    
+    // Handle Ctrl+F to activate search
+    this.terminal.onKey(({ key, domEvent }) => {
+      if (domEvent.ctrlKey && key === 'f') {
+        domEvent.preventDefault();
+        this.activateSearch();
+      }
+    });
+  }
+
+  activateSearch() {
+    if (!this.searchAddon) return;
+    
+    const searchTerm = prompt('Search terminal content:');
+    if (searchTerm) {
+      this.searchAddon.findNext(searchTerm);
+      this.terminal.write(`\r\n\x1b[1;33mSearching for: "${searchTerm}"\x1b[0m\r\n`);
+      this.terminal.write('\x1b[1;30mPress Ctrl+F again to find next, or type to continue...\x1b[0m\r\n');
+      this.prompt();
+    }
+  }
+
+  setupInputHandling() {
+    this.terminal.onData((data) => {
+      // Add glitch effect on input for immersion
+      if (Math.random() > 0.99) this.effects.addGlitch();
+
+      if (data === '\r' || data === '\n') {
+        this.handleCommand(this.currentInput);
+        this.currentInput = '';
+        this.historyIndex = -1;
+      } else if (data === '\x7f' || data === '\b') {
+        if (this.currentInput.length > 0) {
+          this.currentInput = this.currentInput.slice(0, -1);
+          this.terminal.write('\b \b');
+        }
+      } else if (data === '\x1b[A') {
+        if (this.commandHistory.length > 0) {
+          if (this.historyIndex === -1) {
+            this.historyIndex = this.commandHistory.length - 1;
+          } else if (this.historyIndex > 0) {
+            this.historyIndex--;
+          }
+          this.currentInput = this.commandHistory[this.historyIndex];
+          this.terminal.write('\r\x1b[K' + this.getPromptText() + this.currentInput);
+        }
+      } else if (data === '\x1b[B') {
+        if (this.historyIndex !== -1) {
+          if (this.historyIndex < this.commandHistory.length - 1) {
+            this.historyIndex++;
+            this.currentInput = this.commandHistory[this.historyIndex];
+          } else {
+            this.historyIndex = -1;
+            this.currentInput = '';
+          }
+          this.terminal.write('\r\x1b[K' + this.getPromptText() + this.currentInput);
+        }
+      } else if (data === '\t') {
+        this.handleTabCompletion();
+      } else if (data.charCodeAt(0) >= 32) {
+        this.currentInput += data;
+        this.terminal.write(data);
+      }
+    });
+  }
+
+  async showWelcome() {
+    const width = this.terminal.cols || 80;
+
+    // Centered ASCII Banner (Small & Robust)
+    const bannerLines = [
+      " ██████╗ ██╗   ██╗██╗     ██████╗ ███████╗",
+      "██╔═══██╗╚██╗ ██╔╝██║    ██╔═══██╗██╔════╝",
+      "██║   ██║ ╚████╔╝ ██║    ██║   ██║███████╗",
+      "██║   ██║  ╚██╔╝  ██║    ██║   ██║╚════██║",
+      "╚██████╔╝   ██║   ██║    ╚██████╔╝███████║",
+      " ╚═════╝    ╚═╝   ╚═╝     ╚═════╝ ╚══════╝"
+    ];
+
+    this.terminal.write('\r\n');
+    bannerLines.forEach(line => {
+      this.terminal.write(TerminalUtils.center(`\x1b[1;32m${line}\x1b[0m`, width) + '\r\n');
+    });
+
+    this.terminal.write('\r\n' + TerminalUtils.center('\x1b[1;36m>> SYSTEM ONLINE | KERNEL v5.15 <<\x1b[0m', width) + '\r\n');
+    this.terminal.write(TerminalUtils.center('\x1b[1;30m' + '='.repeat(width > 40 ? 40 : width - 4) + '\x1b[0m', width) + '\r\n\r\n');
+
+    // Boxed Commands
+    const boxWidth = Math.min(width - 4, 50);
+    const boxIndent = Math.floor((width - boxWidth) / 2);
+    const indent = ' '.repeat(boxIndent);
+
+    this.terminal.write(indent + '\x1b[1;33m+-- PROTOCOL OVERRIDE --------------------+\x1b[0m\r\n');
+    this.terminal.write(indent + '\x1b[1;33m|\x1b[0m \x1b[1;36mwhoami\x1b[0m      | User Identity Profile      \x1b[1;33m|\x1b[0m\r\n');
+    this.terminal.write(indent + '\x1b[1;33m|\x1b[0m \x1b[1;36mcompanies\x1b[0m   | Enterprise Leadership Log  \x1b[1;33m|\x1b[0m\r\n');
+    this.terminal.write(indent + '\x1b[1;33m|\x1b[0m \x1b[1;36mrepos\x1b[0m       | Real-time Code Shards      \x1b[1;33m|\x1b[0m\r\n');
+    this.terminal.write(indent + '\x1b[1;33m|\x1b[0m \x1b[1;36msysmon\x1b[0m      | Resource Analytics         \x1b[1;33m|\x1b[0m\r\n');
+    this.terminal.write(indent + '\x1b[1;33m|\x1b[0m \x1b[1;36mhelp\x1b[0m        | Operational Directives     \x1b[1;33m|\x1b[0m\r\n');
+    this.terminal.write(indent + '\x1b[1;33m+-----------------------------------------+\x1b[0m\r\n\r\n');
+
+    const status = `\x1b[1;32mSTATUS:\x1b[0m STABLE | \x1b[1;32mUPTIME:\x1b[0m 12D | \x1b[1;31mTHREAT:\x1b[0m NONE`;
+    this.terminal.write(TerminalUtils.center(status, width) + '\r\n');
+    this.terminal.write('\r\n' + TerminalUtils.center('\x1b[1;30mTip: Try command "hack" for elevated access simulation.\x1b[0m', width) + '\r\n');
+  }
+
+  getPromptText() {
+    const path = this.currentPath === '/home/user' ? '~' : this.currentPath;
+    return `\x1b[1;32mroot\x1b[0m@\x1b[1;34moyi-os\x1b[0m:\x1b[1;36m${path}\x1b[0m# `;
+  }
+
+  prompt() {
+    this.terminal.write('\r\n' + this.getPromptText());
+  }
+
+  async handleCommand(input) {
+    input = input.trim();
+    if (!input) {
+      this.terminal.write('\r\n');
+      this.prompt();
+      return;
+    }
+
+    if (input && (this.commandHistory.length === 0 || this.commandHistory[this.commandHistory.length - 1] !== input)) {
+      this.commandHistory.push(input);
+      if (this.commandHistory.length > 100) this.commandHistory.shift();
+    }
+
+    this.terminal.write('\r\n');
+    const [command, ...args] = input.split(/\s+/);
+    const cmd = command.toLowerCase();
+
+    try {
+      switch (cmd) {
+        case 'help':
+          await this.runCommand('help', args);
+          break;
+        case 'whoami':
+          await this.runCommand('whoami', args);
+          break;
+        case 'companies':
+          await this.runCommand('companies', args);
+          break;
+        case 'achievements':
+          await this.runCommand('achievements', args);
+          break;
+        case 'repos':
+        case 'scan':
+          await this.runCommand('repos', args);
+          break;
+        case 'sysmon':
+          await this.runCommand('sysmon', args);
+          break;
+        case 'netmap':
+          await this.runCommand('netmap', args);
+          break;
+        case 'neofetch':
+          await this.runCommand('neofetch', args);
+          break;
+        case 'skills':
+          await this.runCommand('skills', args);
+          break;
+        case '3pm':
+          await this.runCommand('3pm', args);
+          break;
+        case 'wallet':
+          await this.runCommand('wallet', args);
+          break;
+        case 'theme':
+          if (args[0]) {
+            if (this.themeManager.setTheme(args[0])) {
+              localStorage.setItem('term-theme', args[0]);
+              this.terminal.write(`\x1b[1;32mTheme protocol updated to: ${args[0]}\x1b[0m\r\n`);
+            } else {
+              this.terminal.write(`\x1b[1;31mUnknown theme protocol: ${args[0]}\x1b[0m\r\n`);
+            }
+          } else {
+            this.terminal.write(`Usage: theme [matrix|amber|hacker|cyberpunk]\r\n`);
+          }
+          break;
+        case 'cv':
+          await this.runCommand('cv', args);
+          break;
+        case 'ls':
+          this.runLs(args);
+          break;
+        case 'cd':
+          this.runCd(args);
+          break;
+        case 'cat':
+          await this.runCommand('cat', args);
+          break;
+        case 'clear':
+        case 'cls':
+          this.terminal.clear();
+          break;
+        case 'hack':
+          await this.runCommand('hack', args);
+          break;
+        case 'web3os':
+          await this.runCommand('web3os', args);
+          break;
+        default:
+          this.terminal.write(`\x1b[1;31m${command}: command not found\x1b[0m\r\n`);
+      }
+    } catch (error) {
+      this.terminal.write(`\x1b[1;31mSystem Error: ${error.message}\x1b[0m\r\n`);
+    }
+
+    this.prompt();
+  }
+
+  async runCommand(command, args) {
+    const appMap = {
+      'help': HelpApp,
+      'whoami': WhoAmIApp,
+      'companies': CompaniesApp,
+      'achievements': AchievementsApp,
+      'repos': ReposApp,
+      'sysmon': SysMonApp,
+      'netmap': NetMapApp,
+      'neofetch': NeoFetchApp,
+      'skills': SkillsApp,
+      '3pm': PackageManagerApp,
+      'wallet': WalletApp,
+      'cv': CVApp,
+      'hack': HackApp,
+      'cat': CatApp,
+      'web3os': Web3OSApp
+    };
+
+    const AppClass = appMap[command];
+    if (AppClass) {
+      const app = new AppClass(this.terminal, this.filesystem, this.windowManager, this);
+      await app.run(args);
+    }
+  }
+
+  // ... (ls, cd, cat, etc. stay but updated with themes/colors)
+  runLs(args) {
+    const path = args[0] || this.currentPath;
+    const resolvedPath = this.filesystem.resolvePath(this.currentPath, path);
+    const listing = this.filesystem.list(resolvedPath);
+
+    if (listing === null) {
+      this.terminal.write(`\x1b[1;31mls: cannot access '${path}': No such file or directory\x1b[0m\r\n`);
+      return;
+    }
+
+    listing.forEach(item => {
+      const color = item.type === 'directory' ? '\x1b[1;34m' : '\x1b[0m';
+      const suffix = item.type === 'directory' ? '/' : '';
+      this.terminal.write(`${color}${item.name}${suffix}\x1b[0m  `);
+    });
+    this.terminal.write('\r\n');
+  }
+
+  runCd(args) {
+    if (args.length === 0) {
+      this.currentPath = '/home/user';
+      return;
+    }
+    const targetPath = args[0];
+    const resolvedPath = this.filesystem.resolvePath(this.currentPath, targetPath);
+    if (this.filesystem.exists(resolvedPath) && this.filesystem.isDirectory(resolvedPath)) {
+      this.currentPath = resolvedPath;
+    } else {
+      this.terminal.write(`\x1b[1;31mcd: ${targetPath}: No such file or directory\x1b[0m\r\n`);
+    }
+  }
+
+
+  handleTabCompletion() {
+    const input = this.currentInput.trim();
+    const parts = input.split(/\s+/);
+    const lastPart = parts[parts.length - 1] || '';
+    const commands = ['help', 'whoami', 'companies', 'achievements', 'repos', 'scan', 'sysmon', 'netmap', 'neofetch', 'skills', '3pm', 'wallet', 'theme', 'ls', 'cd', 'cat', 'clear', 'hack', 'web3os', 'cv'];
+    const matches = commands.filter(cmd => cmd.startsWith(lastPart));
+
+    if (matches.length === 1) {
+      const completion = matches[0].slice(lastPart.length);
+      this.currentInput += completion;
+      this.terminal.write(completion);
+    }
+  }
+}
+
+window.TerminalOS = TerminalOS;
+
