@@ -1,163 +1,400 @@
 ---
 layout: single
-author_profile: true
+author_profile: false
 classes: wide
 ---
 
 <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/css/animations.css' | relative_url }}">
 
-# 🖥️ Welcome to My Portfolio
+<!-- SEO Meta Tags -->
+<meta name="description" content="Muchammad Fikri Izzuddin - Remote Lead Software Engineer with 7+ years experience in full-stack development, blockchain, and algorithmic trading. Available for remote positions.">
+<meta name="keywords" content="remote software engineer, lead developer, blockchain developer, full-stack developer, algorithmic trading developer, technical lead, 7+ years experience, remote work">
+<meta name="author" content="Muchammad Fikri Izzuddin">
 
-> **Lead Software Engineer | Technical Lead | Blockchain Developer**  
-> 7+ years of experience | Led teams of 15 to 3,000+ members
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://oyi77.github.io/">
+<meta property="og:title" content="Muchammad Fikri Izzuddin - Lead Software Engineer | Remote Available">
+<meta property="og:description" content="Lead Software Engineer with 7+ years experience. Expert in blockchain, algorithmic trading, and full-stack development. Seeking remote opportunities.">
+<meta property="og:image" content="https://oyi77.github.io/assets/images/bio-photo.png">
 
----
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://oyi77.github.io/">
+<meta property="twitter:title" content="Muchammad Fikri Izzuddin - Lead Software Engineer">
+<meta property="twitter:description" content="Lead Software Engineer with 7+ years experience. Expert in blockchain, algorithmic trading, and full-stack development.">
+<meta property="twitter:image" content="https://oyi77.github.io/assets/images/bio-photo.png">
 
-## 🚀 Interactive Terminal OS
+<!-- Structured Data (JSON-LD) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Muchammad Fikri Izzuddin",
+  "jobTitle": "Lead Software Engineer",
+  "url": "https://oyi77.github.io",
+  "sameAs": [
+    "https://linkedin.com/in/fikriizzuddin",
+    "https://github.com/oyi77",
+    "https://linktr.ee/jokogendeng"
+  ],
+  "email": "mbahkoe.pendekar@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "East Java",
+    "addressCountry": "ID"
+  },
+  "knowsAbout": [
+    "Software Engineering",
+    "Blockchain Development",
+    "Algorithmic Trading",
+    "Full-Stack Development",
+    "Python",
+    "JavaScript",
+    "TypeScript",
+    "React",
+    "Node.js",
+    "Blockchain",
+    "Smart Contracts"
+  ],
+  "alumniOf": {
+    "@type": "EducationalOrganization",
+    "name": "Institut Teknologi Sepuluh Nopember (ITS) Surabaya"
+  }
+}
+</script>
 
-Experience my portfolio through an **immersive terminal interface** - a fully functional browser-based terminal that showcases my professional journey, technical expertise, and achievements.
-
-**[👉 Launch Terminal OS →](/terminal/)**{: .btn .btn--primary .btn--large}
-
-### Terminal Features
-- 🎮 **Interactive Commands** - 20+ commands to explore my background
-- 📁 **Virtual File System** - Navigate through achievements and projects
-- 🎨 **Multiple Themes** - Matrix, Amber, Hacker, Cyberpunk
-- 🔍 **Search Functionality** - Press `Ctrl+F` to search terminal content
-- 💻 **Syntax Highlighting** - Enhanced `cat` command with code highlighting
-- 🌐 **Web3OS Integration** - Decentralized OS capabilities
-
----
-
-## 💼 Professional Highlights
-
-### Leadership Experience
-- **GarudaMedia** - Technical Lead, managed 3,000+ employees
-- **Solomon Mining** - CTO, Indonesia's first legal crypto mining
-- **BerkahKarya** - Head of Engineering, 5B+ IDR monthly turnover
-- **AiTradePulse** - Founder & Lead Developer, 90%+ win rate trading platform
-- **Bitwyre** - Onchain Trader & Blockchain Developer
-
-### Key Achievements
-- ✅ Led teams from 15 to 3,000+ members across 4 major companies
-- ✅ Achieved 90%+ win rate in algorithmic trading systems
-- ✅ Scaled infrastructure handling 100M+ monthly events
-- ✅ Reduced costs by 40% through optimization
-- ✅ Increased efficiency by 20-60% across organizations
-
----
-
-## 🛠️ Technical Expertise
-
-### Core Technologies
-- **Languages**: Python, JavaScript, TypeScript, PHP, C++, Java, MQL4/MQL5
-- **Frameworks**: React, Node.js, Django, Laravel, Express.js
-- **Databases**: PostgreSQL, MySQL, MongoDB, TimescaleDB
-- **Infrastructure**: Docker, Kubernetes, AWS, GCP, CI/CD
-
-### Specializations
-- **Blockchain Development** - Smart contracts, DeFi, crypto trading systems
-- **Algorithmic Trading** - 90%+ win rate trading algorithms
-- **Full-Stack Development** - End-to-end application development
-- **DevOps & Infrastructure** - CI/CD, cloud architecture, scaling
-
----
-
-## 📚 Explore More
-
-<div class="feature__wrapper">
-
-<div class="feature__item">
-  <div class="archive__item">
-    <div class="archive__item-body">
-      <h2 class="archive__item-title">
-        <a href="/terminal/" rel="permalink">🖥️ Terminal OS</a>
-      </h2>
-      <div class="archive__item-excerpt">
-        Interactive terminal-based portfolio experience. Explore my professional journey through commands, navigate virtual filesystem, and discover achievements.
+<main id="main-content" role="main">
+  <!-- Hero Section -->
+  <header class="hero-section" id="hero">
+    <div class="hero-background"></div>
+    <div class="hero-content">
+      <div class="hero-photo-container">
+        <img src="{{ '/assets/images/bio-photo.png' | relative_url }}" 
+             alt="Muchammad Fikri Izzuddin - Lead Software Engineer" 
+             class="hero-photo"
+             loading="eager">
+      </div>
+      <h1 class="hero-name glitch-text" data-text="Muchammad Fikri Izzuddin">
+        Muchammad Fikri Izzuddin
+      </h1>
+      <p class="hero-title typewriter-text">
+        Lead Software Engineer | Technical Lead | Blockchain Developer
+      </p>
+      <p class="hero-tagline">
+        7+ years of experience | Led teams of 15 to 3,000+ members | <strong>Available for Remote Work</strong>
+      </p>
+      <div class="hero-actions">
+        <a href="#terminal-section" class="btn btn--primary btn--large" aria-label="Explore Terminal">
+          🖥️ Explore Terminal
+        </a>
+        <a href="#sites-hub" class="btn btn--secondary btn--large" aria-label="View Projects">
+          💎 View Projects
+        </a>
+      </div>
+      <div class="scroll-indicator">
+        <span>Scroll to explore</span>
+        <div class="scroll-arrow">↓</div>
       </div>
     </div>
+  </header>
+
+  <!-- Quick Links Hub -->
+  <section id="sites-hub" class="sites-hub-section" aria-label="Projects and Websites Hub">
+    <div class="container">
+      <h2 class="section-title">
+        <span class="ascii-art">╔═══════════════════════════════════════╗</span>
+        <span class="ascii-art">║  💎 MY WEBSITES & PROJECTS HUB  ║</span>
+        <span class="ascii-art">╚═══════════════════════════════════════╝</span>
+      </h2>
+
+      {% assign featured_sites = site.data.terminal.sites | where: "featured", true %}
+      {% if featured_sites.size > 0 %}
+      <div class="category-section">
+        <h3 class="category-header">
+          <span class="category-icon">⭐</span>
+          <span>Featured Sites</span>
+        </h3>
+        <div class="hub-grid hub-grid--featured">
+          {% for site in featured_sites %}
+          <article class="hub-card hub-card--featured" data-category="{{ site.category }}">
+            <div class="hub-card-content">
+              <div class="hub-card-header">
+                <h4 class="hub-card-title">{{ site.name }}</h4>
+                <span class="hub-card-badge hub-card-badge--featured">⭐ Featured</span>
+              </div>
+              <p class="hub-card-description">{{ site.description }}</p>
+              <div class="hub-card-footer">
+                <a href="{{ site.url }}" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   class="hub-card-link"
+                   aria-label="Visit {{ site.name }}">
+                  Visit Site →
+                </a>
+                <span class="hub-card-category">{{ site.category | capitalize }}</span>
+              </div>
+            </div>
+            <div class="hub-card-glow"></div>
+          </article>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+
+      {% assign all_sites = site.data.terminal.sites %}
+      {% assign categories = all_sites | group_by: "category" %}
+      {% for category in categories %}
+        {% assign category_name = category.name | capitalize %}
+        {% if category_name == "Portfolio" %}
+          {% assign category_icon = "📁" %}
+        {% elsif category_name == "Trading" %}
+          {% assign category_icon = "📈" %}
+        {% elsif category_name == "Ecommerce" %}
+          {% assign category_icon = "🛒" %}
+        {% elsif category_name == "Platform" %}
+          {% assign category_icon = "🚀" %}
+        {% else %}
+          {% assign category_icon = "🔗" %}
+        {% endif %}
+        {% assign non_featured_sites = category.items | where_exp: "site", "site.featured != true" %}
+        {% if non_featured_sites.size > 0 %}
+        <div class="category-section">
+          <h3 class="category-header">
+            <span class="category-icon">{{ category_icon }}</span>
+            <span>{{ category_name }}</span>
+          </h3>
+          <div class="hub-grid">
+            {% for site in non_featured_sites %}
+            <article class="hub-card" data-category="{{ site.category }}">
+              <div class="hub-card-content">
+                <div class="hub-card-header">
+                  <h4 class="hub-card-title">{{ site.name }}</h4>
+                  <span class="hub-card-badge">{{ site.category | capitalize }}</span>
+                </div>
+                <p class="hub-card-description">{{ site.description }}</p>
+                <div class="hub-card-footer">
+                  <a href="{{ site.url }}" 
+                     target="_blank" 
+                     rel="noopener noreferrer" 
+                     class="hub-card-link"
+                     aria-label="Visit {{ site.name }}">
+                    Visit Site →
+                  </a>
+                </div>
+              </div>
+              <div class="hub-card-glow"></div>
+            </article>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- Terminal Section -->
+  <section id="terminal-section" class="terminal-section" aria-label="Interactive Terminal">
+    <div class="container">
+      <h2 class="section-title">
+        <span class="ascii-art">╔═══════════════════════════════════════╗</span>
+        <span class="ascii-art">║  🖥️  INTERACTIVE TERMINAL OS  ║</span>
+        <span class="ascii-art">╚═══════════════════════════════════════╝</span>
+      </h2>
+      <div class="terminal-embedded-wrapper">
+        <div id="terminal-embedded" class="terminal-embedded">
+          <div class="terminal-placeholder">
+            <div class="terminal-placeholder-content">
+              <pre class="terminal-preview">$ whoami
+Muchammad Fikri Izzuddin
+
+$ neofetch
+┌─────────────────────────────────────┐
+│ Lead Software Engineer              │
+│ 7+ years experience                 │
+│ Available for Remote Work          │
+└─────────────────────────────────────┘
+
+Type 'help' for available commands
+Press Ctrl+K for command palette</pre>
+            </div>
+          </div>
+        </div>
+        <div class="terminal-controls">
+          <button id="terminal-expand-btn" class="btn btn--terminal" aria-label="Expand terminal to full page">
+            <span class="btn-icon">⛶</span>
+            <span>Expand to Full Page</span>
+          </button>
+          <button id="terminal-launch-btn" class="btn btn--terminal-secondary" aria-label="Launch terminal">
+            <span class="btn-icon">▶</span>
+            <span>Launch Terminal</span>
+          </button>
+          <kbd class="keyboard-hint">Press <kbd>Ctrl+K</kbd> for command palette</kbd>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Full Page Terminal Overlay -->
+  <div id="terminal-fullpage-overlay" class="terminal-fullpage-overlay" aria-hidden="true">
+    <div class="terminal-fullpage-container">
+      <button id="terminal-close-btn" class="terminal-close-btn" aria-label="Close full page terminal">
+        <span>✕</span>
+      </button>
+      <div id="terminal-fullpage" class="terminal-fullpage"></div>
+    </div>
+  </div>
+
+  <!-- Professional Highlights -->
+  <section id="highlights" class="highlights-section" aria-label="Professional Highlights">
+    <div class="container">
+      <h2 class="section-title">Professional Highlights</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <h3>Leadership Experience</h3>
+            <div class="achievement-grid">
+              <div class="achievement-card">
+                <div class="achievement-card-inner">
+                  <div class="achievement-card-front">
+                    <h4>GarudaMedia</h4>
+                    <p>Technical Lead</p>
+                    <span class="stat-number" data-target="3000">0</span>
+                    <span>+ employees managed</span>
+                  </div>
+                  <div class="achievement-card-back">
+                    <p>Led technical operations for 3,000+ employees across multiple departments</p>
+                  </div>
+                </div>
+              </div>
+              <div class="achievement-card">
+                <div class="achievement-card-inner">
+                  <div class="achievement-card-front">
+                    <h4>AiTradePulse</h4>
+                    <p>Founder & Lead Developer</p>
+                    <span class="stat-number" data-target="90">0</span>
+                    <span>%+ win rate</span>
+                  </div>
+                  <div class="achievement-card-back">
+                    <p>Built algorithmic trading platform achieving 90%+ win rate with 50+ active strategies</p>
+                  </div>
+                </div>
+              </div>
+              <div class="achievement-card">
+                <div class="achievement-card-inner">
+                  <div class="achievement-card-front">
+                    <h4>Cost Reduction</h4>
+                    <p>Infrastructure Optimization</p>
+                    <span class="stat-number" data-target="40">0</span>
+                    <span>% cost reduction</span>
+                  </div>
+                  <div class="achievement-card-back">
+                    <p>Optimized infrastructure reducing costs by 40% while maintaining performance</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical Expertise -->
+  <section id="expertise" class="expertise-section" aria-label="Technical Expertise">
+    <div class="container">
+      <h2 class="section-title">Technical Expertise</h2>
+      <div class="skills-tabs">
+        <button class="skill-tab active" data-category="all">All Skills</button>
+        <button class="skill-tab" data-category="programming_languages">Languages</button>
+        <button class="skill-tab" data-category="frameworks">Frameworks</button>
+        <button class="skill-tab" data-category="databases">Databases</button>
+        <button class="skill-tab" data-category="tools">Tools</button>
+        <button class="skill-tab" data-category="specialized">Specialized</button>
+      </div>
+      <div class="skills-cloud">
+        {% for skill_category in site.data.terminal.skills %}
+          {% assign category_key = skill_category[0] %}
+          {% assign skills = skill_category[1] %}
+          {% for skill in skills %}
+            <span class="skill-badge" data-category="{{ category_key }}">
+              {{ skill }}
+            </span>
+          {% endfor %}
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Links -->
+  <section id="social" class="social-section" aria-label="Social Links">
+    <div class="container">
+      <h2 class="section-title">Connect With Me</h2>
+      <div class="social-links">
+        {% for link in site.data.terminal.links %}
+        <a href="{{ link.url }}" 
+           target="_blank" 
+           rel="noopener noreferrer" 
+           class="social-link"
+           aria-label="{{ link.label }}">
+          <span class="social-icon">{{ link.label | slice: 0, 1 }}</span>
+          <span class="social-label">{{ link.label }}</span>
+        </a>
+        {% endfor %}
+        <a href="mailto:{{ site.email }}" 
+           class="social-link social-link--email"
+           aria-label="Email">
+          <span class="social-icon">✉</span>
+          <span class="social-label">Email</span>
+        </a>
+        <a href="{{ '/MuchammadFikriIzzuddin_CV.pdf' | relative_url }}" 
+           class="social-link social-link--cv"
+           aria-label="Download CV"
+           download>
+          <span class="social-icon">📄</span>
+          <span class="social-label">Download CV</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Command Palette -->
+<div id="command-palette" class="command-palette" aria-hidden="true" role="dialog" aria-label="Command Palette">
+  <div class="command-palette-overlay"></div>
+  <div class="command-palette-content">
+    <div class="command-palette-header">
+      <input type="text" 
+             id="command-input" 
+             class="command-input" 
+             placeholder="Type a command or search..."
+             autocomplete="off"
+             aria-label="Command input">
+      <button class="command-palette-close" aria-label="Close command palette">✕</button>
+    </div>
+    <div id="command-results" class="command-results"></div>
   </div>
 </div>
 
-<div class="feature__item">
-  <div class="archive__item">
-    <div class="archive__item-body">
-      <h2 class="archive__item-title">
-        <a href="/posts/" rel="permalink">📝 Blog Posts</a>
-      </h2>
-      <div class="archive__item-excerpt">
-        Read about my projects, technical insights, and professional journey. Learn about building Terminal OS, featured projects, and more.
-      </div>
-    </div>
-  </div>
+<!-- Scroll Progress Bar -->
+<div class="scroll-progress" role="progressbar" aria-label="Scroll progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+  <div class="scroll-progress-bar"></div>
 </div>
 
-<div class="feature__item">
-  <div class="archive__item">
-    <div class="archive__item-body">
-      <h2 class="archive__item-title">
-        <a href="/about/" rel="permalink">👤 About</a>
-      </h2>
-      <div class="archive__item-excerpt">
-        Learn more about my background, education, certifications, and professional journey as a technical leader.
-      </div>
-    </div>
-  </div>
+<!-- Floating Action Buttons -->
+<div class="floating-actions">
+  <a href="#hero" class="floating-action" aria-label="Scroll to top">
+    <span>↑</span>
+  </a>
+  <a href="#terminal-section" class="floating-action" aria-label="Open terminal">
+    <span>🖥️</span>
+  </a>
+  <button id="command-palette-trigger" class="floating-action" aria-label="Open command palette">
+    <span>⌘</span>
+  </button>
 </div>
 
-<div class="feature__item">
-  <div class="archive__item">
-    <div class="archive__item-body">
-      <h2 class="archive__item-title">
-        <a href="https://oyi77.github.io/oyi77" target="_blank" rel="noopener">📄 CV OS</a>
-      </h2>
-      <div class="archive__item-excerpt">
-        Interactive CV Operating System - A comprehensive portfolio experience with detailed professional information.
-      </div>
-    </div>
-  </div>
-</div>
-
-</div>
-
----
-
-## 🔗 Quick Links
-
-- **GitHub**: [@oyi77](https://github.com/oyi77)
-- **LinkedIn**: [fikriizzuddin](https://linkedin.com/in/fikriizzuddin)
-- **Portfolio Hub**: [linktr.ee/jokogendeng](https://linktr.ee/jokogendeng)
-- **CV Download**: [MuchammadFikriIzzuddin_CV.pdf](/MuchammadFikriIzzuddin_CV.pdf)
-
----
-
-## 📊 Featured Projects
-
-### AiTradePulse
-**Algorithmic Trading Platform** - 90%+ win rate, 50+ active strategies  
-[aitradepulse.com](https://aitradepulse.com)
-
-### Terminal OS
-**Interactive Portfolio Terminal** - Browser-based terminal emulator  
-[View Source](https://github.com/oyi77/oyi77.github.io)
-
-### Open Source
-Check out my open-source projects on [GitHub](https://github.com/oyi77):
-- Nuclear - Music delivery platform
-- RBMiner - Mining optimization tool
-- Shopee Bot - Automation assistant
-- And more...
-
----
-
-## 🎯 Get Started
-
-1. **Try the Terminal**: [Launch Terminal OS →](/terminal/)
-2. **Read the Blog**: [Latest Posts →](/posts/)
-3. **View Projects**: [GitHub →](https://github.com/oyi77)
-4. **Connect**: [LinkedIn →](https://linkedin.com/in/fikriizzuddin)
-
----
-
-*Built with ❤️ and ☕ | "Code is poetry, terminals are art"* 🎨
+<!-- Scripts -->
+<script src="{{ '/assets/js/homepage-effects.js' | relative_url }}"></script>

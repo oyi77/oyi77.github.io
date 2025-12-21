@@ -13,16 +13,32 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: "Muchammad Fikri Izzuddin - Portfolio"
+title: "Muchammad Fikri Izzuddin - Lead Software Engineer | Remote Available"
 email: mbahkoe.pendekar@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Professional portfolio of Muchammad Fikri Izzuddin - Lead Software Engineer with 7+ years of experience
-  in full-stack development, blockchain, and algorithmic trading. Interactive Terminal OS showcasing
-  leadership experience, technical expertise, and featured projects.
+  Muchammad Fikri Izzuddin - Remote Lead Software Engineer with 7+ years of experience in full-stack development,
+  blockchain, and algorithmic trading. Expert in Python, JavaScript, React, Node.js. Led teams of 15 to 3,000+ members.
+  Available for remote positions. Interactive portfolio showcasing projects, achievements, and technical expertise.
 twitter_username: 
 github_username: oyi77
 minimal_mistakes_skin: default
 search: true
+
+# SEO Settings
+url: "https://oyi77.github.io"
+baseurl: ""
+
+# SEO Keywords
+keywords: "remote software engineer, lead developer, blockchain developer, full-stack developer, algorithmic trading developer, technical lead, 7+ years experience, remote work, Python developer, JavaScript developer, React developer, Node.js developer"
+
+# Social Sharing
+social:
+  type: "Person"
+  name: "Muchammad Fikri Izzuddin"
+  links:
+    - "https://linkedin.com/in/fikriizzuddin"
+    - "https://github.com/oyi77"
+    - "https://linktr.ee/jokogendeng"
 
 # Build settings
 markdown: kramdown

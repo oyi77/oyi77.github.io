@@ -1,0 +1,255 @@
+/* Animations and Keyframes */
+
+/* Glitch Effect */
+@keyframes glitch {
+  0%, 100% {
+    text-shadow: 
+      0.05em 0 0 #00ff41,
+      -0.05em -0.025em 0 #ff00ff,
+      0.025em 0.05em 0 #00ffff;
+    transform: translate(0);
+  }
+  15% {
+    text-shadow: 
+      -0.05em -0.025em 0 #00ff41,
+      0.025em 0.025em 0 #ff00ff,
+      -0.05em -0.05em 0 #00ffff;
+    transform: translate(0.025em, 0.025em);
+  }
+  30% {
+    text-shadow: 
+      0.05em 0.05em 0 #00ff41,
+      0.05em 0 0 #ff00ff,
+      0 -0.05em 0 #00ffff;
+    transform: translate(-0.05em, 0.025em);
+  }
+  45% {
+    text-shadow: 
+      -0.025em 0.025em 0 #00ff41,
+      -0.025em -0.025em 0 #ff00ff,
+      -0.025em -0.05em 0 #00ffff;
+    transform: translate(-0.025em, -0.05em);
+  }
+  60% {
+    text-shadow: 
+      -0.05em 0 0 #00ff41,
+      -0.05em -0.025em 0 #ff00ff,
+      -0.05em -0.05em 0 #00ffff;
+    transform: translate(0.05em, 0);
+  }
+  75% {
+    text-shadow: 
+      0.025em 0.05em 0 #00ff41,
+      0.025em 0.025em 0 #ff00ff,
+      0.05em 0.05em 0 #00ffff;
+    transform: translate(0, -0.025em);
+  }
+}
+
+/* Typewriter Effect */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  from, to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #00ff41;
+  }
+}
+
+/* Typewriter effect for text */
+.typewriter-text {
+  overflow: hidden;
+  border-right: 3px solid #00ff41;
+  white-space: nowrap;
+  animation: typing 3.5s steps(50, end), blink 0.75s step-end infinite;
+  display: inline-block;
+  max-width: 100%;
+}
+
+/* Floating Animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Pulse Glow */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(0, 255, 65, 0.8);
+  }
+}
+
+/* Gradient Shift */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Fade In Up */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Staggered Fade In */
+@keyframes staggerFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Rotate */
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Scale Pulse */
+@keyframes scalePulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* Slide In Right */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Morph Animation */
+@keyframes morph {
+  0% {
+    border-radius: 8px;
+  }
+  50% {
+    border-radius: 20px;
+  }
+  100% {
+    border-radius: 8px;
+  }
+}
+
+/* Counter Animation */
+@keyframes countUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Card Flip */
+@keyframes flip {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(180deg);
+  }
+}
+
+/* Shimmer Effect */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+/* Terminal Glow Pulse */
+@keyframes terminal-glow {
+  0%, 100% {
+    box-shadow: 
+      0 0 10px rgba(0, 255, 65, 0.3),
+      0 0 20px rgba(0, 255, 65, 0.2),
+      inset 0 0 10px rgba(0, 255, 65, 0.1);
+  }
+  50% {
+    box-shadow: 
+      0 0 20px rgba(0, 255, 65, 0.5),
+      0 0 40px rgba(0, 255, 65, 0.3),
+      inset 0 0 20px rgba(0, 255, 65, 0.2);
+  }
+}
+
+/* Scroll Indicator Bounce */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Particle Float */
+@keyframes particle-float {
+  0% {
+    transform: translateY(100vh) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(100px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
