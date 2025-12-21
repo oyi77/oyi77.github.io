@@ -489,6 +489,9 @@ class TerminalOS {
         case 'indices':
           await this.runCommand('market', args);
           break;
+        case 'share':
+          await this.runCommand('share', args);
+          break;
         case 'home':
           this.terminal.clear();
           await this.showWelcome();
@@ -524,7 +527,8 @@ class TerminalOS {
       'stats': StatsApp,
       'analytics': AnalyticsApp,
       'github-stats': GitHubStatsApp,
-      'market': MarketApp
+      'market': MarketApp,
+      'share': ShareApp
     };
 
     const AppClass = appMap[command];
