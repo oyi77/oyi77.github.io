@@ -1,0 +1,230 @@
+/* 
+ * Portal Design System
+ * Focus: High-impact, Modern, Professional
+ */
+
+:root {
+    --portal-bg: #000000;
+    --portal-accent: #ffffff;
+    --portal-accent-dim: #444444;
+    --portal-text: #ffffff;
+    --portal-text-dim: #888888;
+    --portal-font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --portal-font-mono: 'JetBrains Mono', monospace;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body,
+html {
+    width: 100%;
+    height: 100%;
+    background-color: var(--portal-bg);
+    color: var(--portal-text);
+    font-family: var(--portal-font);
+    overflow: hidden;
+}
+
+#portal-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+/* Background Grid Animation */
+.bg-grid {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+    z-index: 1;
+    pointer-events: none;
+    mask-image: radial-gradient(circle at center, black 0%, transparent 80%);
+}
+
+.bg-glow {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* Header Section */
+.header {
+    text-align: center;
+    margin-bottom: 60px;
+    animation: fadeInDown 1s ease-out;
+}
+
+.header h1 {
+    font-size: 0.8rem;
+    font-family: var(--portal-font-mono);
+    letter-spacing: 0.5rem;
+    color: var(--portal-text-dim);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.header .name {
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+/* Access Tiers */
+.access-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 900px;
+    width: 90%;
+    animation: fadeInUp 1s ease-out 0.2s both;
+}
+
+.access-card {
+    background: rgba(10, 10, 10, 0.6);
+    border: 1px solid var(--portal-accent-dim);
+    padding: 30px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    backdrop-filter: blur(10px);
+}
+
+.access-card:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--portal-accent);
+    transform: translateY(-5px);
+}
+
+.card-label {
+    font-family: var(--portal-font-mono);
+    font-size: 0.65rem;
+    color: var(--portal-text-dim);
+    letter-spacing: 2px;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.card-desc {
+    font-size: 0.85rem;
+    color: var(--portal-text-dim);
+    line-height: 1.5;
+}
+
+.card-footer {
+    margin-top: auto;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.card-footer::after {
+    content: '→';
+    transition: transform 0.3s ease;
+}
+
+.access-card:hover .card-footer::after {
+    transform: translateX(5px);
+}
+
+/* Professional Footer */
+.footer {
+    position: absolute;
+    bottom: 40px;
+    width: 100%;
+    text-align: center;
+    font-family: var(--portal-font-mono);
+    font-size: 0.7rem;
+    color: var(--portal-text-dim);
+    letter-spacing: 1px;
+    animation: fadeIn 2s ease-in 0.5s both;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .access-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .header .name {
+        font-size: 1.8rem;
+    }
+
+    #portal-wrapper {
+        padding: 40px 0;
+        justify-content: flex-start;
+        overflow-y: auto;
+    }
+
+    .footer {
+        position: relative;
+        bottom: auto;
+        margin-top: 40px;
+        padding-bottom: 40px;
+    }
+}

@@ -29,7 +29,13 @@
     <script src="https://cdn.jsdelivr.net/npm/xterm-addon-unicode11@0.5.0/lib/xterm-addon-unicode11.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/xterm-addon-serialize@0.7.0/lib/xterm-addon-serialize.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/xterm-addon-image@0.5.0/lib/xterm-addon-image.js"></script>
-    <script type="module" src="https://web3os.sh/_loader.js" onerror="console.warn('Web3OS loader not available');"></script>
+
+    <!-- Web3OS Chunks (Pre-loaded to prevent 404s) -->
+    <script src="{{ '/assets/js/terminal/6511.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/terminal/3105.js' | relative_url }}"></script>
+
+    <script type="module" src="https://web3os.sh/_loader.js"
+        onerror="console.warn('Web3OS loader not available');"></script>
 
     <!-- Jekyll Data Injection -->
     <script>
@@ -41,26 +47,78 @@
                 baseurl: "{{ site.baseurl }}"
             },
             terminal: {{ site.data.terminal | jsonify }},
-            companies: {{ site.data.companies | jsonify }},
-            projects: {{ site.data.projects | jsonify }},
-            repository_stats: {{ site.data.repository_stats | jsonify }},
-            skills_matrix: {{ site.data.skills_matrix | jsonify }},
-            timeline: {{ site.data.timeline | jsonify }},
-            github_stats: {{ site.data.github_stats | jsonify }},
-            metrics: {{ site.data.metrics | jsonify }},
-            analytics: {{ site.data.analytics | jsonify }},
-            seo: {{ site.data.seo | jsonify }},
-            external_stats: {{ site.data.external_stats | jsonify }},
-            market_data: {{ site.data.market_data | jsonify }}
+        companies: { { site.data.companies | jsonify } },
+        projects: { { site.data.projects | jsonify } },
+        repository_stats: { { site.data.repository_stats | jsonify } },
+        skills_matrix: { { site.data.skills_matrix | jsonify } },
+        timeline: { { site.data.timeline | jsonify } },
+        github_stats: { { site.data.github_stats | jsonify } },
+        metrics: { { site.data.metrics | jsonify } },
+        analytics: { { site.data.analytics | jsonify } },
+        seo: { { site.data.seo | jsonify } },
+        external_stats: { { site.data.external_stats | jsonify } },
+        market_data: { { site.data.market_data | jsonify } }
         };
     </script>
 </head>
 
 <body class="fullscreen-terminal">
 
-    <!-- Fullscreen Terminal Container -->
-    <div id="terminal-container" class="terminal-fullscreen">
-        <div id="terminal"></div>
+    <!-- Modern UI Overlay -->
+    <div id="ui-overlay">
+        <!-- Sidebar Navigation -->
+        <aside id="sidebar">
+            <div class="sidebar-header">
+                <span class="logo">OYI OS</span>
+            </div>
+            <nav class="sidebar-nav">
+                <div class="nav-group">
+                    <span class="nav-label">SYSTEM</span>
+                    <button class="nav-item" onclick="terminalOS.handleCommand('whoami')">WHOAMI</button>
+                    <button class="nav-item" onclick="terminalOS.handleCommand('sysmon')">SYSMON</button>
+                    <button class="nav-item" onclick="terminalOS.handleCommand('netmap')">NETMAP</button>
+                </div>
+                <div class="nav-group">
+                    <span class="nav-label">LOGS</span>
+                    <button class="nav-item" onclick="terminalOS.handleCommand('companies')">COMPANIES</button>
+                    <button class="nav-item" onclick="terminalOS.handleCommand('repos')">REPOS</button>
+                    <button class="nav-item" onclick="terminalOS.handleCommand('cv')">CV</button>
+                </div>
+                <div class="nav-group">
+                    <span class="nav-label">TOOLS</span>
+                    <button class="nav-item" onclick="terminalOS.handleCommand('hack')">HACK</button>
+                    <button class="nav-item" onclick="terminalOS.handleCommand('wallet')">WALLET</button>
+                    <button class="nav-item" onclick="terminalOS.handleCommand('market')">MARKET</button>
+                </div>
+            </nav>
+            <div class="sidebar-footer">
+                <span class="status-indicator"></span>
+                <span class="status-text">ONLINE</span>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main id="main-content">
+            <header id="top-bar">
+                <div class="top-bar-left">
+                    <span class="path-display">guest@oyi-os:~</span>
+                </div>
+                <div class="top-bar-right">
+                    <div class="stat-item">
+                        <span class="stat-icon">UP:</span>
+                        <span id="uptime-display">0S</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-icon">THREAT:</span>
+                        <span class="threat-level low">LOW</span>
+                    </div>
+                </div>
+            </header>
+
+            <div id="terminal-container" class="terminal-fullscreen">
+                <div id="terminal"></div>
+            </div>
+        </main>
     </div>
 
     <!-- Terminal Core Scripts -->

@@ -10,14 +10,14 @@ class TerminalOS {
     this.commandHistory = [];
     this.historyIndex = -1;
     this.currentInput = '';
-    
+
     // User management
     this.currentUser = 'guest'; // Start as guest
     this.isRoot = false; // Track root access
 
     // Session tracking for uptime
     this.sessionStartTime = Date.now();
-    
+
     // Hack game state
     this.hackStage = 0;
     this.hackCallback = null;
@@ -196,8 +196,11 @@ class TerminalOS {
       this.effects.addScanline();
 
       // Load user preferences
-      const savedTheme = localStorage.getItem('term-theme') || 'matrix';
+      const savedTheme = localStorage.getItem('term-theme') || 'modern';
       this.themeManager.setTheme(savedTheme);
+
+      // Start UI update loop
+      this.startUIUpdates();
 
       // Show welcome message
       await this.showWelcome();
@@ -325,10 +328,26 @@ class TerminalOS {
     const path = this.currentPath === '/home/user' ? '~' : this.currentPath;
     const user = this.isRoot ? 'root' : this.currentUser;
     const promptChar = this.isRoot ? '#' : '$';
+
+    // Update UI overlay path
+    const pathDisplay = document.querySelector('.path-display');
+    if (pathDisplay) {
+      pathDisplay.textContent = `${user}@oyi-os:${path}`;
+    }
+
     const userColor = this.isRoot ? '\x1b[1;31m' : '\x1b[1;33m';
     return `${userColor}${user}\x1b[0m@\x1b[1;34moyi-os\x1b[0m:\x1b[1;36m${path}\x1b[0m${promptChar} `;
   }
-  
+
+  startUIUpdates() {
+    setInterval(() => {
+      const uptimeDisplay = document.getElementById('uptime-display');
+      if (uptimeDisplay) {
+        uptimeDisplay.textContent = this.calculateUptime();
+      }
+    }, 1000);
+  }
+
   calculateUptime() {
     const now = Date.now();
     const diff = now - this.sessionStartTime;
@@ -336,7 +355,7 @@ class TerminalOS {
     const minutes = Math.floor(seconds / 60);
     const hours = Math.floor(minutes / 60);
     const days = Math.floor(hours / 24);
-    
+
     if (days > 0) {
       return `${days}D ${hours % 24}H ${minutes % 60}M`;
     } else if (hours > 0) {

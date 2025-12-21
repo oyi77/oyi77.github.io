@@ -57,6 +57,20 @@ class ThemeManager {
                 magenta: '#ff00ff',
                 cyan: '#00fff2',
                 white: '#ffffff'
+            },
+            modern: {
+                background: '#000000',
+                foreground: '#ffffff',
+                cursor: '#ffffff',
+                selection: '#333333',
+                black: '#000000',
+                red: '#ff0000',
+                green: '#00ff00',
+                yellow: '#ffff00',
+                blue: '#0000ff',
+                magenta: '#ff00ff',
+                cyan: '#00ffff',
+                white: '#ffffff'
             }
         };
 
