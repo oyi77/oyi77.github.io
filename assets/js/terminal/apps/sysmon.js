@@ -52,12 +52,25 @@ class SysMonApp {
                 const netSpeed = navigator.connection ? navigator.connection.downlink : 'N/A';
                 this.terminal.write(`  \x1b[1;36mNET \x1b[0m [${this.getHtopBar(Math.min(netSpeed * 10, 100), 40)}] ${netSpeed} Mbps\r\n\r\n`);
 
-                // Process List
+                // Process List - Personal Activities
                 this.terminal.write('\x1b[1;30;47m  PID  USER     PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND      \x1b[0m\r\n');
-                this.renderProcess(1024, 'root', 20, 0, '256M', '45M', '12M', 'S', 0.5, 1.2, '0:12.45', 'terminal-os');
-                this.renderProcess(2048, 'root', 20, 0, '128M', '12M', '5M', 'S', 1.2, 0.4, '0:05.12', 'xterm-js');
-                this.renderProcess(3096, 'root', 20, 0, '512M', '89M', '32M', 'R', 8.5, 2.5, '0:22.01', 'metal-client');
-                this.renderProcess(4112, 'admin', 20, 0, '64M', '8M', '2M', 'S', 0.1, 0.1, '0:01.34', 'github-shim');
+                
+                // Personal activity processes
+                const activities = [
+                    { pid: 1001, user: 'oyi77', cpu: 25.5, mem: 8.2, time: '2:15:30', cmd: 'thinking', status: 'R' },
+                    { pid: 1002, user: 'oyi77', cpu: 18.3, mem: 6.5, time: '1:45:12', cmd: 'problem-solving', status: 'R' },
+                    { pid: 1003, user: 'oyi77', cpu: 35.7, mem: 12.8, time: '3:22:45', cmd: 'coding', status: 'R' },
+                    { pid: 1004, user: 'oyi77', cpu: 12.1, mem: 4.3, time: '1:10:20', cmd: 'leadership', status: 'S' },
+                    { pid: 1005, user: 'oyi77', cpu: 8.9, mem: 3.1, time: '0:45:33', cmd: 'architecting', status: 'S' },
+                    { pid: 1006, user: 'oyi77', cpu: 5.2, mem: 2.4, time: '0:30:15', cmd: 'debugging', status: 'S' }
+                ];
+                
+                activities.forEach(proc => {
+                    const virt = `${Math.floor(Math.random() * 200 + 100)}M`;
+                    const res = `${Math.floor(proc.mem * 10)}M`;
+                    const shr = `${Math.floor(proc.mem * 3)}M`;
+                    this.renderProcess(proc.pid, proc.user, 20, 0, virt, res, shr, proc.status, proc.cpu, proc.mem, proc.time, proc.cmd);
+                });
 
                 this.terminal.write('\r\n\r\n' + TerminalUtils.center('\x1b[1;30m[ PRESS ANY KEY TO EXIT ]\x1b[0m', width));
 

@@ -10,6 +10,9 @@ class WhoAmIApp {
         const width = this.terminal.cols || 60;
 
         this.terminal.write('\r\n' + TerminalUtils.center('\x1b[1;36m>> IDENTITY VERIFICATION SUCCESSFUL <<\x1b[0m', width) + '\r\n\r\n');
+        
+        // Show coding animation
+        await this.showCodingAnimation(width);
 
         const info = [
             { label: 'NAME', val: 'Muchammad Fikri Izzuddin' },
@@ -38,9 +41,131 @@ class WhoAmIApp {
             this.terminal.write(`  ${idx + 1}. \x1b[1;36m${log.company.padEnd(15)}\x1b[0m - ${log.desc}\r\n`);
         });
 
+        // Add links
+        this.terminal.write('\r\n  \x1b[1;33mLINKS:\x1b[0m\r\n');
+        this.terminal.write('  \x1b[1;36mCV OS:\x1b[0m \x1b]8;;https://oyi77.github.io/oyi77\x1b\\https://oyi77.github.io/oyi77\x1b]8;;\x1b\\\r\n');
+        this.terminal.write('  \x1b[1;36mLinktree:\x1b[0m \x1b]8;;https://linktr.ee/jokogendeng\x1b\\https://linktr.ee/jokogendeng\x1b]8;;\x1b\\\r\n');
+
         this.terminal.write('\r\n  \x1b[1;30m' + '-'.repeat(width - 10) + '\x1b[0m\r\n');
         this.terminal.write('  Type \x1b[1;32mcompanies\x1b[0m | \x1b[1;32mcv\x1b[0m | \x1b[1;32mskills\x1b[0m\r\n');
+    }
+
+    async showCodingAnimation(width) {
+        const frames = [
+            `    ╔════════════════╗
+    ║  Coding...     ║
+    ║  █░░░░░░░░░░░░  ║
+    ╚════════════════╝`,
+            `    ╔════════════════╗
+    ║  Coding...     ║
+    ║  ██░░░░░░░░░░░  ║
+    ╚════════════════╝`,
+            `    ╔════════════════╗
+    ║  Coding...     ║
+    ║  ███░░░░░░░░░░  ║
+    ╚════════════════╝`,
+            `    ╔════════════════╗
+    ║  Coding...     ║
+    ║  ████░░░░░░░░░  ║
+    ╚════════════════╝`,
+            `    ╔════════════════╗
+    ║  Coding...     ║
+    ║  █████░░░░░░░░░  ║
+    ╚════════════════╝`,
+            `    ╔════════════════╗
+    ║  Coding...     ║
+    ║  ██████░░░░░░░░  ║
+    ╚════════════════╝`,
+            `    ╔════════════════╗
+    ║  Coding...     ║
+    ║  ███████░░░░░░░  ║
+    ╚════════════════╝`,
+            `    ╔════════════════╗
+    ║  Coding...     ║
+    ║  ████████░░░░░░  ║
+    ╚════════════════╝`,
+            `    ╔════════════════╗
+    ║  Coding...     ║
+    ║  █████████░░░░░  ║
+    ╚════════════════╝`,
+            `    ╔════════════════╗
+    ║  Coding...     ║
+    ║  ██████████░░░░  ║
+    ╚════════════════╝`,
+            `    ╔════════════════╗
+    ║  Coding...     ║
+    ║  ███████████░░░  ║
+    ╚════════════════╝`,
+            `    ╔════════════════╗
+    ║  Coding...     ║
+    ║  ████████████░░  ║
+    ╚════════════════╝`,
+            `    ╔════════════════╗
+    ║  Coding...     ║
+    ║  █████████████░  ║
+    ╚════════════════╝`,
+            `    ╔════════════════╗
+    ║  Coding...     ║
+    ║  ██████████████  ║
+    ╚════════════════╝`,
+            `    ╔════════════════╗
+    ║  ✓ Complete!   ║
+    ║  ██████████████  ║
+    ╚════════════════╝`
+        ];
+
+        const nerdFrames = [
+            `    (\x1b[1;33m•_•\x1b[0m)
+    <) )╯CODING
+     / \\`,
+            `    (\x1b[1;33m•_•\x1b[0m)
+    <) )╯CODING
+     / \\`,
+            `    (\x1b[1;33m•_•\x1b[0m)
+    <) )╯CODING
+     / \\`,
+            `    (\x1b[1;33m•_•\x1b[0m)
+    <) )╯CODING
+     / \\`
+        ];
+
+        // Show coding progress animation
+        for (let i = 0; i < frames.length; i++) {
+            this.terminal.write('\x1b[2K\r'); // Clear line
+            const frame = frames[i];
+            const lines = frame.split('\n');
+            lines.forEach(line => {
+                this.terminal.write(TerminalUtils.center(`\x1b[1;32m${line}\x1b[0m`, width) + '\r\n');
+            });
+            await this.wait(150);
+        }
+
+        await this.wait(300);
+        
+        // Show nerd animation
+        for (let i = 0; i < 3; i++) {
+            this.terminal.write('\x1b[3A'); // Move up 3 lines
+            const frame = nerdFrames[i % nerdFrames.length];
+            const lines = frame.split('\n');
+            lines.forEach((line, idx) => {
+                this.terminal.write('\x1b[2K'); // Clear line
+                this.terminal.write(TerminalUtils.center(`\x1b[1;33m${line}\x1b[0m`, width) + '\r\n');
+            });
+            await this.wait(200);
+        }
+
+        // Clear animation area
+        this.terminal.write('\x1b[3A'); // Move up
+        for (let i = 0; i < 3; i++) {
+            this.terminal.write('\x1b[2K\r\n'); // Clear lines
+        }
+        this.terminal.write('\r\n');
+    }
+
+    async wait(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
     }
 }
 
 window.WhoAmIApp = WhoAmIApp;
+

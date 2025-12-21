@@ -41,14 +41,13 @@ class Web3OSIntegration {
 
       if (this.kernel || this.runtime) {
         this.initialized = true;
-        console.log('Web3OS initialized successfully');
         return true;
       }
 
-      console.warn('Web3OS runtime not loaded - loader script may not be available');
+      // Silently fail - Web3OS is optional
       return false;
     } catch (error) {
-      console.error('Web3OS initialization error:', error);
+      // Silently fail - Web3OS is optional
       return false;
     }
   }

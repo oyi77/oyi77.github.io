@@ -42,9 +42,27 @@ class PackageManagerApp {
 
     listPackages() {
         this.terminal.write('\r\n\x1b[1;32mINSTALLED MODULES:\x1b[0m\r\n');
-        this.terminal.write('  - core-metal-shim  [v2.1.0]\r\n');
-        this.terminal.write('  - xterm-web-links  [v0.9.0]\r\n');
-        this.terminal.write('  - oyi-os-kernel    [v5.15.0]\r\n');
+        
+        // Default packages
+        const defaultPackages = [
+            { name: 'core-metal-shim', version: 'v2.1.0' },
+            { name: 'xterm-web-links', version: 'v0.9.0' },
+            { name: 'oyi-os-kernel', version: 'v5.15.0' }
+        ];
+        
+        // Get installed packages from localStorage
+        const installedPackages = JSON.parse(localStorage.getItem('3pm_installed_packages') || '[]');
+        
+        // Combine default and installed packages
+        const allPackages = [...defaultPackages, ...installedPackages];
+        
+        if (allPackages.length === 0) {
+            this.terminal.write('  \x1b[1;30mNo packages installed.\x1b[0m\r\n');
+        } else {
+            allPackages.forEach(pkg => {
+                this.terminal.write(`  - ${pkg.name.padEnd(20)} [${pkg.version || 'latest'}]\r\n`);
+            });
+        }
     }
 
     async installPackage(pkg, width) {
@@ -64,6 +82,20 @@ class PackageManagerApp {
         }
 
         this.terminal.write(`\r\n\x1b[1;32mSuccessfully installed ${pkg} (Metal context).\x1b[0m\r\n`);
+        
+        // Store installed package in localStorage
+        const installedPackages = JSON.parse(localStorage.getItem('3pm_installed_packages') || '[]');
+        
+        // Check if package already exists
+        const exists = installedPackages.find(p => p.name === pkg);
+        if (!exists) {
+            installedPackages.push({
+                name: pkg,
+                version: 'latest',
+                installedAt: new Date().toISOString()
+            });
+            localStorage.setItem('3pm_installed_packages', JSON.stringify(installedPackages));
+        }
     }
 
     searchPackages(query) {

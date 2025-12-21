@@ -158,7 +158,8 @@ class BootSequence {
         const width = this.terminal.cols || 60;
         this.terminal.write('\r\n\x1b[1;36mInitializing Profile\x1b[0m\r\n');
 
-        const barWidth = Math.min(width - 10, 30);
+        // Make progress bar responsive to terminal width
+        const barWidth = Math.min(Math.max(width - 20, 20), 50);
         this.terminal.write('[');
         for (let i = 0; i < barWidth; i++) {
             if (this.skipped) return;
@@ -170,5 +171,8 @@ class BootSequence {
         await this.wait(300);
         this.terminal.write('\x1b[1;32mACCESS GRANTED\x1b[0m\r\n');
         await this.wait(500);
+        
+        // Clear kernel initialization logs after boot completes
+        this.terminal.clear();
     }
 }

@@ -10,6 +10,17 @@ class TerminalOS {
     this.commandHistory = [];
     this.historyIndex = -1;
     this.currentInput = '';
+    
+    // User management
+    this.currentUser = 'guest'; // Start as guest
+    this.isRoot = false; // Track root access
+
+    // Session tracking for uptime
+    this.sessionStartTime = Date.now();
+    
+    // Hack game state
+    this.hackStage = 0;
+    this.hackCallback = null;
 
     // Advanced addons
     this.searchAddon = null;
@@ -108,7 +119,7 @@ class TerminalOS {
         this.unicode11Addon = new Unicode11AddonClass();
         this.terminal.loadAddon(this.unicode11Addon);
       } catch (e) {
-        console.warn('Unicode11Addon not available');
+        // Silently fail - Unicode11 is optional
       }
     }
 
@@ -153,7 +164,7 @@ class TerminalOS {
           this.web3os = new Web3OSIntegration();
           await this.web3os.init();
         } catch (e) {
-          console.warn('Web3OS integration not available:', e);
+          // Silently fail - Web3OS is optional
         }
       }
     }, 1000); // Give Web3OS loader time to initialize
@@ -298,7 +309,8 @@ class TerminalOS {
     this.terminal.write(indent + '\x1b[1;33m|\x1b[0m \x1b[1;36mhelp\x1b[0m        | Operational Directives     \x1b[1;33m|\x1b[0m\r\n');
     this.terminal.write(indent + '\x1b[1;33m+-----------------------------------------+\x1b[0m\r\n\r\n');
 
-    const status = `\x1b[1;32mSTATUS:\x1b[0m STABLE | \x1b[1;32mUPTIME:\x1b[0m 12D | \x1b[1;31mTHREAT:\x1b[0m NONE`;
+    const uptime = this.calculateUptime();
+    const status = `\x1b[1;32mSTATUS:\x1b[0m STABLE | \x1b[1;32mUPTIME:\x1b[0m ${uptime} | \x1b[1;31mTHREAT:\x1b[0m NONE`;
     this.terminal.write(TerminalUtils.center(status, width) + '\r\n');
 
     // Display Data Load Status
@@ -311,7 +323,29 @@ class TerminalOS {
 
   getPromptText() {
     const path = this.currentPath === '/home/user' ? '~' : this.currentPath;
-    return `\x1b[1;32mroot\x1b[0m@\x1b[1;34moyi-os\x1b[0m:\x1b[1;36m${path}\x1b[0m# `;
+    const user = this.isRoot ? 'root' : this.currentUser;
+    const promptChar = this.isRoot ? '#' : '$';
+    const userColor = this.isRoot ? '\x1b[1;31m' : '\x1b[1;33m';
+    return `${userColor}${user}\x1b[0m@\x1b[1;34moyi-os\x1b[0m:\x1b[1;36m${path}\x1b[0m${promptChar} `;
+  }
+  
+  calculateUptime() {
+    const now = Date.now();
+    const diff = now - this.sessionStartTime;
+    const seconds = Math.floor(diff / 1000);
+    const minutes = Math.floor(seconds / 60);
+    const hours = Math.floor(minutes / 60);
+    const days = Math.floor(hours / 24);
+    
+    if (days > 0) {
+      return `${days}D ${hours % 24}H ${minutes % 60}M`;
+    } else if (hours > 0) {
+      return `${hours}H ${minutes % 60}M`;
+    } else if (minutes > 0) {
+      return `${minutes}M ${seconds % 60}S`;
+    } else {
+      return `${seconds}S`;
+    }
   }
 
   prompt() {
@@ -329,6 +363,14 @@ class TerminalOS {
     if (input && (this.commandHistory.length === 0 || this.commandHistory[this.commandHistory.length - 1] !== input)) {
       this.commandHistory.push(input);
       if (this.commandHistory.length > 100) this.commandHistory.shift();
+    }
+
+    // Check if hack game is active
+    if (this.hackCallback && this.hackStage > 0) {
+      this.terminal.write('\r\n');
+      await this.hackCallback(input);
+      this.prompt();
+      return;
     }
 
     this.terminal.write('\r\n');
@@ -424,6 +466,10 @@ class TerminalOS {
         case 'indices':
           await this.runCommand('market', args);
           break;
+        case 'home':
+          this.terminal.clear();
+          await this.showWelcome();
+          break;
         default:
           this.terminal.write(`\x1b[1;31m${command}: command not found\x1b[0m\r\n`);
       }
@@ -503,7 +549,7 @@ class TerminalOS {
     const input = this.currentInput.trim();
     const parts = input.split(/\s+/);
     const lastPart = parts[parts.length - 1] || '';
-    const commands = ['help', 'whoami', 'companies', 'achievements', 'repos', 'scan', 'sysmon', 'netmap', 'neofetch', 'skills', '3pm', 'wallet', 'theme', 'ls', 'cd', 'cat', 'clear', 'hack', 'web3os', 'cv', 'github', 'stats', 'analytics', 'github-stats', 'ghstats', 'market', 'crypto', 'coins', 'indices'];
+    const commands = ['help', 'whoami', 'companies', 'achievements', 'repos', 'scan', 'sysmon', 'netmap', 'neofetch', 'skills', '3pm', 'wallet', 'theme', 'ls', 'cd', 'cat', 'clear', 'hack', 'web3os', 'cv', 'github', 'stats', 'analytics', 'github-stats', 'ghstats', 'market', 'crypto', 'coins', 'indices', 'home'];
     const matches = commands.filter(cmd => cmd.startsWith(lastPart));
 
     if (matches.length === 1) {

@@ -66,6 +66,7 @@ class HelpApp {
 
     this.terminal.write('\r\n  \x1b[1;32mINTERFACE:\x1b[0m\r\n');
     this.terminal.write('    \x1b[1;33mtheme <id>\x1b[0m  | matrix, amber, hacker, cyberpunk\r\n');
+    this.terminal.write('    \x1b[1;33mhome\x1b[0m       | Show welcome banner and starting screen\r\n');
 
     this.terminal.write('\r\n  \x1b[1;32mKEYBOARD SHORTCUTS:\x1b[0m\r\n');
     this.terminal.write('    \x1b[1;33mCtrl+F\x1b[0m     | Search terminal content\r\n');
