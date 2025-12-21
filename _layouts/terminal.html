@@ -30,29 +30,184 @@
     <script src="https://cdn.jsdelivr.net/npm/xterm-addon-serialize@0.7.0/lib/xterm-addon-serialize.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/xterm-addon-image@0.5.0/lib/xterm-addon-image.js"></script>
 
-    <!-- Web3OS Chunks (Pre-loaded to prevent 404s) -->
-    <script src="{{ '/assets/js/terminal/6511.js' | relative_url }}"></script>
-    <script src="{{ '/assets/js/terminal/3105.js' | relative_url }}"></script>
 
-    <script type="module" src="https://web3os.sh/_loader.js"
-        onerror="console.warn('Web3OS loader not available');"></script>
-
-    <script>
-        // Set public path for lazy-loaded chunks
-        window.__webpack_public_path__ = "{{ site.baseurl }}/assets/js/terminal/";
-    </script>
 
     <!-- Jekyll Data Injection -->
     <script>
         window.JEKYLL_DATA = {
             site: {
-                title: "{{ site.title }}",
-                description: "{{ site.description }}",
-                github_username: "{{ site.github_username }}",
-                baseurl: "{{ site.baseurl }}"
+                title: "Muchammad Fikri Izzuddin - Lead Software Engineer | Remote Available",
+                description: "Muchammad Fikri Izzuddin - Remote Lead Software Engineer with 7+ years of experience in full-stack development, blockchain, and algorithmic trading. Expert in Python, JavaScript, React, Node.js. Led teams of 15 to 3,000+ members. Available for remote positions. Interactive portfolio showcasing projects, achievements, and technical expertise.",
+                github_username: "oyi77",
+                baseurl: ""
             },
-            terminal: {{ site.data.terminal | jsonify }},
-        companies: { { site.data.companies | jsonify } },
+            terminal: {
+                "name": "Muchammad Fikri Izzuddin",
+                "title": "Lead Software Engineer",
+                "bio": "A highly accomplished and results-driven Software Engineer Lead with 7+ years of experience in full-stack development, blockchain, and embedded systems. Proven ability to lead cross-functional teams, architect scalable solutions, and drive significant business impact through technology.",
+                "email": "mbahkoe.pendekar@gmail.com",
+                "phone": "+6281347241993",
+                "location": "East Java, Indonesia",
+                "github_username": "oyi77",
+                "summary": "Expertise in Python, JavaScript, Node.js, React, and a strong focus on delivering quantifiable results, including increasing trading accuracy by 70% and improving business process efficiency by 30%.",
+                "cv_url": "https://oyi77.github.io/oyi77",
+                "skills": {
+                    "programming_languages": ["Python", "JavaScript", "PHP", "C++", "Java", "Bash", "TypeScript", "MQL4/MQL5"],
+                    "frameworks": ["React", "Node.js", "Express.js", "Django", "Laravel", "CodeIgniter", "Flutter"],
+                    "databases": ["PostgreSQL", "MySQL", "MongoDB", "SQL Server", "Oracle DBMS"],
+                    "tools": ["Git", "Docker", "Kubernetes", "AWS", "Google Cloud", "Visual Studio Code", "Sublime"],
+                    "specialized": ["Blockchain Development", "Embedded Systems", "MQTT", "Serial Communication", "ATS Compliance"]
+                },
+                "links": [{
+                    "label": "LinkedIn",
+                    "url": "https://linkedin.com/in/fikriizzuddin"
+                }, {
+                    "label": "GitHub",
+                    "url": "https://github.com/oyi77"
+                }, {
+                    "label": "Portfolio",
+                    "url": "https://linktr.ee/jokogendeng"
+                }, {
+                    "label": "HackerRank",
+                    "url": "https://www.hackerrank.com/mbahkoe_pendekar"
+                }, {
+                    "label": "Website",
+                    "url": "https://oyi77.github.io"
+                }],
+                "sites": [{
+                    "name": "CV OS",
+                    "description": "Interactive CV Operating System - Full portfolio experience",
+                    "url": "https://oyi77.github.io/oyi77",
+                    "category": "portfolio",
+                    "featured": true
+                }, {
+                    "name": "AI Trade Pulse",
+                    "description": "AI-powered trading platform and analytics",
+                    "url": "https://aitradepulse.com",
+                    "category": "trading",
+                    "featured": true
+                }, {
+                    "name": "Jual Buah",
+                    "description": "E-commerce platform for fresh fruits",
+                    "url": "https://jualbuah.com",
+                    "category": "ecommerce",
+                    "featured": true
+                }, {
+                    "name": "Algo Expert Hub",
+                    "description": "Algorithm trading expertise and resources",
+                    "url": "https://algoexperthub.com",
+                    "category": "trading",
+                    "featured": true
+                }, {
+                    "name": "Levra Beta",
+                    "description": "Beta platform for Levra services",
+                    "url": "https://beta.levra.pro",
+                    "category": "platform",
+                    "featured": true
+                }],
+                "education": {
+                    "institution": "Institut Teknologi Sepuluh Nopember (ITS) Surabaya",
+                    "degree": "Bachelor of Business Management",
+                    "gpa": "3.4",
+                    "period": "June 2018 – May 2022",
+                    "location": "Surabaya, Indonesia"
+                },
+                "projects": [{
+                    "name": "Nuclear",
+                    "description": "Free music delivery project - built user interface using React and JavaScript, increasing user engagement by 11%",
+                    "url": "https://github.com/oyi77/nuclear",
+                    "technologies": "JavaScript, React, Node.js"
+                }, {
+                    "name": "RBMiner",
+                    "description": "Optimize mining hardware performance - 20% efficiency increase. Automated switching and monitoring system",
+                    "url": "https://github.com/oyi77/rbminer",
+                    "technologies": "Bash, PowerShell, Python"
+                }, {
+                    "name": "Shopee Bot",
+                    "description": "Bot to assist people using Shopee Affiliate and Shopee Live Feature",
+                    "url": "https://github.com/oyi77/shopee-bot",
+                    "technologies": "Python, Telegram API"
+                }, {
+                    "name": "Wifi Jammer",
+                    "description": "A simple wifi jamming tool built with Python and Bash scripting",
+                    "url": "https://github.com/oyi77/wifi-jammer",
+                    "technologies": "Python, Shell, Makefile"
+                }, {
+                    "name": "AI Auto Job Apply",
+                    "description": "Automated job application solution using Python and TypeScript to streamline the application process",
+                    "url": "https://github.com/oyi77/ai-auto-job-apply",
+                    "technologies": "Python, TypeScript, Shell, Makefile, JavaScript, CSS, HTML"
+                }, {
+                    "name": "Tiktok Bot",
+                    "description": "An assistant for TikTok with yapping features",
+                    "url": "https://github.com/oyi77/tiktok-bot",
+                    "technologies": "JavaScript"
+                }, {
+                    "name": "Kemkes Automation",
+                    "description": "Automation script for a Ministry of Health (Kemkes) related process",
+                    "url": "https://github.com/oyi77/kemkes-automation",
+                    "technologies": "Python"
+                }, {
+                    "name": "Telegram AI Trade",
+                    "description": "Trading bot using OpenAI for AI-driven analysis and Telegram, with integration via MQL4/MQL5",
+                    "url": "https://github.com/oyi77/telegram-ai-trade",
+                    "technologies": "Python, MQL5, MQL4, JavaScript"
+                }],
+                "experience": [{
+                    "company": "Bitwyre",
+                    "role": "Onchain Trader & Blockchain Developer",
+                    "period": "December 2024 - Present",
+                    "location": "Bali, Indonesia",
+                    "achievements": ["Engineered Fomo Watcher Application (Python, Blockchain APIs) for trending token prediction, achieving 70% accuracy rate and generating $100K USD in profits", "Developed Dex Clearing Algorithm (Python, Smart Contracts) for the exchange, successfully reducing manual labor efforts by 60%", "Built a Finance Dashboard for real-time monitoring of trading performance across all teams", "Lead the development of the Card Product for seamless crypto-to-fiat global payments", "Created an OTC Portal to facilitate seamless international OTC transactions"]
+                }, {
+                    "company": "Bitwyre",
+                    "role": "Custodian/Backend Engineer",
+                    "period": "July 2024 - December 2024",
+                    "location": "Jakarta, Indonesia",
+                    "achievements": ["Optimized custodian systems for the crypto exchange, ensuring high efficiency and security", "Integrated with multiple Payment Gateways worldwide to expand service reach", "Automated and accelerated withdrawal and deposit processes, achieving 99% system uptime"]
+                }, {
+                    "company": "Linguise",
+                    "role": "Senior Full Stack Engineer",
+                    "period": "November 2023 - July 2024",
+                    "location": "France, Remote",
+                    "achievements": ["Built an internal Admin Dashboard application (Node.js, React) for managing customers and services", "Led the migration of the core API application from PHP to a modern Node.js architecture", "Led a team of 3 engineers to implement best practices and improve code quality"]
+                }, {
+                    "company": "Viapulsa",
+                    "role": "Technical Lead",
+                    "period": "January 2023 - January 2024",
+                    "location": "Yogyakarta, Indonesia",
+                    "achievements": ["Implemented a modern workflow management system to streamline development processes", "Successfully led a team of 18 members to achieve all project milestones and objectives", "Increased business process efficiency by 30% through strategic technology implementation", "Fully migrated offline business systems to a fully online and automated platform"]
+                }],
+                "certifications": [{
+                    "name": "Equity First: The Path to Inclusion and Belonging",
+                    "issuer": "LinkedIn"
+                }, {
+                    "name": "How Managers Create a Culture of Belonging",
+                    "issuer": "LinkedIn"
+                }, {
+                    "name": "Problem Solving (Intermediate)",
+                    "issuer": "HackerRank"
+                }, {
+                    "name": "Python (Basic)",
+                    "issuer": "HackerRank"
+                }, {
+                    "name": "SQL (Advanced)",
+                    "issuer": "HackerRank"
+                }, {
+                    "name": "Rest API (Intermediate)",
+                    "issuer": "HackerRank"
+                }, {
+                    "name": "JavaScript (Intermediate)",
+                    "issuer": "HackerRank"
+                }, {
+                    "name": "Cert Prep: Scrum Master",
+                    "issuer": "NASBA"
+                }, {
+                    "name": "Making Hybrid Teams Work",
+                    "issuer": "NASBA"
+                }]
+            },
+            companies: {{ site.data.companies | jsonify }},
         projects: { { site.data.projects | jsonify } },
         repository_stats: { { site.data.repository_stats | jsonify } },
         skills_matrix: { { site.data.skills_matrix | jsonify } },
@@ -63,7 +218,7 @@
         seo: { { site.data.seo | jsonify } },
         external_stats: { { site.data.external_stats | jsonify } },
         market_data: { { site.data.market_data | jsonify } }
-        };
+    };
     </script>
 </head>
 
@@ -135,11 +290,14 @@
     <script src="{{ '/assets/js/terminal/themes.js' | relative_url }}"></script>
     <script src="{{ '/assets/js/terminal/github.js' | relative_url }}"></script>
     <script src="{{ '/assets/js/terminal/syntax-highlight.js' | relative_url }}"></script>
-    <script src="{{ '/assets/js/terminal/web3os.js' | relative_url }}"></script>
+
 
     <!-- Data Loaders & New Apps -->
     <script src="{{ '/assets/js/terminal/filesystem-loader.js' | relative_url }}"></script>
     <script src="{{ '/assets/js/terminal/apps/github-explorer.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/terminal/apps/install.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/terminal/apps/opm.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/terminal/apps/shell.js' | relative_url }}"></script>
 
     <!-- Terminal Apps -->
     <script src="{{ '/assets/js/terminal/apps/help.js' | relative_url }}"></script>
@@ -151,12 +309,10 @@
     <script src="{{ '/assets/js/terminal/apps/netmap.js' | relative_url }}"></script>
     <script src="{{ '/assets/js/terminal/apps/neofetch.js' | relative_url }}"></script>
     <script src="{{ '/assets/js/terminal/apps/skills.js' | relative_url }}"></script>
-    <script src="{{ '/assets/js/terminal/apps/3pm.js' | relative_url }}"></script>
     <script src="{{ '/assets/js/terminal/apps/wallet.js' | relative_url }}"></script>
     <script src="{{ '/assets/js/terminal/apps/cv.js' | relative_url }}"></script>
     <script src="{{ '/assets/js/terminal/apps/hack.js' | relative_url }}"></script>
     <script src="{{ '/assets/js/terminal/apps/cat.js' | relative_url }}"></script>
-    <script src="{{ '/assets/js/terminal/apps/web3os.js' | relative_url }}"></script>
     <script src="{{ '/assets/js/terminal/apps/stats.js' | relative_url }}"></script>
     <script src="{{ '/assets/js/terminal/apps/analytics.js' | relative_url }}"></script>
     <script src="{{ '/assets/js/terminal/apps/github-stats.js' | relative_url }}"></script>

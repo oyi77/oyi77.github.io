@@ -70,6 +70,13 @@ class CompaniesApp {
         if (args.length === 0) {
             this.terminal.write('\r\n' + TerminalUtils.center('\x1b[1;32mENTERPRISE LEADERSHIP RECORDS\x1b[0m', width) + '\r\n');
             this.terminal.write('  ' + '\x1b[1;30m' + '-'.repeat(width - 10) + '\x1b[0m\r\n');
+
+            if (!this.companies || this.companies.length === 0) {
+                this.terminal.write('  \x1b[1;31mNo company data available\x1b[0m\r\n');
+                this.terminal.write('  \x1b[1;30mCheck Jekyll data configuration\x1b[0m\r\n');
+                return;
+            }
+
             this.companies.forEach(c => {
                 this.terminal.write(`  \x1b[1;36m${c.id.padEnd(15)}\x1b[0m | ${c.name}\r\n`);
             });

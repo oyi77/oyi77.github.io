@@ -1,0 +1,24 @@
+{
+    "name": "@oyi77/shell-bridge",
+    "version": "1.0.0",
+    "description": "WebSocket bridge for connecting browser terminal to local system",
+    "main": "shell-bridge.js",
+    "bin": {
+        "shell-bridge": "./shell-bridge.js"
+    },
+    "scripts": {
+        "start": "node shell-bridge.js"
+    },
+    "keywords": [
+        "terminal",
+        "shell",
+        "websocket",
+        "bridge",
+        "local"
+    ],
+    "author": "Muchammad Fikri Izzuddin",
+    "license": "MIT",
+    "dependencies": {
+        "ws": "^8.14.0"
+    }
+}

@@ -28,15 +28,33 @@ class TerminalOS {
     this.imageAddon = null;
     this.unicode11Addon = null;
 
-    // Web3OS integration
-    this.web3os = null;
+
+
+    // EcmaOS Kernel
+    this.ecmaKernel = null;
+
+    // Root access state
+    this.isRoot = localStorage.getItem('root-access') === 'true';
+    this.currentUser = this.isRoot ? 'root' : 'guest';
 
     this.init();
   }
 
   async init() {
+    // Initialize EcmaOS parallel to xterm setup
+    this.initEcmaOS().catch(e => console.error('Failed to load EcmaOS:', e));
+
     // Initialize xterm.js
-    console.log('Terminal OS Init - window.Terminal:', typeof window.Terminal);
+    console.log('Terminal OS Init - window.Terminal type:', typeof window.Terminal);
+
+    // Inspect the object structure if it is an object
+    if (typeof window.Terminal === 'object') {
+      console.log('window.Terminal keys:', Object.keys(window.Terminal));
+      try {
+        console.log('window.Terminal stringified:', JSON.stringify(window.Terminal));
+      } catch (e) { console.log('Cannot stringify window.Terminal'); }
+    }
+
     let Terminal = window.Terminal || (typeof Terminal !== 'undefined' ? Terminal : null);
 
     // Some bundles put Terminal inside a Terminal property
@@ -170,17 +188,7 @@ class TerminalOS {
       }
     }
 
-    // Initialize Web3OS integration (wait a bit for loader to initialize)
-    setTimeout(async () => {
-      if (window.Web3OSIntegration) {
-        try {
-          this.web3os = new Web3OSIntegration();
-          await this.web3os.init();
-        } catch (e) {
-          // Silently fail - Web3OS is optional
-        }
-      }
-    }, 1000); // Give Web3OS loader time to initialize
+
 
     // Initialize systems
     this.filesystem = new VirtualFileSystem();
@@ -405,6 +413,12 @@ class TerminalOS {
       return;
     }
 
+    // Check if shell mode is active
+    if (this.shellMode && this.shellCallback) {
+      await this.shellCallback(input);
+      return;
+    }
+
     this.terminal.write('\r\n');
     const [command, ...args] = input.split(/\s+/);
     const cmd = command.toLowerCase();
@@ -439,9 +453,6 @@ class TerminalOS {
         case 'skills':
           await this.runCommand('skills', args);
           break;
-        case '3pm':
-          await this.runCommand('3pm', args);
-          break;
         case 'wallet':
           await this.runCommand('wallet', args);
           break;
@@ -460,14 +471,20 @@ class TerminalOS {
         case 'cv':
           await this.runCommand('cv', args);
           break;
+        case 'install':
+          await this.runCommand('install', args);
+          break;
+        case 'opm':
+          await this.runCommand('opm', args);
+          break;
+        case 'shell':
+          await this.runCommand('shell', args);
+          break;
         case 'ls':
           this.runLs(args);
           break;
         case 'cd':
           this.runCd(args);
-          break;
-        case 'cat':
-          await this.runCommand('cat', args);
           break;
         case 'clear':
         case 'cls':
@@ -476,9 +493,7 @@ class TerminalOS {
         case 'hack':
           await this.runCommand('hack', args);
           break;
-        case 'web3os':
-          await this.runCommand('web3os', args);
-          break;
+
         case 'github':
           await this.runCommand('github', args);
           break;
@@ -506,6 +521,30 @@ class TerminalOS {
           await this.showWelcome();
           break;
         default:
+          // Try EcmaOS if command not found in local apps
+          if (this.ecmaKernel) {
+            try {
+              // Assuming EcmaOS kernel has an execute or similar method. 
+              // Based on standard shells, it might be exec(cmd, args) or similar.
+              // We will try a flexible approach or log if we aren't sure yet.
+              // For now, let's assume `execute` or `handle`.
+              // Since we don't know the API, I'll logging structure for now and try to execute.
+
+              // inspecting kernel if possible
+              if (typeof this.ecmaKernel.execute === 'function') {
+                await this.ecmaKernel.execute(input, this.terminal);
+                this.prompt();
+                return;
+              } else if (typeof this.ecmaKernel.handle === 'function') {
+                await this.ecmaKernel.handle(input, this.terminal);
+                this.prompt();
+                return;
+              }
+            } catch (e) {
+              console.error("EcmaOS execution failed:", e);
+            }
+          }
+
           this.terminal.write(`\x1b[1;31m${command}: command not found\x1b[0m\r\n`);
       }
     } catch (error) {
@@ -526,12 +565,13 @@ class TerminalOS {
       'netmap': NetMapApp,
       'neofetch': NeoFetchApp,
       'skills': SkillsApp,
-      '3pm': PackageManagerApp,
       'wallet': WalletApp,
       'cv': CVApp,
       'hack': HackApp,
-      'cat': CatApp,
-      'web3os': Web3OSApp,
+      'install': InstallApp,
+      'opm': OpmApp,
+      'shell': ShellApp,
+
       'github': GitHubExplorerApp,
       'stats': StatsApp,
       'analytics': AnalyticsApp,
@@ -585,13 +625,72 @@ class TerminalOS {
     const input = this.currentInput.trim();
     const parts = input.split(/\s+/);
     const lastPart = parts[parts.length - 1] || '';
-    const commands = ['help', 'whoami', 'companies', 'achievements', 'repos', 'scan', 'sysmon', 'netmap', 'neofetch', 'skills', '3pm', 'wallet', 'theme', 'ls', 'cd', 'cat', 'clear', 'hack', 'web3os', 'cv', 'github', 'stats', 'analytics', 'github-stats', 'ghstats', 'market', 'crypto', 'coins', 'indices', 'home'];
-    const matches = commands.filter(cmd => cmd.startsWith(lastPart));
 
-    if (matches.length === 1) {
-      const completion = matches[0].slice(lastPart.length);
-      this.currentInput += completion;
-      this.terminal.write(completion);
+    // If first word, complete commands
+    if (parts.length === 1) {
+      const commands = ['help', 'whoami', 'companies', 'achievements', 'repos', 'scan', 'sysmon', 'netmap', 'neofetch', 'skills', 'wallet', 'theme', 'ls', 'cd', 'cat', 'clear', 'hack', 'cv', 'github', 'stats', 'analytics', 'github-stats', 'ghstats', 'market', 'crypto', 'coins', 'indices', 'home', 'install', 'opm', 'shell'];
+      const matches = commands.filter(cmd => cmd.startsWith(lastPart));
+
+      if (matches.length === 1) {
+        const completion = matches[0].slice(lastPart.length);
+        this.currentInput += completion;
+        this.terminal.write(completion);
+      } else if (matches.length > 1) {
+        this.terminal.write('\r\n');
+        matches.forEach(match => this.terminal.write(match + '  '));
+        this.terminal.write('\r\n' + this.getPromptText() + this.currentInput);
+      }
+    } else {
+      // Try to complete file paths
+      const resolvedPath = this.filesystem.resolvePath(this.currentPath, lastPart);
+      const dirPath = resolvedPath.substring(0, resolvedPath.lastIndexOf('/')) || this.currentPath;
+      const prefix = lastPart.substring(lastPart.lastIndexOf('/') + 1);
+
+      const listing = this.filesystem.list(dirPath);
+      if (listing) {
+        const matches = listing
+          .map(item => item.name)
+          .filter(name => name.startsWith(prefix));
+
+        if (matches.length === 1) {
+          const completion = matches[0].slice(prefix.length);
+          this.currentInput += completion;
+          this.terminal.write(completion);
+        } else if (matches.length > 1) {
+          this.terminal.write('\r\n');
+          matches.forEach(match => this.terminal.write(match + '  '));
+          this.terminal.write('\r\n' + this.getPromptText() + this.currentInput);
+        }
+      }
+    }
+  }
+
+  async initEcmaOS() {
+    try {
+      const module = await import('/assets/js/terminal/ecmaos-kernel.js');
+      const KernelClass = module.Kernel;
+      console.log('EcmaOS Kernel Class Loaded:', KernelClass);
+
+      // Instantiate the kernel
+      if (typeof KernelClass === 'function') {
+        this.ecmaKernel = new KernelClass();
+        console.log('EcmaOS Kernel Instance Created:', this.ecmaKernel);
+      } else if (typeof KernelClass === 'object') {
+        // If it's already an instance or singleton
+        this.ecmaKernel = KernelClass;
+        console.log('EcmaOS Kernel Object:', this.ecmaKernel);
+      }
+
+      // Try to initialize if method exists
+      if (this.ecmaKernel && typeof this.ecmaKernel.start === 'function') {
+        await this.ecmaKernel.start(this.terminal);
+      } else if (this.ecmaKernel && typeof this.ecmaKernel.init === 'function') {
+        await this.ecmaKernel.init(this.terminal);
+      }
+
+      console.log('EcmaOS Kernel Ready. Execute method:', typeof this.ecmaKernel?.execute);
+    } catch (error) {
+      console.error('Error loading EcmaOS:', error);
     }
   }
 }

@@ -24,9 +24,63 @@ class HelpApp {
       { cmd: 'skills', desc: 'Capability matrix' },
       { cmd: 'cv', desc: 'Interactive CV stream' },
       { cmd: 'wallet', desc: 'Web3 wallet connection' },
-      { cmd: '3pm', desc: 'Package manager interface' },
-      { cmd: 'hack', desc: 'Privilege escalation simulation' }
+      { cmd: 'hack', desc: 'Privilege escalation simulation' },
+      { cmd: 'install', desc: 'List EcmaOS packages (use opm for full features)' },
+      { cmd: 'opm', desc: 'Advanced package manager (install, search, registry)' },
+      { cmd: 'shell', desc: 'Simulated local shell (safe demo mode)' }
     ];
+
+    // Integrasi EcmaOS - Merge into Core
+    if (this.os.ecmaKernel) {
+      let ecmaCommands = [];
+      if (this.os.ecmaKernel.commands) {
+        ecmaCommands = Object.keys(this.os.ecmaKernel.commands).map(cmd => ({ cmd, desc: 'EcmaOS Native' }));
+      } else if (typeof this.os.ecmaKernel.getCommands === 'function') {
+        ecmaCommands = this.os.ecmaKernel.getCommands();
+      }
+
+      // Fallback if no dynamic commands found
+      if (ecmaCommands.length === 0) {
+        const knownEcmaCommands = [
+          { cmd: 'fetch', desc: 'Download file from URL' },
+          { cmd: 'download', desc: 'Download and save resource' },
+          { cmd: 'load', desc: 'Load module or script' },
+          { cmd: 'edit', desc: 'Open file in editor' },
+          { cmd: 'touch', desc: 'Create empty file or update timestamp' },
+          { cmd: 'mkdir', desc: 'Create directory' },
+          { cmd: 'rm', desc: 'Remove file or directory' },
+          { cmd: 'cp', desc: 'Copy files or directories' },
+          { cmd: 'mv', desc: 'Move or rename files' },
+          { cmd: 'cat', desc: 'Display file contents' },
+          { cmd: 'ls', desc: 'List directory contents' },
+          { cmd: 'cd', desc: 'Change directory' },
+          { cmd: 'pwd', desc: 'Print working directory' },
+          { cmd: 'env', desc: 'Display environment variables' },
+          { cmd: 'df', desc: 'Show disk space usage' },
+          { cmd: 'du', desc: 'Estimate file space usage' },
+          { cmd: 'ps', desc: 'List running processes' },
+          { cmd: 'kill', desc: 'Terminate process' },
+          { cmd: 'free', desc: 'Display memory usage' },
+          { cmd: 'chkdisk', desc: 'Check disk for errors' },
+          { cmd: 'format', desc: 'Format storage device' },
+          { cmd: 'mount', desc: 'Mount filesystem' },
+          { cmd: 'umount', desc: 'Unmount filesystem' },
+          { cmd: 'snake', desc: 'Play snake game' },
+          { cmd: 'video', desc: 'Play video file' },
+          { cmd: 'play', desc: 'Play media file' },
+          { cmd: 'screensaver', desc: 'Activate screensaver' }
+        ];
+        ecmaCommands = knownEcmaCommands;
+      }
+
+      // Add to core list (avoid duplicates)
+      ecmaCommands.forEach(ec => {
+        if (!core.some(c => c.cmd.split(' ')[0] === ec.cmd)) {
+          core.push(ec);
+        }
+      });
+    }
+
     core.forEach(c => this.terminal.write(`    \x1b[1;33m${c.cmd.padEnd(12)}\x1b[0m | ${c.desc}\r\n`));
 
     this.terminal.write('\r\n  \x1b[1;32mFILESYSTEM OPS:\x1b[0m\r\n');
@@ -55,14 +109,10 @@ class HelpApp {
     const advanced = [
       { cmd: 'stats', desc: 'Repository & code quality statistics' },
       { cmd: 'analytics', desc: 'Analytics dashboard' },
-      { cmd: 'github-stats', desc: 'GitHub profile statistics' },
-      { cmd: 'web3os', desc: 'Web3OS status and info' },
-      { cmd: 'web3os install <pkg>', desc: 'Install npm package' },
-      { cmd: 'web3os node <code>', desc: 'Execute Node.js code' },
-      { cmd: 'web3os wallet', desc: 'Connect Web3 wallet' },
-      { cmd: 'web3os help', desc: 'Web3OS command help' }
+      { cmd: 'github-stats', desc: 'GitHub profile statistics' }
     ];
     advanced.forEach(c => this.terminal.write(`    \x1b[1;33m${c.cmd.padEnd(20)}\x1b[0m | ${c.desc}\r\n`));
+
 
     this.terminal.write('\r\n  \x1b[1;32mINTERFACE:\x1b[0m\r\n');
     this.terminal.write('    \x1b[1;33mtheme <id>\x1b[0m  | matrix, amber, hacker, cyberpunk\r\n');
