@@ -36,7 +36,11 @@ class TerminalOS {
 
   async init() {
     // Initialize xterm.js
-    const { Terminal } = window;
+    const Terminal = window.Terminal || (typeof Terminal !== 'undefined' ? Terminal : null);
+    if (!Terminal) {
+      console.error('Terminal constructor not found!');
+      return;
+    }
     this.terminal = new Terminal({
       cursorBlink: true,
       theme: {

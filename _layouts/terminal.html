@@ -166,6 +166,12 @@
                 window.FitAddon = { FitAddon: FitAddon };
             }
 
+            // Ensure Terminal is available
+            if (typeof Terminal === 'undefined' && typeof window.Terminal === 'undefined') {
+                console.error('Xterm.js (Terminal) not loaded!');
+                return;
+            }
+
             // Initialize Terminal OS
             const terminalOS = new TerminalOS('terminal');
             window.terminalOS = terminalOS;
