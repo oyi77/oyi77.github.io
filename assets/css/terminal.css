@@ -24,7 +24,6 @@ body {
 
 .terminal-container {
   width: 100%;
-  max-width: 1200px;
   height: 100%;
   border: 1px solid rgba(0, 255, 65, 0.2);
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
@@ -230,7 +229,7 @@ body {
   background: var(--term-bg);
   border: 2px solid rgba(0, 255, 65, 0.5);
   border-radius: 8px;
-  box-shadow: 
+  box-shadow:
     0 0 50px rgba(0, 255, 65, 0.8),
     inset 0 0 30px rgba(0, 255, 65, 0.1);
   position: relative;
@@ -291,10 +290,12 @@ body {
     transform: scale(1);
     border-radius: 8px;
   }
+
   50% {
     transform: scale(1.05);
     border-radius: 12px;
   }
+
   100% {
     transform: scale(1);
     border-radius: 8px;
@@ -310,7 +311,7 @@ body {
   .terminal-fullpage-container {
     padding: 1rem;
   }
-  
+
   .terminal-close-btn {
     width: 40px;
     height: 40px;

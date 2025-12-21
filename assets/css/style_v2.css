@@ -8,17 +8,17 @@
     --bg-dark: #000000;
     --bg-sidebar: #0a0a0a;
     --bg-header: #050505;
-    --accent: #ffffff;
-    --accent-subtle: #444444;
-    --text-main: #ffffff;
-    --text-dim: #888888;
-    --text-path: #bbbbbb;
-    --border-main: #222222;
+    --accent: #00ff41;
+    --accent-subtle: #003310;
+    --text-main: #00ff41;
+    --text-dim: #008822;
+    --text-path: #00ff41;
+    --border-main: #004411;
     --font-mono: 'JetBrains Mono', 'Fira Code', 'Monaco', monospace;
 
     /* Gaps & Sizes */
-    --sidebar-width: 200px;
-    --header-height: 40px;
+    --sidebar-width: 240px;
+    --header-height: 32px;
 }
 
 /* --- Reset & Base --- */
