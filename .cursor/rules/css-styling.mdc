@@ -1,0 +1,151 @@
+---
+alwaysApply: true
+---
+
+# CSS Styling Rules
+
+## CSS Architecture
+
+### File Organization
+- `terminal.css` - Terminal-specific styles
+- `custom.css` - Custom site styles
+- `style_v2.css` - Version 2 styles
+- `animations.css` - Animation definitions
+
+### CSS Custom Properties
+Use CSS variables for theming:
+
+```css
+:root {
+  --term-color: #00ff41;
+  --term-bg: #0d0d0d;
+}
+```
+
+## Terminal Styling
+
+### Terminal Container
+- Full viewport: `100vw` / `100vh`
+- Centered with flexbox
+- Border with glow effect
+- Responsive padding
+
+### CRT Effects
+- Scanline effect with gradient overlays
+- Flicker animation for authenticity
+- Phosphor glow effects
+- Use `pointer-events: none` for overlay effects
+
+### Responsive Design
+```css
+@media (max-width: 768px) {
+  /* Mobile styles */
+}
+```
+
+## Color Scheme
+
+### Terminal Colors
+- Background: `#0d0d0d` (near black)
+- Primary: `#00ff41` (matrix green)
+- Amber: `#ffb000` (vintage amber)
+- Error: `#ff0000` (red)
+- Warning: `#ffff00` (yellow)
+
+### Theme Variables
+Define theme colors as CSS variables for easy switching:
+```css
+[data-theme="matrix"] {
+  --term-color: #00ff41;
+}
+[data-theme="amber"] {
+  --term-color: #ffb000;
+}
+```
+
+## Animations
+
+### Keyframe Animations
+- Define in `animations.css` or inline
+- Use `@keyframes` for reusable animations
+- Common animations: `flicker`, `glitch`, `pulse`, `scanline`
+
+### Animation Best Practices
+- Use `transform` and `opacity` for performance
+- Avoid animating `width`, `height`, `top`, `left`
+- Use `will-change` sparingly
+- Prefer CSS animations over JavaScript when possible
+
+## Layout Patterns
+
+### Flexbox
+- Use flexbox for centering and layouts
+- `display: flex` with `align-items: center` and `justify-content: center`
+
+### Positioning
+- Use `position: relative` for containers
+- Use `position: absolute` for overlays
+- Use `position: fixed` for full-screen effects
+
+### Z-Index Layers
+- Background: `z-index: 1`
+- Content: `z-index: 2`
+- Overlays/Effects: `z-index: 10`
+
+## Typography
+
+### Font Stack
+```css
+font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+```
+
+### Terminal Font
+- Monospace fonts only
+- Font size responsive: `12px` mobile, `14px` desktop
+- Line height: `1.1` for terminal feel
+
+## Effects & Visuals
+
+### Glow Effects
+```css
+box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+text-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+```
+
+### Scanlines
+```css
+background: linear-gradient(
+  rgba(18, 16, 16, 0) 50%,
+  rgba(0, 0, 0, 0.1) 50%
+);
+background-size: 100% 4px;
+```
+
+### Borders
+- Subtle borders: `1px solid rgba(0, 255, 65, 0.2)`
+- Rounded corners: `border-radius: 4px`
+
+## Performance
+
+### Optimization
+- Use `transform` instead of position changes
+- Minimize repaints and reflows
+- Use `will-change` only when necessary
+- Avoid expensive selectors
+
+### Mobile Optimization
+- Reduce effects on mobile
+- Simplify animations
+- Use `touch-action` for touch events
+
+## Best Practices
+
+1. **Use CSS variables** for theming
+2. **Mobile-first** responsive design
+3. **Performance-conscious** animations
+4. **Consistent spacing** with rem/em units
+5. **Semantic class names** (BEM-like)
+6. **Organize by component** or feature
+7. **Comment complex** CSS logic
+8. **Test across browsers** (Chrome, Firefox, Safari)
+

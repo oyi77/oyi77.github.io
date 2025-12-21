@@ -1,0 +1,55 @@
+/* 
+ * Modern Terminal Portfolio - v2.0
+ * Theme: Fullscreen Terminal OS
+ */
+
+:root {
+    /* Colors - Core */
+    --bg-dark: #050510;
+    --bg-terminal: #0c0c1c;
+    --text-main: #e0e0e0;
+    --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* --- Reset & Base --- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    /* Prevent native scroll, Terminal handles it */
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: var(--font-mono);
+}
+
+/* --- Fullscreen Terminal --- */
+.terminal-fullscreen {
+    width: 100vw;
+    height: 100vh;
+    padding: 10px;
+    /* Small bezel */
+    background: var(--bg-terminal);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#terminal {
+    width: 100%;
+    height: 100%;
+    /* Check xterm.css for internal styling */
+}
+
+/* --- XTerm Customization --- */
+.xterm-viewport {
+    background-color: transparent !important;
+}

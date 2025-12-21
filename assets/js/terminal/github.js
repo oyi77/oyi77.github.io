@@ -12,7 +12,14 @@ class GitHubClient {
       return this.username;
     }
 
-    // Try to get from config
+    // Try to get from injected Jekyll data (preferred)
+    if (window.JEKYLL_DATA && window.JEKYLL_DATA.site && window.JEKYLL_DATA.site.github_username) {
+      this.username = window.JEKYLL_DATA.site.github_username;
+      console.log('GitHub username loaded from JEKYLL_DATA:', this.username);
+      return this.username;
+    }
+
+    // Try to get from config (fallback)
     try {
       const response = await fetch('/_data/terminal.yml');
       if (response.ok) {

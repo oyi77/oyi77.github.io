@@ -1,0 +1,139 @@
+---
+alwaysApply: true
+---
+
+# JavaScript & Terminal Development Rules
+
+## Terminal App Structure
+
+### App Class Pattern
+All terminal commands must be implemented as ES6 classes following this pattern:
+
+```javascript
+class CommandNameApp {
+    constructor(terminal, filesystem, windowManager, os) {
+        this.terminal = terminal;
+        this.filesystem = filesystem;
+        this.windowManager = windowManager;
+        this.os = os;
+    }
+
+    async run(args) {
+        // Command implementation
+    }
+}
+
+window.CommandNameApp = CommandNameApp;
+```
+
+### Key Requirements
+- All apps must be in `assets/js/terminal/apps/`
+- Export to `window` namespace for global access
+- Use `async run(args)` method signature
+- Access terminal via `this.terminal` (xterm.js instance)
+- Use `TerminalUtils` for formatting helpers
+
+## Terminal Output Formatting
+
+### ANSI Color Codes
+- `\x1b[1;32m` - Bold green (success/primary)
+- `\x1b[1;31m` - Bold red (errors)
+- `\x1b[1;33m` - Bold yellow (warnings/info)
+- `\x1b[1;36m` - Bold cyan (headers)
+- `\x1b[1;30m` - Bold black (subtle text)
+- `\x1b[0m` - Reset
+
+### Text Utilities
+- Use `TerminalUtils.center(text, width)` for centered text
+- Use `TerminalUtils.wrap(text, width)` for wrapped text
+- Always append `\r\n` for new lines in terminal output
+
+## Core Terminal Integration
+
+### Command Registration
+Commands are registered in `core.js` in two places:
+1. `handleCommand()` switch statement
+2. `runCommand()` appMap object
+
+### Filesystem Access
+- Use `this.filesystem.resolvePath(currentPath, targetPath)` for path resolution
+- Use `this.filesystem.exists(path)` to check existence
+- Use `this.filesystem.isDirectory(path)` to check type
+- Use `this.filesystem.read(path)` to read file content
+
+## Async Patterns
+
+### Command Execution
+- All command methods should be `async`
+- Use `await` for any async operations
+- Handle errors with try/catch and display user-friendly messages
+
+### Data Loading
+- Jekyll data is available via `window.JEKYLL_DATA`
+- Check for data existence before accessing: `window.JEKYLL_DATA?.terminal?.sites`
+- Use optional chaining to prevent errors
+
+## Code Style
+
+### Naming Conventions
+- Classes: `PascalCase` with `App` suffix (e.g., `WhoAmIApp`)
+- Methods: `camelCase` (e.g., `run`, `handleCommand`)
+- Variables: `camelCase`
+- Constants: `UPPER_SNAKE_CASE`
+
+### Terminal Width
+- Always get terminal width: `const width = this.terminal.cols || 60;`
+- Use width for responsive formatting
+- Default to 60 if cols is unavailable
+
+## Error Handling
+
+### User-Friendly Errors
+```javascript
+try {
+    // operation
+} catch (error) {
+    this.terminal.write(`\x1b[1;31mError: ${error.message}\x1b[0m\r\n`);
+}
+```
+
+### Command Not Found
+Display: `\x1b[1;31m${command}: command not found\x1b[0m\r\n`
+
+## Terminal Effects
+
+### Visual Effects
+- Use `this.effects.addGlitch()` for random glitch effects
+- Use `this.effects.addScanline()` for CRT scanline effect
+- Effects are managed by `TerminalEffects` class
+
+### Theme Management
+- Access via `this.themeManager.setTheme(name)`
+- Themes: `matrix`, `amber`, `hacker`, `cyberpunk`
+- Save theme preference: `localStorage.setItem('term-theme', themeName)`
+
+## Window Management
+
+### Window Manager Usage
+- Access via `this.windowManager`
+- Use for multi-window terminal applications
+- Follow window manager patterns for complex UIs
+
+## Web3OS Integration
+
+### Web3OS Access
+- Available via `this.os.web3os`
+- Check availability: `if (this.os.web3os) { ... }`
+- Initialize asynchronously with error handling
+
+## Best Practices
+
+1. **Always check data existence** before accessing nested properties
+2. **Use terminal width** for responsive formatting
+3. **Follow ANSI color conventions** for consistency
+4. **Export classes to window** for global access
+5. **Use async/await** for all async operations
+6. **Handle errors gracefully** with user-friendly messages
+7. **Use TerminalUtils** for common formatting tasks
+8. **Maintain consistent styling** with existing commands
+

@@ -7,7 +7,7 @@ class BootSequence {
         // BIOS Information
         this.biosInfo = [
             'OYI-BIOS (C) 2025 DeepMind Tech.',
-            'Bios Version 1.0.4 Build 20251221',
+            'Bios Version 2.0.0 Build 20251221',
             'CPU: Neural Quantum Processor @ 4.5GHz',
             '64GB RAM System 533MHz',
             'Keyboard ..... Detected',
@@ -115,8 +115,8 @@ class BootSequence {
         const bootMenu = [
             '\x1b[1;37m GNU GRUB v2.06\x1b[0m',
             '+' + '-'.repeat(width - 4) + '+',
-            '| \x1b[1;30;47m* OyiOS (Kernel 5.15) ' + ' '.repeat(Math.max(0, width - 26)) + '\x1b[0m |',
-            '|   OyiOS (Recovery)    ' + ' '.repeat(Math.max(0, width - 26)) + ' |',
+            '| \x1b[1;30;47m* OyiOS v2.0 (Jekyll Core) ' + ' '.repeat(Math.max(0, width - 29)) + '\x1b[0m |',
+            '|   OyiOS (Recovery Mode)   ' + ' '.repeat(Math.max(0, width - 29)) + ' |',
             '+' + '-'.repeat(width - 4) + '+',
             '',
             'Booting in '
@@ -145,6 +145,8 @@ class BootSequence {
             '\x1b[1;32m[ OK ]\x1b[0m Login Prompts.',
             '\x1b[1;32m[ OK ]\x1b[0m Neural Link Interface.',
             '\x1b[1;32m[ OK ]\x1b[0m Auth User: \x1b[1;33mOyi77\x1b[0m',
+            '\x1b[1;32m[ OK ]\x1b[0m Mounting _data as VirtualFS...',
+            '\x1b[1;32m[ OK ]\x1b[0m Starting GitHub API Service...',
         ];
 
         for (const log of logs) {

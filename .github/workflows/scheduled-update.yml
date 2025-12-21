@@ -1,0 +1,61 @@
+name: Scheduled Data Refresh
+
+on:
+  schedule:
+    # Run daily at 2 AM UTC
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1'
+          bundler-cache: true
+      
+      - name: Install dependencies
+        run: |
+          bundle install
+      
+      - name: Fetch external data
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          HACKERRANK_USERNAME: ${{ secrets.HACKERRANK_USERNAME }}
+          LINKEDIN_PROFILE: ${{ secrets.LINKEDIN_PROFILE }}
+        run: |
+          ruby _scripts/fetch_external_data.rb || true
+      
+      - name: Build Jekyll site (to trigger generators)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          JEKYLL_ENV: production
+        run: |
+          bundle exec jekyll build --verbose || true
+      
+      - name: Check for changes
+        id: verify-changed-files
+        run: |
+          if [ -n "$(git status --porcelain _data/)" ]; then
+            echo "changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "changed=false" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: Commit changes
+        if: steps.verify-changed-files.outputs.changed == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add _data/
+          git commit -m "Auto-update: Refresh data files [skip ci]" || exit 0
+          git push || exit 0
+

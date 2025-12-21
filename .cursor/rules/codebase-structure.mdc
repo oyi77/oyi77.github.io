@@ -1,0 +1,189 @@
+---
+alwaysApply: true
+---
+
+# Codebase Structure & Organization Rules
+
+## Project Overview
+
+This is a **Jekyll-based GitHub Pages site** with an **interactive terminal OS interface** showcasing a portfolio. The terminal simulates a complete operating system experience.
+
+## Directory Structure
+
+### Core Directories
+```
+/
+├── _config.yml          # Jekyll configuration
+├── _data/               # Jekyll data files (YAML/JSON)
+├── _drafts/             # Unpublished posts
+├── _layouts/            # Jekyll layout templates
+├── _pages/              # Static pages
+├── _posts/              # Blog posts
+├── assets/              # Static assets
+│   ├── css/            # Stylesheets
+│   ├── js/             # JavaScript
+│   │   └── terminal/   # Terminal OS code
+│   └── images/         # Images
+└── vendor/              # Bundled dependencies
+```
+
+### Terminal Code Structure
+```
+assets/js/terminal/
+├── core.js              # Main TerminalOS class
+├── boot-sequence.js     # Boot animation
+├── filesystem.js        # Virtual filesystem
+├── filesystem-loader.js # Jekyll data loader
+├── themes.js            # Theme management
+├── effects.js           # Visual effects
+├── utils.js             # Utility functions
+├── window-manager.js    # Window management
+├── web3os.js            # Web3OS integration
+├── github.js            # GitHub API integration
+├── syntax-highlight.js  # Code syntax highlighting
+└── apps/                # Command applications
+    ├── whoami.js
+    ├── companies.js
+    ├── help.js
+    └── ...
+```
+
+## File Naming Conventions
+
+### JavaScript Files
+- **Classes**: `PascalCase.js` (e.g., `TerminalOS.js`)
+- **Apps**: `kebab-case.js` (e.g., `whoami.js`, `file-manager.js`)
+- **Utilities**: `kebab-case.js` (e.g., `syntax-highlight.js`)
+
+### Jekyll Files
+- **Pages**: `kebab-case.md` in `_pages/`
+- **Posts**: `YYYY-MM-DD-post-title.md` in `_posts/`
+- **Data**: `kebab-case.yml` or `kebab-case.json` in `_data/`
+- **Layouts**: `kebab-case.html` in `_layouts/`
+
+### CSS Files
+- **Feature-based**: `feature-name.css` (e.g., `terminal.css`)
+- **Versioned**: `style_v2.css` for major versions
+
+## Code Organization Principles
+
+### Separation of Concerns
+- **Core logic** in `core.js`
+- **Command apps** in `apps/` directory
+- **Utilities** in separate utility files
+- **Effects** in `effects.js`
+- **Theming** in `themes.js`
+
+### Modularity
+- Each command is a separate class/file
+- Reusable utilities in `utils.js`
+- Theme system is pluggable
+- Filesystem is abstracted
+
+### Data Management
+- **Jekyll data** in `_data/` (YAML/JSON)
+- **Virtual filesystem** mirrors real data structure
+- **Data loader** bridges Jekyll and terminal
+
+## Import/Export Patterns
+
+### Global Namespace
+- Export classes to `window` object
+- Pattern: `window.ClassName = ClassName;`
+- Enables global access without module system
+
+### Dependencies
+- xterm.js loaded via CDN
+- Addons loaded conditionally
+- Check for existence before use
+
+## Configuration Files
+
+### Jekyll Config
+- `_config.yml` - Site-wide settings
+- Theme: Minimal Mistakes
+- Plugins: Listed in config
+
+### Data Files
+- `terminal.yml` - Terminal configuration
+- `companies.yml` - Company data
+- `projects.json` - Project data
+- `navigation.yml` - Site navigation
+
+### Dependencies
+- `Gemfile` - Ruby/Jekyll dependencies
+- No `package.json` (vanilla JS, no build step)
+
+## Development Workflow
+
+### Local Development
+1. Install Jekyll: `bundle install`
+2. Serve locally: `bundle exec jekyll serve`
+3. Access: `http://localhost:4000/terminal/`
+
+### Adding New Commands
+1. Create app class in `apps/` directory
+2. Export to `window` namespace
+3. Register in `core.js`:
+   - Add to `handleCommand()` switch
+   - Add to `runCommand()` appMap
+   - Add to tab completion list
+
+### Adding New Data
+1. Update YAML/JSON in `_data/`
+2. Update `filesystem-loader.js` if needed
+3. Access via `window.JEKYLL_DATA`
+
+## Best Practices
+
+### Code Organization
+1. **One class per file** for apps
+2. **Group related utilities** together
+3. **Keep files focused** on single responsibility
+4. **Use consistent naming** conventions
+
+### File Size
+- Keep files under 500 lines when possible
+- Split large files into modules
+- Extract reusable code to utilities
+
+### Documentation
+- Comment complex logic
+- Document class methods
+- Explain non-obvious patterns
+
+### Testing
+- Test commands locally
+- Verify Jekyll data loading
+- Check responsive design
+- Test across browsers
+
+## Integration Points
+
+### Jekyll → JavaScript
+- Data injected via `window.JEKYLL_DATA`
+- Loaded by `filesystem-loader.js`
+- Accessible throughout terminal code
+
+### Terminal → Web3OS
+- Optional integration via `web3os.js`
+- Check availability before use
+- Graceful degradation
+
+### Terminal → GitHub
+- GitHub API integration in `github.js`
+- Used by `github-explorer.js` app
+- Requires API token (if needed)
+
+## Version Control
+
+### Git Structure
+- Main branch: `main` (GitHub Pages default)
+- No build artifacts committed
+- Vendor bundles excluded (use `.gitignore`)
+
+### Deployment
+- Auto-deploys on push to `main`
+- GitHub Pages builds automatically
+- No CI/CD needed (GitHub handles it)
+

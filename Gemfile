@@ -15,3 +15,7 @@ group :jekyll_plugins do
   gem "jekyll-include-cache"
   gem "jekyll-algolia"
 end
+
+# Additional gems for custom plugins and build-time processing
+gem "octokit", "~> 4.25"  # GitHub API client (optional, fallback to net/http if not available)
+gem "nokogiri", "~> 1.14"  # HTML/XML parsing for external data fetching

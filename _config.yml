@@ -73,6 +73,12 @@ plugins:
   - jemoji
   - jekyll-include-cache
 
+# Custom plugin configuration
+asset_optimization: true
+data_compression: true
+analytics: true
+analytics_provider: "none"  # Set to "google" or other provider if needed
+
 author:
   name   : "Muchammad Fikri Izzuddin"
   avatar : "/assets/images/bio-photo.jpg"

@@ -1,0 +1,146 @@
+---
+alwaysApply: true
+---
+
+# Codebase Rules
+
+This directory contains coding standards and guidelines for the Terminal OS Portfolio project.
+
+## Overview
+
+This is a **Jekyll-based GitHub Pages site** featuring an **interactive terminal OS interface**. The codebase combines:
+- **Jekyll** for static site generation
+- **JavaScript (ES6+)** for terminal functionality
+- **xterm.js** for terminal emulation
+- **CSS3** for styling and animations
+
+## Rule Files
+
+### [JavaScript & Terminal](./javascript-terminal.mdc)
+Rules for terminal app development, command structure, ANSI formatting, and terminal integration patterns.
+
+**Key Topics:**
+- Terminal app class structure
+- Command registration
+- ANSI color codes
+- Filesystem access
+- Async patterns
+
+### [Jekyll](./jekyll.mdc)
+Guidelines for Jekyll configuration, data files, layouts, and page structure.
+
+**Key Topics:**
+- Site configuration
+- Data file structure
+- Front matter patterns
+- Asset organization
+- Plugin usage
+
+### [CSS Styling](./css-styling.mdc)
+Standards for CSS architecture, theming, animations, and responsive design.
+
+**Key Topics:**
+- CSS custom properties
+- Terminal styling
+- CRT effects
+- Responsive patterns
+- Animation best practices
+
+### [Codebase Structure](./codebase-structure.mdc)
+Project organization, file naming conventions, and directory structure.
+
+**Key Topics:**
+- Directory organization
+- File naming conventions
+- Code organization principles
+- Development workflow
+- Integration points
+
+### [General Coding](./general-coding.mdc)
+General coding standards, error handling, performance, and best practices.
+
+**Key Topics:**
+- Code style guidelines
+- Error handling patterns
+- Performance optimization
+- Security considerations
+- Documentation standards
+
+## Quick Reference
+
+### Adding a New Terminal Command
+
+1. Create app class in `assets/js/terminal/apps/command-name.js`:
+```javascript
+class CommandNameApp {
+    constructor(terminal, filesystem, windowManager, os) {
+        this.terminal = terminal;
+        this.filesystem = filesystem;
+        this.windowManager = windowManager;
+        this.os = os;
+    }
+
+    async run(args) {
+        // Implementation
+    }
+}
+
+window.CommandNameApp = CommandNameApp;
+```
+
+2. Register in `assets/js/terminal/core.js`:
+   - Add to `handleCommand()` switch statement
+   - Add to `runCommand()` appMap
+   - Add to tab completion list
+
+### Adding New Data
+
+1. Update YAML/JSON in `_data/` directory
+2. Access via `window.JEKYLL_DATA` in JavaScript
+3. Update `filesystem-loader.js` if filesystem structure changes
+
+### Styling Guidelines
+
+- Use CSS variables for theming
+- Follow mobile-first responsive design
+- Use `transform` and `opacity` for animations
+- Maintain consistent color scheme
+
+## Project Stack
+
+- **Site Generator**: Jekyll (Minimal Mistakes theme)
+- **Terminal**: xterm.js with addons
+- **Language**: JavaScript (ES6+), no build step
+- **Styling**: CSS3 with custom properties
+- **Hosting**: GitHub Pages
+- **Data Format**: YAML/JSON
+
+## Development
+
+### Local Setup
+```bash
+bundle install
+bundle exec jekyll serve
+```
+
+### Key Directories
+- `assets/js/terminal/` - Terminal OS code
+- `assets/js/terminal/apps/` - Command applications
+- `_data/` - Jekyll data files
+- `_pages/` - Static pages
+- `_posts/` - Blog posts
+
+## Contributing
+
+When contributing to this codebase:
+
+1. **Follow the rules** in this directory
+2. **Maintain consistency** with existing code
+3. **Test locally** before committing
+4. **Document** complex logic
+5. **Consider performance** and accessibility
+
+## Questions?
+
+Refer to the specific rule file for detailed guidelines on each topic.
+

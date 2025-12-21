@@ -1,0 +1,185 @@
+---
+alwaysApply: true
+---
+
+# General Coding Standards
+
+## Code Style
+
+### JavaScript
+- **ES6+ syntax** (classes, arrow functions, async/await)
+- **2 spaces** indentation
+- **Semicolons** required
+- **Single quotes** for strings (unless escaping needed)
+- **camelCase** for variables and functions
+- **PascalCase** for classes
+
+### YAML
+- **2 spaces** indentation (no tabs)
+- **Quotes** for strings with special characters
+- **Consistent structure** across data files
+
+### CSS
+- **2 spaces** indentation
+- **kebab-case** for class names
+- **CSS variables** for theming
+- **Mobile-first** responsive design
+
+## Error Handling
+
+### JavaScript
+```javascript
+try {
+    // operation
+} catch (error) {
+    console.error('Error:', error);
+    // User-friendly error message
+    this.terminal.write(`\x1b[1;31mError: ${error.message}\x1b[0m\r\n`);
+}
+```
+
+### Null/Undefined Checks
+- Use optional chaining: `obj?.prop?.nested`
+- Check existence before access: `if (data) { ... }`
+- Provide defaults: `const value = data?.value || 'default'`
+
+## Performance
+
+### JavaScript
+- **Avoid blocking operations** in main thread
+- **Use async/await** for I/O operations
+- **Debounce/throttle** frequent events
+- **Lazy load** heavy resources
+
+### CSS
+- **Use transform/opacity** for animations
+- **Minimize repaints/reflows**
+- **Optimize selectors** (avoid deep nesting)
+
+### Terminal
+- **Limit scrollback** (1000 lines default)
+- **Batch terminal writes** when possible
+- **Use efficient formatting** utilities
+
+## Security
+
+### Data Validation
+- **Validate user input** before processing
+- **Sanitize paths** in filesystem operations
+- **Check permissions** before file access
+
+### External Resources
+- **Use HTTPS** for external resources
+- **Validate API responses** before use
+- **Handle API errors** gracefully
+
+## Documentation
+
+### Code Comments
+- **Explain why**, not what
+- **Document complex logic**
+- **Note non-obvious behavior**
+- **Mark TODOs** for future work
+
+### Function Documentation
+```javascript
+/**
+ * Executes a terminal command
+ * @param {string} command - Command name
+ * @param {Array} args - Command arguments
+ * @returns {Promise<void>}
+ */
+async runCommand(command, args) {
+    // Implementation
+}
+```
+
+## Testing
+
+### Manual Testing
+- Test all commands locally
+- Verify responsive design
+- Check cross-browser compatibility
+- Test error scenarios
+
+### Browser Support
+- **Chrome/Edge** (primary)
+- **Firefox** (secondary)
+- **Safari** (tertiary)
+- **Mobile browsers** (responsive)
+
+## Git Practices
+
+### Commit Messages
+- **Clear, descriptive** messages
+- **Present tense** ("Add feature" not "Added feature")
+- **Reference issues** if applicable
+
+### Branch Strategy
+- **main** branch for production
+- **Feature branches** for development (if needed)
+- **No force push** to main
+
+## Dependencies
+
+### External Libraries
+- **xterm.js** - Terminal emulator (CDN)
+- **Jekyll plugins** - Ruby gems
+- **Minimal Mistakes** - Jekyll theme
+
+### Version Management
+- **Gemfile** for Ruby dependencies
+- **No package.json** (vanilla JS)
+- **CDN links** for JavaScript libraries
+
+## Accessibility
+
+### Keyboard Navigation
+- **Tab completion** for commands
+- **Arrow keys** for history
+- **Ctrl+F** for search
+- **ESC** to skip boot
+
+### Screen Readers
+- **Semantic HTML** in layouts
+- **ARIA labels** where needed
+- **Alt text** for images
+
+## Browser Compatibility
+
+### Feature Detection
+```javascript
+if (window.FeatureName) {
+    // Use feature
+} else {
+    // Fallback
+}
+```
+
+### Polyfills
+- Use only when necessary
+- Prefer native features
+- Test fallbacks
+
+## Code Review Checklist
+
+- [ ] Follows naming conventions
+- [ ] Error handling implemented
+- [ ] Performance considerations
+- [ ] Cross-browser tested
+- [ ] Responsive design verified
+- [ ] Documentation added
+- [ ] No console errors
+- [ ] Accessibility considered
+
+## Best Practices Summary
+
+1. **Consistency** - Follow existing patterns
+2. **Clarity** - Write readable code
+3. **Modularity** - Keep code organized
+4. **Performance** - Optimize when needed
+5. **Security** - Validate and sanitize
+6. **Documentation** - Comment complex logic
+7. **Testing** - Verify before committing
+8. **Accessibility** - Consider all users
+

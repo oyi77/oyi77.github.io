@@ -41,8 +41,21 @@ class HelpApp {
     ];
     fs.forEach(c => this.terminal.write(`    \x1b[1;33m${c.cmd.padEnd(15)}\x1b[0m | ${c.desc}\r\n`));
 
+    this.terminal.write('\r\n  \x1b[1;32mMARKET ANALYZER:\x1b[0m\r\n');
+    const market = [
+      { cmd: 'market crypto', desc: 'Real-time cryptocurrency prices' },
+      { cmd: 'market indices', desc: 'Stock market indices data' },
+      { cmd: 'market live', desc: 'Fetch live market data' },
+      { cmd: 'crypto', desc: 'Alias for market crypto' },
+      { cmd: 'coins', desc: 'Alias for market crypto' }
+    ];
+    market.forEach(c => this.terminal.write(`    \x1b[1;33m${c.cmd.padEnd(20)}\x1b[0m | ${c.desc}\r\n`));
+
     this.terminal.write('\r\n  \x1b[1;32mADVANCED FEATURES:\x1b[0m\r\n');
     const advanced = [
+      { cmd: 'stats', desc: 'Repository & code quality statistics' },
+      { cmd: 'analytics', desc: 'Analytics dashboard' },
+      { cmd: 'github-stats', desc: 'GitHub profile statistics' },
       { cmd: 'web3os', desc: 'Web3OS status and info' },
       { cmd: 'web3os install <pkg>', desc: 'Install npm package' },
       { cmd: 'web3os node <code>', desc: 'Execute Node.js code' },

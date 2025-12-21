@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ site.title }}</title>
+
+    <!-- Meta Tags -->
+    <meta name="description" content="{{ site.description }}">
+    <meta name="theme-color" content="#050510">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xterm@5.3.0/css/xterm.css" />
+    <link rel="stylesheet" href="{{ '/assets/css/style_v2.css' | relative_url }}">
+
+    <!-- Scripts (Head) -->
+    <script src="https://cdn.jsdelivr.net/npm/xterm@5.3.0/lib/xterm.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/xterm-addon-fit@0.8.0/lib/xterm-addon-fit.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/xterm-addon-web-links@0.9.0/lib/xterm-addon-web-links.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/xterm-addon-search@0.13.0/lib/xterm-addon-search.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/xterm-addon-unicode11@0.5.0/lib/xterm-addon-unicode11.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/xterm-addon-serialize@0.7.0/lib/xterm-addon-serialize.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/xterm-addon-image@0.5.0/lib/xterm-addon-image.js"></script>
+    <script type="module" src="https://web3os.sh/_loader.js"></script>
+
+    <!-- Jekyll Data Injection -->
+    <script>
+        window.JEKYLL_DATA = {
+            site: {
+                title: "{{ site.title }}",
+                description: "{{ site.description }}",
+                github_username: "{{ site.github_username }}",
+                baseurl: "{{ site.baseurl }}"
+            },
+            terminal: {{ site.data.terminal | jsonify }},
+            companies: {{ site.data.companies | jsonify }},
+            projects: {{ site.data.projects | jsonify }},
+            repository_stats: {{ site.data.repository_stats | jsonify }},
+            skills_matrix: {{ site.data.skills_matrix | jsonify }},
+            timeline: {{ site.data.timeline | jsonify }},
+            github_stats: {{ site.data.github_stats | jsonify }},
+            metrics: {{ site.data.metrics | jsonify }},
+            analytics: {{ site.data.analytics | jsonify }},
+            seo: {{ site.data.seo | jsonify }},
+            external_stats: {{ site.data.external_stats | jsonify }},
+            market_data: {{ site.data.market_data | jsonify }}
+        };
+    </script>
+</head>
+
+<body class="fullscreen-terminal">
+
+    <!-- Fullscreen Terminal Container -->
+    <div id="terminal-container" class="terminal-fullscreen">
+        <div id="terminal"></div>
+    </div>
+
+    <!-- Terminal Core Scripts -->
+    <script src="{{ '/assets/js/terminal/utils.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/terminal/filesystem.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/terminal/window-manager.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/terminal/boot-sequence.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/terminal/effects.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/terminal/themes.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/terminal/github.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/terminal/syntax-highlight.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/terminal/web3os.js' | relative_url }}"></script>
+
+    <!-- Data Loaders & New Apps -->
+    <script src="{{ '/assets/js/terminal/filesystem-loader.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/terminal/apps/github-explorer.js' | relative_url }}"></script>
+
+    <!-- Terminal Apps -->
+    <script src="{{ '/assets/js/terminal/apps/help.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/terminal/apps/whoami.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/terminal/apps/companies.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/terminal/apps/achievements.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/terminal/apps/repos.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/terminal/apps/sysmon.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/terminal/apps/netmap.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/terminal/apps/neofetch.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/terminal/apps/skills.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/terminal/apps/3pm.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/terminal/apps/wallet.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/terminal/apps/cv.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/terminal/apps/hack.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/terminal/apps/cat.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/terminal/apps/web3os.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/terminal/apps/stats.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/terminal/apps/analytics.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/terminal/apps/github-stats.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/terminal/apps/market.js' | relative_url }}"></script>
+
+    <script src="{{ '/assets/js/terminal/core.js' | relative_url }}"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Ensure FitAddon is available
+            if (typeof FitAddon !== 'undefined' && !window.FitAddon.FitAddon) {
+                window.FitAddon = { FitAddon: FitAddon };
+            }
+
+            // Initialize Terminal OS
+            const terminalOS = new TerminalOS('terminal');
+            window.terminalOS = terminalOS;
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+name: Jekyll Build with Custom Plugins
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1'
+          bundler-cache: true
+      
+      - name: Install dependencies
+        run: |
+          bundle install
+      
+      - name: Fetch external data
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          HACKERRANK_USERNAME: ${{ secrets.HACKERRANK_USERNAME }}
+          LINKEDIN_PROFILE: ${{ secrets.LINKEDIN_PROFILE }}
+        run: |
+          ruby _scripts/fetch_external_data.rb || true
+      
+      - name: Build Jekyll site
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          JEKYLL_ENV: production
+        run: |
+          bundle exec jekyll build
+      
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: jekyll-site
+          path: _site/
+      
+      - name: Deploy to GitHub Pages
+        if: github.ref == 'refs/heads/main'
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site
+

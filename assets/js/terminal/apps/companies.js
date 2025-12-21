@@ -8,13 +8,22 @@ class CompaniesApp {
     }
 
     async loadData() {
-        const paths = ['/_data/companies.yml', './_data/companies.yml'];
+        // Try injected Jekyll data first (preferred)
+        if (window.JEKYLL_DATA && window.JEKYLL_DATA.companies && window.JEKYLL_DATA.companies.companies) {
+            this.companies = window.JEKYLL_DATA.companies.companies;
+            console.log('Companies data loaded from JEKYLL_DATA');
+            return;
+        }
+
+        // Fallback to fetch if data not injected (for local dev or direct file access)
+        const paths = ['/_data/companies.yml', './_data/companies.yml', '../_data/companies.yml'];
         for (const path of paths) {
             try {
                 const response = await fetch(path);
                 if (response.ok) {
                     const text = await response.text();
                     this.companies = this.parseYaml(text);
+                    console.log('Companies data loaded from fetch:', path);
                     return;
                 }
             } catch (e) { }

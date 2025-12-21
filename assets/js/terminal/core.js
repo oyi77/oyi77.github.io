@@ -10,13 +10,13 @@ class TerminalOS {
     this.commandHistory = [];
     this.historyIndex = -1;
     this.currentInput = '';
-    
+
     // Advanced addons
     this.searchAddon = null;
     this.serializeAddon = null;
     this.imageAddon = null;
     this.unicode11Addon = null;
-    
+
     // Web3OS integration
     this.web3os = null;
 
@@ -160,6 +160,13 @@ class TerminalOS {
 
     // Initialize systems
     this.filesystem = new VirtualFileSystem();
+
+    // Initialize FileSystem Loader (Jekyll Data)
+    if (window.FileSystemLoader) {
+      this.fsLoader = new FileSystemLoader(this.filesystem);
+      this.fsLoader.loadJekyllData();
+    }
+
     this.windowManager = new WindowManager(this.terminal);
     this.themeManager = new ThemeManager(this.terminal);
     this.effects = new TerminalEffects(this.terminal);
@@ -186,7 +193,7 @@ class TerminalOS {
 
   setupSearchHandlers() {
     if (!this.searchAddon) return;
-    
+
     // Handle Ctrl+F to activate search
     this.terminal.onKey(({ key, domEvent }) => {
       if (domEvent.ctrlKey && key === 'f') {
@@ -198,7 +205,7 @@ class TerminalOS {
 
   activateSearch() {
     if (!this.searchAddon) return;
-    
+
     const searchTerm = prompt('Search terminal content:');
     if (searchTerm) {
       this.searchAddon.findNext(searchTerm);
@@ -288,6 +295,12 @@ class TerminalOS {
 
     const status = `\x1b[1;32mSTATUS:\x1b[0m STABLE | \x1b[1;32mUPTIME:\x1b[0m 12D | \x1b[1;31mTHREAT:\x1b[0m NONE`;
     this.terminal.write(TerminalUtils.center(status, width) + '\r\n');
+
+    // Display Data Load Status
+    const projectsCount = (window.JEKYLL_DATA && window.JEKYLL_DATA.terminal && window.JEKYLL_DATA.terminal.sites) ? window.JEKYLL_DATA.terminal.sites.length : 0;
+    const companiesCount = (window.JEKYLL_DATA && window.JEKYLL_DATA.companies && window.JEKYLL_DATA.companies.companies) ? window.JEKYLL_DATA.companies.companies.length : 0;
+
+    this.terminal.write('\r\n' + TerminalUtils.center(`\x1b[1;30mLOADED: ${projectsCount} projects, ${companiesCount} enterprise logs, Virtual FS synchronized.\x1b[0m`, width) + '\r\n');
     this.terminal.write('\r\n' + TerminalUtils.center('\x1b[1;30mTip: Try command "hack" for elevated access simulation.\x1b[0m', width) + '\r\n');
   }
 
@@ -387,6 +400,25 @@ class TerminalOS {
         case 'web3os':
           await this.runCommand('web3os', args);
           break;
+        case 'github':
+          await this.runCommand('github', args);
+          break;
+        case 'stats':
+          await this.runCommand('stats', args);
+          break;
+        case 'analytics':
+          await this.runCommand('analytics', args);
+          break;
+        case 'github-stats':
+        case 'ghstats':
+          await this.runCommand('github-stats', args);
+          break;
+        case 'market':
+        case 'crypto':
+        case 'coins':
+        case 'indices':
+          await this.runCommand('market', args);
+          break;
         default:
           this.terminal.write(`\x1b[1;31m${command}: command not found\x1b[0m\r\n`);
       }
@@ -413,7 +445,12 @@ class TerminalOS {
       'cv': CVApp,
       'hack': HackApp,
       'cat': CatApp,
-      'web3os': Web3OSApp
+      'web3os': Web3OSApp,
+      'github': GitHubExplorerApp,
+      'stats': StatsApp,
+      'analytics': AnalyticsApp,
+      'github-stats': GitHubStatsApp,
+      'market': MarketApp
     };
 
     const AppClass = appMap[command];
@@ -461,7 +498,7 @@ class TerminalOS {
     const input = this.currentInput.trim();
     const parts = input.split(/\s+/);
     const lastPart = parts[parts.length - 1] || '';
-    const commands = ['help', 'whoami', 'companies', 'achievements', 'repos', 'scan', 'sysmon', 'netmap', 'neofetch', 'skills', '3pm', 'wallet', 'theme', 'ls', 'cd', 'cat', 'clear', 'hack', 'web3os', 'cv'];
+    const commands = ['help', 'whoami', 'companies', 'achievements', 'repos', 'scan', 'sysmon', 'netmap', 'neofetch', 'skills', '3pm', 'wallet', 'theme', 'ls', 'cd', 'cat', 'clear', 'hack', 'web3os', 'cv', 'github', 'stats', 'analytics', 'github-stats', 'ghstats', 'market', 'crypto', 'coins', 'indices'];
     const matches = commands.filter(cmd => cmd.startsWith(lastPart));
 
     if (matches.length === 1) {
