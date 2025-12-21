@@ -163,8 +163,13 @@ class TerminalOS {
 
     // Initialize FileSystem Loader (Jekyll Data)
     if (window.FileSystemLoader) {
-      this.fsLoader = new FileSystemLoader(this.filesystem);
-      this.fsLoader.loadJekyllData();
+      try {
+        this.fsLoader = new FileSystemLoader(this.filesystem);
+        this.fsLoader.loadJekyllData();
+      } catch (error) {
+        console.warn('FileSystemLoader error:', error);
+        // Continue even if loader fails
+      }
     }
 
     this.windowManager = new WindowManager(this.terminal);
