@@ -36,9 +36,18 @@ class TerminalOS {
 
   async init() {
     // Initialize xterm.js
-    const Terminal = window.Terminal || (typeof Terminal !== 'undefined' ? Terminal : null);
-    if (!Terminal) {
-      console.error('Terminal constructor not found!');
+    console.log('Terminal OS Init - window.Terminal:', typeof window.Terminal);
+    let Terminal = window.Terminal || (typeof Terminal !== 'undefined' ? Terminal : null);
+
+    // Some bundles put Terminal inside a Terminal property
+    if (Terminal && typeof Terminal !== 'function' && typeof Terminal.Terminal === 'function') {
+      console.log('Using nested Terminal.Terminal');
+      Terminal = Terminal.Terminal;
+    }
+
+    console.log('Final Terminal Constructor:', Terminal);
+    if (!Terminal || typeof Terminal !== 'function') {
+      console.error('Terminal constructor not found or not a function!', Terminal);
       return;
     }
     this.terminal = new Terminal({

@@ -37,6 +37,11 @@
     <script type="module" src="https://web3os.sh/_loader.js"
         onerror="console.warn('Web3OS loader not available');"></script>
 
+    <script>
+        // Set public path for lazy-loaded chunks
+        window.__webpack_public_path__ = "{{ site.baseurl }}/assets/js/terminal/";
+    </script>
+
     <!-- Jekyll Data Injection -->
     <script>
         window.JEKYLL_DATA = {
@@ -168,6 +173,7 @@
             }
 
             // Ensure Terminal is available
+            console.log('Terminal check:', typeof Terminal, typeof window.Terminal);
             if (typeof Terminal === 'undefined' && typeof window.Terminal === 'undefined') {
                 console.error('Xterm.js (Terminal) not loaded!');
                 return;
