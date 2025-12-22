@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Swarm</title>
+    <style>
+        :root {
+            --bg-color: #050505;
+            --eye-white: #e0e0e0;
+            --iris-color: #000;
+            --lid-color: #050505;
+            /* Matches bg */
+            --danger-color: #ff0000;
+        }
+
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: var(--bg-color);
+            height: 100vh;
+            width: 100vw;
+            /* Subtle vignette */
+            background: radial-gradient(circle at center, #111 0%, #000 100%);
+        }
+
+        #swarm-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60vh;
+            /* Eyes hang from the top 60% */
+            pointer-events: none;
+            /* Let mouse pass through to body */
+        }
+
+        .eye {
+            position: absolute;
+            background: var(--eye-white);
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.8) inset;
+            /* Transition for color changes (anger) */
+            transition: background-color 0.2s, transform 0.1s;
+        }
+
+        .eye.angry {
+            background: var(--danger-color);
+            box-shadow: 0 0 15px var(--danger-color);
+            animation: shake 0.5s infinite;
+        }
+
+        .pupil {
+            position: absolute;
+            background: var(--iris-color);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40%;
+            height: 40%;
+            transition: width 0.2s, height 0.2s;
+            /* Dilate/constrict */
+        }
+
+        .eye.angry .pupil {
+            width: 20%;
+            /* Constrict pupils in anger/focus */
+            height: 20%;
+        }
+
+        .eyelid {
+            position: absolute;
+            background: var(--lid-color);
+            width: 100%;
+            height: 50%;
+            left: 0;
+            transition: transform 0.1s;
+            z-index: 10;
+        }
+
+        .lid-top {
+            top: 0;
+            transform-origin: top;
+        }
+
+        .lid-bottom {
+            bottom: 0;
+            transform-origin: bottom;
+        }
+
+        /* Classes for blinking */
+        .closed .lid-top {
+            transform: translateY(50%) scaleY(2);
+        }
+
+        .closed .lid-bottom {
+            transform: translateY(-50%) scaleY(2);
+        }
+
+        @keyframes shake {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            25% {
+                transform: translate(1px, 1px) rotate(1deg);
+            }
+
+            50% {
+                transform: translate(-1px, -1px) rotate(-1deg);
+            }
+
+            75% {
+                transform: translate(1px, -1px) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+        }
+
+        /* Warning text that fades in */
+        #warning-text {
+            position: absolute;
+            top: 10%;
+            width: 100%;
+            text-align: center;
+            color: #330000;
+            font-family: 'Courier New', monospace;
+            font-size: 2rem;
+            opacity: 0;
+            transition: opacity 1s;
+            pointer-events: none;
+            letter-spacing: 5px;
+            font-weight: bold;
+            z-index: -1;
+        }
+
+        body.danger-zone #warning-text {
+            opacity: 1;
+            color: #800000;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="warning-text">WHY ARE YOU LEAVING?</div>
+    <div id="swarm-container"></div>
+
+    <!-- Include THREE.js if needed technically, but we can do vanilla JS for better performance/control here -->
+    <script>
+        const container = document.getElementById('swarm-container');
+        const eyes = [];
+        const numEyes = 45; // Size of the swarm
+
+        // Warning threshold (pixels from top)
+        const DANGER_ZONE = 100;
+
+        class Eye {
+            constructor() {
+                this.element = document.createElement('div');
+                this.element.className = 'eye';
+
+                // Random Size
+                const size = Math.random() * 40 + 20; // 20px - 60px
+                this.element.style.width = `${size}px`;
+                this.element.style.height = `${size * 0.8}px`; // Slightly almond
+
+                // Random Position (Top heavy)
+                // Use a power function to bias towards 0 (top)
+                const yPos = Math.pow(Math.random(), 2) * 60; // 0-60% height, biased to top
+                const xPos = Math.random() * 95; // 0-95% width
+
+                this.element.style.top = `${yPos}%`;
+                this.element.style.left = `${xPos}%`;
+                this.element.style.zIndex = Math.floor(size); // Larger eyes on top
+
+                // Pupil
+                this.pupil = document.createElement('div');
+                this.pupil.className = 'pupil';
+                this.element.appendChild(this.pupil);
+
+                // Eyelids
+                this.lidTop = document.createElement('div');
+                this.lidTop.className = 'eyelid lid-top';
+                this.element.appendChild(this.lidTop);
+
+                this.lidBottom = document.createElement('div');
+                this.lidBottom.className = 'eyelid lid-bottom';
+                this.element.appendChild(this.lidBottom);
+
+                container.appendChild(this.element);
+
+                // State
+                this.x = (xPos / 100) * window.innerWidth + (size / 2);
+                this.y = (yPos / 100) * window.innerHeight + (size * 0.4);
+                this.radius = size / 4; // Max pupil movement radius
+
+                this.blinkInterval = Math.random() * 4000 + 1000;
+                this.blinking = false;
+
+                this.startBlinking();
+            }
+
+            lookAt(mouseX, mouseY) {
+                // Calculate angle and distance
+                const dx = mouseX - this.x;
+                const dy = mouseY - this.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                const maxDist = 800; // Distance of full attention
+
+                // Clamp distance for pupil movement
+                const r = Math.min(this.radius, dist / 15);
+
+                const angle = Math.atan2(dy, dx);
+
+                // Pupil offset
+                const px = Math.cos(angle) * r;
+                const py = Math.sin(angle) * r;
+
+                this.pupil.style.transform = `translate(calc(-50% + ${px}px), calc(-50% + ${py}px))`;
+            }
+
+            setAngry(isAngry) {
+                if (isAngry) {
+                    this.element.classList.add('angry');
+                } else {
+                    this.element.classList.remove('angry');
+                }
+            }
+
+            startBlinking() {
+                setInterval(() => {
+                    if (Math.random() > 0.7 && !this.element.classList.contains('angry')) {
+                        this.blink();
+                    }
+                }, this.blinkInterval);
+            }
+
+            blink() {
+                this.element.classList.add('closed');
+                setTimeout(() => {
+                    this.element.classList.remove('closed');
+                }, 150 + Math.random() * 100);
+            }
+        }
+
+        // Initialize Swarm
+        function init() {
+            for (let i = 0; i < numEyes; i++) {
+                eyes.push(new Eye());
+            }
+        }
+
+        init();
+
+        // Interaction
+        document.addEventListener('mousemove', (e) => {
+            const mx = e.clientX;
+            const my = e.clientY;
+
+            // Check Danger Zone (Top of screen)
+            const isDanger = my < DANGER_ZONE;
+
+            if (isDanger) {
+                document.body.classList.add('danger-zone');
+            } else {
+                document.body.classList.remove('danger-zone');
+            }
+
+            eyes.forEach(eye => {
+                eye.lookAt(mx, my);
+                eye.setAngry(isDanger);
+            });
+        });
+
+        // Resize handler to update absolute positions mapping
+        window.addEventListener('resize', () => {
+            // Reload to reset positions simply, or re-calc. 
+            // Simple re-calc loop:
+            const allElements = document.querySelectorAll('.eye');
+            allElements.forEach((el, index) => {
+                const rect = el.getBoundingClientRect();
+                if (eyes[index]) {
+                    eyes[index].x = rect.left + rect.width / 2;
+                    eyes[index].y = rect.top + rect.height / 2;
+                }
+            });
+        });
+
+    </script>
+</body>
+
+</html>

@@ -130,11 +130,11 @@ html {
     letter-spacing: 0.1em;
 }
 
-/* Social Buttons - Bottom Right */
+/* Social Buttons - Bottom Left */
 .social-buttons {
     position: fixed;
     bottom: 30px;
-    right: 30px;
+    left: 30px;
     display: flex;
     gap: 12px;
     animation: fadeIn 1s ease-out 0.5s both;
@@ -234,8 +234,9 @@ html {
 
 /* Professional Footer */
 .footer {
-    position: absolute;
-    bottom: 40px;
+    position: relative;
+    margin-top: 60px;
+    margin-bottom: 40px;
     width: 100%;
     text-align: center;
     font-family: var(--portal-font-mono);
@@ -243,6 +244,11 @@ html {
     color: var(--portal-text-dim);
     letter-spacing: 1px;
     animation: fadeIn 2s ease-in 0.5s both;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
 }
 
 /* Single Moving Toggle Button */
@@ -353,15 +359,19 @@ html {
 /* Expanded Portfolio Sections */
 .expanded-sections {
     position: fixed;
-    top: 0;
+    top: 50%;
     left: 100vw;
     width: 100vw;
     height: 100vh;
+    max-height: calc(100vh - 160px);
+    /* Account for header and footer spacing */
+    transform: translateY(-50%);
+    /* Center vertically */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 80px 40px;
+    padding: 20px 40px;
     overflow-y: auto;
     transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 50;
@@ -373,9 +383,10 @@ html {
 
 .expanded-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
-    max-width: 1200px;
+    max-width: 100%;
+    max-height: 100%;
     width: 90%;
 }
 
@@ -386,17 +397,18 @@ html {
 
 /* Metrics Sections (Stage 2: Arrow Down) */
 .metrics-sections {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     padding: 80px 40px;
     overflow-y: auto;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.4s ease;
-    z-index: 60;
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 200;
+    background: #000;
 }
 
 .metrics-sections.show {
@@ -792,6 +804,22 @@ html {
     }
 }
 
+/* CTA Modal Specifics */
+#cta-modal {
+    z-index: 2000;
+    /* Higher than everything else */
+}
+
+.cta-modal-content {
+    max-width: 700px;
+    border-color: var(--portal-accent);
+    box-shadow: 0 0 50px rgba(255, 255, 255, 0.1);
+}
+
+.cta-modal-content .modal-title {
+    color: var(--portal-accent);
+}
+
 @keyframes arrowBounce {
 
     0%,
@@ -1077,13 +1105,13 @@ html {
     position: absolute;
     bottom: 80px;
     right: 0;
-    background: transparent;
-    border: 1px solid var(--portal-accent-dim);
+    background: #000;
+    border: 1px solid #fff;
     min-width: 200px;
     opacity: 0;
     visibility: hidden;
     transform: translateY(10px);
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     flex-direction: column;
 }
@@ -1096,10 +1124,10 @@ html {
 
 .contact-widget-item {
     padding: 15px 20px;
-    background: transparent;
+    background: #000;
     border: none;
-    border-bottom: 1px solid var(--portal-accent-dim);
-    color: var(--portal-text);
+    border-bottom: 1px solid #333;
+    color: #fff;
     text-align: left;
     cursor: pointer;
     transition: all 0.2s ease;
@@ -1117,14 +1145,28 @@ html {
 }
 
 .contact-widget-item:hover {
-    background: rgba(255, 255, 255, 0.05);
-    border-left: 2px solid var(--portal-accent);
+    background: #fff;
+    color: #000;
 }
 
 .contact-icon {
     font-size: 1.2rem;
     width: 20px;
     text-align: center;
+}
+
+.contact-btn {
+    font-size: 0.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
 }
 
 .contact-availability {
@@ -1140,16 +1182,20 @@ html {
     align-items: center;
     gap: 8px;
     padding: 8px 12px;
-    background: transparent;
+    background: rgba(0, 0, 0, 0.8);
     border: 1px solid var(--portal-accent-dim);
     opacity: 0;
     visibility: hidden;
-    transition: all 0.3s ease;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .contact-widget:hover .contact-availability {
     opacity: 1;
     visibility: visible;
+}
+
+.contact-availability.move-left {
+    transform: translateX(-210px);
 }
 
 .availability-dot {
@@ -1162,9 +1208,12 @@ html {
 }
 
 @keyframes pulse {
-    0%, 100% {
+
+    0%,
+    100% {
         opacity: 1;
     }
+
     50% {
         opacity: 0.5;
     }
@@ -1275,6 +1324,7 @@ html {
     .social-stat-value {
         font-size: 1.75rem;
     }
+
     .access-grid {
         grid-template-columns: 1fr;
     }
@@ -1382,8 +1432,202 @@ html {
         white-space: nowrap;
     }
 
-    .modal-content {
-        padding: 20px;
-        max-height: calc(90vh - 180px);
+    /* Advanced SVG Animations - Refined Horror */
+    #eye-animation,
+    #limbo-animation {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.98);
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 10000;
+        pointer-events: none;
+        overflow: hidden;
     }
+
+    #eye-animation.active,
+    #limbo-animation.active {
+        display: flex;
+    }
+
+    .scary-eye-svg {
+        width: 300px;
+        height: 300px;
+        filter: url(#eye-twitch);
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .scary-eye-svg.following {
+        width: 600px;
+        height: 600px;
+    }
+
+    /* Red Crying State */
+    .scary-eye-svg.crying .eye-whites {
+        fill: #400;
+        transition: fill 2s ease;
+    }
+
+    .scary-eye-svg.crying .eye-pupil {
+        fill: #f00 !important;
+        filter: blur(2px);
+        transition: all 1s ease;
+    }
+
+    .scary-eye-svg.crying .teardrop {
+        opacity: 1;
+        animation: tearFall 2s infinite linear;
+    }
+
+    @keyframes tearFall {
+        0% {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+        }
+
+        100% {
+            transform: translateY(300px) scale(0.5);
+            opacity: 0;
+        }
+    }
+
+    /* Stopping Hand */
+    #stopping-hand-container {
+        position: absolute;
+        bottom: -100%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 500px;
+        transition: bottom 1.5s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    #stopping-hand-container.show {
+        bottom: -100px;
+    }
+
+    #stopping-hand {
+        width: 100%;
+        height: auto;
+        filter: drop-shadow(0 0 50px #000);
+    }
+
+    .palm-text {
+        font-family: var(--portal-font-mono);
+        font-size: 24px;
+        fill: #f00;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        paint-order: stroke;
+        stroke: #000;
+        stroke-width: 4px;
+        opacity: 0;
+        transition: opacity 0.5s ease 1.5s;
+    }
+
+    #stopping-hand-container.show .palm-text {
+        opacity: 1;
+    }
+
+    .scary-text {
+        font-size: 2rem;
+        color: #500;
+        text-shadow: 0 0 20px #f00;
+        letter-spacing: 15px;
+        font-weight: 900;
+        text-transform: uppercase;
+        margin-top: -50px;
+        animation: textFlicker 0.15s infinite alternate;
+        z-index: 11;
+    }
+
+    /* Eye Closed State */
+    .scary-eye-svg.closed .eye-iris,
+    .scary-eye-svg.closed .eye-pupil {
+        transform: scaleY(0);
+        transform-origin: center center;
+        transition: transform 0.5s ease-in-out;
+    }
+
+    .scary-eye-svg.closed .eye-whites {
+        fill: #000;
+        transition: fill 0.5s ease-in-out;
+    }
+
+    @keyframes textFlicker {
+        0% {
+            opacity: 0.8;
+            transform: scale(1);
+        }
+
+        100% {
+            opacity: 0.3;
+            transform: scale(1.05);
+        }
+    }
+
+    /* Limbo Swarm */
+    #limbo-swarm {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .swarm-eye {
+        position: absolute;
+        width: 150px;
+        height: 150px;
+        filter: url(#eye-twitch);
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    .swarm-eye.show {
+        animation: swarmEmerge 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+
+    @keyframes swarmEmerge {
+        from {
+            opacity: 0;
+            transform: scale(0);
+        }
+
+        to {
+            opacity: 0.8;
+            transform: scale(1);
+        }
+    }
+
+    .limbo-text {
+        position: relative;
+        z-index: 10;
+        font-size: 3rem;
+        color: #f00;
+        text-shadow: 0 0 30px #000, 0 0 10px #f00;
+        letter-spacing: 20px;
+        font-weight: 900;
+        text-transform: uppercase;
+        animation: roar 2s ease-in-out infinite;
+    }
+
+    @keyframes roar {
+
+        0%,
+        100% {
+            transform: scale(1);
+        }
+
+        50% {
+            transform: scale(1.2);
+            filter: blur(2px);
+        }
+    }
+}
 }

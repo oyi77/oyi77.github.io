@@ -3,7 +3,7 @@
  * Black/White monochrome design
  */
 
-(function() {
+(function () {
   'use strict';
 
   function createContactWidget() {
@@ -17,8 +17,8 @@
     const mainButton = document.createElement('button');
     mainButton.className = 'contact-widget-button';
     mainButton.setAttribute('aria-label', 'Open contact menu');
-    mainButton.innerHTML = '<span>Contact</span>';
-    
+    mainButton.innerHTML = '<span class="contact-btn">Contact</span>';
+
     // Create dropdown menu
     const menu = document.createElement('div');
     menu.className = 'contact-widget-menu';
@@ -33,21 +33,18 @@
         icon: '✉'
       },
       {
-        label: 'LinkedIn',
+        label: 'Calendly',
         action: () => {
-          window.open('https://linkedin.com/in/fikriizzuddin', '_blank', 'noopener,noreferrer');
+          window.open('https://calendly.com/muchammadizzuddin/30min', '_blank', 'noopener,noreferrer');
         },
-        icon: '💼'
+        icon: '📅'
       },
       {
-        label: 'Download CV',
+        label: 'Telegram',
         action: () => {
-          const link = document.createElement('a');
-          link.href = '/CV.pdf';
-          link.download = 'Muchammad_Fikri_Izzuddin_CV.pdf';
-          link.click();
+          window.open('https://t.me/oyi77', '_blank', 'noopener,noreferrer');
         },
-        icon: '📄'
+        icon: '✈'
       }
     ];
 
@@ -81,9 +78,11 @@
       if (isOpen) {
         menu.classList.add('show');
         menu.setAttribute('aria-hidden', 'false');
+        availability.classList.add('move-left');
       } else {
         menu.classList.remove('show');
         menu.setAttribute('aria-hidden', 'true');
+        availability.classList.remove('move-left');
       }
     });
 
@@ -93,6 +92,7 @@
         isOpen = false;
         menu.classList.remove('show');
         menu.setAttribute('aria-hidden', 'true');
+        availability.classList.remove('move-left');
       }
     });
 

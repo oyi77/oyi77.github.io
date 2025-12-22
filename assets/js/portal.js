@@ -53,13 +53,31 @@ function initToggle() {
 
   let currentState = 'main'; // 'main' | 'expanded' | 'metrics'
 
-  const toggleView = () => {
-    if (currentState === 'main') {
-      // Stage 1: Main → Expanded (Arrow Right → Left)
-      currentState = 'expanded';
+  const showMain = () => {
+    currentState = 'main';
+    toggleBtn.classList.remove('active');
+    toggleContainer.classList.remove('active');
+    portfolioCards.forEach(card => card.classList.remove('animate'));
+    expandedSections.classList.remove('show');
+    metricsSections.classList.remove('show');
+    metricsSections.setAttribute('aria-hidden', 'true');
+    setTimeout(() => {
+      mainContent.classList.remove('slide-left');
+    }, 100);
+    if (arrow) arrow.textContent = '→';
+    document.body.style.overflow = '';
+  };
+
+  const showExpanded = () => {
+    // If coming from metrics, just hide metrics
+    if (currentState === 'metrics') {
+      metricsSections.classList.remove('show');
+      metricsSections.setAttribute('aria-hidden', 'true');
+    } else {
+      // Coming from main
+      mainContent.classList.add('slide-left');
       toggleBtn.classList.add('active');
       toggleContainer.classList.add('active');
-      mainContent.classList.add('slide-left');
       setTimeout(() => {
         expandedSections.classList.add('show');
         portfolioCards.forEach((card, index) => {
@@ -68,54 +86,87 @@ function initToggle() {
           }, index * 80);
         });
       }, 100);
-      if (arrow) arrow.textContent = '↓'; // Show down arrow for next stage
-      document.body.style.overflow = 'hidden';
+    }
+    currentState = 'expanded';
+    if (arrow) arrow.textContent = '↓';
+    document.body.style.overflow = 'hidden';
+  };
+
+  const showMetrics = () => {
+    currentState = 'metrics';
+    metricsSections.setAttribute('aria-hidden', 'false');
+    metricsSections.classList.add('show');
+    if (arrow) arrow.textContent = '↑';
+    // Trigger metrics animation
+    setTimeout(() => {
+      initMetricsAnimation();
+      loadGitHubStats();
+    }, 100);
+  };
+
+  const toggleView = () => {
+    if (currentState === 'main') {
+      showExpanded();
     } else if (currentState === 'expanded') {
-      // Stage 2: Expanded → Metrics (Arrow Down → Up)
-      currentState = 'metrics';
-      metricsSections.setAttribute('aria-hidden', 'false');
-      metricsSections.classList.add('show');
-      if (arrow) arrow.textContent = '↑'; // Show up arrow to go back
-      // Trigger metrics animation
-      setTimeout(() => {
-        initMetricsAnimation();
-        loadGitHubStats();
-      }, 100);
+      showMetrics();
     } else if (currentState === 'metrics') {
-      // Stage 3: Metrics → Expanded (Arrow Up → Down)
-      currentState = 'expanded';
-      metricsSections.classList.remove('show');
-      metricsSections.setAttribute('aria-hidden', 'true');
-      if (arrow) arrow.textContent = '↓'; // Show down arrow again
+      showExpanded();
     }
   };
 
-  // Handle back navigation (ESC key)
+  // Handle keyboard navigation
   document.addEventListener('keydown', (e) => {
+    // Navigation Logic
+    if (currentState === 'main') {
+      if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        showExpanded();
+      }
+    } else if (currentState === 'expanded') {
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        showMain();
+      } else if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        showMetrics();
+      }
+    } else if (currentState === 'metrics') {
+      if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        showExpanded();
+      }
+    }
+
     if (e.key === 'Escape') {
+      // Trigger eye animation if in main
+      if (currentState === 'main') {
+        triggerEyeAnimation();
+      }
+
       if (currentState === 'metrics') {
-        // Metrics → Expanded
-        currentState = 'expanded';
-        metricsSections.classList.remove('show');
-        metricsSections.setAttribute('aria-hidden', 'true');
-        if (arrow) arrow.textContent = '↓';
+        showExpanded();
       } else if (currentState === 'expanded') {
-        // Expanded → Main (Arrow Left → Right)
-        currentState = 'main';
-        toggleBtn.classList.remove('active');
-        toggleContainer.classList.remove('active');
-        portfolioCards.forEach(card => card.classList.remove('animate'));
-        expandedSections.classList.remove('show');
-        setTimeout(() => {
-          mainContent.classList.remove('slide-left');
-        }, 100);
-        if (arrow) arrow.textContent = '→';
-        document.body.style.overflow = '';
+        showMain();
       }
     }
   });
 
+  // Cursor leave animation
+  document.addEventListener('mouseleave', () => {
+    triggerEyeAnimation();
+  });
+
   toggleBtn.addEventListener('click', toggleView);
+}
+
+function triggerEyeAnimation() {
+  const eye = document.getElementById('eye-animation');
+  if (eye) {
+    eye.classList.add('active');
+    setTimeout(() => {
+      eye.classList.remove('active');
+    }, 3000);
+  }
 }
 
 // ============================================================================
@@ -603,7 +654,7 @@ function initModal() {
 
 function initMetricsAnimation() {
   const metricValues = document.querySelectorAll('.metric-value, .achievement-value');
-  
+
   const observerOptions = {
     threshold: 0.5,
     rootMargin: '0px'
@@ -650,42 +701,42 @@ async function loadGitHubStats() {
   try {
     const username = 'oyi77';
     const response = await fetch(`https://api.github.com/users/${username}`);
-    
+
     if (!response.ok) throw new Error('GitHub API error');
-    
+
     const data = await response.json();
-    
+
     // Update repository count
     const repoCountEl = document.getElementById('repo-count');
     if (repoCountEl) {
       animateToValue(repoCountEl, data.public_repos || 0);
     }
-    
+
     // Fetch repositories for stars/forks
     const reposResponse = await fetch(`https://api.github.com/users/${username}/repos?per_page=100&sort=updated`);
     if (reposResponse.ok) {
       const repos = await reposResponse.json();
       let totalStars = 0;
       let totalForks = 0;
-      
+
       repos.forEach(repo => {
         totalStars += repo.stargazers_count || 0;
         totalForks += repo.forks_count || 0;
       });
-      
+
       const starsEl = document.getElementById('github-stars');
       const forksEl = document.getElementById('github-forks');
-      
+
       if (starsEl) animateToValue(starsEl, totalStars);
       if (forksEl) animateToValue(forksEl, totalForks);
     }
-    
+
     // Contributions (approximate - GitHub API doesn't provide this directly)
     const contributionsEl = document.getElementById('github-contributions');
     if (contributionsEl) {
       contributionsEl.textContent = 'Active';
     }
-    
+
   } catch (error) {
     console.warn('Failed to load GitHub stats:', error);
     // Set fallback values
@@ -699,16 +750,24 @@ async function loadGitHubStats() {
 
 function animateToValue(element, target) {
   const current = parseInt(element.textContent) || 0;
+
+  // If we're already at the target (or starting from 0 to 0), just update and exit
+  if (current === target) {
+    element.textContent = target;
+    return;
+  }
+
   const increment = target > current ? 1 : -1;
   const duration = 1500;
   const steps = Math.abs(target - current);
-  const delay = duration / steps;
-  
+  // Prevent division by zero or infinite delay
+  const delay = steps > 0 ? duration / steps : 0;
+
   let currentValue = current;
   const timer = setInterval(() => {
     currentValue += increment;
     element.textContent = currentValue;
-    
+
     if (currentValue === target) {
       clearInterval(timer);
     }
@@ -739,5 +798,135 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     observer.observe(expandedSections, { attributes: true, attributeFilter: ['class'] });
   }
+  // Exit intent - CTA Modal (Mouse Leave Strategy)
+  // Triggers when mouse leaves the viewport at the top (exit intent)
+  document.addEventListener('mouseleave', (e) => {
+    // Check if mouse left via the top of the screen (y < 0)
+    if (e.clientY <= 0) {
+      showCTAModal();
+    }
+  });
+
+  // Cursor leave animation (Keep eye animation)
+  document.addEventListener('mouseleave', () => {
+    triggerEyeAnimation();
+  });
+
+  initCTAModal();
   console.log('Portal system loaded with real content.');
 });
+
+// ============================================================================
+// CTA MODAL LOGIC
+// ============================================================================
+
+function initCTAModal() {
+  const modal = document.getElementById('cta-modal');
+  const closeBtn = document.getElementById('cta-close');
+  const stayBtn = document.getElementById('cta-stay-btn');
+
+  if (!modal) return;
+
+  const closeModal = () => {
+    modal.classList.remove('show');
+    modal.setAttribute('aria-hidden', 'true');
+  };
+
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  if (stayBtn) stayBtn.addEventListener('click', closeModal);
+
+  // Close on outside click
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+}
+
+function showCTAModal() {
+  const modal = document.getElementById('cta-modal');
+  if (modal) {
+    modal.classList.add('show');
+    modal.setAttribute('aria-hidden', 'false');
+  }
+}
+
+// ============================================================================
+// ADVANCED ANIMATIONS LOGIC
+// ============================================================================
+
+const EyeFollower = {
+  activeEyes: [],
+  mousePos: { x: 0, y: 0 },
+  maxTravelX: 180,
+  maxTravelY: 80,
+
+  init() {
+    window.addEventListener('mousemove', (e) => {
+      this.mousePos.x = e.clientX;
+      this.mousePos.y = e.clientY;
+      this.update();
+    });
+  },
+
+  register(element) {
+    if (!this.activeEyes.includes(element)) {
+      this.activeEyes.push(element);
+    }
+  },
+
+  unregister(element) {
+    this.activeEyes = this.activeEyes.filter(e => e !== element);
+  },
+
+  update() {
+    if (this.activeEyes.length === 0) return;
+
+    this.activeEyes.forEach(eye => {
+      const rect = eye.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+
+      const dx = this.mousePos.x - centerX;
+      const dy = this.mousePos.y - centerY;
+
+      const pupilX = this.clamp(dx / 5, -this.maxTravelX, this.maxTravelX);
+      const pupilY = this.clamp(dy / 5, -this.maxTravelY, this.maxTravelY);
+
+      eye.style.setProperty('--pupil-x', `${pupilX}px`);
+      eye.style.setProperty('--pupil-y', `${pupilY}px`);
+    });
+  },
+
+  clamp(val, min, max) {
+    return Math.max(min, Math.min(max, val));
+  }
+};
+
+EyeFollower.init();
+
+function triggerEyeAnimation() {
+  const eye = document.getElementById('eye-animation');
+  if (eye && !eye.classList.contains('active')) {
+    eye.classList.add('active');
+    const svg = eye.querySelector('.scary-eye-svg');
+
+    // Safety check
+    if (!svg) return;
+
+    // Start closed
+    svg.classList.add('closed');
+    svg.classList.remove('crying'); // Reset state
+
+    // Animate opening
+    setTimeout(() => {
+      svg.classList.remove('closed');
+      EyeFollower.register(svg);
+    }, 1000);
+
+    setTimeout(() => {
+      eye.classList.remove('active');
+      EyeFollower.unregister(svg);
+    }, 5000);
+  }
+}
+
+// Removed triggerLimboAnimation as it is replaced by CTA Modal
