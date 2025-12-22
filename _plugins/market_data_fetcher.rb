@@ -6,20 +6,42 @@ module Jekyll
     priority :normal
 
     def generate(site)
-      market_data = {
-        'cryptocurrencies' => fetch_crypto_data,
-        'indices' => fetch_indices_data,
-        'generated_at' => Time.now.strftime('%Y-%m-%d %H:%M:%S UTC')
-      }
-      
-      # Write to data file
+      begin
+        market_data = {
+          'cryptocurrencies' => fetch_crypto_data,
+          'indices' => fetch_indices_data,
+          'generated_at' => Time.now.strftime('%Y-%m-%d %H:%M:%S UTC')
+        }
+        
+        # Write to data file
+        data_dir = File.join(site.source, '_data')
+        FileUtils.mkdir_p(data_dir)
+        
+        data_file = File.join(data_dir, 'market_data.yml')
+        File.write(data_file, market_data.to_yaml)
+        
+        Jekyll.logger.info "Market Data Fetcher:", "Fetched market data"
+      rescue => e
+        Jekyll.logger.warn "Market Data Fetcher:", "Error: #{e.message}"
+        # Create fallback data file
+        create_fallback_data(site)
+      end
+    end
+    
+    def create_fallback_data(site)
       data_dir = File.join(site.source, '_data')
       FileUtils.mkdir_p(data_dir)
-      
       data_file = File.join(data_dir, 'market_data.yml')
-      File.write(data_file, market_data.to_yaml)
       
-      Jekyll.logger.info "Market Data Fetcher:", "Fetched market data"
+      fallback_data = {
+        'cryptocurrencies' => generate_sample_crypto_data,
+        'indices' => generate_sample_indices_data,
+        'generated_at' => Time.now.strftime('%Y-%m-%d %H:%M:%S UTC'),
+        'note' => 'Using fallback data due to API error'
+      }
+      
+      File.write(data_file, fallback_data.to_yaml)
+      Jekyll.logger.info "Market Data Fetcher:", "Created fallback market_data.yml"
     end
 
     private
@@ -43,6 +65,7 @@ module Jekyll
         http = Net::HTTP.new(uri.host, uri.port)
         http.use_ssl = true
         http.read_timeout = 10
+        http.open_timeout = 5
         
         request = Net::HTTP::Get.new(uri)
         request['User-Agent'] = 'Jekyll-Market-Data-Fetcher'
@@ -62,7 +85,16 @@ module Jekyll
               'market_cap' => coin_data['usd_market_cap']
             }
           end
+        elsif response.code == '429'
+          Jekyll.logger.warn "Market Data Fetcher:", "Rate limit exceeded, using fallback data"
+          crypto_data = generate_sample_crypto_data
+        else
+          Jekyll.logger.warn "Market Data Fetcher:", "API returned #{response.code}, using fallback data"
+          crypto_data = generate_sample_crypto_data
         end
+      rescue Net::TimeoutError, Net::OpenTimeout
+        Jekyll.logger.warn "Market Data Fetcher:", "Request timeout, using fallback data"
+        crypto_data = generate_sample_crypto_data
       rescue => e
         Jekyll.logger.warn "Market Data Fetcher:", "Error fetching crypto data: #{e.message}"
         # Return sample data if API fails

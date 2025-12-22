@@ -27,7 +27,14 @@ class HelpApp {
       { cmd: 'hack', desc: 'Privilege escalation simulation' },
       { cmd: 'install', desc: 'List EcmaOS packages (use opm for full features)' },
       { cmd: 'opm', desc: 'Advanced package manager (install, search, registry)' },
-      { cmd: 'shell', desc: 'Simulated local shell (safe demo mode)' }
+      { cmd: 'shell', desc: 'Simulated local shell (safe demo mode)' },
+      { cmd: 'about', desc: 'About information and bio' },
+      { cmd: 'dashboard', desc: 'System dashboard overview' },
+      { cmd: 'file-manager', desc: 'File manager interface (alias: fm)' },
+      { cmd: 'projects', desc: 'GitHub projects listing (use --led for led projects)' },
+      { cmd: 'sites', desc: 'Portfolio sites and links' },
+      { cmd: 'case-studies', desc: 'Case studies portfolio (alias: cases)' },
+      { cmd: 'approaches', desc: 'Problem-solving approaches and methodologies' }
     ];
 
     // Integrasi EcmaOS - Merge into Core
@@ -65,10 +72,12 @@ class HelpApp {
           { cmd: 'format', desc: 'Format storage device' },
           { cmd: 'mount', desc: 'Mount filesystem' },
           { cmd: 'umount', desc: 'Unmount filesystem' },
-          { cmd: 'snake', desc: 'Play snake game' },
-          { cmd: 'video', desc: 'Play video file' },
-          { cmd: 'play', desc: 'Play media file' },
-          { cmd: 'screensaver', desc: 'Activate screensaver' }
+      { cmd: 'snake', desc: 'Play snake game' },
+      { cmd: 'video', desc: 'Play video file' },
+      { cmd: 'play', desc: 'Play media file' },
+      { cmd: 'screensaver', desc: 'Activate screensaver' },
+      { cmd: 'decrypt', desc: 'Decrypt classified files' },
+      { cmd: 'matrix', desc: 'Matrix rain screensaver effect' }
         ];
         ecmaCommands = knownEcmaCommands;
       }
@@ -87,13 +96,20 @@ class HelpApp {
     const fs = [
       { cmd: 'ls [path]', desc: 'List directory contents' },
       { cmd: 'cd [path]', desc: 'Change directory' },
+      { cmd: 'pwd', desc: 'Print working directory' },
       { cmd: 'cat [file]', desc: 'Read file (with syntax highlighting)' },
       { cmd: 'cat -n [file]', desc: 'Show line numbers' },
       { cmd: 'cat -E [file]', desc: 'Show $ at end of lines' },
       { cmd: 'cat -A [file]', desc: 'Show all (equivalent to -vET)' },
+      { cmd: 'mkdir [dir]', desc: 'Create directory (EcmaOS)' },
+      { cmd: 'touch [file]', desc: 'Create file (EcmaOS)' },
+      { cmd: 'rm [file]', desc: 'Remove file (EcmaOS)' },
+      { cmd: 'mv [src] [dest]', desc: 'Move/rename file (EcmaOS)' },
+      { cmd: 'cp [src] [dest]', desc: 'Copy file (EcmaOS)' },
+      { cmd: 'decrypt [file]', desc: 'Decrypt classified files' },
       { cmd: 'clear', desc: 'Clear terminal screen' }
     ];
-    fs.forEach(c => this.terminal.write(`    \x1b[1;33m${c.cmd.padEnd(15)}\x1b[0m | ${c.desc}\r\n`));
+    fs.forEach(c => this.terminal.write(`    \x1b[1;33m${c.cmd.padEnd(18)}\x1b[0m | ${c.desc}\r\n`));
 
     this.terminal.write('\r\n  \x1b[1;32mMARKET ANALYZER:\x1b[0m\r\n');
     const market = [
@@ -114,9 +130,19 @@ class HelpApp {
     advanced.forEach(c => this.terminal.write(`    \x1b[1;33m${c.cmd.padEnd(20)}\x1b[0m | ${c.desc}\r\n`));
 
 
+    this.terminal.write('\r\n  \x1b[1;32mENTERTAINMENT:\x1b[0m\r\n');
+    const entertainment = [
+      { cmd: 'matrix', desc: 'Matrix rain screensaver effect' },
+      { cmd: 'snake', desc: 'Play classic snake game' },
+      { cmd: 'video [file]', desc: 'Play video file' },
+      { cmd: 'play [file]', desc: 'Play media file' },
+      { cmd: 'screensaver', desc: 'Activate screensaver' }
+    ];
+    entertainment.forEach(c => this.terminal.write(`    \x1b[1;33m${c.cmd.padEnd(18)}\x1b[0m | ${c.desc}\r\n`));
+
     this.terminal.write('\r\n  \x1b[1;32mINTERFACE:\x1b[0m\r\n');
-    this.terminal.write('    \x1b[1;33mtheme <id>\x1b[0m  | matrix, amber, hacker, cyberpunk\r\n');
-    this.terminal.write('    \x1b[1;33mhome\x1b[0m       | Show welcome banner and starting screen\r\n');
+    this.terminal.write('    \x1b[1;33mtheme <id>\x1b[0m     | matrix, amber, hacker, cyberpunk\r\n');
+    this.terminal.write('    \x1b[1;33mhome\x1b[0m            | Show welcome banner and starting screen\r\n');
 
     this.terminal.write('\r\n  \x1b[1;32mKEYBOARD SHORTCUTS:\x1b[0m\r\n');
     this.terminal.write('    \x1b[1;33mCtrl+F\x1b[0m     | Search terminal content\r\n');

@@ -39,15 +39,23 @@ When a command exists natively in EcmaOS kernel, prefer delegating to it rather 
 - `github-stats` - GitHub profile stats
 - `market` - Market data
 - `share` - Social sharing
+- `about` - About information and bio
+- `dashboard` - System dashboard overview
+- `file-manager` / `fm` - File manager interface
+- `projects` - GitHub projects listing (with --led flag for led projects)
+- `sites` - Portfolio sites and links
+- `case-studies` / `cases` - Case studies portfolio
+- `approaches` - Problem-solving approaches and methodologies
 
 ## Delegated to EcmaOS
-- File operations: `cat`, `touch`, `mkdir`, `rm`, `cp`, `mv`
+- File operations: `touch`, `mkdir`, `rm`, `cp`, `mv` (Note: `cat` kept locally for syntax highlighting)
 - Directory: `ls`, `cd`, `pwd`
 - System: `ps`, `kill`, `df`, `du`, `free`, `env`
 - Network: `fetch`, `download`
 - Utilities: `edit`, `load`
 - Disk: `mount`, `umount`, `chkdisk`, `format`
 - Entertainment: `snake`, `video`, `play`, `screensaver`
+- Effects: `matrix`, `decrypt`
 
 ## Implementation Notes
 - Remove switch case for delegated commands

@@ -9,30 +9,57 @@ module Jekyll
       username = site.config['github_username']
       return unless username
       
+      data_dir = File.join(site.source, '_data')
+      FileUtils.mkdir_p(data_dir)
+      data_file = File.join(data_dir, 'github_stats.yml')
+      
       token = ENV['GITHUB_TOKEN']
-      return unless token # Skip if no token
       
-      stats = {
-        'profile' => {},
-        'repositories' => [],
-        'contributions' => {},
-        'languages' => {},
-        'generated_at' => Time.now.strftime('%Y-%m-%d %H:%M:%S UTC')
-      }
-      
-      begin
-        stats = fetch_github_data(username, token, stats)
+      if token
+        # Fetch fresh data
+        stats = {
+          'profile' => {},
+          'repositories' => [],
+          'contributions' => {},
+          'languages' => {},
+          'generated_at' => Time.now.strftime('%Y-%m-%d %H:%M:%S UTC')
+        }
         
-        # Write to data file
-        data_dir = File.join(site.source, '_data')
-        FileUtils.mkdir_p(data_dir)
-        
-        data_file = File.join(data_dir, 'github_stats.yml')
-        File.write(data_file, stats.to_yaml)
-        
-        Jekyll.logger.info "GitHub Data Fetcher:", "Fetched data for #{username}"
-      rescue => e
-        Jekyll.logger.warn "GitHub Data Fetcher:", "Error: #{e.message}"
+        begin
+          stats = fetch_github_data(username, token, stats)
+          File.write(data_file, stats.to_yaml)
+          Jekyll.logger.info "GitHub Data Fetcher:", "Fetched data for #{username}"
+        rescue => e
+          Jekyll.logger.warn "GitHub Data Fetcher:", "Error fetching data: #{e.message}"
+          # Try to use existing file if available
+          use_existing_data(data_file, username)
+        end
+      else
+        # No token - use existing data or create placeholder
+        Jekyll.logger.info "GitHub Data Fetcher:", "GITHUB_TOKEN not set, using existing data or placeholder"
+        use_existing_data(data_file, username)
+      end
+    end
+    
+    def use_existing_data(data_file, username)
+      if File.exist?(data_file)
+        Jekyll.logger.info "GitHub Data Fetcher:", "Using existing github_stats.yml"
+      else
+        # Create placeholder data
+        placeholder = {
+          'profile' => {
+            'login' => username,
+            'name' => username,
+            'message' => 'GitHub data requires GITHUB_TOKEN environment variable'
+          },
+          'repositories' => [],
+          'contributions' => {},
+          'languages' => {},
+          'generated_at' => Time.now.strftime('%Y-%m-%d %H:%M:%S UTC'),
+          'note' => 'Set GITHUB_TOKEN environment variable to fetch real data'
+        }
+        File.write(data_file, placeholder.to_yaml)
+        Jekyll.logger.info "GitHub Data Fetcher:", "Created placeholder github_stats.yml"
       end
     end
 

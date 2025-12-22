@@ -8,37 +8,47 @@ module Jekyll
     def generate(site)
       return unless site.config['github_username']
 
-      username = site.config['github_username']
-      stats = {
-        'repositories' => [],
-        'summary' => {
-          'total_repos' => 0,
-          'total_stars' => 0,
-          'total_forks' => 0,
-          'total_commits' => 0,
-          'languages' => {},
-          'top_repos' => [],
-          'activity_trends' => {}
-        },
-        'generated_at' => Time.now.strftime('%Y-%m-%d %H:%M:%S UTC')
-      }
+      begin
+        username = site.config['github_username']
+        stats = {
+          'repositories' => [],
+          'summary' => {
+            'total_repos' => 0,
+            'total_stars' => 0,
+            'total_forks' => 0,
+            'total_commits' => 0,
+            'languages' => {},
+            'top_repos' => [],
+            'activity_trends' => {}
+          },
+          'generated_at' => Time.now.strftime('%Y-%m-%d %H:%M:%S UTC')
+        }
 
-      # Fetch repository data from GitHub API if available
-      if ENV['GITHUB_TOKEN']
-        stats = fetch_github_stats(username, stats)
-      else
-        # Fallback: Use project data from terminal.yml
-        stats = generate_from_local_data(site, stats)
+        # Fetch repository data from GitHub API if available
+        if ENV['GITHUB_TOKEN']
+          begin
+            stats = fetch_github_stats(username, stats)
+          rescue => e
+            Jekyll.logger.warn "Repository Analytics:", "Error fetching GitHub stats: #{e.message}"
+            stats = generate_from_local_data(site, stats)
+          end
+        else
+          # Fallback: Use project data from terminal.yml
+          stats = generate_from_local_data(site, stats)
+        end
+
+        # Write to data file
+        data_dir = File.join(site.source, '_data')
+        FileUtils.mkdir_p(data_dir)
+        
+        data_file = File.join(data_dir, 'repository_stats.yml')
+        File.write(data_file, stats.to_yaml)
+        
+        Jekyll.logger.info "Repository Analytics:", "Generated #{stats['summary']['total_repos']} repository stats"
+      rescue => e
+        Jekyll.logger.warn "Repository Analytics:", "Error: #{e.message}"
+        Jekyll.logger.debug "Repository Analytics:", e.backtrace.join("\n")
       end
-
-      # Write to data file
-      data_dir = File.join(site.source, '_data')
-      FileUtils.mkdir_p(data_dir)
-      
-      data_file = File.join(data_dir, 'repository_stats.yml')
-      File.write(data_file, stats.to_yaml)
-      
-      Jekyll.logger.info "Repository Analytics:", "Generated #{stats['summary']['total_repos']} repository stats"
     end
 
     private

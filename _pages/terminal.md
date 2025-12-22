@@ -1,8 +1,12 @@
 ---
 permalink: /terminal/
-title: "Terminal"
+title: "Terminal OS - Interactive Portfolio"
+description: "Interactive terminal-based portfolio showcasing Muchammad Fikri Izzuddin's 7+ years of software engineering experience, achievements, and technical expertise. Explore projects, companies, and skills through an immersive terminal interface."
 layout: terminal
 author_profile: false
+tags: [portfolio, terminal, software engineer, interactive, resume, cv]
+keywords: "interactive portfolio, terminal os, software engineer portfolio, developer portfolio, terminal interface, resume, cv"
+og_image: /assets/images/bio-photo.png
 ---
 
 

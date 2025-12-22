@@ -15,7 +15,13 @@ class FileSystemLoader {
         }
 
         try {
-            const data = window.JEKYLL_DATA;
+            const data = window.JEKYLL_DATA || {};
+            
+            // Validate data structure
+            if (typeof data !== 'object') {
+                console.error('JEKYLL_DATA is not an object');
+                return;
+            }
 
             // Create standard directories if they don't exist
             try {

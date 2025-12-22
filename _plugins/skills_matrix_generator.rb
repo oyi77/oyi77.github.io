@@ -6,9 +6,10 @@ module Jekyll
     priority :high
 
     def generate(site)
-      @site = site
-      terminal_data = site.data['terminal']
-      return unless terminal_data && terminal_data['skills']
+      begin
+        @site = site
+        terminal_data = site.data['terminal']
+        return unless terminal_data && terminal_data['skills']
 
       skills = terminal_data['skills']
       matrix = {
@@ -65,6 +66,10 @@ module Jekyll
       
       total_skills = skills.values.flatten.length
       Jekyll.logger.info "Skills Matrix:", "Generated matrix for #{total_skills} skills"
+      rescue => e
+        Jekyll.logger.warn "Skills Matrix Generator:", "Error: #{e.message}"
+        Jekyll.logger.debug "Skills Matrix Generator:", e.backtrace.join("\n")
+      end
     end
 
     private

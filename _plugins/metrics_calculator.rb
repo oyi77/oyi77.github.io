@@ -6,34 +6,47 @@ module Jekyll
     priority :normal
 
     def generate(site)
-      metrics = {
-        'code_quality' => {},
-        'project_health' => {},
-        'performance_indicators' => {},
-        'generated_at' => Time.now.strftime('%Y-%m-%d %H:%M:%S UTC')
-      }
-      
-      # Calculate metrics from GitHub data if available
-      github_stats = site.data['github_stats']
-      if github_stats
-        metrics['code_quality'] = calculate_code_quality(github_stats)
-        metrics['project_health'] = calculate_project_health(github_stats)
+      begin
+        metrics = {
+          'code_quality' => {},
+          'project_health' => {},
+          'performance_indicators' => {},
+          'generated_at' => Time.now.strftime('%Y-%m-%d %H:%M:%S UTC')
+        }
+        
+        # Calculate metrics from GitHub data if available
+        github_stats = site.data['github_stats']
+        if github_stats
+          begin
+            metrics['code_quality'] = calculate_code_quality(github_stats)
+            metrics['project_health'] = calculate_project_health(github_stats)
+          rescue => e
+            Jekyll.logger.warn "Metrics Calculator:", "Error calculating GitHub metrics: #{e.message}"
+          end
+        end
+        
+        # Calculate performance indicators from repository stats
+        repo_stats = site.data['repository_stats']
+        if repo_stats
+          begin
+            metrics['performance_indicators'] = calculate_performance_indicators(repo_stats)
+          rescue => e
+            Jekyll.logger.warn "Metrics Calculator:", "Error calculating repo metrics: #{e.message}"
+          end
+        end
+        
+        # Write to data file
+        data_dir = File.join(site.source, '_data')
+        FileUtils.mkdir_p(data_dir)
+        
+        data_file = File.join(data_dir, 'metrics.yml')
+        File.write(data_file, metrics.to_yaml)
+        
+        Jekyll.logger.info "Metrics Calculator:", "Generated performance metrics"
+      rescue => e
+        Jekyll.logger.warn "Metrics Calculator:", "Error: #{e.message}"
+        Jekyll.logger.debug "Metrics Calculator:", e.backtrace.join("\n")
       end
-      
-      # Calculate performance indicators from repository stats
-      repo_stats = site.data['repository_stats']
-      if repo_stats
-        metrics['performance_indicators'] = calculate_performance_indicators(repo_stats)
-      end
-      
-      # Write to data file
-      data_dir = File.join(site.source, '_data')
-      FileUtils.mkdir_p(data_dir)
-      
-      data_file = File.join(data_dir, 'metrics.yml')
-      File.write(data_file, metrics.to_yaml)
-      
-      Jekyll.logger.info "Metrics Calculator:", "Generated performance metrics"
     end
 
     private

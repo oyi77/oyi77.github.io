@@ -1,0 +1,261 @@
+# Case Studies - Solution Architect Portfolio
+# Muchammad Fikri Izzuddin
+
+case_studies:
+  - id: "garudamedia-scaling"
+    title: "Scaling Infrastructure for 3000+ Employee Network"
+    company: "garudamedia"
+    period: "2019 - 2021"
+    role: "Technical Lead / Engineering Manager"
+    
+    problem: |
+      GarudaMedia needed to scale their technology infrastructure to support a network of 3000+ employees
+      across multiple regions. The existing system was struggling with high traffic volumes and transaction
+      processing bottlenecks.
+    
+    company_context: |
+      GarudaMedia is one of Indonesia's largest affiliate marketing and advertising publisher companies,
+      managing massive traffic and transaction volumes across their network.
+    
+    challenge: |
+      - Handle 100M+ monthly page views
+      - Process millions of transactions daily
+      - Maintain 99.9% uptime across distributed network
+      - Scale infrastructure cost-effectively
+      - Support rapid team growth
+    
+    approach: |
+      - Conducted comprehensive system architecture review
+      - Implemented microservices architecture for scalability
+      - Migrated to cloud infrastructure (AWS)
+      - Implemented caching layers and CDN
+      - Established DevOps practices and CI/CD pipelines
+      - Created monitoring and alerting systems
+    
+    solution: |
+      - Architected and implemented distributed microservices system
+      - Migrated core services to AWS with auto-scaling
+      - Implemented Redis caching and CloudFront CDN
+      - Built CI/CD pipelines with automated testing
+      - Created comprehensive monitoring dashboard
+      - Established disaster recovery procedures
+    
+    technical_details: |
+      Technologies: AWS (EC2, RDS, S3, CloudFront), Docker, Kubernetes, Redis, PostgreSQL,
+      Node.js, React, Python, Terraform
+      
+      Architecture: Microservices with API gateway, distributed caching, load balancing,
+      database replication, and automated scaling.
+    
+    architecture: |
+      - API Gateway for request routing
+      - Microservices for core business logic
+      - Redis cluster for caching
+      - PostgreSQL with read replicas
+      - S3 for static assets
+      - CloudFront for global CDN
+      - Kubernetes for container orchestration
+    
+    implementation: |
+      - Phase 1: Infrastructure migration to AWS
+      - Phase 2: Microservices decomposition
+      - Phase 3: Caching and CDN implementation
+      - Phase 4: Monitoring and alerting setup
+      - Phase 5: CI/CD pipeline deployment
+    
+    results: |
+      - 99.9% uptime achieved
+      - 50% reduction in infrastructure costs
+      - 3x improvement in response times
+      - Successfully scaled to support 3000+ employees
+      - Zero-downtime deployments achieved
+    
+    metrics:
+      - metric: "Uptime"
+        value: "99.9%"
+      - metric: "Cost Reduction"
+        value: "50%"
+      - metric: "Response Time"
+        value: "3x improvement"
+      - metric: "Team Size Supported"
+        value: "3000+"
+    
+    my_role: |
+      Led the architecture design and implementation. Managed cross-functional teams,
+      coordinated with stakeholders, and ensured successful delivery of all phases.
+    
+    outcome: |
+      Successfully transformed GarudaMedia's infrastructure to support massive scale,
+      resulting in improved performance, reduced costs, and enhanced reliability.
+    
+    technologies:
+      - AWS
+      - Docker
+      - Kubernetes
+      - Redis
+      - PostgreSQL
+      - Node.js
+      - React
+      - Python
+      - Terraform
+
+  - id: "bitwyre-fomo-watcher"
+    title: "Fomo Watcher - 70% Accuracy Trading Prediction System"
+    company: "bitwyre"
+    period: "December 2024 - Present"
+    role: "Onchain Trader & Blockchain Developer"
+    
+    problem: |
+      Needed to identify trending tokens early to capitalize on market opportunities.
+      Manual analysis was too slow and missed critical entry points.
+    
+    company_context: |
+      Bitwyre is a cryptocurrency exchange requiring real-time market analysis and
+      trading decision support systems.
+    
+    challenge: |
+      - Analyze on-chain data in real-time
+      - Identify trending tokens before they peak
+      - Achieve high prediction accuracy
+      - Process large volumes of blockchain data
+      - Integrate with trading systems
+    
+    approach: |
+      - Analyzed on-chain metrics (transactions, volume, wallet activity)
+      - Built machine learning model for pattern recognition
+      - Integrated multiple data sources (blockchain APIs, DEX data)
+      - Created real-time monitoring dashboard
+      - Implemented automated alerts
+    
+    solution: |
+      Developed Fomo Watcher application using Python and blockchain APIs.
+      System analyzes on-chain data, identifies patterns, and predicts trending tokens
+      with 70% accuracy rate.
+    
+    technical_details: |
+      Technologies: Python, Blockchain APIs (Ethereum, BSC, Solana), Machine Learning,
+      Real-time data processing, WebSocket connections
+      
+      Data Sources: On-chain transactions, DEX volume, wallet movements, social sentiment
+    
+    architecture: |
+      - Data ingestion layer (blockchain APIs)
+      - Processing engine (Python)
+      - ML model for prediction
+      - Real-time dashboard
+      - Alert system
+    
+    implementation: |
+      - Phase 1: Data collection infrastructure
+      - Phase 2: ML model development and training
+      - Phase 3: Real-time processing pipeline
+      - Phase 4: Dashboard and alerting
+      - Phase 5: Integration with trading systems
+    
+    results: |
+      - 70% accuracy in trending token prediction
+      - $100K USD in profits generated
+      - Real-time analysis capability
+      - Automated trading signal generation
+    
+    metrics:
+      - metric: "Prediction Accuracy"
+        value: "70%"
+      - metric: "Profits Generated"
+        value: "$100K USD"
+      - metric: "Response Time"
+        value: "Real-time"
+    
+    my_role: |
+      Designed and developed the entire system. Built ML models, integrated blockchain
+      APIs, and created the trading signal generation system.
+    
+    outcome: |
+      Successfully created a high-accuracy trading prediction system that generated
+      significant profits and improved trading decision-making.
+    
+    technologies:
+      - Python
+      - Blockchain APIs
+      - Machine Learning
+      - Real-time Processing
+      - WebSocket
+
+  - id: "aitradepulse-algo-trading"
+    title: "90%+ Win Rate Algorithmic Trading Platform"
+    company: "aitradepulse"
+    period: "2022 - 2023"
+    role: "Technical Lead"
+    
+    problem: |
+      Needed an algorithmic trading platform that could consistently generate profits
+      with high win rate. Manual trading was inconsistent and time-consuming.
+    
+    company_context: |
+      AiTradePulse is an algorithmic trading platform focused on cryptocurrency markets.
+    
+    challenge: |
+      - Achieve high win rate (>90%)
+      - Handle market volatility
+      - Execute trades automatically
+      - Risk management
+      - Real-time market analysis
+    
+    approach: |
+      - Developed advanced trading algorithms
+      - Implemented risk management systems
+      - Created backtesting framework
+      - Built real-time execution engine
+      - Integrated multiple exchanges
+    
+    solution: |
+      Built comprehensive algorithmic trading platform with advanced strategies,
+      risk management, and automated execution achieving 90%+ win rate.
+    
+    technical_details: |
+      Technologies: Python, MQL4/MQL5, JavaScript, Trading APIs, Real-time data feeds,
+      Backtesting framework
+      
+      Strategies: Multiple trading strategies with risk management and position sizing
+    
+    architecture: |
+      - Strategy engine
+      - Risk management layer
+      - Execution engine
+      - Monitoring dashboard
+      - Backtesting system
+    
+    implementation: |
+      - Phase 1: Core trading engine
+      - Phase 2: Strategy development
+      - Phase 3: Risk management
+      - Phase 4: Backtesting framework
+      - Phase 5: Production deployment
+    
+    results: |
+      - 90%+ win rate achieved
+      - Consistent profitability
+      - Automated trading execution
+      - Real-time monitoring
+    
+    metrics:
+      - metric: "Win Rate"
+        value: "90%+"
+      - metric: "Consistency"
+        value: "High"
+    
+    my_role: |
+      Led development of trading platform. Designed algorithms, implemented risk
+      management, and built execution systems.
+    
+    outcome: |
+      Created a highly successful algorithmic trading platform with exceptional
+      win rate and consistent profitability.
+    
+    technologies:
+      - Python
+      - MQL4/MQL5
+      - JavaScript
+      - Trading APIs
+      - Real-time Processing
+

@@ -27,7 +27,35 @@ class CVApp {
             window.open('/oyi77', '_blank');
         } else if (subCommand === 'pdf' || subCommand === 'download') {
             this.terminal.write('\r\nInitiating secure download...\r\n');
-            window.open('/MuchammadFikriIzzuddin_CV.pdf', '_blank');
+            
+            // Check filesystem for CV file reference
+            const fsPath = this.filesystem.resolvePath(this.os.currentPath, 'cv.pdf');
+            const fsContent = this.filesystem.readFile(fsPath);
+            
+            let cvUrl = '/MuchammadFikriIzzuddin_CV.pdf'; // Default path
+            
+            if (fsContent) {
+              // Extract path from filesystem content
+              const pathMatch = fsContent.match(/Location: ([^\r\n]+)/);
+              if (pathMatch) {
+                cvUrl = pathMatch[1].trim();
+              }
+            }
+            
+            // Try to open the CV
+            try {
+              const link = document.createElement('a');
+              link.href = cvUrl;
+              link.target = '_blank';
+              link.download = 'MuchammadFikriIzzuddin_CV.pdf';
+              document.body.appendChild(link);
+              link.click();
+              document.body.removeChild(link);
+              this.terminal.write(`\x1b[1;32mCV download initiated: ${cvUrl}\x1b[0m\r\n`);
+            } catch (error) {
+              this.terminal.write(`\x1b[1;33mWarning: Could not open CV directly. Trying alternative method...\x1b[0m\r\n`);
+              window.open(cvUrl, '_blank');
+            }
         } else if (subCommand === 'text' || subCommand === 'cat') {
             this.terminal.write('\r\nStreaming text credentials...\r\n');
             // Mocking cat behavior for simplicity or use the actual handler if accessible

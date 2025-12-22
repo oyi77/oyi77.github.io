@@ -486,6 +486,28 @@ class TerminalOS {
         case 'cd':
           this.runCd(args);
           break;
+        case 'cat':
+          await this.runCommand('cat', args);
+          break;
+        case 'pwd':
+          this.terminal.write(`${this.currentPath}\r\n`);
+          break;
+        case 'decrypt':
+        case 'matrix':
+          // Delegate to EcmaOS kernel
+          if (this.ecmaKernel) {
+            try {
+              if (typeof this.ecmaKernel.execute === 'function') {
+                await this.ecmaKernel.execute(input, this.terminal);
+                this.prompt();
+                return;
+              }
+            } catch (e) {
+              console.error("EcmaOS execution failed:", e);
+            }
+          }
+          this.terminal.write(`\x1b[1;31m${command}: command not available (EcmaOS kernel not loaded)\x1b[0m\r\n`);
+          break;
         case 'clear':
         case 'cls':
           this.terminal.clear();
@@ -516,6 +538,29 @@ class TerminalOS {
         case 'share':
           await this.runCommand('share', args);
           break;
+        case 'about':
+          await this.runCommand('about', args);
+          break;
+        case 'dashboard':
+          await this.runCommand('dashboard', args);
+          break;
+        case 'file-manager':
+        case 'fm':
+          await this.runCommand('file-manager', args);
+          break;
+        case 'projects':
+          await this.runCommand('projects', args);
+          break;
+        case 'sites':
+          await this.runCommand('sites', args);
+          break;
+        case 'case-studies':
+        case 'cases':
+          await this.runCommand('case-studies', args);
+          break;
+        case 'approaches':
+          await this.runCommand('approaches', args);
+          break;
         case 'home':
           this.terminal.clear();
           await this.showWelcome();
@@ -524,12 +569,6 @@ class TerminalOS {
           // Try EcmaOS if command not found in local apps
           if (this.ecmaKernel) {
             try {
-              // Assuming EcmaOS kernel has an execute or similar method. 
-              // Based on standard shells, it might be exec(cmd, args) or similar.
-              // We will try a flexible approach or log if we aren't sure yet.
-              // For now, let's assume `execute` or `handle`.
-              // Since we don't know the API, I'll logging structure for now and try to execute.
-
               // inspecting kernel if possible
               if (typeof this.ecmaKernel.execute === 'function') {
                 await this.ecmaKernel.execute(input, this.terminal);
@@ -571,13 +610,21 @@ class TerminalOS {
       'install': InstallApp,
       'opm': OpmApp,
       'shell': ShellApp,
+      'cat': CatApp,
 
       'github': GitHubExplorerApp,
       'stats': StatsApp,
       'analytics': AnalyticsApp,
       'github-stats': GitHubStatsApp,
       'market': MarketApp,
-      'share': ShareApp
+      'share': ShareApp,
+      'about': AboutApp,
+      'dashboard': DashboardApp,
+      'file-manager': FileManagerApp,
+      'projects': ProjectsApp,
+      'sites': SitesApp,
+      'case-studies': CaseStudiesApp,
+      'approaches': ApproachesApp
     };
 
     const AppClass = appMap[command];
@@ -621,6 +668,7 @@ class TerminalOS {
   }
 
 
+
   handleTabCompletion() {
     const input = this.currentInput.trim();
     const parts = input.split(/\s+/);
@@ -628,7 +676,18 @@ class TerminalOS {
 
     // If first word, complete commands
     if (parts.length === 1) {
-      const commands = ['help', 'whoami', 'companies', 'achievements', 'repos', 'scan', 'sysmon', 'netmap', 'neofetch', 'skills', 'wallet', 'theme', 'ls', 'cd', 'cat', 'clear', 'hack', 'cv', 'github', 'stats', 'analytics', 'github-stats', 'ghstats', 'market', 'crypto', 'coins', 'indices', 'home', 'install', 'opm', 'shell'];
+      const commands = [
+        'help', 'whoami', 'companies', 'achievements', 'repos', 'scan', 'sysmon', 'netmap', 
+        'neofetch', 'skills', 'wallet', 'theme', 'ls', 'cd', 'cat', 'pwd', 'clear', 'hack', 
+        'cv', 'github', 'stats', 'analytics', 'github-stats', 'ghstats', 'market', 'crypto', 
+        'coins', 'indices', 'home', 'install', 'opm', 'shell',         'about', 'dashboard', 
+        'file-manager', 'fm', 'projects', 'sites', 'share',
+        'case-studies', 'cases', 'approaches',
+        // EcmaOS commands (delegated)
+        'mkdir', 'touch', 'rm', 'mv', 'cp', 'decrypt', 'matrix', 'snake', 'video', 'play', 
+        'screensaver', 'fetch', 'download', 'load', 'edit', 'env', 'df', 'du', 'ps', 'kill', 
+        'free', 'chkdisk', 'format', 'mount', 'umount'
+      ];
       const matches = commands.filter(cmd => cmd.startsWith(lastPart));
 
       if (matches.length === 1) {
@@ -669,28 +728,40 @@ class TerminalOS {
     try {
       const module = await import('/assets/js/terminal/ecmaos-kernel.js');
       const KernelClass = module.Kernel;
-      console.log('EcmaOS Kernel Class Loaded:', KernelClass);
+      
+      if (!KernelClass) {
+        console.warn('EcmaOS Kernel class not found in module');
+        return;
+      }
 
       // Instantiate the kernel
       if (typeof KernelClass === 'function') {
         this.ecmaKernel = new KernelClass();
-        console.log('EcmaOS Kernel Instance Created:', this.ecmaKernel);
       } else if (typeof KernelClass === 'object') {
         // If it's already an instance or singleton
         this.ecmaKernel = KernelClass;
-        console.log('EcmaOS Kernel Object:', this.ecmaKernel);
+      } else {
+        console.warn('EcmaOS Kernel is not a function or object');
+        return;
       }
 
       // Try to initialize if method exists
-      if (this.ecmaKernel && typeof this.ecmaKernel.start === 'function') {
-        await this.ecmaKernel.start(this.terminal);
-      } else if (this.ecmaKernel && typeof this.ecmaKernel.init === 'function') {
-        await this.ecmaKernel.init(this.terminal);
+      if (this.ecmaKernel) {
+        if (typeof this.ecmaKernel.start === 'function') {
+          await this.ecmaKernel.start(this.terminal);
+        } else if (typeof this.ecmaKernel.init === 'function') {
+          await this.ecmaKernel.init(this.terminal);
+        }
+        
+        // Verify execute method exists
+        if (typeof this.ecmaKernel.execute !== 'function' && typeof this.ecmaKernel.handle !== 'function') {
+          console.warn('EcmaOS Kernel missing execute/handle method');
+        }
       }
-
-      console.log('EcmaOS Kernel Ready. Execute method:', typeof this.ecmaKernel?.execute);
     } catch (error) {
       console.error('Error loading EcmaOS:', error);
+      // Don't break terminal if EcmaOS fails to load
+      this.ecmaKernel = null;
     }
   }
 }

@@ -6,10 +6,11 @@ module Jekyll
     priority :high
 
     def generate(site)
-      companies_data = site.data['companies']
-      terminal_data = site.data['terminal']
-      
-      timeline = {
+      begin
+        companies_data = site.data['companies']
+        terminal_data = site.data['terminal']
+        
+        timeline = {
         'events' => [],
         'summary' => {
           'total_duration_years' => 0,
@@ -50,6 +51,10 @@ module Jekyll
       File.write(data_file, timeline.to_yaml)
       
       Jekyll.logger.info "Timeline Generator:", "Generated timeline with #{timeline['events'].length} events"
+      rescue => e
+        Jekyll.logger.warn "Timeline Generator:", "Error: #{e.message}"
+        Jekyll.logger.debug "Timeline Generator:", e.backtrace.join("\n")
+      end
     end
 
     private

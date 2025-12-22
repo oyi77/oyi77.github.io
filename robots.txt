@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+Allow: /terminal/
+Allow: /oyi77/
+Allow: /assets/
+Disallow: /_data/
+Disallow: /_drafts/
+Disallow: /_plugins/
+Disallow: /_scripts/
+Disallow: /vendor/
+
+# Sitemap
+Sitemap: https://oyi77.github.io/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1
+

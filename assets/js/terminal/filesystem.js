@@ -247,6 +247,63 @@ Muchammad Fikri Izzuddin.
     this.ensurePath(path);
     return this.exists(path);
   }
+
+  remove(path) {
+    if (!this.exists(path)) {
+      return false;
+    }
+
+    // Find parent directory
+    const parts = path.split('/').filter(p => p);
+    if (parts.length === 0) {
+      return false; // Cannot remove root
+    }
+
+    const fileName = parts.pop();
+    const parentPath = parts.length === 0 ? '/' : '/' + parts.join('/');
+    const parent = this.fs[parentPath];
+
+    if (parent && parent.type === 'directory' && parent.children) {
+      delete parent.children[fileName];
+      delete this.fs[path];
+      return true;
+    }
+
+    return false;
+  }
+
+  move(sourcePath, destPath) {
+    if (!this.exists(sourcePath)) {
+      return false;
+    }
+
+    const sourceNode = this.fs[sourcePath];
+    if (!sourceNode) {
+      return false;
+    }
+
+    // Ensure destination directory exists
+    const destParts = destPath.split('/').filter(p => p);
+    const destFileName = destParts.pop();
+    const destDirPath = destParts.length === 0 ? '/' : '/' + destParts.join('/');
+    this.ensurePath(destDirPath);
+
+    const destDir = this.fs[destDirPath];
+    if (!destDir || destDir.type !== 'directory') {
+      return false;
+    }
+
+    // Copy node to destination
+    destDir.children[destFileName] = JSON.parse(JSON.stringify(sourceNode));
+
+    // Remove from source
+    this.remove(sourcePath);
+
+    // Update path in filesystem
+    this.fs[destPath] = destDir.children[destFileName];
+    
+    return true;
+  }
 }
 
 window.VirtualFileSystem = VirtualFileSystem;

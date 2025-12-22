@@ -8,10 +8,15 @@ module Jekyll
     def generate(site)
       return unless site.config['data_compression'] != false
       
-      compress_data_files(site)
-      generate_compressed_versions(site)
-      
-      Jekyll.logger.info "Data Compressor:", "Compressed data files"
+      begin
+        compress_data_files(site)
+        generate_compressed_versions(site)
+        
+        Jekyll.logger.info "Data Compressor:", "Compressed data files"
+      rescue => e
+        Jekyll.logger.warn "Data Compressor:", "Error compressing data: #{e.message}"
+        Jekyll.logger.debug "Data Compressor:", e.backtrace.join("\n")
+      end
     end
 
     private
@@ -26,7 +31,11 @@ module Jekyll
       end
       
       large_files.each do |file|
-        compress_file(file)
+        begin
+          compress_file(file)
+        rescue => e
+          Jekyll.logger.warn "Data Compressor:", "Error compressing #{File.basename(file)}: #{e.message}"
+        end
       end
     end
 
@@ -38,16 +47,20 @@ module Jekyll
       terminal_data_files = ['terminal.yml', 'companies.yml', 'repository_stats.yml']
       
       terminal_data_files.each do |filename|
-        file_path = File.join(data_dir, filename)
-        next unless File.exist?(file_path)
-        
-        data = YAML.load_file(file_path)
-        
-        # Create compressed version (remove unnecessary whitespace, etc.)
-        compressed = compress_yaml_data(data)
-        
-        compressed_file = File.join(data_dir, filename.sub('.yml', '.compressed.yml'))
-        File.write(compressed_file, compressed.to_yaml)
+        begin
+          file_path = File.join(data_dir, filename)
+          next unless File.exist?(file_path)
+          
+          data = YAML.load_file(file_path)
+          
+          # Create compressed version (remove unnecessary whitespace, etc.)
+          compressed = compress_yaml_data(data)
+          
+          compressed_file = File.join(data_dir, filename.sub('.yml', '.compressed.yml'))
+          File.write(compressed_file, compressed.to_yaml)
+        rescue => e
+          Jekyll.logger.warn "Data Compressor:", "Error compressing #{filename}: #{e.message}"
+        end
       end
     end
 

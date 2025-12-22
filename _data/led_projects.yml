@@ -1,0 +1,322 @@
+# Led Projects - Leadership Portfolio
+# Muchammad Fikri Izzuddin
+
+led_projects:
+  - id: "dex-clearing-algorithm"
+    name: "DEX Clearing Algorithm"
+    company: "bitwyre"
+    period: "December 2024 - Present"
+    team_size: 5
+    role: "Lead Developer"
+    
+    description: |
+      Developed automated clearing algorithm for decentralized exchange operations,
+      reducing manual labor by 60% and improving transaction processing efficiency.
+    
+    challenge: |
+      Manual clearing processes were time-consuming and error-prone. Needed automated
+      solution to handle high-volume DEX transactions efficiently.
+    
+    solution: |
+      Built Python-based clearing algorithm with smart contract integration.
+      Automated transaction matching, settlement, and reconciliation processes.
+    
+    technologies:
+      - Python
+      - Smart Contracts
+      - Blockchain APIs
+      - Automated Systems
+    
+    outcomes:
+      - 60% reduction in manual labor
+      - Improved transaction accuracy
+      - Faster processing times
+      - Automated reconciliation
+    
+    metrics:
+      - metric: "Manual Labor Reduction"
+        value: "60%"
+      - metric: "Processing Speed"
+        value: "10x improvement"
+    
+    business_impact: |
+      Significantly reduced operational costs and improved efficiency in DEX operations.
+
+  - id: "finance-dashboard"
+    name: "Finance Dashboard"
+    company: "bitwyre"
+    period: "December 2024 - Present"
+    team_size: 3
+    role: "Lead Developer"
+    
+    description: |
+      Built comprehensive finance dashboard for real-time monitoring of trading
+      performance across all teams and markets.
+    
+    challenge: |
+      Needed centralized view of trading performance across multiple teams and markets.
+      Existing systems were fragmented and didn't provide real-time insights.
+    
+    solution: |
+      Developed real-time dashboard using React and Node.js. Integrated multiple
+      data sources and provided comprehensive analytics.
+    
+    technologies:
+      - React
+      - Node.js
+      - Real-time Data
+      - Analytics
+    
+    outcomes:
+      - Real-time performance monitoring
+      - Centralized analytics
+      - Improved decision-making
+      - Team performance visibility
+    
+    metrics:
+      - metric: "Data Update Frequency"
+        value: "Real-time"
+      - metric: "Teams Monitored"
+        value: "All teams"
+    
+    business_impact: |
+      Enabled data-driven decision making and improved team performance tracking.
+
+  - id: "card-product"
+    name: "Card Product Development"
+    company: "bitwyre"
+    period: "December 2024 - Present"
+    team_size: 8
+    role: "Technical Lead"
+    
+    description: |
+      Led development of Card Product for seamless crypto-to-fiat global payments.
+      Enabled users to spend cryptocurrency like traditional debit cards.
+    
+    challenge: |
+      Needed to integrate cryptocurrency with traditional payment infrastructure.
+      Required compliance with financial regulations and seamless user experience.
+    
+    solution: |
+      Architected and led development of card product with payment gateway integration,
+      compliance systems, and user-friendly interface.
+    
+    technologies:
+      - Payment Gateways
+      - Blockchain
+      - Compliance Systems
+      - Mobile/Web Apps
+    
+    outcomes:
+      - Seamless crypto-to-fiat conversion
+      - Global payment capability
+      - Regulatory compliance
+      - User-friendly experience
+    
+    metrics:
+      - metric: "Payment Processing"
+        value: "Global"
+      - metric: "Conversion Speed"
+        value: "Instant"
+    
+    business_impact: |
+      Opened new revenue stream and expanded market reach with innovative payment solution.
+
+  - id: "otc-portal"
+    name: "OTC Portal"
+    company: "bitwyre"
+    period: "December 2024 - Present"
+    team_size: 4
+    role: "Lead Developer"
+    
+    description: |
+      Created OTC (Over-The-Counter) Portal to facilitate seamless international
+      OTC transactions for large-volume traders.
+    
+    challenge: |
+      Large-volume traders needed secure, efficient platform for OTC transactions.
+      Required compliance, security, and user-friendly interface.
+    
+    solution: |
+      Built secure OTC portal with transaction management, compliance features,
+      and international payment support.
+    
+    technologies:
+      - Secure Transactions
+      - Compliance Systems
+      - International Payments
+      - Web Platform
+    
+    outcomes:
+      - Secure OTC transactions
+      - International support
+      - Compliance adherence
+      - Large-volume support
+    
+    metrics:
+      - metric: "Transaction Volume"
+        value: "Large-volume"
+      - metric: "Geographic Coverage"
+        value: "International"
+    
+    business_impact: |
+      Enabled high-value transactions and expanded business to institutional clients.
+
+  - id: "viapulsa-workflow"
+    name: "Workflow Management System"
+    company: "viapulsa"
+    period: "January 2023 - January 2024"
+    team_size: 18
+    role: "Technical Lead"
+    
+    description: |
+      Implemented modern workflow management system to streamline development
+      processes and improve team collaboration.
+    
+    challenge: |
+      Development processes were inefficient and lacked standardization.
+      Needed to improve collaboration and reduce bottlenecks.
+    
+    solution: |
+      Designed and implemented comprehensive workflow management system with
+      automation, tracking, and collaboration features.
+    
+    technologies:
+      - Workflow Automation
+      - Project Management
+      - Collaboration Tools
+      - Process Optimization
+    
+    outcomes:
+      - 30% increase in business process efficiency
+      - Improved team collaboration
+      - Standardized processes
+      - Reduced bottlenecks
+    
+    metrics:
+      - metric: "Process Efficiency"
+        value: "30% increase"
+      - metric: "Team Size"
+        value: "18 members"
+    
+    business_impact: |
+      Significantly improved operational efficiency and team productivity.
+
+  - id: "viapulsa-migration"
+    name: "Offline to Online Business Migration"
+    company: "viapulsa"
+    period: "January 2023 - January 2024"
+    team_size: 18
+    role: "Technical Lead"
+    
+    description: |
+      Led complete migration of offline business systems to fully online and
+      automated platform. Transformed traditional business operations.
+    
+    challenge: |
+      Business was primarily offline with manual processes. Needed to digitize
+      and automate all operations while maintaining business continuity.
+    
+    solution: |
+      Architected and executed comprehensive digital transformation. Built
+      online platform with full automation and modern features.
+    
+    technologies:
+      - Digital Transformation
+      - Automation
+      - Web Platform
+      - Integration Systems
+    
+    outcomes:
+      - 100% online operations
+      - Full automation achieved
+      - Improved customer experience
+      - Scalable platform
+    
+    metrics:
+      - metric: "Digitalization"
+        value: "100%"
+      - metric: "Automation"
+        value: "Full"
+    
+    business_impact: |
+      Transformed business model, enabling scalability and improved customer experience.
+
+  - id: "linguise-api-migration"
+    name: "API Migration PHP to Node.js"
+    company: "linguise"
+    period: "November 2023 - July 2024"
+    team_size: 3
+    role: "Senior Full Stack Engineer"
+    
+    description: |
+      Led migration of core API application from PHP to modern Node.js architecture.
+      Improved performance, maintainability, and developer experience.
+    
+    challenge: |
+      Legacy PHP API was difficult to maintain and scale. Needed modern architecture
+      with better performance and developer experience.
+    
+    solution: |
+      Architected and led migration to Node.js. Implemented modern patterns,
+      improved performance, and established best practices.
+    
+    technologies:
+      - Node.js
+      - API Architecture
+      - Migration Strategy
+      - Best Practices
+    
+    outcomes:
+      - Improved performance
+      - Better maintainability
+      - Modern architecture
+      - Enhanced developer experience
+    
+    metrics:
+      - metric: "Performance"
+        value: "Improved"
+      - metric: "Team Size"
+        value: "3 engineers"
+    
+    business_impact: |
+      Improved system performance and reduced maintenance burden.
+
+  - id: "linguise-admin-dashboard"
+    name: "Admin Dashboard Application"
+    company: "linguise"
+    period: "November 2023 - July 2024"
+    team_size: 3
+    role: "Senior Full Stack Engineer"
+    
+    description: |
+      Built internal Admin Dashboard application for managing customers and services.
+      Improved operational efficiency and customer management.
+    
+    challenge: |
+      Needed centralized system for customer and service management.
+      Existing tools were fragmented and inefficient.
+    
+    solution: |
+      Developed comprehensive admin dashboard using Node.js and React.
+      Integrated with existing systems and provided unified interface.
+    
+    technologies:
+      - Node.js
+      - React
+      - Admin Systems
+      - Customer Management
+    
+    outcomes:
+      - Centralized management
+      - Improved efficiency
+      - Better customer service
+      - Unified interface
+    
+    metrics:
+      - metric: "Management Efficiency"
+        value: "Improved"
+    
+    business_impact: |
+      Improved operational efficiency and customer service capabilities.
+

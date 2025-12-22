@@ -6,21 +6,26 @@ module Jekyll
     priority :normal
 
     def generate(site)
-      analytics = {
-        'events' => generate_event_schemas(site),
-        'metrics' => generate_metrics(site),
-        'tracking_config' => generate_tracking_config(site),
-        'generated_at' => Time.now.strftime('%Y-%m-%d %H:%M:%S UTC')
-      }
-      
-      # Write to data file
-      data_dir = File.join(site.source, '_data')
-      FileUtils.mkdir_p(data_dir)
-      
-      data_file = File.join(data_dir, 'analytics.yml')
-      File.write(data_file, analytics.to_yaml)
-      
-      Jekyll.logger.info "Analytics Generator:", "Generated analytics schemas"
+      begin
+        analytics = {
+          'events' => generate_event_schemas(site),
+          'metrics' => generate_metrics(site),
+          'tracking_config' => generate_tracking_config(site),
+          'generated_at' => Time.now.strftime('%Y-%m-%d %H:%M:%S UTC')
+        }
+        
+        # Write to data file
+        data_dir = File.join(site.source, '_data')
+        FileUtils.mkdir_p(data_dir)
+        
+        data_file = File.join(data_dir, 'analytics.yml')
+        File.write(data_file, analytics.to_yaml)
+        
+        Jekyll.logger.info "Analytics Generator:", "Generated analytics schemas"
+      rescue => e
+        Jekyll.logger.warn "Analytics Generator:", "Error: #{e.message}"
+        Jekyll.logger.debug "Analytics Generator:", e.backtrace.join("\n")
+      end
     end
 
     private

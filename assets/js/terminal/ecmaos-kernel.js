@@ -1,4 +1,4 @@
-import { K } from "./kernel-CVxDewUD.js";
+import { K } from "./kernel.js";
 export {
   K as Kernel
 };

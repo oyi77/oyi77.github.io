@@ -6,21 +6,26 @@ module Jekyll
     priority :normal
 
     def generate(site)
-      seo_data = {
-        'meta_tags' => generate_meta_tags(site),
-        'structured_data' => generate_structured_data(site),
-        'sitemap_priorities' => generate_sitemap_priorities(site),
-        'generated_at' => Time.now.strftime('%Y-%m-%d %H:%M:%S UTC')
-      }
-      
-      # Write to data file
-      data_dir = File.join(site.source, '_data')
-      FileUtils.mkdir_p(data_dir)
-      
-      data_file = File.join(data_dir, 'seo.yml')
-      File.write(data_file, seo_data.to_yaml)
-      
-      Jekyll.logger.info "SEO Generator:", "Generated SEO metadata"
+      begin
+        seo_data = {
+          'meta_tags' => generate_meta_tags(site),
+          'structured_data' => generate_structured_data(site),
+          'sitemap_priorities' => generate_sitemap_priorities(site),
+          'generated_at' => Time.now.strftime('%Y-%m-%d %H:%M:%S UTC')
+        }
+        
+        # Write to data file
+        data_dir = File.join(site.source, '_data')
+        FileUtils.mkdir_p(data_dir)
+        
+        data_file = File.join(data_dir, 'seo.yml')
+        File.write(data_file, seo_data.to_yaml)
+        
+        Jekyll.logger.info "SEO Generator:", "Generated SEO metadata"
+      rescue => e
+        Jekyll.logger.warn "SEO Generator:", "Error: #{e.message}"
+        Jekyll.logger.debug "SEO Generator:", e.backtrace.join("\n")
+      end
     end
 
     private

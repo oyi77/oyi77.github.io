@@ -1,4 +1,12 @@
 main:
+  - title: "Terminal"
+    url: /terminal/
+  - title: "Case Studies"
+    url: /case-studies/
+  - title: "Led Projects"
+    url: /led-projects/
+  - title: "Approaches"
+    url: /approaches/
   - title: "Posts"
     url: /posts/
   - title: "Categories"
@@ -7,5 +15,3 @@ main:
     url: /tags/
   - title: "About"
     url: /about/
-  - title: "Terminal"
-    url: /terminal/

@@ -8,11 +8,16 @@ module Jekyll
     def generate(site)
       return unless site.config['asset_optimization'] != false
       
-      optimize_css(site)
-      optimize_js(site)
-      generate_critical_css(site)
-      
-      Jekyll.logger.info "Asset Optimizer:", "Optimized assets"
+      begin
+        optimize_css(site)
+        optimize_js(site)
+        generate_critical_css(site)
+        
+        Jekyll.logger.info "Asset Optimizer:", "Optimized assets"
+      rescue => e
+        Jekyll.logger.warn "Asset Optimizer:", "Error optimizing assets: #{e.message}"
+        Jekyll.logger.debug "Asset Optimizer:", e.backtrace.join("\n")
+      end
     end
 
     private
@@ -22,16 +27,21 @@ module Jekyll
       return unless File.directory?(css_dir)
       
       Dir.glob(File.join(css_dir, '*.css')).each do |css_file|
-        next if css_file.include?('.min.')
-        
-        content = File.read(css_file)
-        optimized = minify_css(content)
-        
-        # Write minified version
-        min_file = css_file.sub('.css', '.min.css')
-        File.write(min_file, optimized)
-        
-        Jekyll.logger.debug "Asset Optimizer:", "Minified #{File.basename(css_file)}"
+        begin
+          next if css_file.include?('.min.')
+          next unless File.exist?(css_file)
+          
+          content = File.read(css_file)
+          optimized = minify_css(content)
+          
+          # Write minified version
+          min_file = css_file.sub('.css', '.min.css')
+          File.write(min_file, optimized)
+          
+          Jekyll.logger.debug "Asset Optimizer:", "Minified #{File.basename(css_file)}"
+        rescue => e
+          Jekyll.logger.warn "Asset Optimizer:", "Error minifying #{File.basename(css_file)}: #{e.message}"
+        end
       end
     end
 
@@ -39,29 +49,35 @@ module Jekyll
       js_dir = File.join(site.source, 'assets', 'js')
       return unless File.directory?(js_dir)
       
-      # Only optimize if we have a minifier available
-      # For now, we'll just create a placeholder
-      Jekyll.logger.debug "Asset Optimizer:", "JS optimization skipped (requires external tool)"
+      # JS optimization skipped - requires external tool like terser or uglifyjs
+      # These tools are not available in Jekyll's safe mode
+      # For production, use a build pipeline (webpack, rollup, etc.) or CI/CD
+      # This keeps the plugin safe and doesn't require additional dependencies
+      Jekyll.logger.debug "Asset Optimizer:", "JS optimization skipped (requires external tool - use build pipeline)"
     end
 
     def generate_critical_css(site)
       # Generate critical CSS for above-the-fold content
-      # This is a simplified version
+      # This is a simplified version - for production, use a tool like critical
       css_dir = File.join(site.source, 'assets', 'css')
       return unless File.directory?(css_dir)
       
-      terminal_css = File.join(css_dir, 'terminal.css')
-      return unless File.exist?(terminal_css)
-      
-      content = File.read(terminal_css)
-      
-      # Extract critical CSS (simplified - in production, use a proper tool)
-      critical = extract_critical_css(content)
-      
-      critical_file = File.join(css_dir, 'critical.css')
-      File.write(critical_file, critical)
-      
-      Jekyll.logger.debug "Asset Optimizer:", "Generated critical.css"
+      begin
+        terminal_css = File.join(css_dir, 'terminal.css')
+        return unless File.exist?(terminal_css)
+        
+        content = File.read(terminal_css)
+        
+        # Extract critical CSS (simplified - in production, use a proper tool)
+        critical = extract_critical_css(content)
+        
+        critical_file = File.join(css_dir, 'critical.css')
+        File.write(critical_file, critical)
+        
+        Jekyll.logger.debug "Asset Optimizer:", "Generated critical.css"
+      rescue => e
+        Jekyll.logger.warn "Asset Optimizer:", "Error generating critical CSS: #{e.message}"
+      end
     end
 
     def minify_css(css)

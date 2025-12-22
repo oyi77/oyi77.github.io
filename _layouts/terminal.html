@@ -1,18 +1,129 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" itemscope itemtype="https://schema.org/Person">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ site.title }}</title>
-
-    <!-- Meta Tags -->
-    <meta name="description" content="{{ site.description }}">
+    
+    <!-- Primary Meta Tags -->
+    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+    <meta name="title" content="{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}">
+    <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+    <meta name="keywords" content="{{ site.keywords }}{% if page.tags %}, {{ page.tags | join: ', ' }}{% endif %}">
+    <meta name="author" content="{{ site.author.name }}">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="language" content="English">
     <meta name="theme-color" content="#050510">
+    <link rel="canonical" href="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="profile">
+    <meta property="og:url" content="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
+    <meta property="og:title" content="{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}">
+    <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+    <meta property="og:image" content="{{ site.url }}{{ site.baseurl }}/assets/images/bio-photo.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="{{ site.title }}">
+    <meta property="og:locale" content="en_US">
+    <meta property="profile:first_name" content="Muchammad Fikri">
+    <meta property="profile:last_name" content="Izzuddin">
+    <meta property="profile:username" content="oyi77">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
+    <meta name="twitter:title" content="{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}">
+    <meta name="twitter:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+    <meta name="twitter:image" content="{{ site.url }}{{ site.baseurl }}/assets/images/bio-photo.png">
+    {% if site.twitter_username %}<meta name="twitter:creator" content="@{{ site.twitter_username }}">{% endif %}
+    <meta name="twitter:site" content="@{{ site.github_username }}">
+    
+    <!-- Additional SEO -->
+    <meta name="geo.region" content="ID-JI">
+    <meta name="geo.placename" content="East Java, Indonesia">
+    <meta name="application-name" content="OYI Terminal OS">
+    <meta name="apple-mobile-web-app-title" content="OYI OS">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "{{ site.author.name }}",
+      "url": "{{ site.url }}{{ site.baseurl }}",
+      "image": "{{ site.url }}{{ site.baseurl }}/assets/images/bio-photo.png",
+      "sameAs": [
+        "https://github.com/{{ site.github_username }}",
+        "https://linkedin.com/in/fikriizzuddin",
+        "https://linktr.ee/jokogendeng"
+      ],
+      "jobTitle": "Lead Software Engineer",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Remote Available"
+      },
+      "email": "{{ site.email }}",
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "East Java",
+        "addressCountry": "ID"
+      },
+      "alumniOf": {
+        "@type": "EducationalOrganization",
+        "name": "Institut Teknologi Sepuluh Nopember (ITS) Surabaya"
+      },
+      "knowsAbout": [
+        "Software Engineering",
+        "Full-Stack Development",
+        "Blockchain Development",
+        "Algorithmic Trading",
+        "Python",
+        "JavaScript",
+        "React",
+        "Node.js",
+        "Team Leadership"
+      ],
+      "description": "{{ site.description }}"
+    }
+    </script>
+    
+    <!-- Website Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "{{ site.title }}",
+      "url": "{{ site.url }}{{ site.baseurl }}",
+      "description": "{{ site.description }}",
+      "author": {
+        "@type": "Person",
+        "name": "{{ site.author.name }}"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "{{ site.url }}{{ site.baseurl }}/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
 
-    <!-- Fonts -->
+    <!-- Preconnect for Performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://api.github.com">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ site.baseurl }}/assets/images/bio-photo.png">
+    <link rel="apple-touch-icon" href="{{ site.baseurl }}/assets/images/bio-photo.png">
+    
+    <!-- Sitemap -->
+    <link rel="sitemap" type="application/xml" href="{{ site.url }}{{ site.baseurl }}/sitemap.xml">
+    
+    <!-- Fonts -->
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap"
         rel="stylesheet">
@@ -209,6 +320,9 @@
             },
             companies: {{ site.data.companies | jsonify }},
         projects: { { site.data.projects | jsonify } },
+        case_studies: {{ site.data.case_studies | jsonify }},
+        led_projects: {{ site.data.led_projects | jsonify }},
+        approaches: {{ site.data.approaches | jsonify }},
         repository_stats: { { site.data.repository_stats | jsonify } },
         skills_matrix: { { site.data.skills_matrix | jsonify } },
         timeline: { { site.data.timeline | jsonify } },
@@ -222,14 +336,14 @@
     </script>
 </head>
 
-<body class="fullscreen-terminal">
+<body class="fullscreen-terminal" itemscope itemtype="https://schema.org/Person">
 
     <!-- Modern UI Overlay -->
     <div id="ui-overlay">
         <!-- Sidebar Navigation -->
-        <aside id="sidebar">
+        <aside id="sidebar" role="navigation" aria-label="Main navigation">
             <div class="sidebar-header">
-                <span class="logo">OYI OS</span>
+                <h2 class="logo" itemprop="name">OYI OS</h2>
             </div>
             <nav class="sidebar-nav">
                 <div class="nav-group">
@@ -258,10 +372,10 @@
         </aside>
 
         <!-- Main Content Area -->
-        <main id="main-content">
-            <header id="top-bar">
+        <main id="main-content" role="main">
+            <header id="top-bar" role="banner">
                 <div class="top-bar-left">
-                    <span class="path-display">guest@oyi-os:~</span>
+                    <span class="path-display" aria-label="Current directory path">guest@oyi-os:~</span>
                 </div>
                 <div class="top-bar-right">
                     <div class="stat-item">
@@ -276,7 +390,7 @@
             </header>
 
             <div id="terminal-container" class="terminal-fullscreen">
-                <div id="terminal"></div>
+                <div id="terminal" role="application" aria-label="Interactive terminal emulator" aria-live="polite"></div>
             </div>
         </main>
     </div>
@@ -318,6 +432,13 @@
     <script src="{{ '/assets/js/terminal/apps/github-stats.js' | relative_url }}"></script>
     <script src="{{ '/assets/js/terminal/apps/market.js' | relative_url }}"></script>
     <script src="{{ '/assets/js/terminal/apps/share.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/terminal/apps/about.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/terminal/apps/dashboard.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/terminal/apps/file-manager.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/terminal/apps/projects.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/terminal/apps/sites.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/terminal/apps/case-studies.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/terminal/apps/approaches.js' | relative_url }}"></script>
 
     <script src="{{ '/assets/js/terminal/core.js' | relative_url }}"></script>
 
