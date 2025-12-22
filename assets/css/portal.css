@@ -170,6 +170,51 @@ html {
     animation: fadeIn 2s ease-in 0.5s both;
 }
 
+/* Portfolio Sections */
+.portfolio-sections {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 3rem;
+    flex-wrap: wrap;
+}
+
+.section-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 1.5rem;
+    border: 1px solid var(--portal-accent-dim);
+    border-radius: 4px;
+    text-decoration: none;
+    color: var(--portal-text);
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.section-link:hover {
+    border-color: var(--portal-accent);
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateY(-2px);
+}
+
+.section-icon {
+    font-size: 1.5rem;
+}
+
+.section-text {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-family: var(--portal-font-mono);
+    color: var(--portal-text-dim);
+}
+
+.section-link:hover .section-text {
+    color: var(--portal-text);
+}
+
 /* Animations */
 @keyframes fadeInDown {
     from {
@@ -226,5 +271,22 @@ html {
         bottom: auto;
         margin-top: 40px;
         padding-bottom: 40px;
+    }
+    
+    .portfolio-sections {
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+    
+    .section-link {
+        padding: 0.75rem 1rem;
+    }
+    
+    .section-icon {
+        font-size: 1.25rem;
+    }
+    
+    .section-text {
+        font-size: 0.75rem;
     }
 }
