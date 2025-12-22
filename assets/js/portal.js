@@ -160,7 +160,7 @@ const modalData = {
     title: 'Professional Journey',
     tabs: ['Current', 'History'],
     content: {
-      'Current': `
+      'Current': (`
         <section>
           <h3>Bitwyre Crypto Exchange</h3>
           <em>Onchain Trader & Lead Blockchain Developer (2024-Present)</em>
@@ -182,7 +182,7 @@ const modalData = {
             <li><strong>Risk Systems</strong>: Implemented multi-layered risk controls including real-time slippage monitoring and automated deleveraging.</li>
           </ul>
         </section>
-      `,
+      `).replace(/\n\s+/g, '\n'),
       'History': `
         <section>
           <h3>Linguise (France)</h3>
@@ -266,12 +266,14 @@ const modalData = {
       'Experimental': `
         <section>
           <h3>Tools & Open Source</h3>
+          ${getProjectsHTML('experimental') || `
           <h4>Nuclear</h4>
           <p>A free music delivery project that optimized user interface interactions, boosting engagement by 11%.</p>
           <h4>AI Auto Job Apply</h4>
           <p>An automated solution built with Python and TypeScript that leverages LLMs to customize resumes and apply to relevant positions.</p>
           <h4>RBMiner Tools</h4>
           <p>Hardware-level optimization scripts that provided a 20% efficiency boost for multi-GPU mining rigs.</p>
+          `}
         </section>
       `
     }
@@ -559,6 +561,124 @@ function initModal() {
 }
 
 // ============================================================================
+// METRICS DASHBOARD ANIMATION
+// ============================================================================
+
+function initMetricsAnimation() {
+  const metricValues = document.querySelectorAll('.metric-value, .achievement-value');
+  
+  const observerOptions = {
+    threshold: 0.5,
+    rootMargin: '0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+        entry.target.classList.add('animated');
+        animateCounter(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  metricValues.forEach(value => {
+    observer.observe(value);
+  });
+}
+
+function animateCounter(element) {
+  const target = parseInt(element.getAttribute('data-target'));
+  const duration = 2000;
+  const increment = target / (duration / 16);
+  let current = 0;
+
+  const updateCounter = () => {
+    current += increment;
+    if (current >= target) {
+      element.textContent = target;
+    } else {
+      element.textContent = Math.floor(current);
+      requestAnimationFrame(updateCounter);
+    }
+  };
+
+  requestAnimationFrame(updateCounter);
+}
+
+// ============================================================================
+// GITHUB STATS LOADING
+// ============================================================================
+
+async function loadGitHubStats() {
+  try {
+    const username = 'oyi77';
+    const response = await fetch(`https://api.github.com/users/${username}`);
+    
+    if (!response.ok) throw new Error('GitHub API error');
+    
+    const data = await response.json();
+    
+    // Update repository count
+    const repoCountEl = document.getElementById('repo-count');
+    if (repoCountEl) {
+      animateToValue(repoCountEl, data.public_repos || 0);
+    }
+    
+    // Fetch repositories for stars/forks
+    const reposResponse = await fetch(`https://api.github.com/users/${username}/repos?per_page=100&sort=updated`);
+    if (reposResponse.ok) {
+      const repos = await reposResponse.json();
+      let totalStars = 0;
+      let totalForks = 0;
+      
+      repos.forEach(repo => {
+        totalStars += repo.stargazers_count || 0;
+        totalForks += repo.forks_count || 0;
+      });
+      
+      const starsEl = document.getElementById('github-stars');
+      const forksEl = document.getElementById('github-forks');
+      
+      if (starsEl) animateToValue(starsEl, totalStars);
+      if (forksEl) animateToValue(forksEl, totalForks);
+    }
+    
+    // Contributions (approximate - GitHub API doesn't provide this directly)
+    const contributionsEl = document.getElementById('github-contributions');
+    if (contributionsEl) {
+      contributionsEl.textContent = 'Active';
+    }
+    
+  } catch (error) {
+    console.warn('Failed to load GitHub stats:', error);
+    // Set fallback values
+    const elements = ['repo-count', 'github-stars', 'github-forks', 'github-contributions'];
+    elements.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = '--';
+    });
+  }
+}
+
+function animateToValue(element, target) {
+  const current = parseInt(element.textContent) || 0;
+  const increment = target > current ? 1 : -1;
+  const duration = 1500;
+  const steps = Math.abs(target - current);
+  const delay = duration / steps;
+  
+  let currentValue = current;
+  const timer = setInterval(() => {
+    currentValue += increment;
+    element.textContent = currentValue;
+    
+    if (currentValue === target) {
+      clearInterval(timer);
+    }
+  }, delay);
+}
+
+// ============================================================================
 // INITIALIZATION
 // ============================================================================
 
@@ -567,5 +687,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setInterval(updateTime, 1000);
   initToggle();
   initModal();
+  initMetricsAnimation();
+  loadGitHubStats();
   console.log('Portal system loaded with real content.');
 });

@@ -11,7 +11,7 @@
   <meta name="description"
     content="Portfolio hub for Muchammad Fikri Izzuddin - Lead Software Engineer with 7+ years experience in full-stack development, blockchain, and algorithmic trading. Remote available.">
   <meta name="keywords"
-    content="Muchammad Fikri Izzuddin, software engineer, lead developer, blockchain developer, full-stack developer, remote developer, portfolio, resume, cv">
+    content="Muchammad Fikri Izzuddin, software engineer, lead developer, blockchain developer, full-stack developer, remote developer, portfolio, resume, cv, Python developer, JavaScript developer, React developer, Node.js developer, algorithmic trading, cryptocurrency, technical lead, engineering manager, CTO, available for hire, remote work, Indonesia developer">
   <meta name="author" content="Muchammad Fikri Izzuddin">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="language" content="English">
@@ -57,7 +57,42 @@
       "addressRegion": "East Java",
       "addressCountry": "ID"
     },
-    "description": "Lead Software Engineer with 7+ years of experience in full-stack development, blockchain, and algorithmic trading."
+    "description": "Lead Software Engineer with 7+ years of experience in full-stack development, blockchain, and algorithmic trading.",
+    "knowsAbout": [
+      "Python",
+      "JavaScript",
+      "TypeScript",
+      "React",
+      "Node.js",
+      "Blockchain Development",
+      "Algorithmic Trading",
+      "Full-Stack Development",
+      "Team Leadership",
+      "Software Architecture",
+      "Docker",
+      "Kubernetes",
+      "AWS",
+      "PostgreSQL",
+      "Machine Learning"
+    ],
+    "hasCredential": [
+      {
+        "@type": "EducationalOccupationalCredential",
+        "credentialCategory": "Certification",
+        "recognizedBy": {
+          "@type": "Organization",
+          "name": "HackerRank"
+        }
+      }
+    ],
+    "alumniOf": {
+      "@type": "EducationalOrganization",
+      "name": "Institut Teknologi Sepuluh Nopember (ITS) Surabaya"
+    },
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Available for Remote Opportunities"
+    }
   }
   </script>
 
@@ -74,6 +109,20 @@
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/portal.css">
+  
+  <!-- Jekyll Data Injection for Homepage -->
+  <script>
+    window.JEKYLL_DATA = window.JEKYLL_DATA || {};
+    {% if site.data.companies %}
+    window.JEKYLL_DATA.companies = {{ site.data.companies | jsonify }};
+    {% endif %}
+    {% if site.data.projects %}
+    window.JEKYLL_DATA.projects = {{ site.data.projects | jsonify }};
+    {% endif %}
+    {% if site.data.terminal %}
+    window.JEKYLL_DATA.terminal = {{ site.data.terminal | jsonify }};
+    {% endif %}
+  </script>
 </head>
 
 <body itemscope itemtype="https://schema.org/Person">
@@ -155,6 +204,100 @@
           </a>
         </nav>
 
+        <!-- Metrics Dashboard -->
+        <section class="metrics-dashboard" id="metrics-dashboard" aria-label="Professional metrics">
+          <div class="metrics-grid">
+            <div class="metric-card">
+              <div class="metric-value" data-target="7">0</div>
+              <div class="metric-label">Years Experience</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-value" data-target="3000">0</div>
+              <div class="metric-label">Team Members Led</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-value" data-target="4">0</div>
+              <div class="metric-label">Companies</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-value" data-target="8">0</div>
+              <div class="metric-label">Projects</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-value" data-target="90">0</div>
+              <div class="metric-label">Win Rate %</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-value" data-target="100">0</div>
+              <div class="metric-label">Revenue Impact (K USD)</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Achievement Highlights -->
+        <section class="achievement-highlights" id="achievement-highlights" aria-label="Key achievements">
+          <h2 class="section-title">Key Achievements</h2>
+          <div class="achievements-grid">
+            <div class="achievement-card">
+              <div class="achievement-icon">$</div>
+              <div class="achievement-value" data-target="100">0</div>
+              <div class="achievement-unit">K USD</div>
+              <div class="achievement-desc">Profit Generated (Fomo Watcher)</div>
+            </div>
+            <div class="achievement-card">
+              <div class="achievement-icon">👥</div>
+              <div class="achievement-value" data-target="3000">0</div>
+              <div class="achievement-unit">+</div>
+              <div class="achievement-desc">Team Members Led (GarudaMedia)</div>
+            </div>
+            <div class="achievement-card">
+              <div class="achievement-icon">%</div>
+              <div class="achievement-value" data-target="90">0</div>
+              <div class="achievement-unit">+</div>
+              <div class="achievement-desc">Trading Win Rate (AiTradePulse)</div>
+            </div>
+            <div class="achievement-card">
+              <div class="achievement-icon">↓</div>
+              <div class="achievement-value" data-target="40">0</div>
+              <div class="achievement-unit">%</div>
+              <div class="achievement-desc">Cost Reduction (GarudaMedia)</div>
+            </div>
+            <div class="achievement-card">
+              <div class="achievement-icon">₿</div>
+              <div class="achievement-value" data-target="5">0</div>
+              <div class="achievement-unit">B+ IDR</div>
+              <div class="achievement-desc">Monthly Volume (BerkahKarya)</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Social Proof -->
+        <section class="social-proof" id="social-proof" aria-label="GitHub statistics">
+          <h2 class="section-title">GitHub Activity</h2>
+          <div class="social-stats-grid">
+            <div class="social-stat-card">
+              <div class="social-stat-value" id="repo-count">--</div>
+              <div class="social-stat-label">Repositories</div>
+            </div>
+            <div class="social-stat-card">
+              <div class="social-stat-value" id="github-stars">--</div>
+              <div class="social-stat-label">Stars</div>
+            </div>
+            <div class="social-stat-card">
+              <div class="social-stat-value" id="github-forks">--</div>
+              <div class="social-stat-label">Forks</div>
+            </div>
+            <div class="social-stat-card">
+              <div class="social-stat-value" id="github-contributions">--</div>
+              <div class="social-stat-label">Contributions</div>
+            </div>
+          </div>
+          <div class="social-links">
+            <a href="https://github.com/oyi77" target="_blank" rel="noopener noreferrer" class="social-link">
+              View GitHub Profile →
+            </a>
+          </div>
+        </section>
 
         <footer class="footer" role="contentinfo" itemprop="jobTitle">
           SOFTWARE ENGINEER | TECHNICAL LEAD | REMOTE_READY
@@ -253,6 +396,7 @@
     </div>
 
     <script src="/assets/js/portal.js"></script>
+    <script src="/assets/js/contact-widget.js"></script>
 </body>
 
 </html>

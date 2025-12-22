@@ -1,2 +1,66 @@
-[]
-
+[
+  {
+    "name": "Nuclear",
+    "description": "Free music delivery project - built user interface using React and JavaScript, increasing user engagement by 11%",
+    "url": "https://github.com/oyi77/nuclear",
+    "technologies": "JavaScript, React, Node.js",
+    "category": "open-source",
+    "featured": true
+  },
+  {
+    "name": "RBMiner",
+    "description": "Optimize mining hardware performance - 20% efficiency increase. Automated switching and monitoring system",
+    "url": "https://github.com/oyi77/rbminer",
+    "technologies": "Bash, PowerShell, Python",
+    "category": "automation",
+    "featured": true
+  },
+  {
+    "name": "Shopee Bot",
+    "description": "Bot to assist people using Shopee Affiliate and Shopee Live Feature",
+    "url": "https://github.com/oyi77/shopee-bot",
+    "technologies": "Python, Telegram API",
+    "category": "automation",
+    "featured": false
+  },
+  {
+    "name": "Wifi Jammer",
+    "description": "A simple wifi jamming tool built with Python and Bash scripting",
+    "url": "https://github.com/oyi77/wifi-jammer",
+    "technologies": "Python, Shell, Makefile",
+    "category": "security",
+    "featured": false
+  },
+  {
+    "name": "AI Auto Job Apply",
+    "description": "Automated job application solution using Python and TypeScript to streamline the application process",
+    "url": "https://github.com/oyi77/ai-auto-job-apply",
+    "technologies": "Python, TypeScript, Shell, Makefile, JavaScript, CSS, HTML",
+    "category": "automation",
+    "featured": true
+  },
+  {
+    "name": "Tiktok Bot",
+    "description": "An assistant for TikTok with yapping features",
+    "url": "https://github.com/oyi77/tiktok-bot",
+    "technologies": "JavaScript",
+    "category": "automation",
+    "featured": false
+  },
+  {
+    "name": "Kemkes Automation",
+    "description": "Automation script for a Ministry of Health (Kemkes) related process",
+    "url": "https://github.com/oyi77/kemkes-automation",
+    "technologies": "Python",
+    "category": "automation",
+    "featured": false
+  },
+  {
+    "name": "Telegram AI Trade",
+    "description": "Trading bot using OpenAI for AI-driven analysis and Telegram, with integration via MQL4/MQL5",
+    "url": "https://github.com/oyi77/telegram-ai-trade",
+    "technologies": "Python, MQL5, MQL4, JavaScript",
+    "category": "trading",
+    "featured": true
+  }
+]

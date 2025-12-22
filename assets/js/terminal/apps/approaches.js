@@ -11,8 +11,9 @@ class ApproachesApp {
     const data = window.JEKYLL_DATA?.approaches;
 
     if (!data || !data.approaches) {
-      this.terminal.write('\r\n\x1b[1;31mError: Approaches data not available\x1b[0m\r\n');
-      this.terminal.write('Visit /approaches/ for full approaches.\r\n');
+      this.terminal.write('\r\n\x1b[1;33mWarning: Approaches data not loaded\x1b[0m\r\n');
+      this.terminal.write('  Data may still be loading. Try again in a moment.\r\n');
+      this.terminal.write('  Visit \x1b[1;36m/approaches/\x1b[0m for full approaches.\r\n');
       return;
     }
 

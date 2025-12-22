@@ -319,19 +319,19 @@
                 }]
             },
             companies: {{ site.data.companies | jsonify }},
-        projects: { { site.data.projects | jsonify } },
-        case_studies: {{ site.data.case_studies | jsonify }},
-        led_projects: {{ site.data.led_projects | jsonify }},
-        approaches: {{ site.data.approaches | jsonify }},
-        repository_stats: { { site.data.repository_stats | jsonify } },
-        skills_matrix: { { site.data.skills_matrix | jsonify } },
-        timeline: { { site.data.timeline | jsonify } },
-        github_stats: { { site.data.github_stats | jsonify } },
-        metrics: { { site.data.metrics | jsonify } },
-        analytics: { { site.data.analytics | jsonify } },
-        seo: { { site.data.seo | jsonify } },
-        external_stats: { { site.data.external_stats | jsonify } },
-        market_data: { { site.data.market_data | jsonify } }
+            projects: {{ site.data.projects | jsonify }},
+            case_studies: {{ site.data.case_studies | jsonify }},
+            led_projects: {{ site.data.led_projects | jsonify }},
+            approaches: {{ site.data.approaches | jsonify }},
+            repository_stats: {{ site.data.repository_stats | jsonify }},
+            skills_matrix: {{ site.data.skills_matrix | jsonify }},
+            timeline: {{ site.data.timeline | jsonify }},
+            github_stats: {{ site.data.github_stats | jsonify }},
+            metrics: {{ site.data.metrics | jsonify }},
+            analytics: {{ site.data.analytics | jsonify }},
+            seo: {{ site.data.seo | jsonify }},
+            external_stats: {{ site.data.external_stats | jsonify }},
+            market_data: {{ site.data.market_data | jsonify }}
     };
     </script>
 </head>
@@ -439,6 +439,9 @@
     <script src="{{ '/assets/js/terminal/apps/sites.js' | relative_url }}"></script>
     <script src="{{ '/assets/js/terminal/apps/case-studies.js' | relative_url }}"></script>
     <script src="{{ '/assets/js/terminal/apps/approaches.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/terminal/apps/jobs.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/terminal/apps/activity.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/terminal/apps/resume-builder.js' | relative_url }}"></script>
 
     <script src="{{ '/assets/js/terminal/core.js' | relative_url }}"></script>
 

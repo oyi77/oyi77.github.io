@@ -11,8 +11,9 @@ class CaseStudiesApp {
     const data = window.JEKYLL_DATA?.case_studies;
 
     if (!data || !data.case_studies) {
-      this.terminal.write('\r\n\x1b[1;31mError: Case studies data not available\x1b[0m\r\n');
-      this.terminal.write('Visit /case-studies/ for full case studies.\r\n');
+      this.terminal.write('\r\n\x1b[1;33mWarning: Case studies data not loaded\x1b[0m\r\n');
+      this.terminal.write('  Data may still be loading. Try again in a moment.\r\n');
+      this.terminal.write('  Visit \x1b[1;36m/case-studies/\x1b[0m for full case studies.\r\n');
       return;
     }
 
@@ -85,7 +86,7 @@ class CaseStudiesApp {
     }
 
     this.terminal.write('  ' + '\x1b[1;30m' + '-'.repeat(width - 10) + '\x1b[0m\r\n');
-    this.terminal.write('  Visit \x1b[1;36m/case-studies/${study.id}/\x1b[0m for full case study\r\n');
+    this.terminal.write(`  Visit \x1b[1;36m/case-studies/${study.id}/\x1b[0m for full case study\r\n`);
   }
 }
 

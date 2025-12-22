@@ -37,6 +37,13 @@ class TerminalOS {
     this.isRoot = localStorage.getItem('root-access') === 'true';
     this.currentUser = this.isRoot ? 'root' : 'guest';
 
+    // Recovery mode state (set by boot sequence)
+    this.recoveryMode = false;
+    this.developerMode = false;
+
+    // Make instance globally accessible for boot sequence
+    window.terminalOS = this;
+
     this.init();
   }
 
@@ -561,9 +568,43 @@ class TerminalOS {
         case 'approaches':
           await this.runCommand('approaches', args);
           break;
+        case 'jobs':
+        case 'applications':
+          await this.runCommand('jobs', args);
+          break;
+        case 'activity':
+        case 'feed':
+          await this.runCommand('activity', args);
+          break;
+        case 'resume':
+        case 'cv-build':
+          await this.runCommand('resume-builder', args);
+          break;
         case 'home':
           this.terminal.clear();
           await this.showWelcome();
+          break;
+        // Hidden recovery mode commands
+        case 'recovery-info':
+          if (this.recoveryMode || this.developerMode) {
+            await this.showRecoveryInfo();
+          } else {
+            this.terminal.write(`\x1b[1;31m${command}: command not found\x1b[0m\r\n`);
+          }
+          break;
+        case 'debug':
+          if (this.recoveryMode || this.developerMode) {
+            await this.toggleDebugMode();
+          } else {
+            this.terminal.write(`\x1b[1;31m${command}: command not found\x1b[0m\r\n`);
+          }
+          break;
+        case 'sysinfo':
+          if (this.recoveryMode || this.developerMode) {
+            await this.showSystemInfo();
+          } else {
+            this.terminal.write(`\x1b[1;31m${command}: command not found\x1b[0m\r\n`);
+          }
           break;
         default:
           // Try EcmaOS if command not found in local apps
@@ -624,7 +665,10 @@ class TerminalOS {
       'projects': ProjectsApp,
       'sites': SitesApp,
       'case-studies': CaseStudiesApp,
-      'approaches': ApproachesApp
+      'approaches': ApproachesApp,
+      'jobs': JobsApp,
+      'activity': ActivityApp,
+      'resume-builder': ResumeBuilderApp
     };
 
     const AppClass = appMap[command];
@@ -682,7 +726,7 @@ class TerminalOS {
         'cv', 'github', 'stats', 'analytics', 'github-stats', 'ghstats', 'market', 'crypto', 
         'coins', 'indices', 'home', 'install', 'opm', 'shell',         'about', 'dashboard', 
         'file-manager', 'fm', 'projects', 'sites', 'share',
-        'case-studies', 'cases', 'approaches',
+        'case-studies', 'cases', 'approaches', 'jobs', 'applications', 'activity', 'feed', 'resume', 'cv-build',
         // EcmaOS commands (delegated)
         'mkdir', 'touch', 'rm', 'mv', 'cp', 'decrypt', 'matrix', 'snake', 'video', 'play', 
         'screensaver', 'fetch', 'download', 'load', 'edit', 'env', 'df', 'du', 'ps', 'kill', 
@@ -763,6 +807,60 @@ class TerminalOS {
       // Don't break terminal if EcmaOS fails to load
       this.ecmaKernel = null;
     }
+  }
+
+  async showRecoveryInfo() {
+    const width = this.terminal.cols || 60;
+    this.terminal.write('\r\n' + TerminalUtils.center('\x1b[1;36mRECOVERY MODE INFORMATION\x1b[0m', width) + '\r\n');
+    this.terminal.write('  ' + '\x1b[1;30m' + '-'.repeat(width - 10) + '\x1b[0m\r\n\r\n');
+    
+    this.terminal.write(`  \x1b[1;32mRecovery Mode:\x1b[0m ${this.recoveryMode ? 'ENABLED' : 'DISABLED'}\r\n`);
+    this.terminal.write(`  \x1b[1;32mDeveloper Mode:\x1b[0m ${this.developerMode ? 'ENABLED' : 'DISABLED'}\r\n`);
+    this.terminal.write(`  \x1b[1;32mRoot Access:\x1b[0m ${this.isRoot ? 'GRANTED' : 'DENIED'}\r\n\r\n`);
+    
+    this.terminal.write('  \x1b[1;33mAvailable Recovery Commands:\x1b[0m\r\n');
+    this.terminal.write('    - \x1b[1;32mrecovery-info\x1b[0m - Show this information\r\n');
+    this.terminal.write('    - \x1b[1;32mdebug\x1b[0m - Toggle debug mode\r\n');
+    this.terminal.write('    - \x1b[1;32msysinfo\x1b[0m - Show detailed system information\r\n\r\n');
+    
+    this.terminal.write('  ' + '\x1b[1;30m' + '-'.repeat(width - 10) + '\x1b[0m\r\n');
+  }
+
+  async toggleDebugMode() {
+    this.developerMode = !this.developerMode;
+    const width = this.terminal.cols || 60;
+    this.terminal.write(`\r\n\x1b[1;32mDebug mode ${this.developerMode ? 'ENABLED' : 'DISABLED'}\x1b[0m\r\n`);
+    if (this.developerMode) {
+      this.terminal.write('  Console logging: VERBOSE\r\n');
+      this.terminal.write('  Performance metrics: TRACKING\r\n');
+    }
+  }
+
+  async showSystemInfo() {
+    const width = this.terminal.cols || 60;
+    this.terminal.write('\r\n' + TerminalUtils.center('\x1b[1;36mSYSTEM INFORMATION\x1b[0m', width) + '\r\n');
+    this.terminal.write('  ' + '\x1b[1;30m' + '-'.repeat(width - 10) + '\x1b[0m\r\n\r\n');
+    
+    const info = [
+      { label: 'Terminal Width', value: `${this.terminal.cols || 'N/A'} cols` },
+      { label: 'Terminal Height', value: `${this.terminal.rows || 'N/A'} rows` },
+      { label: 'Current Path', value: this.currentPath },
+      { label: 'Current User', value: this.currentUser },
+      { label: 'Root Access', value: this.isRoot ? 'Yes' : 'No' },
+      { label: 'Recovery Mode', value: this.recoveryMode ? 'Yes' : 'No' },
+      { label: 'Developer Mode', value: this.developerMode ? 'Yes' : 'No' },
+      { label: 'Session Uptime', value: this.calculateUptime() },
+      { label: 'Command History', value: `${this.commandHistory.length} commands` },
+      { label: 'Filesystem', value: this.filesystem ? 'Loaded' : 'Not loaded' },
+      { label: 'EcmaOS Kernel', value: this.ecmaKernel ? 'Loaded' : 'Not loaded' },
+      { label: 'Jekyll Data', value: window.JEKYLL_DATA ? 'Available' : 'Not available' }
+    ];
+
+    info.forEach(item => {
+      this.terminal.write(`  \x1b[1;32m${item.label.padEnd(20)}:\x1b[0m ${item.value}\r\n`);
+    });
+
+    this.terminal.write('\r\n  ' + '\x1b[1;30m' + '-'.repeat(width - 10) + '\x1b[0m\r\n');
   }
 }
 

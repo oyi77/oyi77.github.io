@@ -3,6 +3,9 @@ class BootSequence {
         this.terminal = terminal;
         this.onComplete = onComplete;
         this.skipped = false;
+        this.recoveryMode = false;
+        this.recoveryKeyPressed = false;
+        this.postPhaseActive = false;
 
         // BIOS Information
         this.biosInfo = [
@@ -15,12 +18,15 @@ class BootSequence {
             'Hard Disk .. Detected (512TB Neural Storage)',
         ];
 
-        // Bind escape key to skip
-        window.addEventListener('keydown', (e) => {
+        // Bind keys
+        this.keyHandler = (e) => {
             if (e.key === 'Escape' && !this.skipped) {
                 this.skip();
+            } else if (this.postPhaseActive && (e.key === 'r' || e.key === 'R' || e.key === 'F8')) {
+                this.recoveryKeyPressed = true;
             }
-        });
+        };
+        window.addEventListener('keydown', this.keyHandler);
     }
 
     async start() {
@@ -48,6 +54,8 @@ class BootSequence {
     }
 
     finish() {
+        // Clean up key handler
+        window.removeEventListener('keydown', this.keyHandler);
         this.onComplete();
     }
 
@@ -68,6 +76,8 @@ class BootSequence {
 
     async runPOST() {
         this.terminal.clear();
+        this.postPhaseActive = true;
+        this.recoveryKeyPressed = false;
 
         const width = this.terminal.cols || 60;
         const logo = [
@@ -88,24 +98,191 @@ class BootSequence {
         }
 
         this.terminal.write('\r\n');
-        await this.typeText('ESC to skip boot', 5);
+        await this.typeText('ESC to skip boot | Press R or F8 for Recovery Mode', 5);
         this.terminal.write('\r\n');
 
         const checks = [
             'Memory', 'Video', 'Storage', 'Drivers'
         ];
 
+        // Check for recovery key during POST checks
         for (const check of checks) {
             this.terminal.write(`Checking ${check.padEnd(10)}`);
             for (let i = 0; i < 3; i++) {
-                if (this.skipped) return;
+                if (this.skipped) {
+                    this.postPhaseActive = false;
+                    return;
+                }
+                if (this.recoveryKeyPressed) {
+                    this.postPhaseActive = false;
+                    await this.showRecoveryMenu();
+                    return;
+                }
                 this.terminal.write('.');
                 await this.wait(100);
             }
             this.terminal.write(' \x1b[1;32mOK\x1b[0m\r\n');
         }
 
+        // Final check before proceeding
+        if (this.recoveryKeyPressed) {
+            this.postPhaseActive = false;
+            await this.showRecoveryMenu();
+            return;
+        }
+
+        this.postPhaseActive = false;
         await this.wait(500);
+    }
+
+    async showRecoveryMenu() {
+        this.terminal.clear();
+        const width = this.terminal.cols || 60;
+
+        const menu = [
+            '',
+            '\x1b[1;33m╔═══════════════════════════════════════════════════════╗\x1b[0m',
+            '\x1b[1;33m║\x1b[0m          \x1b[1;36mOYI-BIOS RECOVERY MODE\x1b[0m                    \x1b[1;33m║\x1b[0m',
+            '\x1b[1;33m╠═══════════════════════════════════════════════════════╣\x1b[0m',
+            '\x1b[1;33m║\x1b[0m                                                       \x1b[1;33m║\x1b[0m',
+            '\x1b[1;33m║\x1b[0m  \x1b[1;32m[1]\x1b[0m Normal Boot (Default)                          \x1b[1;33m║\x1b[0m',
+            '\x1b[1;33m║\x1b[0m  \x1b[1;32m[2]\x1b[0m Recovery Mode (System Diagnostics)            \x1b[1;33m║\x1b[0m',
+            '\x1b[1;33m║\x1b[0m  \x1b[1;32m[3]\x1b[0m Safe Mode (Minimal Features)                  \x1b[1;33m║\x1b[0m',
+            '\x1b[1;33m║\x1b[0m  \x1b[1;32m[4]\x1b[0m Developer Mode (Debug Info)                  \x1b[1;33m║\x1b[0m',
+            '\x1b[1;33m║\x1b[0m                                                       \x1b[1;33m║\x1b[0m',
+            '\x1b[1;33m╚═══════════════════════════════════════════════════════╝\x1b[0m',
+            '',
+            '\x1b[1;30mSelect option [1-4] (default: 1, auto-selects in 5 seconds)...\x1b[0m'
+        ];
+
+        for (const line of menu) {
+            this.terminal.write(TerminalUtils.center(line, width) + '\r\n');
+        }
+
+        // Wait for user input or auto-select
+        let selected = false;
+        let selection = 1; // Default to normal boot
+
+        const inputHandler = (e) => {
+            if (e.key >= '1' && e.key <= '4') {
+                selection = parseInt(e.key);
+                selected = true;
+                window.removeEventListener('keydown', inputHandler);
+            } else if (e.key === 'Enter' && !selected) {
+                selected = true;
+                window.removeEventListener('keydown', inputHandler);
+            }
+        };
+
+        window.addEventListener('keydown', inputHandler);
+
+        // Auto-select after 5 seconds
+        const autoSelect = setTimeout(() => {
+            if (!selected) {
+                selected = true;
+                window.removeEventListener('keydown', inputHandler);
+            }
+        }, 5000);
+
+        // Wait for selection
+        while (!selected) {
+            await this.wait(100);
+        }
+
+        clearTimeout(autoSelect);
+        window.removeEventListener('keydown', inputHandler);
+
+        // Process selection
+        this.terminal.write(`\r\n\x1b[1;32mSelected: ${selection}\x1b[0m\r\n\r\n`);
+        await this.wait(500);
+
+        switch (selection) {
+            case 2:
+                this.recoveryMode = true;
+                await this.runRecoveryMode();
+                break;
+            case 3:
+                await this.runSafeMode();
+                break;
+            case 4:
+                await this.runDeveloperMode();
+                break;
+            default:
+                // Normal boot - continue
+                break;
+        }
+    }
+
+    async runRecoveryMode() {
+        this.terminal.clear();
+        const width = this.terminal.cols || 60;
+
+        const diagnostics = [
+            '\x1b[1;36m╔═══════════════════════════════════════════════════════╗\x1b[0m',
+            '\x1b[1;36m║\x1b[0m          \x1b[1;33mSYSTEM DIAGNOSTICS\x1b[0m                          \x1b[1;36m║\x1b[0m',
+            '\x1b[1;36m╠═══════════════════════════════════════════════════════╣\x1b[0m',
+            '\x1b[1;36m║\x1b[0m                                                       \x1b[1;36m║\x1b[0m',
+            '\x1b[1;36m║\x1b[0m  \x1b[1;32mSystem Status:\x1b[0m OPERATIONAL                          \x1b[1;36m║\x1b[0m',
+            '\x1b[1;36m║\x1b[0m  \x1b[1;32mVirtual FS:\x1b[0m MOUNTED                                 \x1b[1;36m║\x1b[0m',
+            '\x1b[1;36m║\x1b[0m  \x1b[1;32mJekyll Data:\x1b[0m LOADED                                 \x1b[1;36m║\x1b[0m',
+            '\x1b[1;36m║\x1b[0m  \x1b[1;32mGitHub API:\x1b[0m READY                                   \x1b[1;36m║\x1b[0m',
+            '\x1b[1;36m║\x1b[0m                                                       \x1b[1;36m║\x1b[0m',
+            '\x1b[1;36m║\x1b[0m  \x1b[1;33mHidden Commands Available:\x1b[0m                           \x1b[1;36m║\x1b[0m',
+            '\x1b[1;36m║\x1b[0m    - \x1b[1;32mrecovery-info\x1b[0m - Show recovery information       \x1b[1;36m║\x1b[0m',
+            '\x1b[1;36m║\x1b[0m    - \x1b[1;32mdebug\x1b[0m - Enable debug mode                      \x1b[1;36m║\x1b[0m',
+            '\x1b[1;36m║\x1b[0m    - \x1b[1;32msysinfo\x1b[0m - Detailed system information          \x1b[1;36m║\x1b[0m',
+            '\x1b[1;36m║\x1b[0m                                                       \x1b[1;36m║\x1b[0m',
+            '\x1b[1;36m╚═══════════════════════════════════════════════════════╝\x1b[0m',
+            '',
+            '\x1b[1;30mRecovery mode enabled. Hidden commands are now available.\x1b[0m',
+            '\x1b[1;30mContinuing to normal boot...\x1b[0m'
+        ];
+
+        for (const line of diagnostics) {
+            this.terminal.write(TerminalUtils.center(line, width) + '\r\n');
+        }
+
+        await this.wait(2000);
+        // Store recovery mode state
+        if (window.terminalOS) {
+            window.terminalOS.recoveryMode = true;
+        }
+    }
+
+    async runSafeMode() {
+        this.terminal.clear();
+        const width = this.terminal.cols || 60;
+
+        this.terminal.write(TerminalUtils.center('\x1b[1;33mSAFE MODE ENABLED\x1b[0m', width) + '\r\n');
+        this.terminal.write(TerminalUtils.center('\x1b[1;30mMinimal features loaded for stability\x1b[0m', width) + '\r\n\r\n');
+        await this.wait(1500);
+    }
+
+    async runDeveloperMode() {
+        this.terminal.clear();
+        const width = this.terminal.cols || 60;
+
+        const debugInfo = [
+            '\x1b[1;35m╔═══════════════════════════════════════════════════════╗\x1b[0m',
+            '\x1b[1;35m║\x1b[0m            \x1b[1;33mDEVELOPER MODE\x1b[0m                            \x1b[1;35m║\x1b[0m',
+            '\x1b[1;35m╠═══════════════════════════════════════════════════════╣\x1b[0m',
+            '\x1b[1;35m║\x1b[0m                                                       \x1b[1;35m║\x1b[0m',
+            '\x1b[1;35m║\x1b[0m  \x1b[1;32mDebug Mode:\x1b[0m ENABLED                                  \x1b[1;35m║\x1b[0m',
+            '\x1b[1;35m║\x1b[0m  \x1b[1;32mConsole Logging:\x1b[0m VERBOSE                            \x1b[1;35m║\x1b[0m',
+            '\x1b[1;35m║\x1b[0m  \x1b[1;32mPerformance Metrics:\x1b[0m TRACKING                         \x1b[1;35m║\x1b[0m',
+            '\x1b[1;35m║\x1b[0m                                                       \x1b[1;35m║\x1b[0m',
+            '\x1b[1;35m╚═══════════════════════════════════════════════════════╝\x1b[0m'
+        ];
+
+        for (const line of debugInfo) {
+            this.terminal.write(TerminalUtils.center(line, width) + '\r\n');
+        }
+
+        await this.wait(1500);
+        // Store developer mode state
+        if (window.terminalOS) {
+            window.terminalOS.developerMode = true;
+        }
     }
 
     async runBootLoader() {
