@@ -4,28 +4,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
   <!-- Primary Meta Tags -->
   <title>Muchammad Fikri Izzuddin | Portfolio Hub - Lead Software Engineer</title>
   <meta name="title" content="Muchammad Fikri Izzuddin | Portfolio Hub - Lead Software Engineer">
-  <meta name="description" content="Portfolio hub for Muchammad Fikri Izzuddin - Lead Software Engineer with 7+ years experience in full-stack development, blockchain, and algorithmic trading. Remote available.">
-  <meta name="keywords" content="Muchammad Fikri Izzuddin, software engineer, lead developer, blockchain developer, full-stack developer, remote developer, portfolio, resume, cv">
+  <meta name="description"
+    content="Portfolio hub for Muchammad Fikri Izzuddin - Lead Software Engineer with 7+ years experience in full-stack development, blockchain, and algorithmic trading. Remote available.">
+  <meta name="keywords"
+    content="Muchammad Fikri Izzuddin, software engineer, lead developer, blockchain developer, full-stack developer, remote developer, portfolio, resume, cv">
   <meta name="author" content="Muchammad Fikri Izzuddin">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="language" content="English">
   <link rel="canonical" href="https://oyi77.github.io/">
-  
+
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="profile">
   <meta property="og:url" content="https://oyi77.github.io/">
   <meta property="og:title" content="Muchammad Fikri Izzuddin | Portfolio Hub">
-  <meta property="og:description" content="Lead Software Engineer with 7+ years experience. Remote available. Interactive portfolio showcasing achievements and technical expertise.">
+  <meta property="og:description"
+    content="Lead Software Engineer with 7+ years experience. Remote available. Interactive portfolio showcasing achievements and technical expertise.">
   <meta property="og:image" content="https://oyi77.github.io/assets/images/bio-photo.png">
   <meta property="og:site_name" content="Muchammad Fikri Izzuddin Portfolio">
   <meta property="profile:first_name" content="Muchammad Fikri">
   <meta property="profile:last_name" content="Izzuddin">
   <meta property="profile:username" content="oyi77">
-  
+
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://oyi77.github.io/">
@@ -33,7 +36,7 @@
   <meta name="twitter:description" content="Lead Software Engineer with 7+ years experience. Remote available.">
   <meta name="twitter:image" content="https://oyi77.github.io/assets/images/bio-photo.png">
   <meta name="twitter:site" content="@oyi77">
-  
+
   <!-- Schema.org Structured Data -->
   <script type="application/ld+json">
   {
@@ -57,14 +60,14 @@
     "description": "Lead Software Engineer with 7+ years of experience in full-stack development, blockchain, and algorithmic trading."
   }
   </script>
-  
+
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="/assets/images/bio-photo.png">
   <link rel="apple-touch-icon" href="/assets/images/bio-photo.png">
-  
+
   <!-- Sitemap -->
   <link rel="sitemap" type="application/xml" href="https://oyi77.github.io/sitemap.xml">
-  
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -78,62 +81,178 @@
   <div class="bg-glow" aria-hidden="true"></div>
 
   <div id="portal-wrapper">
-    <header class="header" role="banner">
-      <h1>System Entry</h1>
-      <div class="name" itemprop="name">Fikri Izzuddin</div>
-    </header>
+    <!-- Date Display - Top Left -->
+    <div class="date-display">
+      <div class="current-date" id="current-date">LOADING...</div>
+    </div>
 
-    <main role="main">
-      <nav class="access-grid" aria-label="Portfolio access options">
-        <!-- Terminal OS Access -->
-        <a href="/terminal" class="access-card" aria-label="Access Terminal OS - Interactive portfolio terminal">
-          <span class="card-label">TIER 01 - CORE_KERNEL</span>
-          <h2 class="card-title">OYI Terminal OS</h2>
-          <p class="card-desc">Low-level access to achievements, company logs, and technical skills via interactive
-            terminal.</p>
-          <span class="card-footer">Execute OS</span>
-        </a>
+    <!-- Time Display - Top Right -->
+    <div class="time-display">
+      <div class="current-time" id="current-time">00:00:00</div>
+    </div>
 
-        <!-- Graphical OS Access -->
-        <a href="/oyi77" class="access-card" aria-label="Access Graphical CV OS - One Piece themed portfolio">
-          <span class="card-label">TIER 02 - GRAPHICAL_UI</span>
-          <h2 class="card-title">One Piece cvOS</h2>
-          <p class="card-desc">High-level graphical interface showcasing creative engineering and interactive
-            storytelling.</p>
-          <span class="card-footer">Launch GUI</span>
-        </a>
+    <!-- Social Buttons - Bottom Right -->
+    <div class="social-buttons">
+      <a href="https://github.com/oyi77" class="social-btn" target="_blank" rel="noopener noreferrer"
+        aria-label="GitHub Profile">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path
+            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+        </svg>
+      </a>
+      <a href="https://linkedin.com/in/fikriizzuddin" class="social-btn" target="_blank" rel="noopener noreferrer"
+        aria-label="LinkedIn Profile">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path
+            d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+        </svg>
+      </a>
+    </div>
 
-        <!-- Fast Track CV -->
-        <a href="/CV.pdf" class="access-card" download aria-label="Download CV PDF - Professional resume">
-          <span class="card-label">TIER 03 - DIRECT_ACCESS</span>
-          <h2 class="card-title">Fast Track CV</h2>
-          <p class="card-desc">Immediate access to professional credentials. Optimized for recruiters and hiring managers.
+    <!-- Single Toggle Button - Moves between states -->
+    <div class="toggle-container" id="toggle-container">
+      <button class="see-more-btn" id="see-more-btn" aria-label="Toggle Navigation">
+        <span class="arrow">→</span>
+      </button>
+    </div>
+
+    <!-- Main Content Wrapper -->
+    <div class="main-content" id="main-content">
+
+      <header class="header" role="banner">
+        <h1>System Entry</h1>
+        <div class="name" itemprop="name">Fikri Izzuddin</div>
+      </header>
+
+      <main role="main">
+        <nav class="access-grid" aria-label="Portfolio access options">
+          <!-- Terminal OS Access -->
+          <a href="/terminal" class="access-card" aria-label="Access Terminal OS - Interactive portfolio terminal">
+            <span class="card-label">TIER 01 - CORE_KERNEL</span>
+            <h2 class="card-title">OYI Terminal OS</h2>
+            <p class="card-desc">Low-level access to achievements, company logs, and technical skills via interactive
+              terminal.</p>
+            <span class="card-footer">Execute OS</span>
+          </a>
+
+          <!-- Graphical OS Access -->
+          <a href="/oyi77" class="access-card" aria-label="Access Graphical CV OS - One Piece themed portfolio">
+            <span class="card-label">TIER 02 - GRAPHICAL_UI</span>
+            <h2 class="card-title">One Piece cvOS</h2>
+            <p class="card-desc">High-level graphical interface showcasing creative engineering and interactive
+              storytelling.</p>
+            <span class="card-footer">Launch GUI</span>
+          </a>
+
+          <!-- Fast Track CV -->
+          <a href="/CV.pdf" class="access-card" download aria-label="Download CV PDF - Professional resume">
+            <span class="card-label">TIER 03 - DIRECT_ACCESS</span>
+            <h2 class="card-title">Fast Track CV</h2>
+            <p class="card-desc">Immediate access to professional credentials. Optimized for recruiters and hiring
+              managers.
+            </p>
+            <span class="card-footer">Download PDF</span>
+          </a>
+        </nav>
+
+
+        <footer class="footer" role="contentinfo" itemprop="jobTitle">
+          SOFTWARE ENGINEER | TECHNICAL LEAD | REMOTE_READY
+        </footer>
+    </div>
+
+    <!-- Expanded Portfolio Sections - Full Screen Overlay -->
+    <div class="expanded-sections" id="expanded-sections" aria-hidden="true">
+
+      <div class="expanded-grid" id="expanded-grid">
+        <div class="portfolio-card" data-section="posts">
+          <div class="card-icon">[ ]</div>
+          <h3 class="card-title">Posts</h3>
+          <p class="card-desc">Technical articles, insights, and thought leadership on software engineering.</p>
+        </div>
+
+        <div class="portfolio-card" data-section="achievements">
+          <div class="card-icon">*</div>
+          <h3 class="card-title">Achievements</h3>
+          <p class="card-desc">Notable accomplishments, awards, and recognitions throughout my career.</p>
+        </div>
+
+        <div class="portfolio-card" data-section="experience">
+          <div class="card-icon">+</div>
+          <h3 class="card-title">Experience</h3>
+          <p class="card-desc">Professional journey spanning 7+ years in software engineering and technical leadership.
           </p>
-          <span class="card-footer">Download PDF</span>
-        </a>
-      </nav>
+        </div>
 
-      <!-- Additional Portfolio Sections -->
-      <nav class="portfolio-sections" aria-label="Portfolio sections">
-        <a href="/case-studies/" class="section-link">
-          <span class="section-icon">📊</span>
-          <span class="section-text">Case Studies</span>
-        </a>
-        <a href="/led-projects/" class="section-link">
-          <span class="section-icon">🚀</span>
-          <span class="section-text">Led Projects</span>
-        </a>
-        <a href="/approaches/" class="section-link">
-          <span class="section-icon">🧠</span>
-          <span class="section-text">Approaches</span>
-        </a>
-      </nav>
+        <div class="portfolio-card" data-section="projects">
+          <div class="card-icon">#</div>
+          <h3 class="card-title">Projects</h3>
+          <p class="card-desc">Portfolio of significant projects including blockchain, trading systems, and enterprise
+            solutions.</p>
+        </div>
+
+        <div class="portfolio-card" data-section="skills">
+          <div class="card-icon">></div>
+          <h3 class="card-title">Skills</h3>
+          <p class="card-desc">Technical expertise across full-stack development, blockchain, cloud infrastructure, and
+            more.</p>
+        </div>
+
+        <div class="portfolio-card" data-section="about">
+          <div class="card-icon">@</div>
+          <h3 class="card-title">About Me</h3>
+          <p class="card-desc">Background, philosophy, and approach to software engineering and problem-solving.</p>
+        </div>
+
+        <div class="portfolio-card" data-section="certifications">
+          <div class="card-icon">~</div>
+          <h3 class="card-title">Certifications</h3>
+          <p class="card-desc">Professional certifications and continuous learning achievements.</p>
+        </div>
+
+        <div class="portfolio-card" data-section="leadership">
+          <div class="card-icon">^</div>
+          <h3 class="card-title">Leadership</h3>
+          <p class="card-desc">Team leadership, mentorship, and organizational impact.</p>
+        </div>
+
+        <div class="portfolio-card" data-section="case-studies">
+          <div class="card-icon">=</div>
+          <h3 class="card-title">Case Studies</h3>
+          <p class="card-desc">In-depth analysis of complex problems solved and systems architected.</p>
+        </div>
+
+        <div class="portfolio-card" data-section="examples">
+          <div class="card-icon">!</div>
+          <h3 class="card-title">Example Cases</h3>
+          <p class="card-desc">Real-world examples demonstrating technical expertise and problem-solving approach.</p>
+        </div>
+      </div>
+    </div>
+
     </main>
 
-    <footer class="footer" role="contentinfo" itemprop="jobTitle">
-      SENIOR SOFTWARE ENGINEER | TECHNICAL LEAD | REMOTE_READY_2025
-    </footer>
-  </div>
+    <!-- Modal System -->
+    <div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="modal-container">
+        <div class="modal-header">
+          <h2 class="modal-title" id="modal-title">Section Title</h2>
+          <button class="modal-close" id="modal-close" aria-label="Close modal">&times;</button>
+        </div>
+        <div class="modal-tabs" id="modal-tabs" role="tablist">
+          <!-- Tabs will be dynamically inserted -->
+        </div>
+        <div class="modal-content" id="modal-content">
+          <!-- Content will be dynamically inserted -->
+        </div>
+        <div class="modal-pagination" id="modal-pagination" style="display: none;">
+          <button class="pagination-btn" id="prev-btn">← Previous</button>
+          <button class="pagination-btn" id="next-btn">Next →</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="/assets/js/portal.js"></script>
 </body>
 
 </html>

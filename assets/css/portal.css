@@ -73,6 +73,7 @@ html {
     text-align: center;
     margin-bottom: 60px;
     animation: fadeInDown 1s ease-out;
+    position: relative;
 }
 
 .header h1 {
@@ -90,6 +91,79 @@ html {
     letter-spacing: -1px;
 }
 
+/* Time Display - Top Right */
+.time-display {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-family: var(--portal-font-mono);
+    animation: fadeIn 1s ease-out 0.3s both;
+    z-index: 100;
+    text-align: right;
+}
+
+.current-time {
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--portal-text-dim);
+    letter-spacing: 0.1em;
+}
+
+.timezone {
+    display: none;
+}
+
+/* Date Display - Top Left */
+.date-display {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-family: var(--portal-font-mono);
+    animation: fadeIn 1s ease-out 0.3s both;
+    z-index: 100;
+}
+
+.current-date {
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--portal-text-dim);
+    letter-spacing: 0.1em;
+}
+
+/* Social Buttons - Bottom Right */
+.social-buttons {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    gap: 12px;
+    animation: fadeIn 1s ease-out 0.5s both;
+    z-index: 100;
+}
+
+.social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: transparent;
+    color: var(--portal-text-dim);
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.social-btn:hover {
+    color: var(--portal-text);
+    transform: scale(1.15);
+}
+
+.social-btn svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+}
+
 /* Access Tiers */
 .access-grid {
     display: grid;
@@ -98,6 +172,7 @@ html {
     max-width: 900px;
     width: 90%;
     animation: fadeInUp 1s ease-out 0.2s both;
+    position: relative;
 }
 
 .access-card {
@@ -149,7 +224,7 @@ html {
 }
 
 .card-footer::after {
-    content: '→';
+    content: '\2192';
     transition: transform 0.3s ease;
 }
 
@@ -170,7 +245,173 @@ html {
     animation: fadeIn 2s ease-in 0.5s both;
 }
 
-/* Portfolio Sections */
+/* Single Moving Toggle Button */
+.toggle-container {
+    position: fixed;
+    left: calc(50% + 480px);
+    /* Beside the 900px grid + gap */
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1000;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: fadeIn 1s ease-out 0.5s both;
+}
+
+/* Handle smaller screens */
+@media (max-width: 1100px) {
+    .toggle-container {
+        left: auto;
+        right: 30px;
+    }
+}
+
+.toggle-container.active {
+    left: 30px;
+    right: auto;
+    transform: translateY(-50%);
+}
+
+.see-more-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border: 1px solid var(--portal-accent-dim);
+    color: var(--portal-text-dim);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+}
+
+.see-more-btn:hover {
+    border-color: var(--portal-accent);
+    color: var(--portal-text);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.see-more-btn .arrow {
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+.see-more-btn.active .arrow {
+    transform: rotate(180deg);
+}
+
+.see-more-btn:hover .arrow {
+    animation: arrowBounce 0.6s ease infinite;
+}
+
+@keyframes arrowBounce {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(5px);
+    }
+}
+
+/* Reverse bounce for back arrow */
+.see-more-btn.active:hover .arrow {
+    animation: arrowBounceBack 0.6s ease infinite;
+}
+
+@keyframes arrowBounceBack {
+
+    0%,
+    100% {
+        transform: rotate(180deg) translateX(0);
+    }
+
+    50% {
+        transform: rotate(180deg) translateX(5px);
+    }
+}
+
+/* Main Content Wrapper for Slide Animation */
+.main-content {
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.main-content.slide-left {
+    transform: translateX(-100vw);
+}
+
+/* Expanded Portfolio Sections */
+.expanded-sections {
+    position: fixed;
+    top: 0;
+    left: 100vw;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 40px;
+    overflow-y: auto;
+    transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 50;
+}
+
+.expanded-sections.show {
+    left: 0;
+}
+
+.expanded-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    width: 90%;
+}
+
+.portfolio-card {
+    background: rgba(10, 10, 10, 0.6);
+    border: 1px solid var(--portal-accent-dim);
+    padding: 30px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    transform: translateY(-30px);
+}
+
+.portfolio-card.animate {
+    animation: cascadeIn 0.5s ease-out forwards;
+}
+
+.portfolio-card:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--portal-accent);
+    transform: translateY(-5px);
+}
+
+.portfolio-card .card-icon {
+    font-size: 2rem;
+}
+
+.portfolio-card .card-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.portfolio-card .card-desc {
+    font-size: 0.85rem;
+    color: var(--portal-text-dim);
+    line-height: 1.5;
+}
+
+/* Portfolio Sections (Original) */
 .portfolio-sections {
     display: flex;
     gap: 2rem;
@@ -215,6 +456,243 @@ html {
     color: var(--portal-text);
 }
 
+/* Modal System */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-overlay.show {
+    display: flex;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.modal-container {
+    background: rgba(10, 10, 10, 0.95);
+    border: 1px solid var(--portal-accent);
+    max-width: 900px;
+    width: 90%;
+    max-height: 80vh;
+    overflow: hidden;
+    position: relative;
+    animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(20px);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
+    border-bottom: 1px solid var(--portal-accent-dim);
+}
+
+.modal-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.modal-close {
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: 1px solid var(--portal-accent-dim);
+    color: var(--portal-text);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-close:hover {
+    border-color: var(--portal-accent);
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(90deg);
+}
+
+.modal-tabs {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid var(--portal-accent-dim);
+    padding: 0 30px;
+}
+
+.modal-tab {
+    padding: 15px 25px;
+    background: transparent;
+    border: none;
+    color: var(--portal-text-dim);
+    font-family: var(--portal-font-mono);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-bottom: 2px solid transparent;
+}
+
+.modal-tab:hover {
+    color: var(--portal-text);
+}
+
+.modal-tab.active {
+    color: var(--portal-accent);
+    border-bottom-color: var(--portal-accent);
+}
+
+.modal-content {
+    padding: 30px;
+    overflow-y: auto;
+    max-height: calc(80vh - 200px);
+}
+
+.modal-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: var(--portal-accent-dim);
+    border-radius: 4px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+    background: var(--portal-accent);
+}
+
+/* Enhanced Modal Content Formatting */
+.modal-content h3 {
+    font-size: 1.4rem;
+    color: var(--portal-accent);
+    margin-bottom: 20px;
+    margin-top: 10px;
+    letter-spacing: -0.5px;
+}
+
+.modal-content h4 {
+    font-size: 1.1rem;
+    color: var(--portal-text);
+    margin-top: 25px;
+    margin-bottom: 10px;
+    border-left: 2px solid var(--portal-accent);
+    padding-left: 15px;
+}
+
+.modal-content p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--portal-text-dim);
+    margin-bottom: 15px;
+}
+
+.modal-content ul {
+    list-style: none;
+    margin-bottom: 25px;
+}
+
+.modal-content li {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--portal-text);
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.modal-content li::before {
+    content: '\25AA';
+    position: absolute;
+    left: 0;
+    color: var(--portal-accent);
+    font-size: 1.2rem;
+    line-height: 1.4;
+}
+
+.modal-content strong {
+    color: var(--portal-accent);
+    font-weight: 600;
+}
+
+.modal-content em {
+    display: block;
+    font-style: italic;
+    color: var(--portal-text-dim);
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
+.modal-content section {
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.modal-content section:last-child {
+    border-bottom: none;
+}
+
+.modal-content a {
+    color: var(--portal-accent);
+    text-decoration: underline;
+    transition: opacity 0.2s;
+}
+
+.modal-content a:hover {
+    opacity: 0.8;
+}
+
+.tab-pane {
+    display: none;
+}
+
+.tab-pane.active {
+    display: block;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.modal-pagination {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 20px;
+    border-top: 1px solid var(--portal-accent-dim);
+}
+
+.pagination-btn {
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--portal-accent-dim);
+    color: var(--portal-text);
+    font-family: var(--portal-font-mono);
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.pagination-btn:hover:not(:disabled) {
+    border-color: var(--portal-accent);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.pagination-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
 /* Animations */
 @keyframes fadeInDown {
     from {
@@ -250,6 +728,54 @@ html {
     }
 }
 
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes arrowBounce {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(5px);
+    }
+}
+
+@keyframes cascadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* Mobile Responsive */
 @media (max-width: 768px) {
     .access-grid {
@@ -272,21 +798,95 @@ html {
         margin-top: 40px;
         padding-bottom: 40px;
     }
-    
+
     .portfolio-sections {
         gap: 1rem;
         margin-top: 2rem;
     }
-    
+
     .section-link {
         padding: 0.75rem 1rem;
     }
-    
+
     .section-icon {
         font-size: 1.25rem;
     }
-    
+
     .section-text {
         font-size: 0.75rem;
+    }
+
+    .time-display {
+        top: 15px;
+        right: 15px;
+    }
+
+    .date-display {
+        top: 15px;
+        left: 15px;
+    }
+
+    .current-time,
+    .current-date {
+        font-size: 0.65rem;
+    }
+
+    .social-buttons {
+        bottom: 20px;
+        right: 20px;
+        gap: 10px;
+    }
+
+    .social-btn {
+        width: 28px;
+        height: 28px;
+    }
+
+    .social-btn svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .toggle-container {
+        right: -60px;
+    }
+
+    .see-more-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+
+    .expanded-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-container {
+        width: 95%;
+        max-height: 90vh;
+    }
+
+    .modal-header {
+        padding: 20px;
+    }
+
+    .modal-title {
+        font-size: 1.4rem;
+    }
+
+    .modal-tabs {
+        padding: 0 20px;
+        overflow-x: auto;
+    }
+
+    .modal-tab {
+        padding: 12px 15px;
+        font-size: 0.75rem;
+        white-space: nowrap;
+    }
+
+    .modal-content {
+        padding: 20px;
+        max-height: calc(90vh - 180px);
     }
 }
