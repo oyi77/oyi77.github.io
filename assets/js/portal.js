@@ -160,7 +160,7 @@ const modalData = {
     title: 'Professional Journey',
     tabs: ['Current', 'History'],
     content: {
-      'Current': (`
+      'Current': `
         <section>
           <h3>Bitwyre Crypto Exchange</h3>
           <em>Onchain Trader & Lead Blockchain Developer (2024-Present)</em>
@@ -182,7 +182,7 @@ const modalData = {
             <li><strong>Risk Systems</strong>: Implemented multi-layered risk controls including real-time slippage monitoring and automated deleveraging.</li>
           </ul>
         </section>
-      `).replace(/\n\s+/g, '\n'),
+      `,
       'History': `
         <section>
           <h3>Linguise (France)</h3>
@@ -266,14 +266,12 @@ const modalData = {
       'Experimental': `
         <section>
           <h3>Tools & Open Source</h3>
-          ${getProjectsHTML('experimental') || `
           <h4>Nuclear</h4>
           <p>A free music delivery project that optimized user interface interactions, boosting engagement by 11%.</p>
           <h4>AI Auto Job Apply</h4>
           <p>An automated solution built with Python and TypeScript that leverages LLMs to customize resumes and apply to relevant positions.</p>
           <h4>RBMiner Tools</h4>
           <p>Hardware-level optimization scripts that provided a 20% efficiency boost for multi-GPU mining rigs.</p>
-          `}
         </section>
       `
     }
@@ -687,7 +685,20 @@ document.addEventListener('DOMContentLoaded', () => {
   setInterval(updateTime, 1000);
   initToggle();
   initModal();
-  initMetricsAnimation();
-  loadGitHubStats();
+  // Initialize metrics animation when expanded sections are shown
+  const expandedSections = document.getElementById('expanded-sections');
+  if (expandedSections) {
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.target.classList.contains('show')) {
+          setTimeout(() => {
+            initMetricsAnimation();
+            loadGitHubStats();
+          }, 100);
+        }
+      });
+    });
+    observer.observe(expandedSections, { attributes: true, attributeFilter: ['class'] });
+  }
   console.log('Portal system loaded with real content.');
 });
