@@ -161,7 +161,7 @@
     <!-- Single Toggle Button - Moves between states -->
     <div class="toggle-container" id="toggle-container">
       <button class="see-more-btn" id="see-more-btn" aria-label="Toggle Navigation">
-        <span class="arrow">↓</span>
+        <span class="arrow">→</span>
       </button>
     </div>
 
@@ -212,102 +212,8 @@
     <!-- Expanded Portfolio Sections - Full Screen Overlay -->
     <div class="expanded-sections" id="expanded-sections" aria-hidden="true">
 
+      <!-- Portfolio Cards Grid (Stage 1: Arrow Right) -->
       <div class="expanded-grid" id="expanded-grid">
-        <!-- Metrics Dashboard - Full width section -->
-        <section class="metrics-dashboard expanded-section-full" id="metrics-dashboard" aria-label="Professional metrics">
-          <div class="metrics-grid">
-            <div class="metric-card">
-              <div class="metric-value" data-target="7">0</div>
-              <div class="metric-label">Years Experience</div>
-            </div>
-            <div class="metric-card">
-              <div class="metric-value" data-target="3000">0</div>
-              <div class="metric-label">Team Members Led</div>
-            </div>
-            <div class="metric-card">
-              <div class="metric-value" data-target="4">0</div>
-              <div class="metric-label">Companies</div>
-            </div>
-            <div class="metric-card">
-              <div class="metric-value" data-target="8">0</div>
-              <div class="metric-label">Projects</div>
-            </div>
-            <div class="metric-card">
-              <div class="metric-value" data-target="90">0</div>
-              <div class="metric-label">Win Rate %</div>
-            </div>
-            <div class="metric-card">
-              <div class="metric-value" data-target="100">0</div>
-              <div class="metric-label">Revenue Impact (K USD)</div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Achievement Highlights - Full width section -->
-        <section class="achievement-highlights expanded-section-full" id="achievement-highlights" aria-label="Key achievements">
-          <h2 class="section-title">Key Achievements</h2>
-          <div class="achievements-grid">
-            <div class="achievement-card">
-              <div class="achievement-icon">$</div>
-              <div class="achievement-value" data-target="100">0</div>
-              <div class="achievement-unit">K USD</div>
-              <div class="achievement-desc">Profit Generated (Fomo Watcher)</div>
-            </div>
-            <div class="achievement-card">
-              <div class="achievement-icon">👥</div>
-              <div class="achievement-value" data-target="3000">0</div>
-              <div class="achievement-unit">+</div>
-              <div class="achievement-desc">Team Members Led (GarudaMedia)</div>
-            </div>
-            <div class="achievement-card">
-              <div class="achievement-icon">%</div>
-              <div class="achievement-value" data-target="90">0</div>
-              <div class="achievement-unit">+</div>
-              <div class="achievement-desc">Trading Win Rate (AiTradePulse)</div>
-            </div>
-            <div class="achievement-card">
-              <div class="achievement-icon">↓</div>
-              <div class="achievement-value" data-target="40">0</div>
-              <div class="achievement-unit">%</div>
-              <div class="achievement-desc">Cost Reduction (GarudaMedia)</div>
-            </div>
-            <div class="achievement-card">
-              <div class="achievement-icon">₿</div>
-              <div class="achievement-value" data-target="5">0</div>
-              <div class="achievement-unit">B+ IDR</div>
-              <div class="achievement-desc">Monthly Volume (BerkahKarya)</div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Social Proof - Full width section -->
-        <section class="social-proof expanded-section-full" id="social-proof" aria-label="GitHub statistics">
-          <h2 class="section-title">GitHub Activity</h2>
-          <div class="social-stats-grid">
-            <div class="social-stat-card">
-              <div class="social-stat-value" id="repo-count">--</div>
-              <div class="social-stat-label">Repositories</div>
-            </div>
-            <div class="social-stat-card">
-              <div class="social-stat-value" id="github-stars">--</div>
-              <div class="social-stat-label">Stars</div>
-            </div>
-            <div class="social-stat-card">
-              <div class="social-stat-value" id="github-forks">--</div>
-              <div class="social-stat-label">Forks</div>
-            </div>
-            <div class="social-stat-card">
-              <div class="social-stat-value" id="github-contributions">--</div>
-              <div class="social-stat-label">Contributions</div>
-            </div>
-          </div>
-          <div class="social-links">
-            <a href="https://github.com/oyi77" target="_blank" rel="noopener noreferrer" class="social-link">
-              View GitHub Profile →
-            </a>
-          </div>
-        </section>
-
         <div class="portfolio-card" data-section="posts">
           <div class="card-icon">[ ]</div>
           <h3 class="card-title">Posts</h3>
@@ -392,6 +298,104 @@
           <button class="pagination-btn" id="prev-btn">← Previous</button>
           <button class="pagination-btn" id="next-btn">Next →</button>
         </div>
+      </div>
+
+      <!-- Metrics & Achievements Section (Stage 2: Arrow Down) -->
+      <div class="metrics-sections" id="metrics-sections" aria-hidden="true">
+        <!-- Metrics Dashboard -->
+        <section class="metrics-dashboard" id="metrics-dashboard" aria-label="Professional metrics">
+          <div class="metrics-grid">
+            <div class="metric-card">
+              <div class="metric-value" data-target="7">0</div>
+              <div class="metric-label">Years Experience</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-value" data-target="3000">0</div>
+              <div class="metric-label">Team Members Led</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-value" data-target="4">0</div>
+              <div class="metric-label">Companies</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-value" data-target="8">0</div>
+              <div class="metric-label">Projects</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-value" data-target="90">0</div>
+              <div class="metric-label">Win Rate %</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-value" data-target="100">0</div>
+              <div class="metric-label">Revenue Impact (K USD)</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Achievement Highlights -->
+        <section class="achievement-highlights" id="achievement-highlights" aria-label="Key achievements">
+          <h2 class="section-title">Key Achievements</h2>
+          <div class="achievements-grid">
+            <div class="achievement-card">
+              <div class="achievement-icon">$</div>
+              <div class="achievement-value" data-target="100">0</div>
+              <div class="achievement-unit">K USD</div>
+              <div class="achievement-desc">Profit Generated (Fomo Watcher)</div>
+            </div>
+            <div class="achievement-card">
+              <div class="achievement-icon">👥</div>
+              <div class="achievement-value" data-target="3000">0</div>
+              <div class="achievement-unit">+</div>
+              <div class="achievement-desc">Team Members Led (GarudaMedia)</div>
+            </div>
+            <div class="achievement-card">
+              <div class="achievement-icon">%</div>
+              <div class="achievement-value" data-target="90">0</div>
+              <div class="achievement-unit">+</div>
+              <div class="achievement-desc">Trading Win Rate (AiTradePulse)</div>
+            </div>
+            <div class="achievement-card">
+              <div class="achievement-icon">↓</div>
+              <div class="achievement-value" data-target="40">0</div>
+              <div class="achievement-unit">%</div>
+              <div class="achievement-desc">Cost Reduction (GarudaMedia)</div>
+            </div>
+            <div class="achievement-card">
+              <div class="achievement-icon">₿</div>
+              <div class="achievement-value" data-target="5">0</div>
+              <div class="achievement-unit">B+ IDR</div>
+              <div class="achievement-desc">Monthly Volume (BerkahKarya)</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Social Proof -->
+        <section class="social-proof" id="social-proof" aria-label="GitHub statistics">
+          <h2 class="section-title">GitHub Activity</h2>
+          <div class="social-stats-grid">
+            <div class="social-stat-card">
+              <div class="social-stat-value" id="repo-count">--</div>
+              <div class="social-stat-label">Repositories</div>
+            </div>
+            <div class="social-stat-card">
+              <div class="social-stat-value" id="github-stars">--</div>
+              <div class="social-stat-label">Stars</div>
+            </div>
+            <div class="social-stat-card">
+              <div class="social-stat-value" id="github-forks">--</div>
+              <div class="social-stat-label">Forks</div>
+            </div>
+            <div class="social-stat-card">
+              <div class="social-stat-value" id="github-contributions">--</div>
+              <div class="social-stat-label">Contributions</div>
+            </div>
+          </div>
+          <div class="social-links">
+            <a href="https://github.com/oyi77" target="_blank" rel="noopener noreferrer" class="social-link">
+              View GitHub Profile →
+            </a>
+          </div>
+        </section>
       </div>
     </div>
 

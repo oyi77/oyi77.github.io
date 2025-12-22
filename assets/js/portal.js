@@ -43,18 +43,22 @@ function initToggle() {
   const expandedSections = document.getElementById('expanded-sections');
   const mainContent = document.getElementById('main-content');
   const portfolioCards = document.querySelectorAll('.portfolio-card');
+  const metricsSections = document.getElementById('metrics-sections');
+  const arrow = toggleBtn?.querySelector('.arrow');
 
-  if (!toggleBtn || !expandedSections || !mainContent || !toggleContainer) {
+  if (!toggleBtn || !expandedSections || !mainContent || !toggleContainer || !metricsSections) {
     console.warn('Navigation elements not found - check HTML structure');
     return;
   }
 
-  const toggleView = () => {
-    const isExpanded = toggleBtn.classList.toggle('active');
-    toggleContainer.classList.toggle('active');
+  let currentState = 'main'; // 'main' | 'expanded' | 'metrics'
 
-    if (isExpanded) {
-      // Navigate to Expanded
+  const toggleView = () => {
+    if (currentState === 'main') {
+      // Stage 1: Main → Expanded (Arrow Right → Left)
+      currentState = 'expanded';
+      toggleBtn.classList.add('active');
+      toggleContainer.classList.add('active');
       mainContent.classList.add('slide-left');
       setTimeout(() => {
         expandedSections.classList.add('show');
@@ -64,17 +68,52 @@ function initToggle() {
           }, index * 80);
         });
       }, 100);
+      if (arrow) arrow.textContent = '↓'; // Show down arrow for next stage
       document.body.style.overflow = 'hidden';
-    } else {
-      // Navigate to Minimalist
-      portfolioCards.forEach(card => card.classList.remove('animate'));
-      expandedSections.classList.remove('show');
+    } else if (currentState === 'expanded') {
+      // Stage 2: Expanded → Metrics (Arrow Down → Up)
+      currentState = 'metrics';
+      metricsSections.setAttribute('aria-hidden', 'false');
+      metricsSections.classList.add('show');
+      if (arrow) arrow.textContent = '↑'; // Show up arrow to go back
+      // Trigger metrics animation
       setTimeout(() => {
-        mainContent.classList.remove('slide-left');
+        initMetricsAnimation();
+        loadGitHubStats();
       }, 100);
-      document.body.style.overflow = '';
+    } else if (currentState === 'metrics') {
+      // Stage 3: Metrics → Expanded (Arrow Up → Down)
+      currentState = 'expanded';
+      metricsSections.classList.remove('show');
+      metricsSections.setAttribute('aria-hidden', 'true');
+      if (arrow) arrow.textContent = '↓'; // Show down arrow again
     }
   };
+
+  // Handle back navigation (ESC key)
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      if (currentState === 'metrics') {
+        // Metrics → Expanded
+        currentState = 'expanded';
+        metricsSections.classList.remove('show');
+        metricsSections.setAttribute('aria-hidden', 'true');
+        if (arrow) arrow.textContent = '↓';
+      } else if (currentState === 'expanded') {
+        // Expanded → Main (Arrow Left → Right)
+        currentState = 'main';
+        toggleBtn.classList.remove('active');
+        toggleContainer.classList.remove('active');
+        portfolioCards.forEach(card => card.classList.remove('animate'));
+        expandedSections.classList.remove('show');
+        setTimeout(() => {
+          mainContent.classList.remove('slide-left');
+        }, 100);
+        if (arrow) arrow.textContent = '→';
+        document.body.style.overflow = '';
+      }
+    }
+  });
 
   toggleBtn.addEventListener('click', toggleView);
 }
