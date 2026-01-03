@@ -40,18 +40,34 @@ function updateTime() {
 function initToggle() {
   const toggleBtn = document.getElementById('see-more-btn');
   const toggleContainer = document.getElementById('toggle-container');
+  const dualArrowContainer = document.getElementById('dual-arrow-container');
+  const navArrowLeft = document.getElementById('nav-arrow-left');
+  const navArrowDown = document.getElementById('nav-arrow-down');
   const expandedSections = document.getElementById('expanded-sections');
   const mainContent = document.getElementById('main-content');
   const portfolioCards = document.querySelectorAll('.portfolio-card');
   const metricsSections = document.getElementById('metrics-sections');
+  const curatedSections = document.getElementById('curated-sections');
   const arrow = toggleBtn?.querySelector('.arrow');
 
-  if (!toggleBtn || !expandedSections || !mainContent || !toggleContainer || !metricsSections) {
+  if (!toggleBtn || !expandedSections || !mainContent || !toggleContainer || !metricsSections || !curatedSections) {
     console.warn('Navigation elements not found - check HTML structure');
     return;
   }
 
-  let currentState = 'main'; // 'main' | 'expanded' | 'metrics'
+  let currentState = 'main'; // 'main' | 'expanded' | 'metrics' | 'curated'
+
+  const updateArrowVisibility = () => {
+    if (currentState === 'expanded') {
+      // Show dual arrows, hide single toggle
+      toggleContainer.style.display = 'none';
+      if (dualArrowContainer) dualArrowContainer.style.display = 'flex';
+    } else {
+      // Show single toggle, hide dual arrows
+      toggleContainer.style.display = 'flex';
+      if (dualArrowContainer) dualArrowContainer.style.display = 'none';
+    }
+  };
 
   const showMain = () => {
     currentState = 'main';
@@ -60,12 +76,16 @@ function initToggle() {
     portfolioCards.forEach(card => card.classList.remove('animate'));
     expandedSections.classList.remove('show');
     metricsSections.classList.remove('show');
+    curatedSections.classList.remove('show');
     metricsSections.setAttribute('aria-hidden', 'true');
+    curatedSections.setAttribute('aria-hidden', 'true');
     setTimeout(() => {
       mainContent.classList.remove('slide-left');
+      mainContent.classList.remove('slide-right');
     }, 100);
     if (arrow) arrow.textContent = '→';
     document.body.style.overflow = '';
+    updateArrowVisibility();
   };
 
   const showExpanded = () => {
@@ -73,6 +93,13 @@ function initToggle() {
     if (currentState === 'metrics') {
       metricsSections.classList.remove('show');
       metricsSections.setAttribute('aria-hidden', 'true');
+    } else if (currentState === 'curated') {
+      curatedSections.classList.remove('show');
+      curatedSections.setAttribute('aria-hidden', 'true');
+      setTimeout(() => {
+        mainContent.classList.remove('slide-right');
+        mainContent.classList.add('slide-left');
+      }, 100);
     } else {
       // Coming from main
       mainContent.classList.add('slide-left');
@@ -88,21 +115,45 @@ function initToggle() {
       }, 100);
     }
     currentState = 'expanded';
-    if (arrow) arrow.textContent = '↓';
     document.body.style.overflow = 'hidden';
+    updateArrowVisibility();
   };
 
   const showMetrics = () => {
     currentState = 'metrics';
     metricsSections.setAttribute('aria-hidden', 'false');
     metricsSections.classList.add('show');
-    if (arrow) arrow.textContent = '↑';
     // Trigger metrics animation
     setTimeout(() => {
       initMetricsAnimation();
       loadGitHubStats();
     }, 100);
+    updateArrowVisibility();
   };
+
+  const showCurated = () => {
+    currentState = 'curated';
+    curatedSections.setAttribute('aria-hidden', 'false');
+    mainContent.classList.add('slide-right');
+    setTimeout(() => {
+      curatedSections.classList.add('show');
+      // Trigger GitHub Pages scan if not already done
+      if (!curatedSections.dataset.scanned) {
+        scanGitHubPages();
+      }
+    }, 100);
+    document.body.style.overflow = 'hidden';
+    updateArrowVisibility();
+  };
+
+  // Refresh button handler
+  const refreshBtn = document.getElementById('curated-refresh-btn');
+  if (refreshBtn) {
+    refreshBtn.addEventListener('click', () => {
+      curatedSections.dataset.scanned = 'false';
+      scanGitHubPages(true); // Force refresh
+    });
+  }
 
   const toggleView = () => {
     if (currentState === 'main') {
@@ -114,6 +165,23 @@ function initToggle() {
     }
   };
 
+  // Dual arrow handlers
+  if (navArrowLeft) {
+    navArrowLeft.addEventListener('click', () => {
+      if (currentState === 'expanded') {
+        showMain();
+      }
+    });
+  }
+
+  if (navArrowDown) {
+    navArrowDown.addEventListener('click', () => {
+      if (currentState === 'expanded') {
+        showMetrics();
+      }
+    });
+  }
+
   // Handle keyboard navigation
   document.addEventListener('keydown', (e) => {
     // Navigation Logic
@@ -121,6 +189,9 @@ function initToggle() {
       if (e.key === 'ArrowRight') {
         e.preventDefault();
         showExpanded();
+      } else if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        showCurated();
       }
     } else if (currentState === 'expanded') {
       if (e.key === 'ArrowLeft') {
@@ -135,6 +206,11 @@ function initToggle() {
         e.preventDefault();
         showExpanded();
       }
+    } else if (currentState === 'curated') {
+      if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        showMain();
+      }
     }
 
     if (e.key === 'Escape') {
@@ -147,7 +223,15 @@ function initToggle() {
         showExpanded();
       } else if (currentState === 'expanded') {
         showMain();
+      } else if (currentState === 'curated') {
+        showMain();
       }
+    }
+
+    // Help shortcut
+    if (e.key === '?' || (e.key === 'h' && e.shiftKey)) {
+      e.preventDefault();
+      showOnboarding();
     }
   });
 
@@ -157,6 +241,7 @@ function initToggle() {
   });
 
   toggleBtn.addEventListener('click', toggleView);
+  updateArrowVisibility();
 }
 
 function triggerEyeAnimation() {
@@ -778,11 +863,279 @@ function animateToValue(element, target) {
 // INITIALIZATION
 // ============================================================================
 
+// ============================================================================
+// ONBOARDING SYSTEM
+// ============================================================================
+
+function initOnboarding() {
+  const onboardingModal = document.getElementById('onboarding-modal');
+  const onboardingClose = document.getElementById('onboarding-close');
+  const onboardingGotIt = document.getElementById('onboarding-got-it');
+  const helpBtn = document.getElementById('help-btn');
+
+  if (!onboardingModal) return;
+
+  const closeOnboarding = () => {
+    onboardingModal.classList.remove('show');
+    onboardingModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  };
+
+  if (onboardingClose) {
+    onboardingClose.addEventListener('click', closeOnboarding);
+  }
+
+  if (onboardingGotIt) {
+    onboardingGotIt.addEventListener('click', () => {
+      localStorage.setItem('hasSeenOnboarding', 'true');
+      closeOnboarding();
+    });
+  }
+
+  if (helpBtn) {
+    helpBtn.addEventListener('click', showOnboarding);
+  }
+
+  // Close on outside click
+  onboardingModal.addEventListener('click', (e) => {
+    if (e.target.id === 'onboarding-modal') {
+      closeOnboarding();
+    }
+  });
+
+  // Check if user has seen onboarding
+  const hasSeenOnboarding = localStorage.getItem('hasSeenOnboarding');
+  if (!hasSeenOnboarding) {
+    // Show after a short delay
+    setTimeout(() => {
+      showOnboarding();
+    }, 1000);
+  }
+}
+
+function showOnboarding() {
+  const onboardingModal = document.getElementById('onboarding-modal');
+  if (onboardingModal) {
+    onboardingModal.classList.add('show');
+    onboardingModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+// ============================================================================
+// GITHUB PAGES SCANNING
+// ============================================================================
+
+async function scanGitHubPages(forceRefresh = false) {
+  const curatedGrid = document.getElementById('curated-grid');
+  const curatedSections = document.getElementById('curated-sections');
+  
+  if (!curatedGrid || !curatedSections) return;
+
+  // Check cache first (unless forcing refresh)
+  if (!forceRefresh) {
+    const cachedResults = localStorage.getItem('githubPagesScanResults');
+    const cacheTimestamp = localStorage.getItem('githubPagesScanTimestamp');
+    const cacheAge = cacheTimestamp ? Date.now() - parseInt(cacheTimestamp) : Infinity;
+    const cacheValid = cacheAge < 7 * 24 * 60 * 60 * 1000; // 7 days cache (much longer to avoid rate limits)
+
+    if (cachedResults && cacheValid) {
+      try {
+        const results = JSON.parse(cachedResults);
+        displayCuratedPages(results, true); // Pass true to indicate cached data
+        return;
+      } catch (e) {
+        console.warn('Failed to parse cached results, will refresh', e);
+        // Clear invalid cache
+        localStorage.removeItem('githubPagesScanResults');
+        localStorage.removeItem('githubPagesScanTimestamp');
+      }
+    }
+  } else {
+    // Clear cache when forcing refresh
+    localStorage.removeItem('githubPagesScanResults');
+    localStorage.removeItem('githubPagesScanTimestamp');
+  }
+
+  // Show loading state
+  curatedGrid.innerHTML = '<div class="curated-loading">Scanning GitHub repositories for Pages...</div>';
+
+  const username = 'oyi77';
+  const baseDomain = 'https://oyi77.github.io';
+  const discoveredPages = [];
+
+  try {
+    // Fetch all repositories
+    const reposResponse = await fetch(`https://api.github.com/users/${username}/repos?per_page=100&sort=updated`);
+    
+    if (!reposResponse.ok) {
+      throw new Error('Failed to fetch repositories');
+    }
+
+    const repos = await reposResponse.json();
+    
+    // Check each repository for GitHub Pages
+    for (const repo of repos) {
+      try {
+        // Check if repo has pages enabled via GitHub API
+        const pagesResponse = await fetch(`https://api.github.com/repos/${username}/${repo.name}/pages`);
+        
+        if (pagesResponse.ok) {
+          const pagesData = await pagesResponse.json();
+          
+          // GitHub Pages can be served from:
+          // 1. username.github.io/repo-name (for non-username.github.io repos)
+          // 2. username.github.io (for username.github.io repo)
+          
+          let pagesUrl;
+          let path;
+          
+          if (repo.name === `${username}.github.io`) {
+            // Main site - check root and common paths
+            pagesUrl = baseDomain;
+            path = '/';
+          } else {
+            // Project pages - served at /repo-name
+            pagesUrl = `${baseDomain}/${repo.name}`;
+            path = `/${repo.name}`;
+          }
+
+          // Verify the page is actually accessible
+          try {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 3000);
+            
+            const testResponse = await fetch(pagesUrl, {
+              method: 'HEAD',
+              signal: controller.signal,
+              cache: 'no-cache'
+            });
+            
+            clearTimeout(timeoutId);
+            
+            if (testResponse.ok || testResponse.status === 200) {
+              discoveredPages.push({
+                path: path,
+                url: pagesUrl,
+                title: repo.name.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
+                description: repo.description || `GitHub Pages for ${repo.name}`,
+                repo: repo.name,
+                stars: repo.stargazers_count || 0
+              });
+            }
+          } catch (testError) {
+            // Page might exist but CORS or other issues prevent verification
+            // Still add it if it's a known important repo
+            if (repo.name === `${username}.github.io` || repo.name === 'oyi77.github.io') {
+              discoveredPages.push({
+                path: path,
+                url: pagesUrl,
+                title: repo.name.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
+                description: repo.description || `GitHub Pages for ${repo.name}`,
+                repo: repo.name,
+                stars: repo.stargazers_count || 0
+              });
+            }
+          }
+        }
+      } catch (pagesError) {
+        // Repository doesn't have pages or API error
+        // Continue to next repo
+        continue;
+      }
+      
+      // Small delay to avoid rate limiting
+      await new Promise(resolve => setTimeout(resolve, 300));
+    }
+
+    // Also check for known important paths that might not be separate repos
+    const knownPaths = [
+      { path: '/terminal', url: `${baseDomain}/terminal`, title: 'Terminal OS', description: 'Interactive Terminal Portfolio' },
+      { path: '/oyi77', url: `${baseDomain}/oyi77`, title: 'One Piece cvOS', description: 'Graphical CV OS' }
+    ];
+
+    // Test known paths and add if they exist
+    for (const knownPath of knownPaths) {
+      try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 2000);
+        
+        const testResponse = await fetch(knownPath.url, {
+          method: 'HEAD',
+          signal: controller.signal,
+          cache: 'no-cache'
+        });
+        
+        clearTimeout(timeoutId);
+        
+        if (testResponse.ok || testResponse.status === 200) {
+          // Check if not already in discoveredPages
+          if (!discoveredPages.find(p => p.path === knownPath.path)) {
+            discoveredPages.push(knownPath);
+          }
+        }
+      } catch (error) {
+        // Path doesn't exist or not accessible
+        continue;
+      }
+    }
+
+    // Sort by stars (if available) or alphabetically
+    discoveredPages.sort((a, b) => {
+      if (a.stars && b.stars) {
+        return b.stars - a.stars;
+      }
+      return a.title.localeCompare(b.title);
+    });
+
+    // Cache results with timestamp
+    localStorage.setItem('githubPagesScanResults', JSON.stringify(discoveredPages));
+    localStorage.setItem('githubPagesScanTimestamp', Date.now().toString());
+    curatedSections.dataset.scanned = 'true';
+
+    displayCuratedPages(discoveredPages, false); // Fresh data, not cached
+    
+  } catch (error) {
+    console.warn('Failed to scan GitHub Pages:', error);
+    curatedGrid.innerHTML = '<div class="curated-empty">Unable to scan repositories. Please try again later.</div>';
+    
+    // Fallback to known pages
+    const fallbackPages = [
+      { path: '/terminal', url: `${baseDomain}/terminal`, title: 'Terminal OS', description: 'Interactive Terminal Portfolio' },
+      { path: '/oyi77', url: `${baseDomain}/oyi77`, title: 'One Piece cvOS', description: 'Graphical CV OS' }
+    ];
+    displayCuratedPages(fallbackPages);
+  }
+}
+
+function displayCuratedPages(pages, isCached = false) {
+  const curatedGrid = document.getElementById('curated-grid');
+  if (!curatedGrid) return;
+
+  if (pages.length === 0) {
+    curatedGrid.innerHTML = '<div class="curated-empty">No GitHub Pages found. Check back later!</div>';
+    return;
+  }
+
+  const cacheIndicator = isCached ? '<div class="curated-cache-indicator">📦 Cached data</div>' : '';
+  
+  curatedGrid.innerHTML = cacheIndicator + pages.map(page => `
+    <a href="${page.url}" class="curated-card" target="_blank" rel="noopener noreferrer">
+      <div class="curated-card-icon">🔗</div>
+      <h3 class="curated-card-title">${page.title}</h3>
+      <p class="curated-card-path">${page.path === '/' ? '/ (root)' : page.path}</p>
+      ${page.description ? `<p class="curated-card-desc">${page.description}</p>` : ''}
+      ${page.stars !== undefined ? `<div class="curated-card-stars">⭐ ${page.stars}</div>` : ''}
+    </a>
+  `).join('');
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   updateTime();
   setInterval(updateTime, 1000);
   initToggle();
   initModal();
+  initOnboarding();
   // Initialize metrics animation when expanded sections are shown
   const expandedSections = document.getElementById('expanded-sections');
   if (expandedSections) {
