@@ -58,14 +58,44 @@ function initToggle() {
   let currentState = 'main'; // 'main' | 'expanded' | 'metrics' | 'curated'
 
   const updateArrowVisibility = () => {
+    const mainRightToggle = document.getElementById('main-right-toggle');
+    
+    // Hide all arrows first
+    toggleContainer.style.display = 'none';
+    if (dualArrowContainer) dualArrowContainer.style.display = 'none';
+    if (mainRightToggle) mainRightToggle.style.display = 'none';
+    
     if (currentState === 'expanded') {
-      // Show dual arrows, hide single toggle
-      toggleContainer.style.display = 'none';
-      if (dualArrowContainer) dualArrowContainer.style.display = 'flex';
-    } else {
-      // Show single toggle, hide dual arrows
+      // Show dual arrows (left and down)
+      if (dualArrowContainer) {
+        dualArrowContainer.style.display = 'flex';
+        if (navArrowLeft) navArrowLeft.style.display = 'flex';
+        if (navArrowDown) navArrowDown.style.display = 'flex';
+      }
+    } else if (currentState === 'metrics') {
+      // Show only up arrow (single toggle pointing up)
       toggleContainer.style.display = 'flex';
-      if (dualArrowContainer) dualArrowContainer.style.display = 'none';
+      toggleContainer.style.left = 'calc(50% + 480px)';
+      toggleContainer.style.right = 'auto';
+      if (arrow) arrow.textContent = '↑';
+    } else if (currentState === 'curated') {
+      // Show only right arrow (single toggle pointing right, positioned on right side)
+      toggleContainer.style.display = 'flex';
+      toggleContainer.style.left = 'auto';
+      toggleContainer.style.right = '30px';
+      if (arrow) arrow.textContent = '→';
+    } else if (currentState === 'main') {
+      // Show left arrow on left side, right arrow on right side
+      toggleContainer.style.display = 'flex';
+      toggleContainer.style.left = '30px';
+      toggleContainer.style.right = 'auto';
+      if (arrow) arrow.textContent = '←';
+      // Also show right arrow for expanded view
+      if (mainRightToggle) {
+        mainRightToggle.style.display = 'flex';
+        const rightArrow = mainRightToggle.querySelector('.arrow');
+        if (rightArrow) rightArrow.textContent = '→';
+      }
     }
   };
 
@@ -83,7 +113,6 @@ function initToggle() {
       mainContent.classList.remove('slide-left');
       mainContent.classList.remove('slide-right');
     }, 100);
-    if (arrow) arrow.textContent = '→';
     document.body.style.overflow = '';
     updateArrowVisibility();
   };
@@ -146,6 +175,15 @@ function initToggle() {
     updateArrowVisibility();
   };
 
+  // Left arrow handler for main page
+  toggleBtn.addEventListener('click', () => {
+    if (currentState === 'main') {
+      showCurated();
+    } else {
+      toggleView();
+    }
+  });
+
   // Refresh button handler
   const refreshBtn = document.getElementById('curated-refresh-btn');
   if (refreshBtn) {
@@ -162,8 +200,20 @@ function initToggle() {
       showMetrics();
     } else if (currentState === 'metrics') {
       showExpanded();
+    } else if (currentState === 'curated') {
+      showMain();
     }
   };
+
+  // Right toggle button handler for main page
+  const mainRightBtn = document.getElementById('main-right-btn');
+  if (mainRightBtn) {
+    mainRightBtn.addEventListener('click', () => {
+      if (currentState === 'main') {
+        showExpanded();
+      }
+    });
+  }
 
   // Dual arrow handlers
   if (navArrowLeft) {
@@ -240,7 +290,6 @@ function initToggle() {
     triggerEyeAnimation();
   });
 
-  toggleBtn.addEventListener('click', toggleView);
   updateArrowVisibility();
 }
 
@@ -932,12 +981,20 @@ async function scanGitHubPages(forceRefresh = false) {
   
   if (!curatedGrid || !curatedSections) return;
 
+  // Known GitHub Pages - add these directly without scanning
+  const knownPages = [
+    { path: '/wifi-jammer', url: 'https://oyi77.github.io/wifi-jammer', title: 'WiFi Jammer', description: 'Security research tool', repo: 'wifi-jammer', stars: 0 },
+    { path: '/adbs', url: 'https://oyi77.github.io/adbs', title: 'ADbS', description: 'GitHub Pages project', repo: 'adbs', stars: 0 },
+    { path: '/oyi77', url: 'https://oyi77.github.io/oyi77', title: 'One Piece cvOS', description: 'Graphical CV OS', repo: 'oyi77', stars: 0 },
+    { path: '/terminal', url: 'https://oyi77.github.io/terminal', title: 'Terminal OS', description: 'Interactive Terminal Portfolio', repo: 'terminal', stars: 0 }
+  ];
+
   // Check cache first (unless forcing refresh)
   if (!forceRefresh) {
     const cachedResults = localStorage.getItem('githubPagesScanResults');
     const cacheTimestamp = localStorage.getItem('githubPagesScanTimestamp');
     const cacheAge = cacheTimestamp ? Date.now() - parseInt(cacheTimestamp) : Infinity;
-    const cacheValid = cacheAge < 7 * 24 * 60 * 60 * 1000; // 7 days cache (much longer to avoid rate limits)
+    const cacheValid = cacheAge < 7 * 24 * 60 * 60 * 1000; // 7 days cache
 
     if (cachedResults && cacheValid) {
       try {
@@ -946,13 +1003,11 @@ async function scanGitHubPages(forceRefresh = false) {
         return;
       } catch (e) {
         console.warn('Failed to parse cached results, will refresh', e);
-        // Clear invalid cache
         localStorage.removeItem('githubPagesScanResults');
         localStorage.removeItem('githubPagesScanTimestamp');
       }
     }
   } else {
-    // Clear cache when forcing refresh
     localStorage.removeItem('githubPagesScanResults');
     localStorage.removeItem('githubPagesScanTimestamp');
   }
@@ -962,11 +1017,14 @@ async function scanGitHubPages(forceRefresh = false) {
 
   const username = 'oyi77';
   const baseDomain = 'https://oyi77.github.io';
-  const discoveredPages = [];
+  const discoveredPages = [...knownPages]; // Start with known pages
+
+  // Repos to skip (already in knownPages)
+  const skipRepos = ['wifi-jammer', 'adbs', 'oyi77', 'terminal'];
 
   try {
-    // Fetch all repositories
-    const reposResponse = await fetch(`https://api.github.com/users/${username}/repos?per_page=100&sort=updated`);
+    // Fetch only PUBLIC repositories
+    const reposResponse = await fetch(`https://api.github.com/users/${username}/repos?per_page=100&sort=updated&type=public`);
     
     if (!reposResponse.ok) {
       throw new Error('Failed to fetch repositories');
@@ -974,8 +1032,21 @@ async function scanGitHubPages(forceRefresh = false) {
 
     const repos = await reposResponse.json();
     
+    // Filter to only public repos and skip known ones
+    const reposToCheck = repos.filter(repo => 
+      repo.private === false && !skipRepos.includes(repo.name)
+    );
+
+    // Limit to first 10 repos to avoid rate limits
+    const limitedRepos = reposToCheck.slice(0, 10);
+    
     // Check each repository for GitHub Pages
-    for (const repo of repos) {
+    for (const repo of limitedRepos) {
+      // Skip if already in known pages
+      if (skipRepos.includes(repo.name)) {
+        continue;
+      }
+
       try {
         // Check if repo has pages enabled via GitHub API
         const pagesResponse = await fetch(`https://api.github.com/repos/${username}/${repo.name}/pages`);
@@ -983,27 +1054,14 @@ async function scanGitHubPages(forceRefresh = false) {
         if (pagesResponse.ok) {
           const pagesData = await pagesResponse.json();
           
-          // GitHub Pages can be served from:
-          // 1. username.github.io/repo-name (for non-username.github.io repos)
-          // 2. username.github.io (for username.github.io repo)
-          
-          let pagesUrl;
-          let path;
-          
-          if (repo.name === `${username}.github.io`) {
-            // Main site - check root and common paths
-            pagesUrl = baseDomain;
-            path = '/';
-          } else {
-            // Project pages - served at /repo-name
-            pagesUrl = `${baseDomain}/${repo.name}`;
-            path = `/${repo.name}`;
-          }
+          // Project pages - served at /repo-name
+          const pagesUrl = `${baseDomain}/${repo.name}`;
+          const path = `/${repo.name}`;
 
           // Verify the page is actually accessible
           try {
             const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 3000);
+            const timeoutId = setTimeout(() => controller.abort(), 2000);
             
             const testResponse = await fetch(pagesUrl, {
               method: 'HEAD',
@@ -1024,60 +1082,17 @@ async function scanGitHubPages(forceRefresh = false) {
               });
             }
           } catch (testError) {
-            // Page might exist but CORS or other issues prevent verification
-            // Still add it if it's a known important repo
-            if (repo.name === `${username}.github.io` || repo.name === 'oyi77.github.io') {
-              discoveredPages.push({
-                path: path,
-                url: pagesUrl,
-                title: repo.name.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
-                description: repo.description || `GitHub Pages for ${repo.name}`,
-                repo: repo.name,
-                stars: repo.stargazers_count || 0
-              });
-            }
+            // Skip if can't verify
+            continue;
           }
         }
       } catch (pagesError) {
-        // Repository doesn't have pages or API error
-        // Continue to next repo
+        // Repository doesn't have pages or API error - skip
         continue;
       }
       
-      // Small delay to avoid rate limiting
-      await new Promise(resolve => setTimeout(resolve, 300));
-    }
-
-    // Also check for known important paths that might not be separate repos
-    const knownPaths = [
-      { path: '/terminal', url: `${baseDomain}/terminal`, title: 'Terminal OS', description: 'Interactive Terminal Portfolio' },
-      { path: '/oyi77', url: `${baseDomain}/oyi77`, title: 'One Piece cvOS', description: 'Graphical CV OS' }
-    ];
-
-    // Test known paths and add if they exist
-    for (const knownPath of knownPaths) {
-      try {
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 2000);
-        
-        const testResponse = await fetch(knownPath.url, {
-          method: 'HEAD',
-          signal: controller.signal,
-          cache: 'no-cache'
-        });
-        
-        clearTimeout(timeoutId);
-        
-        if (testResponse.ok || testResponse.status === 200) {
-          // Check if not already in discoveredPages
-          if (!discoveredPages.find(p => p.path === knownPath.path)) {
-            discoveredPages.push(knownPath);
-          }
-        }
-      } catch (error) {
-        // Path doesn't exist or not accessible
-        continue;
-      }
+      // Delay to avoid rate limiting (longer delay)
+      await new Promise(resolve => setTimeout(resolve, 500));
     }
 
     // Sort by stars (if available) or alphabetically
@@ -1088,23 +1103,17 @@ async function scanGitHubPages(forceRefresh = false) {
       return a.title.localeCompare(b.title);
     });
 
-    // Cache results with timestamp
+    // Cache results
     localStorage.setItem('githubPagesScanResults', JSON.stringify(discoveredPages));
     localStorage.setItem('githubPagesScanTimestamp', Date.now().toString());
     curatedSections.dataset.scanned = 'true';
 
-    displayCuratedPages(discoveredPages, false); // Fresh data, not cached
+    displayCuratedPages(discoveredPages, false);
     
   } catch (error) {
     console.warn('Failed to scan GitHub Pages:', error);
-    curatedGrid.innerHTML = '<div class="curated-empty">Unable to scan repositories. Please try again later.</div>';
-    
-    // Fallback to known pages
-    const fallbackPages = [
-      { path: '/terminal', url: `${baseDomain}/terminal`, title: 'Terminal OS', description: 'Interactive Terminal Portfolio' },
-      { path: '/oyi77', url: `${baseDomain}/oyi77`, title: 'One Piece cvOS', description: 'Graphical CV OS' }
-    ];
-    displayCuratedPages(fallbackPages);
+    // Use known pages as fallback
+    displayCuratedPages(knownPages, false);
   }
 }
 
