@@ -296,6 +296,18 @@ html {
     display: flex;
 }
 
+.toggle-container.toggle-right {
+    left: auto;
+    right: 30px;
+}
+
+/* Handle smaller screens */
+@media (max-width: 1100px) {
+    .toggle-container.toggle-right {
+        right: 20px;
+    }
+}
+
 /* Dual Arrow Container */
 .dual-arrow-container {
     position: fixed;
@@ -522,6 +534,7 @@ html {
     max-width: 1200px;
     width: 90%;
     margin: 0 auto;
+    padding-right: 80px; /* Space for right arrow */
 }
 
 .curated-header {
