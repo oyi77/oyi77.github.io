@@ -140,6 +140,15 @@
       <div class="current-time" id="current-time">00:00:00</div>
     </div>
 
+    <!-- Help Button - Top Right -->
+    <button class="help-btn" id="help-btn" aria-label="Show help / Onboarding">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="10"></circle>
+        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+      </svg>
+    </button>
+
     <!-- Social Buttons - Bottom Right -->
     <div class="social-buttons">
       <a href="https://github.com/oyi77" class="social-btn" target="_blank" rel="noopener noreferrer"
@@ -162,6 +171,16 @@
     <div class="toggle-container" id="toggle-container">
       <button class="see-more-btn" id="see-more-btn" aria-label="Toggle Navigation">
         <span class="arrow">→</span>
+      </button>
+    </div>
+
+    <!-- Dual Arrow Buttons for Expanded View -->
+    <div class="dual-arrow-container" id="dual-arrow-container" style="display: none;">
+      <button class="nav-arrow-btn nav-arrow-left" id="nav-arrow-left" aria-label="Go back to main">
+        <span class="arrow">←</span>
+      </button>
+      <button class="nav-arrow-btn nav-arrow-down" id="nav-arrow-down" aria-label="Go to achievements">
+        <span class="arrow">↓</span>
       </button>
     </div>
 
@@ -302,6 +321,24 @@
 
     </div>
 
+    <!-- Curated Portfolio Section (Left Navigation) -->
+    <div class="curated-sections" id="curated-sections" aria-hidden="true">
+      <div class="curated-container">
+        <div class="curated-header">
+          <h2 class="section-title">Curated Portfolio</h2>
+          <button class="curated-refresh-btn" id="curated-refresh-btn" aria-label="Refresh scan" title="Refresh GitHub Pages scan">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/>
+            </svg>
+          </button>
+        </div>
+        <p class="curated-description">Auto-discovered GitHub Pages and portfolio links</p>
+        <div class="curated-grid" id="curated-grid">
+          <div class="curated-loading">Scanning for available pages...</div>
+        </div>
+      </div>
+    </div>
+
     <!-- Metrics & Achievements Section (Stage 2: Arrow Down) -->
     <div class="metrics-sections" id="metrics-sections" aria-hidden="true">
       <!-- Metrics Dashboard -->
@@ -398,6 +435,45 @@
           </a>
         </div>
       </section>
+    </div>
+
+    <!-- Onboarding Popup -->
+    <div id="onboarding-modal" class="modal-overlay">
+      <div class="modal-container onboarding-modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title">Welcome! Navigation Guide</h3>
+          <button class="modal-close" id="onboarding-close">×</button>
+        </div>
+        <div class="modal-content">
+          <div class="onboarding-content">
+            <div class="onboarding-section">
+              <div class="onboarding-icon">→</div>
+              <h4>Navigate Right</h4>
+              <p>From the main page, press <strong>Arrow Right</strong> or click the arrow button to view the expanded portfolio sections.</p>
+            </div>
+            <div class="onboarding-section">
+              <div class="onboarding-icon">← ↓</div>
+              <h4>From Expanded View</h4>
+              <p>You can navigate <strong>Left</strong> to go back to the main page, or <strong>Down</strong> to see achievements and metrics.</p>
+            </div>
+            <div class="onboarding-section">
+              <div class="onboarding-icon">←</div>
+              <h4>Curated Portfolio</h4>
+              <p>From the main page, press <strong>Arrow Left</strong> to discover auto-scanned GitHub Pages and curated portfolio links.</p>
+            </div>
+            <div class="onboarding-section">
+              <div class="onboarding-icon">⌨️</div>
+              <h4>Keyboard Shortcuts</h4>
+              <p>Use arrow keys for navigation, <strong>ESC</strong> to go back, and <strong>?</strong> or the help button to see this guide again.</p>
+            </div>
+          </div>
+          <div class="onboarding-footer">
+            <button class="pagination-btn" id="onboarding-got-it" style="width: 200px; padding: 15px; font-weight: bold;">
+              Got it!
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- CTA Modal for Exit Intent -->
