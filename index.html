@@ -113,15 +113,9 @@
   <!-- Jekyll Data Injection for Homepage -->
   <script>
     window.JEKYLL_DATA = window.JEKYLL_DATA || {};
-    {% if site.data.companies %}
-    window.JEKYLL_DATA.companies = {{ site.data.companies | jsonify }};
-    {% endif %}
-    {% if site.data.projects %}
-    window.JEKYLL_DATA.projects = {{ site.data.projects | jsonify }};
-    {% endif %}
-    {% if site.data.terminal %}
-    window.JEKYLL_DATA.terminal = {{ site.data.terminal | jsonify }};
-    {% endif %}
+    window.JEKYLL_DATA.companies = {{ site.data.companies | jsonify | default: 'null' }};
+    window.JEKYLL_DATA.projects = {{ site.data.projects | jsonify | default: 'null' }};
+    window.JEKYLL_DATA.terminal = {{ site.data.terminal | jsonify | default: 'null' }};
   </script>
 </head>
 
