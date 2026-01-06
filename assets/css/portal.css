@@ -2064,3 +2064,28 @@ html {
     cursor: not-allowed;
     animation: none;
 }
+
+/* Curated Controls (Description + Refresh Btn) */
+.curated-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.curated-controls .curated-description {
+    margin-bottom: 0;
+}
+
+.curated-controls .curated-refresh-btn {
+    position: static;
+    transform: none;
+    margin-top: 0;
+    width: 32px;
+    height: 32px;
+}
+
+.curated-controls .curated-refresh-btn:hover {
+    transform: rotate(180deg);
+}
