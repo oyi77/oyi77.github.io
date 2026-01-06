@@ -75,7 +75,8 @@ function initToggle() {
     } else if (currentState === 'metrics') {
       // Show only up arrow (single toggle pointing up)
       toggleContainer.style.display = 'flex';
-      toggleContainer.style.left = 'calc(50% + 480px)';
+      // toggleContainer.style.left = 'calc(50% + 480px)'; // OLD: Right side
+      toggleContainer.style.left = '30px'; // NEW: Left side
       toggleContainer.style.right = 'auto';
       if (arrow) arrow.textContent = '↑';
     } else if (currentState === 'curated') {
@@ -977,7 +978,9 @@ function showOnboarding() {
 
 async function scanGitHubPages(forceRefresh = false) {
   const curatedGrid = document.getElementById('curated-grid');
+  const curatedSkeleton = document.getElementById('curated-skeleton');
   const curatedSections = document.getElementById('curated-sections');
+  const refreshBtn = document.getElementById('curated-refresh-btn');
 
   if (!curatedGrid || !curatedSections) return;
 
@@ -1014,7 +1017,10 @@ async function scanGitHubPages(forceRefresh = false) {
   }
 
   // Show loading state
-  curatedGrid.innerHTML = '<div class="curated-loading">Scanning GitHub repositories for Pages...</div>';
+  // curatedGrid.innerHTML = '<div class="curated-loading">Scanning GitHub repositories for Pages...</div>';
+  curatedGrid.style.display = 'none';
+  if (curatedSkeleton) curatedSkeleton.style.display = 'grid';
+  if (refreshBtn) refreshBtn.disabled = true;
 
   const username = 'oyi77';
   const baseDomain = 'https://oyi77.github.io';
@@ -1115,6 +1121,11 @@ async function scanGitHubPages(forceRefresh = false) {
     console.warn('Failed to scan GitHub Pages:', error);
     // Use known pages as fallback
     displayCuratedPages(knownPages, false);
+  } finally {
+    // Hide loading state
+    if (curatedSkeleton) curatedSkeleton.style.display = 'none';
+    curatedGrid.style.display = 'grid';
+    if (refreshBtn) refreshBtn.disabled = false;
   }
 }
 

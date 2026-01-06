@@ -362,9 +362,12 @@ html {
 }
 
 @keyframes arrowBounceDown {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0);
     }
+
     50% {
         transform: translateY(5px);
     }
@@ -534,7 +537,8 @@ html {
     max-width: 1200px;
     width: 90%;
     margin: 0 auto;
-    padding-right: 80px; /* Space for right arrow */
+    padding-right: 80px;
+    /* Space for right arrow */
 }
 
 .curated-header {
@@ -1980,4 +1984,83 @@ html {
         }
     }
 }
+}
+
+/* Curated Skeleton Loader */
+.skeleton-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--portal-accent-dim);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    min-height: 140px;
+}
+
+.skeleton-line {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+}
+
+.skeleton-line::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.1) 50%,
+            transparent 100%);
+    animation: skeletonShimmer 1.5s infinite;
+}
+
+@keyframes skeletonShimmer {
+    100% {
+        left: 100%;
+    }
+}
+
+.width-20 {
+    width: 20%;
+    height: 16px;
+}
+
+.width-30 {
+    width: 30%;
+    height: 16px;
+}
+
+.width-40 {
+    width: 40%;
+    height: 16px;
+}
+
+.width-50 {
+    width: 50%;
+    height: 16px;
+}
+
+.width-60 {
+    width: 60%;
+    height: 16px;
+}
+
+.width-70 {
+    width: 70%;
+    height: 16px;
+}
+
+.mb-10 {
+    margin-bottom: 10px;
+}
+
+.curated-refresh-btn:disabled {
+    opacity: 0.3;
+    pointer-events: none;
+    cursor: not-allowed;
+    animation: none;
 }
