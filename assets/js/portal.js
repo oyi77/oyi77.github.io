@@ -811,6 +811,7 @@ function initMetricsAnimation() {
 
 function animateCounter(element) {
   const target = parseInt(element.getAttribute('data-target'));
+  const suffix = element.getAttribute('data-suffix') || '';
   const duration = 2000;
   const increment = target / (duration / 16);
   let current = 0;
@@ -818,9 +819,9 @@ function animateCounter(element) {
   const updateCounter = () => {
     current += increment;
     if (current >= target) {
-      element.textContent = target;
+      element.textContent = target + suffix;
     } else {
-      element.textContent = Math.floor(current);
+      element.textContent = Math.floor(current) + suffix;
       requestAnimationFrame(updateCounter);
     }
   };
