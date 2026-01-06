@@ -1,6 +1,8 @@
 main:
   - title: "Terminal"
     url: /terminal/
+  - title: "News"
+    url: /news/
   - title: "Case Studies"
     url: /case-studies/
   - title: "Led Projects"
