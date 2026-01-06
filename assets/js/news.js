@@ -1,145 +1,113 @@
 /**
- * Terminal News Aggregator Logic - v2.0 (NewsNow Integrated)
- * Fetches news from multiple sources and renders them in a cyberpunk feed.
+ * Terminal News Aggregator Logic - v3.0 (Card Layout Redesign)
+ * Fetches news from multiple sources and renders them in source-specific cards.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    const feedItems = document.getElementById('feed-items');
+    const feedItems = document.getElementById('feed-items'); // This is now a grid container
     const feedSkeleton = document.getElementById('feed-skeleton');
     const itemCount = document.getElementById('item-count');
-    const sourceList = document.getElementById('source-list');
     const dynamicSourcesContainer = document.getElementById('dynamic-sources');
     const refreshBtn = document.getElementById('refresh-all');
 
     let allNews = [];
-    let currentFilter = 'all';
-
     const CORS_PROXY = "https://api.allorigins.win/raw?url=";
 
-    const SOURCES = {
-        hn: { name: 'HACKER_NEWS', type: 'hn', url: 'https://hacker-news.firebaseio.com/v0/topstories.json', limit: 10 },
-        crypto: { name: 'CRYPTO_PULSE', type: 'rss', url: 'https://cointelegraph.com/rss', limit: 8 },
-        defillama: { name: 'DEFI_LLAMA', type: 'rss', url: 'https://medium.com/feed/defillama', limit: 5 },
-        github: { name: 'GITHUB_BLOG', type: 'rss', url: 'https://github.blog/feed/', limit: 5 }
+    // Source Configuration & Theming
+    const THEME_MAP = {
+        'zhihu': 'theme-blue',
+        'weibo': 'theme-red',
+        'coolapk': 'theme-green', // Assuming "Cool" is CoolApk
+        'v2ex': 'theme-green',
+        'hackernews': 'theme-orange',
+        'producthunt': 'theme-orange',
+        'github-trending-today': 'theme-blue',
+        'juejin': 'theme-blue',
+        'default': 'theme-blue'
     };
 
-    // NewsNow Sources mapping (ID -> Display Name)
     const NEWSNOW_SOURCES = {
-        "hackernews": "HN_GLOBAL",
-        "github-trending-today": "GITHUB_TRENDS",
-        "producthunt": "PRODUCT_HUNT",
-        "36kr-renqi": "36KR_TECH",
-        "juejin": "JUEJIN_DEV",
-        "sspai": "SSPAI_DIGITAL",
-        "freebuf": "FREEBUF_SEC",
-        "zhihu": "ZHIHU_HOT",
-        "weibo": "WEIBO_TRENDS",
-        "douyin": "DOUYIN_HOT",
-        "bilibili-hot-search": "BILIBILI_HOT",
-        "v2ex": "V2EX_TECH",
-        "steam": "STEAM_GAMES",
-        "it-home": "IT_HOME",
-        "wallstreetcn-hot": "WALLSTREET_CN"
+        "hackernews": { name: "HN_GLOBAL", icon: "Y" },
+        "github-trending-today": { name: "GITHUB_TRENDS", icon: "G" },
+        "producthunt": { name: "PRODUCT_HUNT", icon: "P" },
+        "36kr-renqi": { name: "36KR_TECH", icon: "36" },
+        "juejin": { name: "JUEJIN_DEV", icon: "J" },
+        "sspai": { name: "SSPAI_DIGITAL", icon: "S" },
+        "freebuf": { name: "FREEBUF_SEC", icon: "F" },
+        "zhihu": { name: "ZHIHU_HOT", icon: "知" },
+        "weibo": { name: "WEIBO_TRENDS", icon: "W" },
+        "douyin": { name: "DOUYIN_HOT", icon: "🎵" },
+        "bilibili-hot-search": { name: "BILIBILI_HOT", icon: "B" },
+        "v2ex": { name: "V2EX_TECH", icon: "V" },
+        "steam": { name: "STEAM_GAMES", icon: "S" },
+        "it-home": { name: "IT_HOME", icon: "IT" },
+        "wallstreetcn-hot": { name: "WALLSTREET_CN", icon: "WS" }
     };
 
     /**
      * Initialize dynamic NewsNow nodes in the sidebar
      */
     function initDynamicNodes() {
-        Object.entries(NEWSNOW_SOURCES).forEach(([id, name]) => {
+        Object.entries(NEWSNOW_SOURCES).forEach(([id, meta]) => {
             const div = document.createElement('div');
             div.className = 'source-item';
             div.dataset.source = id;
             div.innerHTML = `
-                <span class="source-icon">[#]</span>
-                <span class="source-name">${name}</span>
+                <span class="source-icon">[${meta.icon}]</span>
+                <span class="source-name">${meta.name}</span>
             `;
-            div.addEventListener('click', () => handleSourceClick(div, id));
+            div.addEventListener('click', () => {
+                // Scroll to the card
+                const card = document.getElementById(`card-${id}`);
+                if (card) {
+                    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    // Flash effect
+                    card.style.transition = 'transform 0.2s, box-shadow 0.2s';
+                    card.style.transform = 'scale(1.02)';
+                    card.style.boxShadow = '0 0 20px var(--news-accent)';
+                    setTimeout(() => {
+                        card.style.transform = '';
+                        card.style.boxShadow = '';
+                    }, 500);
+                }
+            });
             dynamicSourcesContainer.appendChild(div);
         });
     }
 
     /**
-     * Handle source click (filter or load)
-     */
-    function handleSourceClick(element, id) {
-        document.querySelectorAll('.source-item').forEach(i => i.classList.remove('active'));
-        element.classList.add('active');
-        currentFilter = id;
-        renderFeed();
-    }
-
-    /**
      * Fetch all news sources
      */
-    async function fetchAllNews() {
+    async function fetchAllNews(forceRefresh = false) {
         showLoading(true);
         allNews = [];
 
-        // Fetch static sources defined in SOURCES
-        const staticPromises = Object.entries(SOURCES).map(([id, source]) => fetchNativeSource(id, source));
+        // Fetch a defined set of top sources for the initial view
+        const topSources = ["zhihu", "weibo", "hackernews", "github-trending-today", "producthunt", "v2ex"];
 
-        // Fetch a couple of top NewsNow sources for the "All" view to keep it fast
-        // We'll fetch more as needed or on filter
-        const topNewsNow = ["hackernews", "github-trending-today", "producthunt"];
-        const newsNowPromises = topNewsNow.map(id => fetchNewsNowSource(id));
+        const promises = topSources.map(id => fetchNewsNowSource(id, forceRefresh));
+        const results = await Promise.all(promises);
 
-        const results = await Promise.all([...staticPromises, ...newsNowPromises]);
+        allNews = results.flat();
 
-        allNews = results.flat().sort((a, b) => b.timestamp - a.timestamp);
-
-        renderFeed();
+        renderCards();
         showLoading(false);
-    }
-
-    /**
-     * Fetch Native/RSS Source
-     */
-    async function fetchNativeSource(id, source) {
-        try {
-            if (source.type === 'hn') {
-                const response = await fetch(source.url);
-                const ids = await response.json();
-                const stories = await Promise.all(ids.slice(0, source.limit).map(sid =>
-                    fetch(`https://hacker-news.firebaseio.com/v0/item/${sid}.json`).then(r => r.json())
-                ));
-                return stories.map(s => ({
-                    id: `hn-${s.id}`,
-                    sourceId: id,
-                    sourceName: source.name,
-                    title: s.title,
-                    link: s.url || `https://news.ycombinator.com/item?id=${s.id}`,
-                    snippet: `Score: ${s.score} | By: ${s.by}`,
-                    timestamp: s.time * 1000,
-                    timeLabel: timeAgo(s.time * 1000)
-                }));
-            } else if (source.type === 'rss') {
-                const rssUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(source.url)}`;
-                const response = await fetch(rssUrl);
-                const data = await response.json();
-                if (data.status === 'ok') {
-                    return data.items.slice(0, source.limit).map(item => ({
-                        id: item.guid || item.link,
-                        sourceId: id,
-                        sourceName: source.name,
-                        title: item.title,
-                        link: item.link,
-                        snippet: item.content.replace(/<[^>]*>?/gm, '').slice(0, 150) + '...',
-                        timestamp: new Date(item.pubDate.getTime() ? item.pubDate : item.pubDate.replace(/-/g, "/")).getTime(),
-                        timeLabel: timeAgo(new Date(item.pubDate).getTime())
-                    }));
-                }
-            }
-        } catch (e) { console.error(`Failed ${id}`, e); }
-        return [];
     }
 
     /**
      * Fetch NewsNow Source via Proxy
      */
-    async function fetchNewsNowSource(id) {
+    async function fetchNewsNowSource(id, forceRefresh = false) {
         try {
-            const url = `${CORS_PROXY}${encodeURIComponent(`https://newsnow.busiyi.world/api/s?id=${id}`)}`;
+            let apiTarget = `https://newsnow.busiyi.world/api/s?id=${id}`;
+            if (forceRefresh) {
+                apiTarget += '&latest';
+            }
+
+            const url = `${CORS_PROXY}${encodeURIComponent(apiTarget)}`;
+
+            console.log(`Fetching ${id} from ${apiTarget}`);
+
             const response = await fetch(url);
             const data = await response.json();
 
@@ -147,12 +115,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 return data.items.map(item => ({
                     id: `nn-${id}-${item.id || Math.random()}`,
                     sourceId: id,
-                    sourceName: NEWSNOW_SOURCES[id] || id.toUpperCase(),
+                    sourceName: NEWSNOW_SOURCES[id]?.name || id.toUpperCase(),
                     title: item.title,
                     link: item.url || item.link,
-                    snippet: item.extra || (item.m_mobile_url ? "Mobile optimized link available" : "Hot topic trend"),
-                    timestamp: item.timestamp ? item.timestamp * 1000 : Date.now(),
-                    timeLabel: item.timestamp ? timeAgo(item.timestamp * 1000) : "TREENDING"
+                    heat: item.extra || (item.timestamp ? timeAgo(item.timestamp * 1000) : ""),
+                    timestamp: item.timestamp ? item.timestamp * 1000 : Date.now()
                 }));
             }
         } catch (e) { console.error(`Failed NewsNow ${id}`, e); }
@@ -160,47 +127,89 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /**
-     * Render the feed
+     * Render the Cards Layout
      */
-    async function renderFeed() {
-        // If the filter is a NewsNow source not in the "All" view cache, fetch it now
-        const isNewsNow = NEWSNOW_SOURCES[currentFilter];
-        const isAlreadyFetched = allNews.some(n => n.sourceId === currentFilter);
-
-        if (isNewsNow && !isAlreadyFetched && currentFilter !== 'all') {
-            showLoading(true);
-            const freshItems = await fetchNewsNowSource(currentFilter);
-            allNews = [...allNews, ...freshItems];
-            showLoading(false);
-        }
-
-        const filtered = currentFilter === 'all'
-            ? allNews
-            : allNews.filter(n => n.sourceId === currentFilter);
-
+    function renderCards() {
         feedItems.innerHTML = '';
 
-        if (filtered.length === 0) {
-            feedItems.innerHTML = '<div class="feed-empty">NO_DATA_FOUND_IN_NODE</div>';
-        } else {
-            console.log('Rendering items:', filtered.length);
-            filtered.forEach((item, index) => {
-                const element = document.createElement('div');
-                element.className = 'feed-item';
-                element.style.animationDelay = `${index * 0.03}s`;
-                element.innerHTML = `
-                    <div class="item-meta">
-                        <span class="item-source">${item.sourceName}</span>
-                        <span class="item-time">${item.timeLabel}</span>
-                    </div>
-                    <h3 class="item-title"><a href="${item.link}" target="_blank" rel="noopener noreferrer">${item.title}</a></h3>
-                    <p class="item-snippet">${item.snippet}</p>
-                `;
-                feedItems.appendChild(element);
-            });
-        }
+        // Group by Source
+        const grouped = allNews.reduce((acc, item) => {
+            if (!acc[item.sourceId]) acc[item.sourceId] = [];
+            acc[item.sourceId].push(item);
+            return acc;
+        }, {});
 
-        itemCount.textContent = `${filtered.length} items`;
+        Object.entries(grouped).forEach(([sourceId, items]) => {
+            // Determine theme
+            let theme = THEME_MAP.default;
+            if (sourceId.includes('zhihu')) theme = THEME_MAP.zhihu;
+            else if (sourceId.includes('weibo')) theme = THEME_MAP.weibo;
+            else if (sourceId.includes('cool')) theme = THEME_MAP.coolapk;
+            else if (THEME_MAP[sourceId]) theme = THEME_MAP[sourceId];
+
+            const meta = NEWSNOW_SOURCES[sourceId] || { name: sourceId.toUpperCase(), icon: '#' };
+
+            const card = document.createElement('div');
+            card.className = `news-card ${theme}`;
+            card.id = `card-${sourceId}`;
+
+            // Generate list items
+            const listHtml = items.map((item, index) => `
+                <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="card-item">
+                    <span class="item-index">${index + 1}</span>
+                    <div class="item-content">
+                        <span class="item-title">${item.title}</span>
+                        ${item.heat ? `<span class="item-meta">${item.heat}</span>` : ''}
+                    </div>
+                </a>
+            `).join('');
+
+            card.innerHTML = `
+                <div class="card-header">
+                    <div class="card-source-info">
+                        <div class="card-icon">${meta.icon}</div>
+                        <div class="card-title-group">
+                            <span class="card-source-name">${meta.name}</span>
+                            <span class="card-updated">Just updated</span>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="card-action-btn" title="Refresh">↻</button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="card-list">
+                        ${listHtml}
+                    </div>
+                </div>
+            `;
+
+            // Add individual refresh handler logic if needed (future feature), 
+            // for now global refresh is fine or wire up that specific button
+            const localRefreshBtn = card.querySelector('.card-action-btn');
+            localRefreshBtn.addEventListener('click', async (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+
+                // Spin icon
+                localRefreshBtn.textContent = '...';
+
+                const newItems = await fetchNewsNowSource(sourceId, true);
+                // Update local state and re-render just this card content? 
+                // Simpler to just re-fetch all for MVP or update the memory and re-render all.
+                // Or:
+                if (newItems.length > 0) {
+                    // Filter out old items for this source
+                    allNews = allNews.filter(n => n.sourceId !== sourceId);
+                    allNews = [...allNews, ...newItems];
+                    renderCards();
+                }
+            });
+
+            feedItems.appendChild(card);
+        });
+
+        itemCount.textContent = `${allNews.length} items cached`;
     }
 
     /**
@@ -209,38 +218,29 @@ document.addEventListener('DOMContentLoaded', () => {
     function showLoading(show) {
         if (show) {
             feedItems.style.display = 'none';
-            if (feedSkeleton) feedSkeleton.style.display = 'flex';
+            if (feedSkeleton) feedSkeleton.style.display = 'flex'; // Need to update skeleton CSS to be grid compatible potentially
         } else {
             if (feedSkeleton) feedSkeleton.style.display = 'none';
-            feedItems.style.display = 'flex';
+            feedItems.style.display = 'grid';
         }
     }
 
     function timeAgo(date) {
         const seconds = Math.floor((new Date() - date) / 1000);
-        if (isNaN(seconds)) return "RECENT";
-        let interval = seconds / 31536000;
-        if (interval > 1) return Math.floor(interval) + "y ago";
-        interval = seconds / 2592000;
-        if (interval > 1) return Math.floor(interval) + "mo ago";
-        interval = seconds / 86400;
-        if (interval > 1) return Math.floor(interval) + "d ago";
-        interval = seconds / 3600;
-        if (interval > 1) return Math.floor(interval) + "h ago";
-        interval = seconds / 60;
-        if (interval > 1) return Math.floor(interval) + "m ago";
-        return Math.floor(seconds) + "s ago";
+        if (isNaN(seconds)) return "Just now";
+        if (seconds < 60) return `${seconds}s ago`;
+        const minutes = Math.floor(seconds / 60);
+        if (minutes < 60) return `${minutes}m ago`;
+        const hours = Math.floor(minutes / 60);
+        if (hours < 24) return `${hours}h ago`;
+        return `${Math.floor(hours / 24)}d ago`;
     }
 
-    // Static event listeners
-    document.querySelectorAll('.source-item').forEach(item => {
-        item.addEventListener('click', () => handleSourceClick(item, item.dataset.source));
-    });
-
-    refreshBtn.addEventListener('click', () => fetchAllNews());
+    // Event Listeners
+    refreshBtn.addEventListener('click', () => fetchAllNews(true));
 
     // Init
     initDynamicNodes();
-    fetchAllNews();
-    setInterval(fetchAllNews, 15 * 60 * 1000);
+    fetchAllNews(); // Initial load (cached)
+    setInterval(() => fetchAllNews(true), 15 * 60 * 1000); // Auto refresh every 15m
 });
