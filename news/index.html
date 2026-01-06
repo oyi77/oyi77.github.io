@@ -26,7 +26,7 @@ permalink: /news/
   <div class="bg-grid" aria-hidden="true"></div>
   <div class="bg-glow" aria-hidden="true"></div>
 
-  <div id="portal-wrapper">
+  <div id="portal-wrapper" class="news-wrapper">
     <div class="news-container">
       <div class="news-header-terminal">
         <div class="terminal-status">
@@ -88,12 +88,35 @@ permalink: /news/
               <span id="item-count">0 items</span> cached
             </div>
           </div>
-          <div class="feed-items" id="feed-items">
-            <div class="feed-loading">
-              <div class="loading-bar"></div>
-              <span>SCANNING_NETWORK...</span>
+
+          <!-- Skeleton Loader (Visible by default, hidden by JS) -->
+          <div id="feed-skeleton" class="feed-items skeleton-container">
+            <div class="skeleton-item">
+              <div class="skeleton-line width-30"></div>
+              <div class="skeleton-line width-60"></div>
+            </div>
+            <div class="skeleton-item">
+              <div class="skeleton-line width-40"></div>
+              <div class="skeleton-line width-80"></div>
+              <div class="skeleton-line width-50"></div>
+            </div>
+            <div class="skeleton-item">
+              <div class="skeleton-line width-20"></div>
+              <div class="skeleton-line width-70"></div>
+            </div>
+            <div class="skeleton-item">
+              <div class="skeleton-line width-30"></div>
+              <div class="skeleton-line width-60"></div>
+            </div>
+            <div class="skeleton-item">
+              <div class="skeleton-line width-40"></div>
+              <div class="skeleton-line width-80"></div>
+              <div class="skeleton-line width-50"></div>
             </div>
           </div>
+
+          <!-- Real Data Container (Hidden by default) -->
+          <div class="feed-items" id="feed-items" style="display: none;"></div>
         </main>
       </div>
     </div>

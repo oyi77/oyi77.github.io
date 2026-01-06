@@ -5,6 +5,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     const feedItems = document.getElementById('feed-items');
+    const feedSkeleton = document.getElementById('feed-skeleton');
     const itemCount = document.getElementById('item-count');
     const sourceList = document.getElementById('source-list');
     const dynamicSourcesContainer = document.getElementById('dynamic-sources');
@@ -182,6 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (filtered.length === 0) {
             feedItems.innerHTML = '<div class="feed-empty">NO_DATA_FOUND_IN_NODE</div>';
         } else {
+            console.log('Rendering items:', filtered.length);
             filtered.forEach((item, index) => {
                 const element = document.createElement('div');
                 element.className = 'feed-item';
@@ -201,9 +203,16 @@ document.addEventListener('DOMContentLoaded', () => {
         itemCount.textContent = `${filtered.length} items`;
     }
 
+    /**
+     * Show/Hide Loading Skeleton
+     */
     function showLoading(show) {
         if (show) {
-            feedItems.innerHTML = `<div class="feed-loading"><div class="loading-bar"></div><span>SCANNING_NETWORK...</span></div>`;
+            feedItems.style.display = 'none';
+            if (feedSkeleton) feedSkeleton.style.display = 'flex';
+        } else {
+            if (feedSkeleton) feedSkeleton.style.display = 'none';
+            feedItems.style.display = 'flex';
         }
     }
 
