@@ -159,12 +159,24 @@
     position: relative;
 }
 
+.terminal-controls {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
 .feed-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
     flex-shrink: 0;
+    position: sticky;
+    top: 0;
+    background: var(--news-bg-dark);
+    z-index: 10;
+    padding-top: 5px;
+    /* Ensure content behind doesn't show through */
 }
 
 .feed-info {
