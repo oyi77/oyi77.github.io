@@ -989,7 +989,7 @@ async function scanGitHubPages(forceRefresh = false) {
   const knownPages = [
     { path: '/news', url: 'https://oyi77.github.io/news', title: 'News Aggregator', description: 'Real-time terminal news feed', repo: 'news', stars: 0 },
     { path: '/wifi-jammer', url: 'https://oyi77.github.io/wifi-jammer', title: 'WiFi Jammer', description: 'Security research tool', repo: 'wifi-jammer', stars: 0 },
-    { path: '/adbs', url: 'https://oyi77.github.io/adbs', title: 'ADbS', description: 'GitHub Pages project', repo: 'adbs', stars: 0 },
+    { path: '/adbs', url: 'https://oyi77.github.io/adbs', title: 'ADbS', description: 'AI Behavior, Rule & Task System', repo: 'adbs', stars: 0 },
     { path: '/oyi77', url: 'https://oyi77.github.io/oyi77', title: 'One Piece cvOS', description: 'Graphical CV OS', repo: 'oyi77', stars: 0 },
     { path: '/terminal', url: 'https://oyi77.github.io/terminal', title: 'Terminal OS', description: 'Interactive Terminal Portfolio', repo: 'terminal', stars: 0 }
   ];
