@@ -142,7 +142,8 @@
 
     <!-- Help Button - Top Right -->
     <button class="help-btn" id="help-btn" aria-label="Show help / Onboarding">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none"
+        stroke="currentColor" stroke-width="2">
         <circle cx="12" cy="12" r="10"></circle>
         <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
         <line x1="12" y1="17" x2="12.01" y2="17"></line>
@@ -246,6 +247,12 @@
           <p class="card-desc">Technical articles, insights, and thought leadership on software engineering.</p>
         </div>
 
+        <div class="portfolio-card" data-section="news-feed" onclick="window.location.href='/news'">
+          <div class="card-icon">@</div>
+          <h3 class="card-title">News Feed</h3>
+          <p class="card-desc">Real-time terminal news aggregator with curated technical and global sources.</p>
+        </div>
+
         <div class="portfolio-card" data-section="achievements">
           <div class="card-icon">*</div>
           <h3 class="card-title">Achievements</h3>
@@ -333,9 +340,11 @@
       <div class="curated-container">
         <div class="curated-header">
           <h2 class="section-title">Curated Portfolio</h2>
-          <button class="curated-refresh-btn" id="curated-refresh-btn" aria-label="Refresh scan" title="Refresh GitHub Pages scan">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/>
+          <button class="curated-refresh-btn" id="curated-refresh-btn" aria-label="Refresh scan"
+            title="Refresh GitHub Pages scan">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2" />
             </svg>
           </button>
         </div>
@@ -456,26 +465,31 @@
             <div class="onboarding-section">
               <div class="onboarding-icon">→</div>
               <h4>Navigate Right</h4>
-              <p>From the main page, press <strong>Arrow Right</strong> or click the arrow button to view the expanded portfolio sections.</p>
+              <p>From the main page, press <strong>Arrow Right</strong> or click the arrow button to view the expanded
+                portfolio sections.</p>
             </div>
             <div class="onboarding-section">
               <div class="onboarding-icon">← ↓</div>
               <h4>From Expanded View</h4>
-              <p>You can navigate <strong>Left</strong> to go back to the main page, or <strong>Down</strong> to see achievements and metrics.</p>
+              <p>You can navigate <strong>Left</strong> to go back to the main page, or <strong>Down</strong> to see
+                achievements and metrics.</p>
             </div>
             <div class="onboarding-section">
               <div class="onboarding-icon">←</div>
               <h4>Curated Portfolio</h4>
-              <p>From the main page, press <strong>Arrow Left</strong> to discover auto-scanned GitHub Pages and curated portfolio links.</p>
+              <p>From the main page, press <strong>Arrow Left</strong> to discover auto-scanned GitHub Pages and curated
+                portfolio links.</p>
             </div>
             <div class="onboarding-section">
               <div class="onboarding-icon">⌨️</div>
               <h4>Keyboard Shortcuts</h4>
-              <p>Use arrow keys for navigation, <strong>ESC</strong> to go back, and <strong>?</strong> or the help button to see this guide again.</p>
+              <p>Use arrow keys for navigation, <strong>ESC</strong> to go back, and <strong>?</strong> or the help
+                button to see this guide again.</p>
             </div>
           </div>
           <div class="onboarding-footer">
-            <button class="pagination-btn" id="onboarding-got-it" style="width: 200px; padding: 15px; font-weight: bold;">
+            <button class="pagination-btn" id="onboarding-got-it"
+              style="width: 200px; padding: 15px; font-weight: bold;">
               Got it!
             </button>
           </div>

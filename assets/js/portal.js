@@ -59,12 +59,12 @@ function initToggle() {
 
   const updateArrowVisibility = () => {
     const mainRightToggle = document.getElementById('main-right-toggle');
-    
+
     // Hide all arrows first
     toggleContainer.style.display = 'none';
     if (dualArrowContainer) dualArrowContainer.style.display = 'none';
     if (mainRightToggle) mainRightToggle.style.display = 'none';
-    
+
     if (currentState === 'expanded') {
       // Show dual arrows (left and down)
       if (dualArrowContainer) {
@@ -978,11 +978,12 @@ function showOnboarding() {
 async function scanGitHubPages(forceRefresh = false) {
   const curatedGrid = document.getElementById('curated-grid');
   const curatedSections = document.getElementById('curated-sections');
-  
+
   if (!curatedGrid || !curatedSections) return;
 
   // Known GitHub Pages - add these directly without scanning
   const knownPages = [
+    { path: '/news', url: 'https://oyi77.github.io/news', title: 'News Aggregator', description: 'Real-time terminal news feed', repo: 'news', stars: 0 },
     { path: '/wifi-jammer', url: 'https://oyi77.github.io/wifi-jammer', title: 'WiFi Jammer', description: 'Security research tool', repo: 'wifi-jammer', stars: 0 },
     { path: '/adbs', url: 'https://oyi77.github.io/adbs', title: 'ADbS', description: 'GitHub Pages project', repo: 'adbs', stars: 0 },
     { path: '/oyi77', url: 'https://oyi77.github.io/oyi77', title: 'One Piece cvOS', description: 'Graphical CV OS', repo: 'oyi77', stars: 0 },
@@ -1025,21 +1026,21 @@ async function scanGitHubPages(forceRefresh = false) {
   try {
     // Fetch only PUBLIC repositories
     const reposResponse = await fetch(`https://api.github.com/users/${username}/repos?per_page=100&sort=updated&type=public`);
-    
+
     if (!reposResponse.ok) {
       throw new Error('Failed to fetch repositories');
     }
 
     const repos = await reposResponse.json();
-    
+
     // Filter to only public repos and skip known ones
-    const reposToCheck = repos.filter(repo => 
+    const reposToCheck = repos.filter(repo =>
       repo.private === false && !skipRepos.includes(repo.name)
     );
 
     // Limit to first 10 repos to avoid rate limits
     const limitedRepos = reposToCheck.slice(0, 10);
-    
+
     // Check each repository for GitHub Pages
     for (const repo of limitedRepos) {
       // Skip if already in known pages
@@ -1050,10 +1051,10 @@ async function scanGitHubPages(forceRefresh = false) {
       try {
         // Check if repo has pages enabled via GitHub API
         const pagesResponse = await fetch(`https://api.github.com/repos/${username}/${repo.name}/pages`);
-        
+
         if (pagesResponse.ok) {
           const pagesData = await pagesResponse.json();
-          
+
           // Project pages - served at /repo-name
           const pagesUrl = `${baseDomain}/${repo.name}`;
           const path = `/${repo.name}`;
@@ -1062,15 +1063,15 @@ async function scanGitHubPages(forceRefresh = false) {
           try {
             const controller = new AbortController();
             const timeoutId = setTimeout(() => controller.abort(), 2000);
-            
+
             const testResponse = await fetch(pagesUrl, {
               method: 'HEAD',
               signal: controller.signal,
               cache: 'no-cache'
             });
-            
+
             clearTimeout(timeoutId);
-            
+
             if (testResponse.ok || testResponse.status === 200) {
               discoveredPages.push({
                 path: path,
@@ -1090,7 +1091,7 @@ async function scanGitHubPages(forceRefresh = false) {
         // Repository doesn't have pages or API error - skip
         continue;
       }
-      
+
       // Delay to avoid rate limiting (longer delay)
       await new Promise(resolve => setTimeout(resolve, 500));
     }
@@ -1109,7 +1110,7 @@ async function scanGitHubPages(forceRefresh = false) {
     curatedSections.dataset.scanned = 'true';
 
     displayCuratedPages(discoveredPages, false);
-    
+
   } catch (error) {
     console.warn('Failed to scan GitHub Pages:', error);
     // Use known pages as fallback
@@ -1127,7 +1128,7 @@ function displayCuratedPages(pages, isCached = false) {
   }
 
   const cacheIndicator = isCached ? '<div class="curated-cache-indicator">📦 Cached data</div>' : '';
-  
+
   curatedGrid.innerHTML = cacheIndicator + pages.map(page => `
     <a href="${page.url}" class="curated-card" target="_blank" rel="noopener noreferrer">
       <div class="curated-card-icon">🔗</div>
