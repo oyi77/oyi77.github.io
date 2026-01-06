@@ -584,6 +584,14 @@ class TerminalOS {
           this.terminal.clear();
           await this.showWelcome();
           break;
+        case 'exit':
+        case 'quit':
+        case 'logout':
+          this.terminal.write('\r\n\x1b[1;31mSession terminating... Redirecting to system root.\x1b[0m\r\n');
+          setTimeout(() => {
+            window.location.href = '/';
+          }, 1000);
+          return;
         // Hidden recovery mode commands
         case 'recovery-info':
           if (this.recoveryMode || this.developerMode) {
@@ -721,15 +729,15 @@ class TerminalOS {
     // If first word, complete commands
     if (parts.length === 1) {
       const commands = [
-        'help', 'whoami', 'companies', 'achievements', 'repos', 'scan', 'sysmon', 'netmap', 
-        'neofetch', 'skills', 'wallet', 'theme', 'ls', 'cd', 'cat', 'pwd', 'clear', 'hack', 
-        'cv', 'github', 'stats', 'analytics', 'github-stats', 'ghstats', 'market', 'crypto', 
-        'coins', 'indices', 'home', 'install', 'opm', 'shell',         'about', 'dashboard', 
+        'help', 'whoami', 'companies', 'achievements', 'repos', 'scan', 'sysmon', 'netmap',
+        'neofetch', 'skills', 'wallet', 'theme', 'ls', 'cd', 'cat', 'pwd', 'clear', 'hack',
+        'cv', 'github', 'stats', 'analytics', 'github-stats', 'ghstats', 'market', 'crypto',
+        'coins', 'indices', 'home', 'exit', 'quit', 'install', 'opm', 'shell', 'about', 'dashboard',
         'file-manager', 'fm', 'projects', 'sites', 'share',
         'case-studies', 'cases', 'approaches', 'jobs', 'applications', 'activity', 'feed', 'resume', 'cv-build',
         // EcmaOS commands (delegated)
-        'mkdir', 'touch', 'rm', 'mv', 'cp', 'decrypt', 'matrix', 'snake', 'video', 'play', 
-        'screensaver', 'fetch', 'download', 'load', 'edit', 'env', 'df', 'du', 'ps', 'kill', 
+        'mkdir', 'touch', 'rm', 'mv', 'cp', 'decrypt', 'matrix', 'snake', 'video', 'play',
+        'screensaver', 'fetch', 'download', 'load', 'edit', 'env', 'df', 'du', 'ps', 'kill',
         'free', 'chkdisk', 'format', 'mount', 'umount'
       ];
       const matches = commands.filter(cmd => cmd.startsWith(lastPart));
@@ -772,7 +780,7 @@ class TerminalOS {
     try {
       const module = await import('/assets/js/terminal/ecmaos-kernel.js');
       const KernelClass = module.Kernel;
-      
+
       if (!KernelClass) {
         console.warn('EcmaOS Kernel class not found in module');
         return;
@@ -796,7 +804,7 @@ class TerminalOS {
         } else if (typeof this.ecmaKernel.init === 'function') {
           await this.ecmaKernel.init(this.terminal);
         }
-        
+
         // Verify execute method exists
         if (typeof this.ecmaKernel.execute !== 'function' && typeof this.ecmaKernel.handle !== 'function') {
           console.warn('EcmaOS Kernel missing execute/handle method');
@@ -813,16 +821,16 @@ class TerminalOS {
     const width = this.terminal.cols || 60;
     this.terminal.write('\r\n' + TerminalUtils.center('\x1b[1;36mRECOVERY MODE INFORMATION\x1b[0m', width) + '\r\n');
     this.terminal.write('  ' + '\x1b[1;30m' + '-'.repeat(width - 10) + '\x1b[0m\r\n\r\n');
-    
+
     this.terminal.write(`  \x1b[1;32mRecovery Mode:\x1b[0m ${this.recoveryMode ? 'ENABLED' : 'DISABLED'}\r\n`);
     this.terminal.write(`  \x1b[1;32mDeveloper Mode:\x1b[0m ${this.developerMode ? 'ENABLED' : 'DISABLED'}\r\n`);
     this.terminal.write(`  \x1b[1;32mRoot Access:\x1b[0m ${this.isRoot ? 'GRANTED' : 'DENIED'}\r\n\r\n`);
-    
+
     this.terminal.write('  \x1b[1;33mAvailable Recovery Commands:\x1b[0m\r\n');
     this.terminal.write('    - \x1b[1;32mrecovery-info\x1b[0m - Show this information\r\n');
     this.terminal.write('    - \x1b[1;32mdebug\x1b[0m - Toggle debug mode\r\n');
     this.terminal.write('    - \x1b[1;32msysinfo\x1b[0m - Show detailed system information\r\n\r\n');
-    
+
     this.terminal.write('  ' + '\x1b[1;30m' + '-'.repeat(width - 10) + '\x1b[0m\r\n');
   }
 
@@ -840,7 +848,7 @@ class TerminalOS {
     const width = this.terminal.cols || 60;
     this.terminal.write('\r\n' + TerminalUtils.center('\x1b[1;36mSYSTEM INFORMATION\x1b[0m', width) + '\r\n');
     this.terminal.write('  ' + '\x1b[1;30m' + '-'.repeat(width - 10) + '\x1b[0m\r\n\r\n');
-    
+
     const info = [
       { label: 'Terminal Width', value: `${this.terminal.cols || 'N/A'} cols` },
       { label: 'Terminal Height', value: `${this.terminal.rows || 'N/A'} rows` },

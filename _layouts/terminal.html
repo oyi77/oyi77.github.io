@@ -4,23 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- Primary Meta Tags -->
     <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
     <meta name="title" content="{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}">
-    <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+    <meta name="description"
+        content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
     <meta name="keywords" content="{{ site.keywords }}{% if page.tags %}, {{ page.tags | join: ', ' }}{% endif %}">
     <meta name="author" content="{{ site.author.name }}">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="language" content="English">
     <meta name="theme-color" content="#050510">
     <link rel="canonical" href="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="profile">
     <meta property="og:url" content="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
     <meta property="og:title" content="{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}">
-    <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+    <meta property="og:description"
+        content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
     <meta property="og:image" content="{{ site.url }}{{ site.baseurl }}/assets/images/bio-photo.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -29,16 +31,18 @@
     <meta property="profile:first_name" content="Muchammad Fikri">
     <meta property="profile:last_name" content="Izzuddin">
     <meta property="profile:username" content="oyi77">
-    
+
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
     <meta name="twitter:title" content="{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}">
-    <meta name="twitter:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+    <meta name="twitter:description"
+        content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
     <meta name="twitter:image" content="{{ site.url }}{{ site.baseurl }}/assets/images/bio-photo.png">
-    {% if site.twitter_username %}<meta name="twitter:creator" content="@{{ site.twitter_username }}">{% endif %}
+    {% if site.twitter_username %}
+    <meta name="twitter:creator" content="@{{ site.twitter_username }}">{% endif %}
     <meta name="twitter:site" content="@{{ site.github_username }}">
-    
+
     <!-- Additional SEO -->
     <meta name="geo.region" content="ID-JI">
     <meta name="geo.placename" content="East Java, Indonesia">
@@ -46,7 +50,7 @@
     <meta name="apple-mobile-web-app-title" content="OYI OS">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    
+
     <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
     {
@@ -89,7 +93,7 @@
       "description": "{{ site.description }}"
     }
     </script>
-    
+
     <!-- Website Structured Data -->
     <script type="application/ld+json">
     {
@@ -115,14 +119,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
     <link rel="dns-prefetch" href="https://api.github.com">
-    
+
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="{{ site.baseurl }}/assets/images/bio-photo.png">
     <link rel="apple-touch-icon" href="{{ site.baseurl }}/assets/images/bio-photo.png">
-    
+
     <!-- Sitemap -->
     <link rel="sitemap" type="application/xml" href="{{ site.url }}{{ site.baseurl }}/sitemap.xml">
-    
+
     <!-- Fonts -->
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap"
@@ -319,19 +323,19 @@
                 }]
             },
             companies: {{ site.data.companies | jsonify }},
-            projects: {{ site.data.projects | jsonify }},
-            case_studies: {{ site.data.case_studies | jsonify }},
-            led_projects: {{ site.data.led_projects | jsonify }},
-            approaches: {{ site.data.approaches | jsonify }},
-            repository_stats: {{ site.data.repository_stats | jsonify }},
-            skills_matrix: {{ site.data.skills_matrix | jsonify }},
-            timeline: {{ site.data.timeline | jsonify }},
-            github_stats: {{ site.data.github_stats | jsonify }},
-            metrics: {{ site.data.metrics | jsonify }},
-            analytics: {{ site.data.analytics | jsonify }},
-            seo: {{ site.data.seo | jsonify }},
-            external_stats: {{ site.data.external_stats | jsonify }},
-            market_data: {{ site.data.market_data | jsonify }}
+        projects: { { site.data.projects | jsonify } },
+        case_studies: { { site.data.case_studies | jsonify } },
+        led_projects: { { site.data.led_projects | jsonify } },
+        approaches: { { site.data.approaches | jsonify } },
+        repository_stats: { { site.data.repository_stats | jsonify } },
+        skills_matrix: { { site.data.skills_matrix | jsonify } },
+        timeline: { { site.data.timeline | jsonify } },
+        github_stats: { { site.data.github_stats | jsonify } },
+        metrics: { { site.data.metrics | jsonify } },
+        analytics: { { site.data.analytics | jsonify } },
+        seo: { { site.data.seo | jsonify } },
+        external_stats: { { site.data.external_stats | jsonify } },
+        market_data: { { site.data.market_data | jsonify } }
     };
     </script>
 </head>
@@ -348,6 +352,7 @@
             <nav class="sidebar-nav">
                 <div class="nav-group">
                     <span class="nav-label">SYSTEM</span>
+                    <a href="/" class="nav-item home-link">HOME</a>
                     <button class="nav-item" onclick="terminalOS.handleCommand('whoami')">WHOAMI</button>
                     <button class="nav-item" onclick="terminalOS.handleCommand('sysmon')">SYSMON</button>
                     <button class="nav-item" onclick="terminalOS.handleCommand('netmap')">NETMAP</button>
@@ -390,7 +395,8 @@
             </header>
 
             <div id="terminal-container" class="terminal-fullscreen">
-                <div id="terminal" role="application" aria-label="Interactive terminal emulator" aria-live="polite"></div>
+                <div id="terminal" role="application" aria-label="Interactive terminal emulator" aria-live="polite">
+                </div>
             </div>
         </main>
     </div>
