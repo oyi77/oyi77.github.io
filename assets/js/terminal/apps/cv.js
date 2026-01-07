@@ -47,7 +47,7 @@ class CVApp {
               const link = document.createElement('a');
               link.href = cvUrl;
               link.target = '_blank';
-              link.download = 'MuchammadFikriIzzuddin_CV.pdf';
+              link.download = 'LeadSoftwareEngineer_CV.pdf';
               document.body.appendChild(link);
               link.click();
               document.body.removeChild(link);

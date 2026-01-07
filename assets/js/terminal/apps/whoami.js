@@ -15,10 +15,10 @@ class WhoAmIApp {
                 await this.showCodingAnimation(width);
 
                 const info = [
-                        { label: 'NAME', val: 'Muchammad Fikri Izzuddin' },
+                        { label: 'NAME', val: 'Lead Software Engineer' },
                         { label: 'ROLE', val: 'Lead Software Engineer / Technical Lead' },
                         { label: 'LEVEL', val: 'Elite / Multi-Company Technical Lead' },
-                        { label: 'LOC', val: 'East Java, Indonesia' }
+                        { label: 'LOC', val: 'Southeast Asia' }
                 ];
 
                 info.forEach(i => {

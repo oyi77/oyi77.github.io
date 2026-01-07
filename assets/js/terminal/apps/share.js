@@ -10,7 +10,7 @@ class ShareApp {
         this.terminal.write('\r\n\x1b[1;32m[ GENERATING RECRUITER-READY SNIPPET ]\x1b[0m\r\n\r\n');
         
         const snippet = `
-🚀 **Candidate Profile: Muchammad Fikri Izzuddin**
+🚀 **Candidate Profile: Lead Software Engineer**
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 📍 **Role:** Lead Software Engineer (Remote Ready)
 💼 **Experience:** 7+ Years (Blockchain, Trading, Full-Stack)

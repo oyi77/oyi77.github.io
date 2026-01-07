@@ -22,7 +22,7 @@ AUTHORIZED ACCESS ONLY
 =============================================================================
 
 This system contains the professional records and achievement logs of 
-Muchammad Fikri Izzuddin.
+Lead Software Engineer.
 
 [ QUICK NAVIGATION ]
 --------------------
