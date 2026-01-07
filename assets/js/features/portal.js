@@ -560,10 +560,15 @@ const modalData = {
         <section>
           <h3>Get in Touch</h3>
           <p>I am always looking for challenges that push the boundaries of what is technically possible.</p>
+          <div style="margin: 20px 0;">
+            <button onclick="window.ContactFormHandler && window.ContactFormHandler.show();" style="padding: 12px 30px; background: #000; border: 1px solid #fff; color: #fff; font-family: 'Monaco', 'Menlo', monospace; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: all 0.2s ease;" onmouseover="this.style.background='#fff'; this.style.color='#000';" onmouseout="this.style.background='#000'; this.style.color='#fff';">
+              Open Contact Form
+            </button>
+          </div>
           <ul>
-            <li><strong>Email</strong>: <a href="mailto:mbahkoe.pendekar@gmail.com">mbahkoe.pendekar@gmail.com</a></li>
-            <li><strong>Location</strong>: Surabaya, East Java, Indonesia</li>
-            <li><strong>Social</strong>: <a href="https://linkedin.com/in/fikriizzuddin" target="_blank">LinkedIn</a> | <a href="https://github.com/oyi77" target="_blank">GitHub</a></li>
+            <li><strong>Schedule a Call</strong>: <a href="https://cal.com/oyi77" target="_blank">cal.com/oyi77</a></li>
+            <li><strong>Location</strong>: Southeast Asia</li>
+            <li><strong>Social</strong>: <a href="https://github.com/oyi77" target="_blank">GitHub</a></li>
           </ul>
         </section>
       `
