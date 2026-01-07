@@ -42,6 +42,33 @@ bundle exec jekyll serve
 # Open http://localhost:4000/terminal/
 ```
 
+## 📁 Project Structure
+
+```
+oyi77.github.io/
+├── _config.yml              # Jekyll configuration
+├── _data/                   # Jekyll data files (YAML/JSON)
+├── _pages/                  # Static pages
+│   └── resumes/            # Resume documents (markdown)
+├── _plugins/                # Jekyll plugins (categorized)
+│   ├── analytics/          # Analytics & metrics plugins
+│   ├── data/               # Data fetching plugins
+│   ├── generators/         # Jekyll generators
+│   └── utils/              # Utility plugins
+├── assets/
+│   ├── css/                # Stylesheets
+│   ├── js/
+│   │   ├── features/       # Feature-specific JS (news, portal, etc.)
+│   │   ├── widgets/        # Reusable widgets
+│   │   └── terminal/       # Terminal OS code
+│   ├── pdf/                # PDF documents (CV.pdf)
+│   └── images/             # Images
+├── features/                # Standalone feature pages
+│   └── eye/                # Eye animation features
+├── news/                   # News aggregator page
+└── docs/                   # Documentation
+```
+
 ## 📖 Documentation
 
 Comprehensive documentation available in the [`docs/`](docs/) directory:

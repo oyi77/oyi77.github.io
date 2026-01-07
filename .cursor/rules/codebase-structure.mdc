@@ -14,38 +14,55 @@ This is a **Jekyll-based GitHub Pages site** with an **interactive terminal OS i
 ```
 /
 ├── _config.yml          # Jekyll configuration
-├── _data/               # Jekyll data files (YAML/JSON)
+├── _data/               # Jekyll data files (YAML/JSON only)
 ├── _drafts/             # Unpublished posts
 ├── _layouts/            # Jekyll layout templates
 ├── _pages/              # Static pages
+│   └── resumes/        # Resume documents (moved from assets/resumes/)
+├── _plugins/            # Jekyll plugins (categorized)
+│   ├── analytics/      # Analytics & metrics plugins
+│   ├── data/          # Data fetching plugins
+│   ├── generators/    # Jekyll generators
+│   └── utils/         # Utility plugins
 ├── _posts/              # Blog posts
 ├── assets/              # Static assets
 │   ├── css/            # Stylesheets
 │   ├── js/             # JavaScript
+│   │   ├── features/   # Feature-specific JS (news, portal, homepage-effects)
+│   │   ├── widgets/    # Reusable widgets (contact-widget)
 │   │   └── terminal/   # Terminal OS code
+│   ├── pdf/            # PDF documents (CV.pdf)
 │   └── images/         # Images
+├── features/            # Standalone feature pages
+│   └── eye/            # Eye animation features
 └── vendor/              # Bundled dependencies
 ```
 
-### Terminal Code Structure
+### JavaScript Code Structure
 ```
-assets/js/terminal/
-├── core.js              # Main TerminalOS class
-├── boot-sequence.js     # Boot animation
-├── filesystem.js        # Virtual filesystem
-├── filesystem-loader.js # Jekyll data loader
-├── themes.js            # Theme management
-├── effects.js           # Visual effects
-├── utils.js             # Utility functions
-├── window-manager.js    # Window management
-├── web3os.js            # Web3OS integration
-├── github.js            # GitHub API integration
-├── syntax-highlight.js  # Code syntax highlighting
-└── apps/                # Command applications
-    ├── whoami.js
-    ├── companies.js
-    ├── help.js
-    └── ...
+assets/js/
+├── features/            # Feature-specific JavaScript
+│   ├── news.js         # News aggregator
+│   ├── portal.js       # Homepage portal functionality
+│   └── homepage-effects.js # Homepage interactive effects
+├── widgets/            # Reusable widgets
+│   └── contact-widget.js # Contact widget component
+└── terminal/           # Terminal OS code
+    ├── core.js         # Main TerminalOS class
+    ├── boot-sequence.js # Boot animation
+    ├── filesystem.js   # Virtual filesystem
+    ├── filesystem-loader.js # Jekyll data loader
+    ├── themes.js       # Theme management
+    ├── effects.js      # Visual effects
+    ├── utils.js        # Utility functions
+    ├── window-manager.js # Window management
+    ├── github.js       # GitHub API integration
+    ├── syntax-highlight.js # Code syntax highlighting
+    └── apps/           # Command applications
+        ├── whoami.js
+        ├── companies.js
+        ├── help.js
+        └── ...
 ```
 
 ## File Naming Conventions
