@@ -43,7 +43,7 @@ Muchammad Fikri Izzuddin.
           },
           'cv.pdf': {
             type: 'file',
-            content: ` [PDF DATA STREAM] Location: /CV.pdf\r\n Protocol: open-link\r\n Action: Use 'cv' command to download or view.`
+            content: ` [PDF DATA STREAM] Location: /assets/pdf/CV.pdf\r\n Protocol: open-link\r\n Action: Use 'cv' command to download or view.`
           }
         }
       },

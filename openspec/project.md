@@ -364,9 +364,9 @@ oyi77.github.io/
 - **Add new project**: Update `_data/led_projects.yml` or `_data/projects.json`
 - **Update experience**: Modify `_data/companies.yml`
 - **Add blog post**: Create file in `_posts/` with YAML frontmatter
-- **Modify homepage**: Edit `index.html` and `assets/js/portal.js`
+- **Modify homepage**: Edit `index.html` and `assets/js/features/portal.js`
 - **Update styles**: Edit `assets/css/portal.css`
-- **Add modal content**: Update `modalData` object in `assets/js/portal.js`
+- **Add modal content**: Update `modalData` object in `assets/js/features/portal.js`
 
 ### Testing Locally
 ```bash

@@ -32,7 +32,7 @@ class CVApp {
             const fsPath = this.filesystem.resolvePath(this.os.currentPath, 'cv.pdf');
             const fsContent = this.filesystem.readFile(fsPath);
             
-            let cvUrl = '/CV.pdf'; // Default path
+            let cvUrl = '/assets/pdf/CV.pdf'; // Default path
             
             if (fsContent) {
               // Extract path from filesystem content
