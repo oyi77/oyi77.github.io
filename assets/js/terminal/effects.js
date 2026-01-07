@@ -81,9 +81,4 @@ class TerminalEffects {
         const container = this.container.parentElement;
         container.classList.toggle('crt-active');
     }
-
-    async glitchText(text) {
-        // Return scrambled text that progressively unscrambles
-        return text; // Placeholder for logic
-    }
 }
