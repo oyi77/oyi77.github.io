@@ -114,6 +114,8 @@ Visit [oyi77.github.io/terminal](https://oyi77.github.io/terminal/) and start ex
 - **Twitter**: [@this_is_paijo](https://x.com/this_is_paijo)
 - **Medium**: [@oyi77](https://medium.com/@oyi77)
 - **Substack**: [Paijo's Substack](https://oyi77.substack.com/)
+- **Dev.to**: [@oyi77](https://dev.to/oyi77)
+- **Publish0x**: [cr4zydud3](https://www.publish0x.com/cr4zydud3/)
 
 ## 📄 License
 
