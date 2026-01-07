@@ -31,7 +31,7 @@ permalink: /news/
       <div class="news-header-terminal">
         <div class="terminal-status">
           <span class="status-indicator pulsate"></span>
-          <span class="status-text">SYSTEM_LINK_ESTABLISHED: NEWS_AGGREGATOR_v1.0</span>
+          <span class="status-text">SYSTEM_LINK_ESTABLISHED: BLOOMBERG_AGGREGATOR_v2.0</span>
         </div>
         <div class="terminal-controls">
           <a href="/" class="ctrl-btn" title="Back to Home / System Root">
@@ -49,73 +49,58 @@ permalink: /news/
       </div>
 
       <div class="news-grid">
-        <!-- Sources Panel -->
-        <aside class="news-sources">
-          <h2 class="panel-title">NODES</h2>
-          <div class="source-list" id="source-list">
-            <div class="source-item active" data-source="all">
-              <span class="source-icon">[*]</span>
-              <span class="source-name">ALL_SOURCES</span>
-            </div>
-            <div class="source-item" data-source="hn">
-              <span class="source-icon">[Y]</span>
-              <span class="source-name">HACKER_NEWS</span>
-            </div>
-            <div class="source-item" data-source="crypto">
-              <span class="source-icon">[B]</span>
-              <span class="source-name">CRYPTO_PULSE</span>
-            </div>
-            <div class="source-item" data-source="defillama">
-              <span class="source-icon">[L]</span>
-              <span class="source-name">DEFI_LLAMA</span>
-            </div>
-            <div class="source-item" data-source="github">
-              <span class="source-icon">[G]</span>
-              <span class="source-name">GITHUB_CHANGELOG</span>
-            </div>
-            <div class="source-divider"></div>
-            <div id="dynamic-sources">
-              <!-- NewsNow sources will be injected here -->
-            </div>
-          </div>
-        </aside>
-
         <!-- Main Feed -->
         <main class="news-feed">
           <div class="feed-header">
-            <h2 class="panel-title">LIVE_LOG</h2>
-            <div class="feed-info">
-              <span id="item-count">0 items</span> cached
+            <div class="feed-header-left">
+              <h1 class="feed-title">News Terminal</h1>
+              <p class="feed-subtitle">Unified feed from 47 sources</p>
+            </div>
+            <div class="feed-header-right">
+              <div class="feed-controls">
+                <input 
+                  type="search" 
+                  id="news-search" 
+                  class="news-search" 
+                  placeholder="Search news..."
+                  autocomplete="off"
+                />
+                <select id="source-filter" class="source-filter">
+                  <option value="all">All Sources</option>
+                </select>
+              </div>
+              <div class="feed-info">
+                <span id="item-count">0 items</span>
+                <span id="fetch-status" class="fetch-status"></span>
+              </div>
             </div>
           </div>
 
-          <!-- Skeleton Loader (Visible by default, hidden by JS) -->
+          <!-- Skeleton Loader -->
           <div id="feed-skeleton" class="feed-items skeleton-container">
             <div class="skeleton-item">
-              <div class="skeleton-line width-30"></div>
+              <div class="skeleton-line width-20"></div>
               <div class="skeleton-line width-60"></div>
-            </div>
-            <div class="skeleton-item">
-              <div class="skeleton-line width-40"></div>
               <div class="skeleton-line width-80"></div>
-              <div class="skeleton-line width-50"></div>
             </div>
             <div class="skeleton-item">
               <div class="skeleton-line width-20"></div>
               <div class="skeleton-line width-70"></div>
+              <div class="skeleton-line width-90"></div>
             </div>
             <div class="skeleton-item">
-              <div class="skeleton-line width-30"></div>
-              <div class="skeleton-line width-60"></div>
-            </div>
-            <div class="skeleton-item">
-              <div class="skeleton-line width-40"></div>
-              <div class="skeleton-line width-80"></div>
+              <div class="skeleton-line width-20"></div>
               <div class="skeleton-line width-50"></div>
+              <div class="skeleton-line width-75"></div>
+            </div>
+            <div class="skeleton-item">
+              <div class="skeleton-line width-20"></div>
+              <div class="skeleton-line width-65"></div>
+              <div class="skeleton-line width-85"></div>
             </div>
           </div>
 
-          <!-- Real Data Container (Hidden by default) -->
+          <!-- Unified Feed Container -->
           <div class="feed-items" id="feed-items" style="display: none;"></div>
         </main>
       </div>
