@@ -544,7 +544,7 @@ const modalData = {
     content: {
       'The Professional': `
         <section>
-          <h3>Muchammad Fikri Izzuddin</h3>
+          <h3>Lead Software Engineer</h3>
           <p>A visionary Technical Lead with 7+ years of experience in high-stakes engineering environments. From managing thousands of employees to developing sub-10ms trading algorithms, my career is defined by tackling "impossible" complexity.</p>
           <p>My background in Business Management from <strong>ITS Surabaya</strong> allows me to bridge the gap between deep technical implementation and high-level business strategy.</p>
         </section>
