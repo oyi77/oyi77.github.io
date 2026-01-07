@@ -108,7 +108,12 @@ Visit [oyi77.github.io/terminal](https://oyi77.github.io/terminal/) and start ex
 - **Live Terminal**: [oyi77.github.io/terminal](https://oyi77.github.io/terminal/)
 - **Interactive CV**: [oyi77.github.io/oyi77](https://oyi77.github.io/oyi77)
 - **GitHub**: [@oyi77](https://github.com/oyi77)
-- **LinkedIn**: [fikriizzuddin](https://linkedin.com/in/fikriizzuddin)
+- **GitHub (Alt)**: [@jokogendeng77](https://github.com/jokogendeng77)
+- **GitLab**: [@oyi77](https://gitlab.com/oyi77)
+- **Quora**: [Paijo](https://www.quora.com/profile/Paijo-43)
+- **Twitter**: [@this_is_paijo](https://x.com/this_is_paijo)
+- **Medium**: [@oyi77](https://medium.com/@oyi77)
+- **Substack**: [Paijo's Substack](https://oyi77.substack.com/)
 
 ## 📄 License
 
@@ -116,6 +121,6 @@ Open source and available for educational purposes.
 
 ---
 
-**Built with ❤️ by [Muchammad Fikri Izzuddin](https://github.com/oyi77)**
+**Built with ❤️ by Lead Software Engineer**
 
 *"Code is poetry, terminals are art"* 🎨
