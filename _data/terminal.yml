@@ -1,11 +1,17 @@
-# Terminal OS Configuration - Muchammad Fikri Izzuddin
-name: "Muchammad Fikri Izzuddin"
+# Terminal OS Configuration - Anonymous Portfolio
+name: "Lead Software Engineer"
 title: "Lead Software Engineer"
 bio: "A highly accomplished and results-driven Software Engineer Lead with 7+ years of experience in full-stack development, blockchain, and embedded systems. Proven ability to lead cross-functional teams, architect scalable solutions, and drive significant business impact through technology."
-email: "mbahkoe.pendekar@gmail.com"
-phone: "+6281347241993"
-location: "East Java, Indonesia"
+location: "Southeast Asia"
 github_username: "oyi77"
+
+# Contact Form Configuration
+contact_form:
+  formspree_id: "xlgdqlpz"
+  formspree_endpoint: "https://formspree.io/f/xlgdqlpz"
+  emailjs_public_key: "BfrEVgwmh9hSgxrPC"
+  anonymous_email: "xji1d0d1@oyi77.anonaddy.me"
+  cal_com_url: "https://cal.com/oyi77"
 
 # Professional Summary
 summary: "Expertise in Python, JavaScript, Node.js, React, and a strong focus on delivering quantifiable results, including increasing trading accuracy by 70% and improving business process efficiency by 30%."
@@ -55,8 +61,6 @@ skills:
 
 # Social and Professional Links
 links:
-  - label: "LinkedIn"
-    url: "https://linkedin.com/in/fikriizzuddin"
   - label: "GitHub"
     url: "https://github.com/oyi77"
   - label: "Portfolio"
