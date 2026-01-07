@@ -39,7 +39,13 @@ class AboutApp {
   }
 
   async loadData() {
-    // Try to load about data from terminal.yml
+    // Try to load from window.JEKYLL_DATA first (injected by Jekyll)
+    if (window.JEKYLL_DATA && window.JEKYLL_DATA.terminal) {
+      this.aboutData = window.JEKYLL_DATA.terminal;
+      return;
+    }
+
+    // Fallback: Try to load about data from terminal.yml
     try {
       const response = await fetch('/_data/terminal.yml');
       if (response.ok) {
@@ -69,12 +75,11 @@ class AboutApp {
     const name = data?.name || 'Developer';
     const title = data?.title || '';
     const bio = data?.bio || 'Welcome to my terminal portfolio!';
-    const email = data?.email || '';
-    const phone = data?.phone || '';
     const location = data?.location || '';
     const github = data?.github_username || '';
     const summary = data?.summary || '';
     const links = this.parseLinks(data?.links) || [];
+    const calComUrl = data?.contact_form?.cal_com_url || 'https://cal.com/oyi77';
 
     let aboutText = `
 \x1b[1;36m╔═══════════════════════════════════════════════════════════╗\x1b[0m
@@ -83,9 +88,13 @@ class AboutApp {
 
 \x1b[1;32mName:\x1b[0m        ${name}
 ${title ? `\x1b[1;32mTitle:\x1b[0m       ${title}\r\n` : ''}\x1b[1;32mBio:\x1b[0m         ${bio}
-${summary ? `\x1b[1;32mSummary:\x1b[0m     ${summary}\r\n` : ''}${email ? `\x1b[1;32mEmail:\x1b[0m       ${email}\r\n` : ''}${phone ? `\x1b[1;32mPhone:\x1b[0m       ${phone}\r\n` : ''}${location ? `\x1b[1;32mLocation:\x1b[0m    ${location}\r\n` : ''}${github ? `\x1b[1;32mGitHub:\x1b[0m       https://github.com/${github}\r\n` : ''}
+${summary ? `\x1b[1;32mSummary:\x1b[0m     ${summary}\r\n` : ''}${location ? `\x1b[1;32mLocation:\x1b[0m    ${location}\r\n` : ''}${github ? `\x1b[1;32mGitHub:\x1b[0m       https://github.com/${github}\r\n` : ''}
 ${links.length > 0 ? `\x1b[1;32mLinks:\x1b[0m\r\n${links.map(link => `              \x1b[1;36m${link.label}:\x1b[0m ${link.url}`).join('\r\n')}\r\n` : ''}
 \x1b[1;36m─────────────────────────────────────────────────────────────\x1b[0m
+
+\x1b[1;33mContact:\x1b[0m
+  Use the contact form widget (bottom right) or visit:
+  \x1b[1;36m${calComUrl}\x1b[0m - Schedule a call
 
 \x1b[1;33mQuick Links:\x1b[0m
   \x1b[1;33mcv\x1b[0m              - Open CV OS (Interactive Portfolio)

@@ -24,27 +24,28 @@
     menu.className = 'contact-widget-menu';
     menu.setAttribute('aria-hidden', 'true');
 
+    // Get Cal.com URL from config or use default
+    const calComUrl = window.JEKYLL_DATA?.terminal?.contact_form?.cal_com_url || 'https://cal.com/oyi77';
+
     const contactOptions = [
       {
-        label: 'Email',
+        label: 'Contact Form',
         action: () => {
-          window.location.href = 'mailto:mbahkoe.pendekar@gmail.com?subject=Job Opportunity Inquiry';
+          // Open contact form modal
+          if (window.ContactFormHandler) {
+            window.ContactFormHandler.show();
+          } else {
+            console.error('ContactFormHandler not loaded');
+          }
         },
         icon: '✉'
       },
       {
-        label: 'Calendly',
+        label: 'Schedule Call',
         action: () => {
-          window.open('https://calendly.com/muchammadizzuddin/30min', '_blank', 'noopener,noreferrer');
+          window.open(calComUrl, '_blank', 'noopener,noreferrer');
         },
         icon: '📅'
-      },
-      {
-        label: 'Telegram',
-        action: () => {
-          window.open('https://t.me/oyi77', '_blank', 'noopener,noreferrer');
-        },
-        icon: '✈'
       }
     ];
 
