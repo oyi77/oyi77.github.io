@@ -1568,6 +1568,219 @@ html {
     }
 }
 
+/* Contact Form Modal */
+.contact-form-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(5px);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.contact-form-modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.contact-form-modal-content {
+    background: #000;
+    border: 1px solid #fff;
+    max-width: 600px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.contact-form-modal.show .contact-form-modal-content {
+    transform: scale(1);
+}
+
+.contact-form-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    border-bottom: 1px solid #333;
+}
+
+.contact-form-modal-header h3 {
+    margin: 0;
+    font-family: var(--portal-font-mono);
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #fff;
+}
+
+.contact-form-close {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease;
+}
+
+.contact-form-close:hover {
+    color: var(--portal-accent);
+}
+
+.contact-form-modal-body {
+    padding: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-family: var(--portal-font-mono);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #fff;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    background: #000;
+    border: 1px solid #333;
+    color: #fff;
+    font-family: var(--portal-font-mono);
+    font-size: 0.9rem;
+    transition: border-color 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--portal-accent);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.form-status {
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid;
+    font-family: var(--portal-font-mono);
+    font-size: 0.85rem;
+    display: none;
+}
+
+.form-status:not(:empty) {
+    display: block;
+}
+
+.form-status-success {
+    background: rgba(0, 255, 65, 0.1);
+    border-color: #00ff41;
+    color: #00ff41;
+}
+
+.form-status-error {
+    background: rgba(255, 0, 0, 0.1);
+    border-color: #ff0000;
+    color: #ff0000;
+}
+
+.form-status-info {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #fff;
+    color: #fff;
+}
+
+.form-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+}
+
+.btn-submit,
+.btn-cancel {
+    padding: 12px 30px;
+    font-family: var(--portal-font-mono);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid;
+}
+
+.btn-submit {
+    background: #000;
+    border-color: var(--portal-accent);
+    color: var(--portal-accent);
+}
+
+.btn-submit:hover:not(:disabled) {
+    background: var(--portal-accent);
+    color: #000;
+}
+
+.btn-submit:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-cancel {
+    background: #000;
+    border-color: #333;
+    color: #fff;
+}
+
+.btn-cancel:hover {
+    border-color: #fff;
+    background: #fff;
+    color: #000;
+}
+
+@media (max-width: 768px) {
+    .contact-form-modal-content {
+        width: 95%;
+        max-height: 95vh;
+    }
+
+    .contact-form-modal-header,
+    .contact-form-modal-body {
+        padding: 20px;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .btn-submit,
+    .btn-cancel {
+        width: 100%;
+    }
+}
+
 /* Social Proof */
 .social-proof {
     width: 100%;
