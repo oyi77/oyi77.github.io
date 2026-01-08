@@ -1,9 +1,12 @@
 ---
 permalink: /case-studies/
-title: "Case Studies"
-description: "Detailed case studies showcasing problem-solving approaches, technical solutions, and business impact across various projects and companies."
+title: "Case Studies - Technical Solutions & Business Impact"
+description: "Detailed case studies showcasing problem-solving approaches, technical solutions, and business impact across various projects and companies. Real-world examples of software engineering excellence."
 layout: single
 author_profile: false
+tags: [case studies, projects, technical solutions, business impact]
+keywords: "case studies, software engineering case studies, technical solutions, business impact, project examples, problem solving, software architecture"
+og_image: /assets/images/bio-photo.png
 ---
 
 # Case Studies

@@ -754,7 +754,21 @@ function updateModalContent() {
   const data = modalData[currentSection];
   const tabName = data.tabs[currentTab];
   const content = data.content[tabName];
-  modalContent.innerHTML = `<div class="tab-pane active">${content}</div>`;
+  
+  // Add "View Blog" button for posts section
+  let footerButton = '';
+  if (currentSection === 'posts') {
+    footerButton = `
+      <div class="modal-footer">
+        <a href="/blog/" class="view-blog-btn" aria-label="View all blog posts">
+          <span class="btn-icon">→</span>
+          <span class="btn-text">View Blog</span>
+        </a>
+      </div>
+    `;
+  }
+  
+  modalContent.innerHTML = `<div class="tab-pane active">${content}</div>${footerButton}`;
 }
 
 function initModal() {

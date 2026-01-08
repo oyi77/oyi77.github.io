@@ -1,0 +1,60 @@
+name: Update Blog Posts
+
+on:
+  schedule:
+    # Run daily at 2 AM UTC
+    - cron: '0 2 * * *'
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  update-posts:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+          bundler-cache: true
+
+      - name: Install dependencies
+        run: bundle install
+
+      - name: Fetch RSS feeds
+        run: |
+          chmod +x _scripts/fetch_rss_feeds.rb
+          bundle exec ruby _scripts/fetch_rss_feeds.rb
+
+      - name: Check for changes
+        id: check-changes
+        run: |
+          if git diff --quiet _data/aggregated_posts.yml; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit and push changes
+        if: steps.check-changes.outputs.changed == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add _data/aggregated_posts.yml
+          git commit -m "Update aggregated blog posts [skip ci]" || exit 0
+          git push origin HEAD:${{ github.ref }}
+
+      - name: Summary
+        if: always()
+        run: |
+          if [ "${{ steps.check-changes.outputs.changed }}" == "true" ]; then
+            echo "✅ Blog posts updated successfully"
+          else
+            echo "ℹ️  No new posts found"
+          fi
+

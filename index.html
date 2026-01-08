@@ -25,6 +25,7 @@
     content="Lead Software Engineer with 7+ years experience. Remote available. Interactive portfolio showcasing achievements and technical expertise.">
   <meta property="og:image" content="https://oyi77.github.io/assets/images/bio-photo.png">
   <meta property="og:site_name" content="Lead Software Engineer Portfolio">
+  <meta property="og:locale" content="en_US">
   <meta property="profile:username" content="oyi77">
 
   <!-- Twitter Card -->
@@ -45,7 +46,17 @@
     "image": "https://oyi77.github.io/assets/images/bio-photo.png",
     "sameAs": [
       "https://github.com/oyi77",
-      "https://linktr.ee/jokogendeng"
+      "https://linktr.ee/jokogendeng",
+      "https://www.quora.com/profile/Paijo-43",
+      "https://x.com/this_is_paijo",
+      "https://medium.com/@oyi77",
+      "https://oyi77.substack.com/",
+      "https://dev.to/oyi77",
+      "https://www.publish0x.com/cr4zydud3/",
+      "https://github.com/jokogendeng77",
+      "https://bitbucket.org/jokoGendeng",
+      "https://bitbucket.org/oyi77/workspace/repositories/",
+      "https://gitlab.com/oyi77"
     ],
     "jobTitle": "Lead Software Engineer",
     "address": {
@@ -91,9 +102,37 @@
   }
   </script>
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="/assets/images/bio-photo.png">
-  <link rel="apple-touch-icon" href="/assets/images/bio-photo.png">
+  <!-- Favicons -->
+  <link rel="icon" type="image/x-icon" href="/assets/images/favicons/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicons/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="/assets/images/favicons/favicon-48x48.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/assets/images/favicons/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/images/favicons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="128x128" href="/assets/images/favicons/favicon-128x128.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/images/favicons/favicon-192x192.png">
+  <link rel="icon" type="image/png" sizes="256x256" href="/assets/images/favicons/favicon-256x256.png">
+  
+  <!-- Apple Touch Icons -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/images/favicons/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/images/favicons/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/images/favicons/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/images/favicons/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/images/favicons/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/images/favicons/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/images/favicons/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicons/apple-touch-icon-180x180.png">
+  
+  <!-- Android Chrome Icons -->
+  <link rel="icon" type="image/png" sizes="144x144" href="/assets/images/favicons/android-chrome-144x144.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/images/favicons/android-chrome-192x192.png">
+  
+  <!-- Windows Tiles -->
+  <meta name="msapplication-TileImage" content="/assets/images/favicons/mstile-144x144.png">
+  <meta name="msapplication-TileColor" content="#0d0d0d">
+  
+  <!-- Web Manifest -->
+  <link rel="manifest" href="/site.webmanifest">
 
   <!-- Sitemap -->
   <link rel="sitemap" type="application/xml" href="https://oyi77.github.io/sitemap.xml">
@@ -223,16 +262,22 @@
 
       <!-- Portfolio Cards Grid (Stage 1: Arrow Right) -->
       <div class="expanded-grid" id="expanded-grid">
+        <a href="/blog/" class="portfolio-card" data-section="blog">
+          <div class="card-icon">📝</div>
+          <h3 class="card-title">Blog</h3>
+          <p class="card-desc">Aggregated articles from Medium, Dev.to, Substack, GitHub, and more.</p>
+        </a>
+
+        <a href="/news/" class="portfolio-card" data-section="news-feed">
+          <div class="card-icon">📰</div>
+          <h3 class="card-title">News</h3>
+          <p class="card-desc">Real-time terminal news aggregator with curated technical sources.</p>
+        </a>
+
         <div class="portfolio-card" data-section="posts">
           <div class="card-icon">[ ]</div>
           <h3 class="card-title">Posts</h3>
           <p class="card-desc">Technical articles, insights, and thought leadership on software engineering.</p>
-        </div>
-
-        <div class="portfolio-card" data-section="news-feed" onclick="window.location.href='/news'">
-          <div class="card-icon">@</div>
-          <h3 class="card-title">News Feed</h3>
-          <p class="card-desc">Real-time terminal news aggregator with curated technical and global sources.</p>
         </div>
 
         <div class="portfolio-card" data-section="achievements">

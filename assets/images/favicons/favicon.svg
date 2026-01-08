@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <!-- Background -->
+  <rect width="128" height="128" fill="#0d0d0d" rx="8"/>
+  
+  <!-- Terminal Window -->
+  <rect x="8" y="8" width="112" height="112" fill="#000000" stroke="#00ff41" stroke-width="2" rx="4"/>
+  
+  <!-- Terminal Prompt -->
+  <text x="16" y="40" font-family="monospace" font-size="16" fill="#00ff41">$</text>
+  
+  <!-- Terminal Cursor (blinking effect will be handled by CSS if needed) -->
+  <rect x="28" y="32" width="8" height="16" fill="#00ff41" opacity="0.8"/>
+  
+  <!-- Terminal Lines (optional decorative elements) -->
+  <line x1="16" y1="60" x2="112" y2="60" stroke="#00ff41" stroke-width="1" opacity="0.3"/>
+  <line x1="16" y1="80" x2="96" y2="80" stroke="#00ff41" stroke-width="1" opacity="0.2"/>
+  
+  <!-- Terminal Prompt on second line -->
+  <text x="16" y="100" font-family="monospace" font-size="16" fill="#00ff41" opacity="0.6">_</text>
+</svg>
+

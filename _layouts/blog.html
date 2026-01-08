@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="https://schema.org/Blog">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary Meta Tags -->
+    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+    <meta name="title" content="{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}">
+    <meta name="description"
+        content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+    <meta name="keywords" content="{{ site.keywords }}{% if page.tags %}, {{ page.tags | join: ', ' }}{% endif %}">
+    <meta name="author" content="{{ site.author.name }}">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="language" content="English">
+    <meta name="theme-color" content="#050510">
+    <link rel="canonical" href="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
+    <meta property="og:title" content="{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}">
+    <meta property="og:description"
+        content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+    <meta property="og:image" content="{{ site.url }}{{ site.baseurl }}{% if page.og_image %}{{ page.og_image }}{% else %}/assets/images/bio-photo.png{% endif %}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="{{ site.title }}">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
+    <meta name="twitter:title" content="{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}">
+    <meta name="twitter:description"
+        content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+    <meta name="twitter:image" content="{{ site.url }}{{ site.baseurl }}{% if page.og_image %}{{ page.og_image }}{% else %}/assets/images/bio-photo.png{% endif %}">
+    {% if site.twitter_username %}
+    <meta name="twitter:creator" content="@{{ site.twitter_username }}">{% endif %}
+    <meta name="twitter:site" content="@{{ site.github_username }}">
+
+    <!-- Additional SEO -->
+    <meta name="geo.region" content="SEA">
+    <meta name="geo.placename" content="Southeast Asia">
+    <meta name="application-name" content="OYI Blog">
+    <meta name="apple-mobile-web-app-title" content="OYI Blog">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- Schema.org Structured Data - Blog -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "name": "{{ site.title }} Blog",
+      "url": "{{ site.url }}{{ site.baseurl }}/blog/",
+      "description": "{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}",
+      "author": {
+        "@type": "Person",
+        "name": "{{ site.author.name }}",
+        "url": "{{ site.url }}{{ site.baseurl }}",
+        "sameAs": [
+          "https://github.com/{{ site.github_username }}",
+          "https://linktr.ee/jokogendeng",
+          "https://www.quora.com/profile/Paijo-43",
+          "https://x.com/this_is_paijo",
+          "https://medium.com/@oyi77",
+          "https://oyi77.substack.com/",
+          "https://dev.to/oyi77",
+          "https://www.publish0x.com/cr4zydud3/",
+          "https://github.com/jokogendeng77",
+          "https://bitbucket.org/jokoGendeng",
+          "https://bitbucket.org/oyi77/workspace/repositories/",
+          "https://gitlab.com/oyi77"
+        ]
+      },
+      "publisher": {
+        "@type": "Person",
+        "name": "{{ site.author.name }}"
+      },
+      "inLanguage": "en-US"
+    }
+    </script>
+
+    <!-- Website Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "{{ site.title }}",
+      "url": "{{ site.url }}{{ site.baseurl }}",
+      "description": "{{ site.description }}",
+      "author": {
+        "@type": "Person",
+        "name": "{{ site.author.name }}"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "{{ site.url }}{{ site.baseurl }}/blog/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
+    <!-- BreadcrumbList Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "{{ site.url }}{{ site.baseurl }}/"
+      }, {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "{{ site.url }}{{ site.baseurl }}/blog/"
+      }]
+    }
+    </script>
+
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="{{ site.baseurl }}/assets/images/favicons/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ site.baseurl }}/assets/images/favicons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ site.baseurl }}/assets/images/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="{{ site.baseurl }}/assets/images/favicons/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="64x64" href="{{ site.baseurl }}/assets/images/favicons/favicon-64x64.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="{{ site.baseurl }}/assets/images/favicons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="128x128" href="{{ site.baseurl }}/assets/images/favicons/favicon-128x128.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="{{ site.baseurl }}/assets/images/favicons/favicon-192x192.png">
+    <link rel="icon" type="image/png" sizes="256x256" href="{{ site.baseurl }}/assets/images/favicons/favicon-256x256.png">
+    
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="{{ site.baseurl }}/assets/images/favicons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="{{ site.baseurl }}/assets/images/favicons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ site.baseurl }}/assets/images/favicons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="{{ site.baseurl }}/assets/images/favicons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="{{ site.baseurl }}/assets/images/favicons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="{{ site.baseurl }}/assets/images/favicons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="{{ site.baseurl }}/assets/images/favicons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ site.baseurl }}/assets/images/favicons/apple-touch-icon-180x180.png">
+    
+    <!-- Android Chrome Icons -->
+    <link rel="icon" type="image/png" sizes="144x144" href="{{ site.baseurl }}/assets/images/favicons/android-chrome-144x144.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="{{ site.baseurl }}/assets/images/favicons/android-chrome-192x192.png">
+    
+    <!-- Windows Tiles -->
+    <meta name="msapplication-TileImage" content="{{ site.baseurl }}/assets/images/favicons/mstile-144x144.png">
+    <meta name="msapplication-TileColor" content="#0d0d0d">
+    
+    <!-- Web Manifest -->
+    <link rel="manifest" href="{{ site.baseurl }}/site.webmanifest">
+
+    <!-- Sitemap -->
+    <link rel="sitemap" type="application/xml" href="{{ site.url }}{{ site.baseurl }}/sitemap.xml">
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="{{ site.title }} Blog Feed" href="{{ site.url }}{{ site.baseurl }}/feed.xml">
+
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ '/assets/css/style_v2.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/css/blog.css' | relative_url }}">
+</head>
+
+<body class="blog-page">
+    <main role="main">
+        {{ content }}
+    </main>
+
+    <!-- Scripts -->
+    <script>
+        // Enable scrolling for blog page (fallback for browsers without :has() support)
+        document.documentElement.classList.add('blog-page-active');
+        
+        // Inject Jekyll data for blog posts
+        window.JEKYLL_DATA = {
+            site: {
+                title: "{{ site.title }}",
+                description: "{{ site.description }}",
+                github_username: "{{ site.github_username }}",
+                baseurl: "{{ site.baseurl }}",
+                url: "{{ site.url }}"
+            },
+            blog: {
+                posts: {% if site.data.aggregated_posts.posts %}{{ site.data.aggregated_posts.posts | jsonify }}{% else %}[]{% endif %}
+            }
+        };
+    </script>
+</body>
+
+</html>
+

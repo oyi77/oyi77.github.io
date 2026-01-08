@@ -1,9 +1,12 @@
 ---
 permalink: /led-projects/
-title: "Led Projects"
-description: "Projects I've led as Technical Lead, showcasing team leadership, technical expertise, and business impact."
+title: "Led Projects - Technical Leadership & Team Management"
+description: "Projects I've led as Technical Lead, showcasing team leadership, technical expertise, and business impact. Examples of managing teams and delivering successful software projects."
 layout: single
 author_profile: false
+tags: [projects, leadership, technical lead, team management, software projects]
+keywords: "led projects, technical leadership, team management, software projects, engineering manager, project leadership, technical lead projects"
+og_image: /assets/images/bio-photo.png
 ---
 
 # Led Projects

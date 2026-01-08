@@ -1,9 +1,12 @@
 ---
 permalink: /approaches/
-title: "Problem-Solving Approaches"
-description: "Documented methodologies and frameworks for solving complex technical and business challenges."
+title: "Problem-Solving Approaches - Technical Methodologies"
+description: "Documented methodologies and frameworks for solving complex technical and business challenges. Systematic approaches to software engineering problems."
 layout: single
 author_profile: false
+tags: [approaches, methodologies, problem solving, technical frameworks, software engineering]
+keywords: "problem solving approaches, software engineering methodologies, technical frameworks, engineering approaches, problem solving techniques"
+og_image: /assets/images/bio-photo.png
 ---
 
 # Problem-Solving Approaches
