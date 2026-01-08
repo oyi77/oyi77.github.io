@@ -292,6 +292,187 @@ function initToggle() {
   });
 
   updateArrowVisibility();
+  
+  // Initialize tooltips with interval-based show/hide
+  initArrowTooltips();
+}
+
+// ============================================================================
+// ARROW TOOLTIPS WITH INTERVAL SHOW/HIDE
+// ============================================================================
+
+function initArrowTooltips() {
+  const tooltipConfigs = [
+    {
+      button: document.getElementById('see-more-btn'),
+      text: 'Curated Portfolio',
+      updateText: (state) => {
+        // Left arrow on main goes to curated, on metrics goes to expanded, on curated goes to main
+        if (state === 'main') return 'Curated Portfolio';
+        if (state === 'metrics') return 'Back to Expanded';
+        return 'Back to Main';
+      }
+    },
+    {
+      button: document.getElementById('main-right-btn'),
+      text: 'Expanded View',
+      updateText: () => 'Expanded View'
+    },
+    {
+      button: document.getElementById('nav-arrow-left'),
+      text: 'Back to Main',
+      updateText: () => 'Back to Main'
+    },
+    {
+      button: document.getElementById('nav-arrow-down'),
+      text: 'Key Achievements',
+      updateText: () => 'Key Achievements'
+    }
+  ];
+
+  const tooltipIntervals = new Map();
+  let isUserInteracting = false;
+
+  function createTooltip(button, text) {
+    if (!button) return null;
+    
+    // Remove existing tooltip if any
+    const existingTooltip = button.querySelector('.arrow-tooltip');
+    if (existingTooltip) {
+      existingTooltip.remove();
+    }
+
+    const tooltip = document.createElement('div');
+    tooltip.className = 'arrow-tooltip';
+    tooltip.textContent = text;
+    tooltip.setAttribute('aria-hidden', 'true');
+    button.appendChild(tooltip);
+    return tooltip;
+  }
+
+  function showTooltip(tooltip) {
+    if (tooltip && !isUserInteracting) {
+      tooltip.classList.add('show');
+      tooltip.setAttribute('aria-hidden', 'false');
+    }
+  }
+
+  function hideTooltip(tooltip) {
+    if (tooltip) {
+      tooltip.classList.remove('show');
+      tooltip.setAttribute('aria-hidden', 'true');
+    }
+  }
+
+  function startTooltipInterval(button, tooltip, updateTextFn) {
+    // Clear existing interval if any
+    if (tooltipIntervals.has(button)) {
+      clearInterval(tooltipIntervals.get(button));
+    }
+
+    let isVisible = false;
+    const interval = setInterval(() => {
+      // Check if button is visible (not display: none)
+      const isButtonVisible = button.offsetParent !== null && 
+                              window.getComputedStyle(button).display !== 'none';
+      
+      if (!isUserInteracting && isButtonVisible) {
+        // Button is visible
+        if (!isVisible) {
+          // Update text based on current state
+          if (updateTextFn) {
+            const currentState = getCurrentState();
+            tooltip.textContent = updateTextFn(currentState);
+          }
+          showTooltip(tooltip);
+          isVisible = true;
+        } else {
+          hideTooltip(tooltip);
+          isVisible = false;
+        }
+      } else if (!isButtonVisible) {
+        // Button is hidden, hide tooltip
+        hideTooltip(tooltip);
+        isVisible = false;
+      }
+    }, 3000); // Show for 3s, hide for 3s (total 6s cycle)
+
+    tooltipIntervals.set(button, interval);
+  }
+
+  function getCurrentState() {
+    const expandedSections = document.getElementById('expanded-sections');
+    const metricsSections = document.getElementById('metrics-sections');
+    const curatedSections = document.getElementById('curated-sections');
+    
+    // Check visibility via display style or class
+    if (metricsSections?.classList.contains('show') || 
+        (metricsSections && window.getComputedStyle(metricsSections).opacity === '1')) {
+      return 'metrics';
+    }
+    if (expandedSections?.classList.contains('show') || 
+        (expandedSections && window.getComputedStyle(expandedSections).left === '0px')) {
+      return 'expanded';
+    }
+    if (curatedSections?.classList.contains('show') || 
+        (curatedSections && window.getComputedStyle(curatedSections).right === '0px')) {
+      return 'curated';
+    }
+    return 'main';
+  }
+
+  // Create tooltips for all buttons
+  tooltipConfigs.forEach(config => {
+    if (!config.button) return;
+
+    const tooltip = createTooltip(config.button, config.text);
+    if (!tooltip) return;
+
+    // Start interval-based show/hide
+    startTooltipInterval(config.button, tooltip, config.updateText);
+
+    // Show on hover, hide on leave
+    config.button.addEventListener('mouseenter', () => {
+      isUserInteracting = true;
+      if (config.updateText) {
+        const currentState = getCurrentState();
+        tooltip.textContent = config.updateText(currentState);
+      }
+      showTooltip(tooltip);
+    });
+
+    config.button.addEventListener('mouseleave', () => {
+      isUserInteracting = false;
+      hideTooltip(tooltip);
+    });
+
+    // Update tooltip text when state changes
+    const observer = new MutationObserver(() => {
+      if (config.updateText && tooltip) {
+        const currentState = getCurrentState();
+        tooltip.textContent = config.updateText(currentState);
+      }
+    });
+
+    // Observe changes to expanded/curated/metrics sections visibility
+    const expandedSections = document.getElementById('expanded-sections');
+    const curatedSections = document.getElementById('curated-sections');
+    const metricsSections = document.getElementById('metrics-sections');
+    if (expandedSections) {
+      observer.observe(expandedSections, { attributes: true, attributeFilter: ['class'] });
+    }
+    if (curatedSections) {
+      observer.observe(curatedSections, { attributes: true, attributeFilter: ['class'] });
+    }
+    if (metricsSections) {
+      observer.observe(metricsSections, { attributes: true, attributeFilter: ['class'] });
+    }
+  });
+
+  // Cleanup on page unload
+  window.addEventListener('beforeunload', () => {
+    tooltipIntervals.forEach(interval => clearInterval(interval));
+  });
 }
 
 function triggerEyeAnimation() {

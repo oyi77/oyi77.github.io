@@ -334,6 +334,7 @@ html {
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     backdrop-filter: blur(10px);
+    position: relative;
 }
 
 .nav-arrow-btn:hover {
@@ -354,7 +355,7 @@ html {
 }
 
 .nav-arrow-left:hover .arrow {
-    animation: arrowBounceBack 0.6s ease infinite;
+    animation: arrowBounceLeft 0.6s ease infinite;
 }
 
 .nav-arrow-down:hover .arrow {
@@ -369,8 +370,66 @@ html {
     }
 
     50% {
-        transform: translateY(5px);
+        transform: translateY(-5px);
     }
+}
+
+@keyframes arrowBounceLeft {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(-5px);
+    }
+}
+
+/* Arrow Tooltips */
+.arrow-tooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-10px);
+    background: rgba(0, 0, 0, 0.9);
+    border: 1px solid var(--portal-accent-dim);
+    color: var(--portal-text);
+    padding: 8px 12px;
+    font-size: 0.75rem;
+    font-family: var(--portal-font-mono);
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+    z-index: 1001;
+    backdrop-filter: blur(10px);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.arrow-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: var(--portal-accent-dim);
+}
+
+.arrow-tooltip.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(-15px);
+}
+
+.nav-arrow-btn:hover .arrow-tooltip,
+.see-more-btn:hover .arrow-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(-15px);
 }
 
 /* Handle smaller screens */
@@ -400,6 +459,7 @@ html {
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     backdrop-filter: blur(10px);
+    position: relative;
 }
 
 .see-more-btn:hover {
@@ -2004,6 +2064,11 @@ html {
         width: 40px;
         height: 40px;
         font-size: 1.2rem;
+    }
+
+    .arrow-tooltip {
+        font-size: 0.65rem;
+        padding: 6px 10px;
     }
 
     .curated-grid {
