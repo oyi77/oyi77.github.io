@@ -645,7 +645,7 @@ const modalData = {
   },
   projects: {
     title: 'Project Portfolio',
-    tabs: ['Blockchain & Web3', 'Quant Systems', 'Experimental'],
+    tabs: ['Blockchain & Web3', 'Quant Systems', 'Content & Media', 'Experimental'],
     content: {
       'Blockchain & Web3': `
         <section>
@@ -667,6 +667,21 @@ const modalData = {
           <p>A specialized C++ execution engine designed to minimize slippage by interacting directly with exchange memory pools.</p>
           <h4>Market Sentiment Engine</h4>
           <p>Uses Natural Language Processing to analyze social media and news feeds to predict short-term market volatility.</p>
+        </section>
+      `,
+      'Content & Media': `
+        <section>
+          <h3>Publications & News Platforms</h3>
+          <h4>Blog</h4>
+          <p>Aggregated articles from Medium, Dev.to, Substack, GitHub, and more. A comprehensive collection of technical insights, engineering practices, and thought leadership content.</p>
+          <p style="margin-top: 15px;">
+            <a href="/blog/" target="_blank" style="color: var(--portal-accent); text-decoration: underline;">Visit Blog →</a>
+          </p>
+          <h4>News Aggregator</h4>
+          <p>Real-time terminal news aggregator with curated technical sources. Stay updated with the latest developments in software engineering, blockchain, and technology.</p>
+          <p style="margin-top: 15px;">
+            <a href="/news/" target="_blank" style="color: var(--portal-accent); text-decoration: underline;">Visit News →</a>
+          </p>
         </section>
       `,
       'Experimental': `

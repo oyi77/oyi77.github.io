@@ -972,12 +972,12 @@ html {
 }
 
 .view-blog-btn {
-    display: inline-flex;
+    display: inline-flex !important;
     align-items: center;
     gap: 10px;
     padding: 14px 28px;
-    background: var(--portal-accent);
-    color: var(--portal-bg);
+    background: var(--portal-accent) !important;
+    color: var(--portal-bg) !important;
     text-decoration: none;
     font-family: var(--portal-font-mono);
     font-size: 0.9rem;
@@ -988,6 +988,9 @@ html {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
+    opacity: 1 !important;
+    visibility: visible !important;
+    cursor: pointer;
 }
 
 .view-blog-btn::before {
@@ -1019,6 +1022,11 @@ html {
 .view-blog-btn .btn-icon {
     font-size: 1.2rem;
     transition: transform 0.3s ease;
+    color: var(--portal-bg);
+}
+
+.view-blog-btn:hover .btn-icon {
+    color: var(--portal-accent);
 }
 
 .view-blog-btn:hover .btn-icon {
@@ -1028,6 +1036,11 @@ html {
 .view-blog-btn .btn-text {
     position: relative;
     z-index: 1;
+    color: var(--portal-bg);
+}
+
+.view-blog-btn:hover .btn-text {
+    color: var(--portal-accent);
 }
 
 /* Enhanced Modal Content Formatting */
