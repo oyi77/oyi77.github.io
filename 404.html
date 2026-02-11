@@ -1,0 +1,38 @@
+---
+layout: single
+permalink: /404.html
+sitemap: false
+author_profile: false
+---
+
+<style>
+  .terminal-error {
+    font-family: "Courier New", Courier, monospace;
+    background-color: #000;
+    color: #00ff00;
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid #333;
+  }
+  .prompt { color: #00ff00; }
+  .command { color: #fff; }
+  .error-msg { color: #ff0000; font-weight: bold; }
+</style>
+
+<div class="terminal-error">
+  <p><span class="prompt">root@server:~$</span> <span class="command">access {{ page.url }}</span></p>
+  <p class="error-msg">ERROR 404: PAGE_NOT_FOUND</p>
+  <p>The requested resource could not be located in the current sector.</p>
+  <br>
+  <p>> Initiating recovery protocol...</p>
+  <p>> <a href="{{ site.baseurl }}/" style="color: #00ff00; text-decoration: underline;">cd /home/root</a> (Return to Home)</p>
+  <p>> <span class="blink">_</span></p>
+</div>
+
+<script>
+  // Simple blinking cursor effect
+  setInterval(function() {
+    var cursor = document.querySelector('.blink');
+    cursor.style.visibility = (cursor.style.visibility == 'hidden' ? '' : 'hidden');
+  }, 500);
+</script>
