@@ -430,6 +430,8 @@ if __FILE__ == $0
   output_path = File.join(__dir__, '..', '_data', 'aggregated_posts.yml')
   aggregator.save_to_yaml(output_path)
 
-  exit(aggregator.instance_variable_get(:@errors).empty? ? 0 : 1)
+  # Exit 0 always: RSS errors are handled gracefully (logged and skipped),
+  # so partial failures should not abort the workflow.
+  exit(0)
 end
 
