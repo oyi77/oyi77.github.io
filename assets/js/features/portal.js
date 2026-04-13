@@ -1045,6 +1045,39 @@ let modalData = {};
 let currentSection = null;
 let currentTab = 0;
 
+let lastFocusedElement = null;
+
+function trapFocus(modal) {
+  const focusableElements = modal.querySelectorAll(
+    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+  );
+  const firstEl = focusableElements[0];
+  const lastEl = focusableElements[focusableElements.length - 1];
+
+  modal._trapHandler = function(e) {
+    if (e.key !== 'Tab') return;
+    if (e.shiftKey) {
+      if (document.activeElement === firstEl) {
+        e.preventDefault();
+        lastEl.focus();
+      }
+    } else {
+      if (document.activeElement === lastEl) {
+        e.preventDefault();
+        firstEl.focus();
+      }
+    }
+  };
+  modal.addEventListener('keydown', modal._trapHandler);
+}
+
+function releaseFocus(modal) {
+  if (modal._trapHandler) {
+    modal.removeEventListener('keydown', modal._trapHandler);
+    delete modal._trapHandler;
+  }
+}
+
 function openModal(section) {
   const modal = document.getElementById('modal-overlay');
   const modalTitle = document.getElementById('modal-title');
@@ -1073,8 +1106,10 @@ function openModal(section) {
   modal.classList.add('show');
   modal.setAttribute('aria-hidden', 'false');
   document.body.style.overflow = 'hidden';
+  lastFocusedElement = document.activeElement;
   const closeBtn = document.getElementById('modal-close');
   if (closeBtn) closeBtn.focus();
+  trapFocus(modal);
 }
 
 function closeModal() {
@@ -1082,6 +1117,11 @@ function closeModal() {
   if (modal) {
     modal.classList.remove('show');
     modal.setAttribute('aria-hidden', 'true');
+    releaseFocus(modal);
+    if (lastFocusedElement) {
+      lastFocusedElement.focus();
+      lastFocusedElement = null;
+    }
     document.body.style.overflow = '';
     currentSection = null;
   }

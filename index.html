@@ -271,64 +271,64 @@
 
       <!-- Portfolio Cards Grid (Stage 1: Arrow Right) -->
       <div class="expanded-grid" id="expanded-grid">
-        <div class="portfolio-card" data-section="posts">
+        <div class="portfolio-card" data-section="posts" role="button" tabindex="0">
           <div class="card-icon">[ ]</div>
           <h3 class="card-title">Posts</h3>
           <p class="card-desc">Technical articles, insights, and thought leadership on software engineering.</p>
         </div>
 
-        <div class="portfolio-card" data-section="achievements">
+        <div class="portfolio-card" data-section="achievements" role="button" tabindex="0">
           <div class="card-icon">*</div>
           <h3 class="card-title">Achievements</h3>
           <p class="card-desc">Notable accomplishments, awards, and recognitions throughout my career.</p>
         </div>
 
-        <div class="portfolio-card" data-section="experience">
+        <div class="portfolio-card" data-section="experience" role="button" tabindex="0">
           <div class="card-icon">+</div>
           <h3 class="card-title">Experience</h3>
           <p class="card-desc">Professional journey spanning 7+ years in software engineering and technical leadership.
           </p>
         </div>
 
-        <div class="portfolio-card" data-section="projects">
+        <div class="portfolio-card" data-section="projects" role="button" tabindex="0">
           <div class="card-icon">#</div>
           <h3 class="card-title">Projects</h3>
           <p class="card-desc">Portfolio of significant projects including blockchain, trading systems, and enterprise
             solutions.</p>
         </div>
 
-        <div class="portfolio-card" data-section="skills">
+        <div class="portfolio-card" data-section="skills" role="button" tabindex="0">
           <div class="card-icon">></div>
           <h3 class="card-title">Skills</h3>
           <p class="card-desc">Technical expertise across full-stack development, blockchain, cloud infrastructure, and
             more.</p>
         </div>
 
-        <div class="portfolio-card" data-section="about">
+        <div class="portfolio-card" data-section="about" role="button" tabindex="0">
           <div class="card-icon">@</div>
           <h3 class="card-title">About Me</h3>
           <p class="card-desc">Background, philosophy, and approach to software engineering and problem-solving.</p>
         </div>
 
-        <div class="portfolio-card" data-section="certifications">
+        <div class="portfolio-card" data-section="certifications" role="button" tabindex="0">
           <div class="card-icon">~</div>
           <h3 class="card-title">Certifications</h3>
           <p class="card-desc">Professional certifications and continuous learning achievements.</p>
         </div>
 
-        <div class="portfolio-card" data-section="leadership">
+        <div class="portfolio-card" data-section="leadership" role="button" tabindex="0">
           <div class="card-icon">^</div>
           <h3 class="card-title">Leadership</h3>
           <p class="card-desc">Team leadership, mentorship, and organizational impact.</p>
         </div>
 
-        <div class="portfolio-card" data-section="case-studies">
+        <div class="portfolio-card" data-section="case-studies" role="button" tabindex="0">
           <div class="card-icon">=</div>
           <h3 class="card-title">Case Studies</h3>
           <p class="card-desc">In-depth analysis of complex problems solved and systems architected.</p>
         </div>
 
-        <div class="portfolio-card" data-section="examples">
+        <div class="portfolio-card" data-section="examples" role="button" tabindex="0">
           <div class="card-icon">!</div>
           <h3 class="card-title">Example Cases</h3>
           <p class="card-desc">Real-world examples demonstrating technical expertise and problem-solving approach.</p>
@@ -339,7 +339,7 @@
     </main>
 
     <!-- Modal System -->
-    <div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modal-title">
       <div class="modal-container">
         <div class="modal-header">
           <h2 class="modal-title" id="modal-title">Section Title</h2>
@@ -465,10 +465,10 @@
     </div>
 
     <!-- Onboarding Popup -->
-    <div id="onboarding-modal" class="modal-overlay">
+    <div id="onboarding-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="onboarding-title">
       <div class="modal-container onboarding-modal-content">
         <div class="modal-header">
-          <h3 class="modal-title">Welcome! Navigation Guide</h3>
+          <h3 class="modal-title" id="onboarding-title">Welcome! Navigation Guide</h3>
           <button class="modal-close" id="onboarding-close">×</button>
         </div>
         <div class="modal-content">
@@ -509,10 +509,10 @@
     </div>
 
     <!-- CTA Modal for Exit Intent -->
-    <div id="cta-modal" class="modal-overlay">
+    <div id="cta-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="cta-title">
       <div class="modal-container cta-modal-content">
         <div class="modal-header">
-          <h3 class="modal-title">Wait! Before you go...</h3>
+          <h3 class="modal-title" id="cta-title">Wait! Before you go...</h3>
           <button class="modal-close" id="cta-close">×</button>
         </div>
         <div class="modal-content">
