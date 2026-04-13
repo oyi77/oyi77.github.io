@@ -59,9 +59,9 @@ class CVApp {
         } else if (subCommand === 'text' || subCommand === 'cat') {
             this.terminal.write('\r\nStreaming text credentials...\r\n');
             // Mocking cat behavior for simplicity or use the actual handler if accessible
-            this.terminal.writeln('\x1b[1;32m[ ROLE ]\x1b[0m Lead Software Engineer');
-            this.terminal.writeln('\x1b[1;32m[ EXP  ]\x1b[0m 7+ Years');
-            this.terminal.writeln('\x1b[1;32m[ TECH ]\x1b[0m Python, Node.js, React, Blockchain, AWS');
+            this.terminal.write('\x1b[1;32m[ ROLE ]\x1b[0m Lead Software Engineer\r\n');
+            this.terminal.write('\x1b[1;32m[ EXP  ]\x1b[0m 7+ Years\r\n');
+            this.terminal.write('\x1b[1;32m[ TECH ]\x1b[0m Python, Node.js, React, Blockchain, AWS\r\n');
         } else {
             this.terminal.write(`\r\nUnknown format: ${subCommand}. Use 'cv interactive', 'cv pdf', or 'cv text'.\r\n`);
         }

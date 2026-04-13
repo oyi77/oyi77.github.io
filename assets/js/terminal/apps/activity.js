@@ -127,10 +127,20 @@ class ActivityApp {
     // Set up interval for auto-refresh (every 30 seconds)
     watchInterval = setInterval(updateActivity, 30000);
 
+    // Set up exit handler for Ctrl+C
+    const disposable = this.terminal.onData((data) => {
+      if (data === '\x03') { // Ctrl+C
+        isWatching = false;
+        clearInterval(watchInterval);
+        disposable.dispose();
+        this.terminal.write('\r\n  \x1b[1;33mWatch mode stopped.\x1b[0m\r\n');
+      }
+    });
+
     // Note: In a real implementation, you'd set up proper signal handling
     // For now, this is a simplified version
     this.terminal.write('\r\n  \x1b[1;30mWatch mode active. Refresh every 30s.\x1b[0m\r\n');
-    this.terminal.write('  \x1b[1;30mNote: Use regular "activity" command for one-time view.\x1b[0m\r\n');
+    this.terminal.write('  \x1b[1;30mPress Ctrl+C to exit watch mode.\x1b[0m\r\n');
   }
 
   getTimeAgo(date) {

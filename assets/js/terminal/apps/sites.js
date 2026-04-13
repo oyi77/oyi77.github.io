@@ -1,8 +1,9 @@
 class SitesApp {
-  constructor(terminal, filesystem, windowManager) {
+  constructor(terminal, filesystem, windowManager, os) {
     this.terminal = terminal;
     this.filesystem = filesystem;
     this.windowManager = windowManager;
+    this.os = os;
     this.sitesData = null;
   }
 
@@ -30,17 +31,7 @@ class SitesApp {
 
   async loadData() {
     if (this.sitesData) return;
-
-    try {
-      const response = await fetch('/_data/terminal.yml');
-      if (response.ok) {
-        const text = await response.text();
-        const data = this.parseYaml(text);
-        this.sitesData = data?.sites || [];
-      }
-    } catch (e) {
-      this.sitesData = [];
-    }
+    this.sitesData = window.JEKYLL_DATA?.terminal?.sites || [];
   }
 
   showAll() {
@@ -154,110 +145,6 @@ class SitesApp {
     }
   }
 
-  parseYaml(text) {
-    // Simplified YAML parser
-    const data = {};
-    const lines = text.split('\n');
-    const context = [{ obj: data, indent: -1, key: null }];
-    
-    for (let i = 0; i < lines.length; i++) {
-      const line = lines[i];
-      const trimmed = line.trim();
-      
-      if (trimmed.startsWith('#') || !trimmed) continue;
-
-      const indent = line.match(/^(\s*)/)[1].length;
-      const isListItem = trimmed.startsWith('-');
-      
-      while (context.length > 1 && context[context.length - 1].indent >= indent) {
-        context.pop();
-      }
-      
-      const current = context[context.length - 1].obj;
-      const currentKey = context[context.length - 1].key;
-      
-      if (isListItem) {
-        const itemContent = trimmed.substring(1).trim();
-        const itemMatch = itemContent.match(/^([^:]+):\s*(.+)?$/);
-        
-        let targetKey = currentKey;
-        if (!targetKey && i > 0) {
-          for (let j = i - 1; j >= 0; j--) {
-            const prevLine = lines[j].trim();
-            if (prevLine && !prevLine.startsWith('#') && !prevLine.startsWith('-')) {
-              const prevMatch = prevLine.match(/^([^:]+):\s*$/);
-              if (prevMatch) {
-                targetKey = prevMatch[1].trim();
-                break;
-              }
-            }
-          }
-        }
-        
-        if (itemMatch) {
-          const key = itemMatch[1].trim();
-          let value = (itemMatch[2] || '').trim();
-          
-          if ((value.startsWith('"') && value.endsWith('"')) ||
-              (value.startsWith("'") && value.endsWith("'"))) {
-            value = value.slice(1, -1);
-          }
-          
-          const parent = context.length > 1 ? context[context.length - 2].obj : data;
-          const arrayKey = context[context.length - 1].key || targetKey;
-          
-          if (arrayKey) {
-            if (!parent[arrayKey] || !Array.isArray(parent[arrayKey])) {
-              parent[arrayKey] = [];
-            }
-            
-            if (parent[arrayKey].length === 0 || 
-                typeof parent[arrayKey][parent[arrayKey].length - 1] !== 'object' ||
-                Array.isArray(parent[arrayKey][parent[arrayKey].length - 1])) {
-              parent[arrayKey].push({});
-            }
-            
-            const lastObj = parent[arrayKey][parent[arrayKey].length - 1];
-            lastObj[key] = value || '';
-            
-            if (!value) {
-              context.push({ obj: lastObj, indent: indent, key: key });
-            }
-          }
-        } else {
-          const parent = context.length > 1 ? context[context.length - 2].obj : data;
-          const arrayKey = context[context.length - 1].key || targetKey;
-          
-          if (arrayKey) {
-            if (!parent[arrayKey] || !Array.isArray(parent[arrayKey])) {
-              parent[arrayKey] = [];
-            }
-            parent[arrayKey].push(itemContent);
-          }
-        }
-      } else {
-        const match = trimmed.match(/^([^:]+):\s*(.+)?$/);
-        if (match) {
-          const key = match[1].trim();
-          let value = (match[2] || '').trim();
-          
-          if ((value.startsWith('"') && value.endsWith('"')) ||
-              (value.startsWith("'") && value.endsWith("'"))) {
-            value = value.slice(1, -1);
-          }
-          
-          if (value === '' || value === 'null') {
-            current[key] = {};
-            context.push({ obj: current[key], indent: indent, key: key });
-          } else {
-            current[key] = value;
-          }
-        }
-      }
-    }
-    
-    return data;
-  }
 }
 
 window.SitesApp = SitesApp;

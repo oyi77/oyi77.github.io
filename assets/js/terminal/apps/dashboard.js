@@ -1,8 +1,9 @@
 class DashboardApp {
-  constructor(terminal, filesystem, windowManager) {
+  constructor(terminal, filesystem, windowManager, os) {
     this.terminal = terminal;
     this.filesystem = filesystem;
     this.windowManager = windowManager;
+    this.os = os;
   }
 
   async run(args) {
