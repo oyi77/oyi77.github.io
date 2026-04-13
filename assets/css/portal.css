@@ -2115,7 +2115,7 @@ html {
     }
 
     .toggle-container {
-        right: -60px;
+        right: 10px;
     }
 
     .see-more-btn {
@@ -2151,205 +2151,204 @@ html {
         font-size: 0.75rem;
         white-space: nowrap;
     }
+}
 
-    /* Advanced SVG Animations - Refined Horror */
-    #eye-animation,
-    #limbo-animation {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background: rgba(0, 0, 0, 0.98);
-        display: none;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        z-index: 10000;
-        pointer-events: none;
-        overflow: hidden;
-    }
+/* Advanced SVG Animations - Refined Horror */
+#eye-animation,
+#limbo-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.98);
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    pointer-events: none;
+    overflow: hidden;
+}
 
-    #eye-animation.active,
-    #limbo-animation.active {
-        display: flex;
-    }
+#eye-animation.active,
+#limbo-animation.active {
+    display: flex;
+}
 
-    .scary-eye-svg {
-        width: 300px;
-        height: 300px;
-        filter: url(#eye-twitch);
-        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    }
+.scary-eye-svg {
+    width: 300px;
+    height: 300px;
+    filter: url(#eye-twitch);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
-    .scary-eye-svg.following {
-        width: 600px;
-        height: 600px;
-    }
+.scary-eye-svg.following {
+    width: 600px;
+    height: 600px;
+}
 
-    /* Red Crying State */
-    .scary-eye-svg.crying .eye-whites {
-        fill: #400;
-        transition: fill 2s ease;
-    }
+/* Red Crying State */
+.scary-eye-svg.crying .eye-whites {
+    fill: #400;
+    transition: fill 2s ease;
+}
 
-    .scary-eye-svg.crying .eye-pupil {
-        fill: #f00 !important;
-        filter: blur(2px);
-        transition: all 1s ease;
-    }
+.scary-eye-svg.crying .eye-pupil {
+    fill: #f00 !important;
+    filter: blur(2px);
+    transition: all 1s ease;
+}
 
-    .scary-eye-svg.crying .teardrop {
+.scary-eye-svg.crying .teardrop {
+    opacity: 1;
+    animation: tearFall 2s infinite linear;
+}
+
+@keyframes tearFall {
+    0% {
+        transform: translateY(0) scale(1);
         opacity: 1;
-        animation: tearFall 2s infinite linear;
     }
 
-    @keyframes tearFall {
-        0% {
-            transform: translateY(0) scale(1);
-            opacity: 1;
-        }
-
-        100% {
-            transform: translateY(300px) scale(0.5);
-            opacity: 0;
-        }
-    }
-
-    /* Stopping Hand */
-    #stopping-hand-container {
-        position: absolute;
-        bottom: -100%;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 500px;
-        transition: bottom 1.5s cubic-bezier(0.19, 1, 0.22, 1);
-    }
-
-    #stopping-hand-container.show {
-        bottom: -100px;
-    }
-
-    #stopping-hand {
-        width: 100%;
-        height: auto;
-        filter: drop-shadow(0 0 50px #000);
-    }
-
-    .palm-text {
-        font-family: var(--portal-font-mono);
-        font-size: 24px;
-        fill: #f00;
-        font-weight: 900;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        paint-order: stroke;
-        stroke: #000;
-        stroke-width: 4px;
+    100% {
+        transform: translateY(300px) scale(0.5);
         opacity: 0;
-        transition: opacity 0.5s ease 1.5s;
+    }
+}
+
+/* Stopping Hand */
+#stopping-hand-container {
+    position: absolute;
+    bottom: -100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 500px;
+    transition: bottom 1.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+#stopping-hand-container.show {
+    bottom: -100px;
+}
+
+#stopping-hand {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 0 50px #000);
+}
+
+.palm-text {
+    font-family: var(--portal-font-mono);
+    font-size: 24px;
+    fill: #f00;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    paint-order: stroke;
+    stroke: #000;
+    stroke-width: 4px;
+    opacity: 0;
+    transition: opacity 0.5s ease 1.5s;
+}
+
+#stopping-hand-container.show .palm-text {
+    opacity: 1;
+}
+
+.scary-text {
+    font-size: 2rem;
+    color: #500;
+    text-shadow: 0 0 20px #f00;
+    letter-spacing: 15px;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-top: -50px;
+    animation: textFlicker 0.15s infinite alternate;
+    z-index: 11;
+}
+
+/* Eye Closed State */
+.scary-eye-svg.closed .eye-iris,
+.scary-eye-svg.closed .eye-pupil {
+    transform: scaleY(0);
+    transform-origin: center center;
+    transition: transform 0.5s ease-in-out;
+}
+
+.scary-eye-svg.closed .eye-whites {
+    fill: #000;
+    transition: fill 0.5s ease-in-out;
+}
+
+@keyframes textFlicker {
+    0% {
+        opacity: 0.8;
+        transform: scale(1);
     }
 
-    #stopping-hand-container.show .palm-text {
-        opacity: 1;
+    100% {
+        opacity: 0.3;
+        transform: scale(1.05);
     }
+}
 
-    .scary-text {
-        font-size: 2rem;
-        color: #500;
-        text-shadow: 0 0 20px #f00;
-        letter-spacing: 15px;
-        font-weight: 900;
-        text-transform: uppercase;
-        margin-top: -50px;
-        animation: textFlicker 0.15s infinite alternate;
-        z-index: 11;
-    }
+/* Limbo Swarm */
+#limbo-swarm {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
 
-    /* Eye Closed State */
-    .scary-eye-svg.closed .eye-iris,
-    .scary-eye-svg.closed .eye-pupil {
-        transform: scaleY(0);
-        transform-origin: center center;
-        transition: transform 0.5s ease-in-out;
-    }
+.swarm-eye {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    filter: url(#eye-twitch);
+    opacity: 0;
+    transform: scale(0);
+}
 
-    .scary-eye-svg.closed .eye-whites {
-        fill: #000;
-        transition: fill 0.5s ease-in-out;
-    }
+.swarm-eye.show {
+    animation: swarmEmerge 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
 
-    @keyframes textFlicker {
-        0% {
-            opacity: 0.8;
-            transform: scale(1);
-        }
-
-        100% {
-            opacity: 0.3;
-            transform: scale(1.05);
-        }
-    }
-
-    /* Limbo Swarm */
-    #limbo-swarm {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-    }
-
-    .swarm-eye {
-        position: absolute;
-        width: 150px;
-        height: 150px;
-        filter: url(#eye-twitch);
+@keyframes swarmEmerge {
+    from {
         opacity: 0;
         transform: scale(0);
     }
 
-    .swarm-eye.show {
-        animation: swarmEmerge 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-    }
-
-    @keyframes swarmEmerge {
-        from {
-            opacity: 0;
-            transform: scale(0);
-        }
-
-        to {
-            opacity: 0.8;
-            transform: scale(1);
-        }
-    }
-
-    .limbo-text {
-        position: relative;
-        z-index: 10;
-        font-size: 3rem;
-        color: #f00;
-        text-shadow: 0 0 30px #000, 0 0 10px #f00;
-        letter-spacing: 20px;
-        font-weight: 900;
-        text-transform: uppercase;
-        animation: roar 2s ease-in-out infinite;
-    }
-
-    @keyframes roar {
-
-        0%,
-        100% {
-            transform: scale(1);
-        }
-
-        50% {
-            transform: scale(1.2);
-            filter: blur(2px);
-        }
+    to {
+        opacity: 0.8;
+        transform: scale(1);
     }
 }
+
+.limbo-text {
+    position: relative;
+    z-index: 10;
+    font-size: 3rem;
+    color: #f00;
+    text-shadow: 0 0 30px #000, 0 0 10px #f00;
+    letter-spacing: 20px;
+    font-weight: 900;
+    text-transform: uppercase;
+    animation: roar 2s ease-in-out infinite;
+}
+
+@keyframes roar {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+        filter: blur(2px);
+    }
 }
 
 /* Curated Skeleton Loader */

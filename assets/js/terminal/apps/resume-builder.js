@@ -63,10 +63,12 @@ class ResumeBuilderApp {
     lines.push('# ' + data.name);
     lines.push(data.title);
     lines.push('');
-    lines.push(`Email: ${data.email}`);
-    lines.push(`Phone: ${data.phone}`);
+    if (data.contact_form?.anonymous_email) lines.push(`Email: ${data.contact_form.anonymous_email}`);
+    if (data.phone) lines.push(`Phone: ${data.phone}`);
     lines.push(`Location: ${data.location}`);
     lines.push(`GitHub: https://github.com/${data.github_username}`);
+    if (data.cv_url) lines.push(`Portfolio: ${data.cv_url}`);
+    if (data.contact_form?.cal_com_url) lines.push(`Schedule: ${data.contact_form.cal_com_url}`);
     lines.push('');
     lines.push('---');
     lines.push('');
