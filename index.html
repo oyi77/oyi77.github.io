@@ -229,43 +229,24 @@
     <div class="main-content" id="main-content">
 
       <header class="header" role="banner">
-        <h1>System Entry</h1>
-        <div class="name" itemprop="name">Lead Software Engineer</div>
+        <h1>{{ site.data.portal.header.title | default: "System Entry" }}</h1>
+        <div class="name" itemprop="name">{{ site.data.portal.header.subtitle | default: "Lead Software Engineer" }}</div>
       </header>
 
       <main role="main">
         <nav class="access-grid" aria-label="Portfolio access options">
-          <!-- Terminal OS Access -->
-          <a href="/terminal" class="access-card" aria-label="Access Terminal OS - Interactive portfolio terminal">
-            <span class="card-label">TIER 01 - CORE_KERNEL</span>
-            <h2 class="card-title">OYI Terminal OS</h2>
-            <p class="card-desc">Low-level access to achievements, company logs, and technical skills via interactive
-              terminal.</p>
-            <span class="card-footer">Execute OS</span>
+          {% for card in site.data.portal.access_cards %}
+          <a href="{{ card.href }}" class="access-card" {% if card.download %}download{% endif %} aria-label="{{ card.aria_label }}">
+            <span class="card-label">{{ card.label }}</span>
+            <h2 class="card-title">{{ card.title }}</h2>
+            <p class="card-desc">{{ card.description }}</p>
+            <span class="card-footer">{{ card.footer }}</span>
           </a>
-
-          <!-- Graphical OS Access -->
-          <a href="/oyi77" class="access-card" aria-label="Access Graphical CV OS - One Piece themed portfolio">
-            <span class="card-label">TIER 02 - GRAPHICAL_UI</span>
-            <h2 class="card-title">One Piece cvOS</h2>
-            <p class="card-desc">High-level graphical interface showcasing creative engineering and interactive
-              storytelling.</p>
-            <span class="card-footer">Launch GUI</span>
-          </a>
-
-          <!-- Fast Track CV -->
-          <a href="/assets/pdf/CV.pdf" class="access-card" download aria-label="Download CV PDF - Professional resume">
-            <span class="card-label">TIER 03 - DIRECT_ACCESS</span>
-            <h2 class="card-title">Fast Track CV</h2>
-            <p class="card-desc">Immediate access to professional credentials. Optimized for recruiters and hiring
-              managers.
-            </p>
-            <span class="card-footer">Download PDF</span>
-          </a>
+          {% endfor %}
         </nav>
 
         <footer class="footer" role="contentinfo" itemprop="jobTitle">
-          SOFTWARE ENGINEER | TECHNICAL LEAD | REMOTE_READY
+          {{ site.data.portal.footer.text | default: "SOFTWARE ENGINEER | TECHNICAL LEAD | REMOTE_READY" }}
         </footer>
     </div>
 
@@ -274,68 +255,13 @@
 
       <!-- Portfolio Cards Grid (Stage 1: Arrow Right) -->
       <div class="expanded-grid" id="expanded-grid">
-        <div class="portfolio-card" data-section="posts" role="button" tabindex="0">
-          <div class="card-icon">[ ]</div>
-          <h3 class="card-title">Posts</h3>
-          <p class="card-desc">Technical articles, insights, and thought leadership on software engineering.</p>
+        {% for card in site.data.portal.portfolio_cards %}
+        <div class="portfolio-card" data-section="{{ card.section }}" role="button" tabindex="0">
+          <div class="card-icon">{{ card.icon }}</div>
+          <h3 class="card-title">{{ card.title }}</h3>
+          <p class="card-desc">{{ card.description }}</p>
         </div>
-
-        <div class="portfolio-card" data-section="achievements" role="button" tabindex="0">
-          <div class="card-icon">*</div>
-          <h3 class="card-title">Achievements</h3>
-          <p class="card-desc">Notable accomplishments, awards, and recognitions throughout my career.</p>
-        </div>
-
-        <div class="portfolio-card" data-section="experience" role="button" tabindex="0">
-          <div class="card-icon">+</div>
-          <h3 class="card-title">Experience</h3>
-          <p class="card-desc">Professional journey spanning 7+ years in software engineering and technical leadership.
-          </p>
-        </div>
-
-        <div class="portfolio-card" data-section="projects" role="button" tabindex="0">
-          <div class="card-icon">#</div>
-          <h3 class="card-title">Projects</h3>
-          <p class="card-desc">Portfolio of significant projects including blockchain, trading systems, and enterprise
-            solutions.</p>
-        </div>
-
-        <div class="portfolio-card" data-section="skills" role="button" tabindex="0">
-          <div class="card-icon">></div>
-          <h3 class="card-title">Skills</h3>
-          <p class="card-desc">Technical expertise across full-stack development, blockchain, cloud infrastructure, and
-            more.</p>
-        </div>
-
-        <div class="portfolio-card" data-section="about" role="button" tabindex="0">
-          <div class="card-icon">@</div>
-          <h3 class="card-title">About Me</h3>
-          <p class="card-desc">Background, philosophy, and approach to software engineering and problem-solving.</p>
-        </div>
-
-        <div class="portfolio-card" data-section="certifications" role="button" tabindex="0">
-          <div class="card-icon">~</div>
-          <h3 class="card-title">Certifications</h3>
-          <p class="card-desc">Professional certifications and continuous learning achievements.</p>
-        </div>
-
-        <div class="portfolio-card" data-section="leadership" role="button" tabindex="0">
-          <div class="card-icon">^</div>
-          <h3 class="card-title">Leadership</h3>
-          <p class="card-desc">Team leadership, mentorship, and organizational impact.</p>
-        </div>
-
-        <div class="portfolio-card" data-section="case-studies" role="button" tabindex="0">
-          <div class="card-icon">=</div>
-          <h3 class="card-title">Case Studies</h3>
-          <p class="card-desc">In-depth analysis of complex problems solved and systems architected.</p>
-        </div>
-
-        <div class="portfolio-card" data-section="examples" role="button" tabindex="0">
-          <div class="card-icon">!</div>
-          <h3 class="card-title">Example Cases</h3>
-          <p class="card-desc">Real-world examples demonstrating technical expertise and problem-solving approach.</p>
-        </div>
+        {% endfor %}
       </div>
     </div>
 
