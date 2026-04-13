@@ -486,409 +486,581 @@ function triggerEyeAnimation() {
 }
 
 // ============================================================================
-// MODAL SYSTEM & CONTENT
+// MODAL SYSTEM & CONTENT (Data-Driven from JEKYLL_DATA)
 // ============================================================================
 
-const modalData = {
-  posts: {
-    title: 'Featured Publications & Insights',
-    tabs: ['Engineering', 'Trading', 'Blockchain'],
-    content: {
-      'Engineering': `
-        <section>
-          <h3>High-Scale Architecture & Leadership</h3>
-          <p>Over the years, I've specialized in building systems that don't just work, but scale effortlessly. My focus is on radical efficiency and technical transparency.</p>
-          <ul>
-            <li><strong>Microservices at Scale</strong>: Insights into orchestrating massive regional networks. In my tenure at GarudaMedia, I managed a network of 3,000+ employees, requiring a shift from monolithic thinking to a robust microservices mesh on AWS.</li>
-            <li><strong>Legacy Transformations</strong>: A deep dive into the technical hurdles of migrating core PHP applications to modern Node.js environments. This isn't just about syntax; it's about re-architecting for the event-driven future.</li>
-            <li><strong>CI/CD Excellence</strong>: Why automation is the heartbeat of a high-performing team. I've consistently reduced deployment cycles by up to 60% through aggressive automation and agile mentorship.</li>
-          </ul>
-        </section>
-      `,
-      'Trading': `
-        <section>
-          <h3>Quantitative Analysis & Algo Design</h3>
-          <p>My approach to trading is purely mathematical and data-driven. I build systems that find signal in the noise of volatile markets.</p>
-          <ul>
-            <li><strong>The 90% Win-Rate Blueprint</strong>: A look into the ensemble machine learning models—combining LSTM, GRU, and Transformer architectures—that drive the predictive power of AiTradePulse.</li>
-            <li><strong>High-Frequency Execution</strong>: Engineering for the edge. Achieving sub-10ms execution latency isn't just a goal; it's a requirement for competing in modern arbitrage and market-making environments.</li>
-            <li><strong>Risk Management Systems</strong>: Building the "brakes" for the algorithms. Implementing real-time position monitoring, automated stop-losses, and complex portfolio correlation analysis to protect capital.</li>
-          </ul>
-        </section>
-      `,
-      'Blockchain': `
-        <section>
-          <h3>On-Chain Dynamics & Web3 Security</h3>
-          <p>Blockchain isn't just a database; it's a new paradigm of trust and automation. I focus on the bridge between on-chain data and actionable execution.</p>
-          <ul>
-            <li><strong>Fomo Watcher Internal</strong>: A breakdown of how we monitor 10,000+ new tokens daily. By analyzing whale wallet movements and liquidity patterns in real-time, we identified high-potential trades with 70% accuracy.</li>
-            <li><strong>Automated DEX Clearing</strong>: How we replaced manual labor with smart reconciliation algorithms. By automating transaction matching and settlement, we reduced operational overhead by 60%.</li>
-            <li><strong>Smart Contract Security</strong>: Best practices for building custodian systems and payment gateways that handle millions in assets without sacrificing speed or user experience.</li>
-          </ul>
-        </section>
-      `
-    }
-  },
-  achievements: {
-    title: 'Milestones & Impact',
-    tabs: ['Quantifiable Wins', 'Industry Firsts', 'Team Growth'],
-    content: {
-      'Quantifiable Wins': `
-        <section>
-          <h3>Hard Metrics of Success</h3>
-          <ul>
-            <li><strong>$100K USD Net Profit</strong>: Generated through the proprietary Fomo Watcher token prediction campaign at Bitwyre.</li>
-            <li><strong>50% Infrastructure Savings</strong>: Achieved at GarudaMedia by optimizing cloud utilization and migrating to a containerized microservices architecture.</li>
-            <li><strong>5B+ IDR Monthly Volume</strong>: Securely managed through custom-built finance and analytics dashboards at BerkahKarya.</li>
-            <li><strong>30% Process Efficiency Boost</strong>: Realized at Viapulsa through the implementation of a modern, automated workflow management system.</li>
-          </ul>
-        </section>
-      `,
-      'Industry Firsts': `
-        <section>
-          <h3>Pioneering Legal Crypto in Indonesia</h3>
-          <p><strong>Solomon Mining (2021-2022)</strong>: I had the honor of establishing the first fully compliant and legal cryptocurrency mining operation in Indonesia. This involved not just technical deployment (500+ TH/s capacity), but also building the KYC/AML frameworks required by national regulators.</p>
-          <h4>DEX Infrastructure Innovation</h4>
-          <p>Developed early-stage international OTC portals that enabled seamless, cross-border large-volume transactions, paving the way for institutional crypto adoption in Southeast Asia.</p>
-        </section>
-      `,
-      'Team Growth': `
-        <section>
-          <h3>Technical Leadership at Scale</h3>
-          <p>My career has seen me lead teams ranging from small, elite groups of 3 to massive networks of <strong>3,000+ employees</strong>. At BerkahKarya, I expanded the engineering team by 3x, growing from 10 to 30+ members while simultaneously increasing delivery velocity by 60%.</p>
-          <h4>Mentorship & Culture</h4>
-          <p>I believe that strong teams are built on a culture of belonging and radical transparency. I've been recognized for my ability to mentor junior talent into high-performing senior engineers.</p>
-        </section>
-      `
-    }
-  },
-  experience: {
-    title: 'Professional Journey',
-    tabs: ['Current', 'History'],
-    content: {
-      'Current': `
-        <section>
-          <h3>Bitwyre Crypto Exchange</h3>
-          <em>Onchain Trader & Lead Blockchain Developer (2024-Present)</em>
-          <p>Leading the next generation of on-chain trading and exchange infrastructure.</p>
-          <ul>
-            <li><strong>Fomo Watcher</strong>: Engineered an advanced token prediction system achieving a 70% accuracy rate across major chains.</li>
-            <li><strong>DEX Clearing</strong>: Developed automated reconciliation algorithms that slashed manual labor by 60%.</li>
-            <li><strong>Product Leadership</strong>: Headed the development of the global Card Product (crypto-to-fiat) and the institutional OTC Portal.</li>
-            <li><strong>Systems Optimization</strong>: Optimized custodian and backend systems for 99.9% uptime and accelerated transaction processing.</li>
-          </ul>
-        </section>
-        <section>
-          <h3>AiTradePulse</h3>
-          <em>Founder & CTO (2023-Present)</em>
-          <p>Launched a cutting-edge algorithmic trading platform focused on AI-driven market prediction and low-latency execution.</p>
-          <ul>
-            <li><strong>Strategy Development</strong>: Built 50+ active trading algorithms achieving consistent 90%+ win rates.</li>
-            <li><strong>Infrastructure</strong>: Architected a sub-10ms execution engine integrated with 15+ major cryptocurrency exchanges.</li>
-            <li><strong>Risk Systems</strong>: Implemented multi-layered risk controls including real-time slippage monitoring and automated deleveraging.</li>
-          </ul>
-        </section>
-      `,
-      'History': `
-        <section>
-          <h3>Linguise (France)</h3>
-          <em>Senior Full Stack Engineer (2023-2024)</em>
-          <p>Focused on upgrading core systems and building administrative tools for a global user base.</p>
-          <ul>
-            <li><strong>API Migration</strong>: Led the high-stakes migration of core API services from legacy PHP to modern, scalable Node.js.</li>
-            <li><strong>Admin Systems</strong>: Designed and built a comprehensive dashboard for customer management, service monitoring, and automated billing.</li>
-            <li><strong>Team Leadership</strong>: Directly led a team of 3 engineers to establish coding standards and modern DevOps practices.</li>
-          </ul>
-        </section>
-        <section>
-          <h3>Viapulsa</h3>
-          <em>Technical Lead (2023-2024)</em>
-          <p>Pioneered the digital transformation of one of Indonesia's largest credit-to-cash service providers.</p>
-          <ul>
-            <li><strong>Digital Migration</strong>: Successfully transitioned a 100% offline business operation to a fully automated online platform.</li>
-            <li><strong>Workflow Management</strong>: Architected a custom system to handle high-volume transactions with zero-manual intervention, boosting efficiency by 30%.</li>
-            <li><strong>Leadership</strong>: Managed a multidisciplinary team of 18 members, hitting all project milestones ahead of schedule.</li>
-          </ul>
-        </section>
-        <section>
-          <h3>BerkahKarya</h3>
-          <em>Head of Engineering (2022-2023)</em>
-          <p>Led the technological development for a major talent management and digital marketing agency.</p>
-          <ul>
-            <li><strong>Revenue Scale</strong>: Managed platforms handling 5B+ IDR monthly turnover with absolute security and precision.</li>
-            <li><strong>AI Integration</strong>: Built an AI-powered influencer analytics engine that tracked engagement across 1,000+ content creators.</li>
-            <li><strong>Team Growth</strong>: Scaled the engineering department from 10 to 30+ members within one year.</li>
-          </ul>
-        </section>
-        <section>
-          <h3>Solomon Mining</h3>
-          <em>CTO / Technical Lead (2021-2022)</em>
-          <p>Architected the technical foundation for Indonesia's first legal cryptocurrency mining facility.</p>
-          <ul>
-            <li><strong>Facility Design</strong>: Deployed and optimized mining infrastructure with a 500+ TH/s capacity.</li>
-            <li><strong>Hardware Optimization</strong>: Increased mining efficiency by 20% through custom firmware and temperature-based power management.</li>
-            <li><strong>Compliance</strong>: Built the first KYC/AML reporting systems for mining operations approved by Indonesian regulators.</li>
-          </ul>
-        </section>
-        <section>
-          <h3>GarudaMedia</h3>
-          <em>Technical Lead / Engineering Manager (2019-2021)</em>
-          <p>Served as a key technical leader for one of Indonesia's largest affiliate marketing empires.</p>
-          <ul>
-            <li><strong>Massive Scale</strong>: Architected infrastructure to support 100M+ monthly page views and millions of daily tracking events.</li>
-            <li><strong>Workforce Leadership</strong>: Managed a technical network supporting over 3,000 employees across multiple regions.</li>
-            <li><strong>Cost Efficiency</strong>: Reduced global infrastructure spending by 40% through aggressive cloud optimization and the move to AWS Lambda and Docker.</li>
-          </ul>
-        </section>
-      `
-    }
-  },
-  projects: {
-    title: 'Project Portfolio',
-    tabs: ['Blockchain & Web3', 'Quant Systems', 'Content & Media', 'Experimental'],
-    content: {
-      'Blockchain & Web3': `
-        <section>
-          <h3>On-Chain Engineering Highlights</h3>
-          <h4>Fomo Watcher</h4>
-          <p>An advanced real-time scanner for Ethereum, BSC, and Solana. It uses machine learning to identify high-probability breakout tokens by analyzing volume, liquidity locks, and wallet signatures.</p>
-          <h4>DEX Settler</h4>
-          <p>A high-throughput automated settlement engine designed for decentralized exchanges to ensure zero-lag transaction reconciliation.</p>
-          <h4>Crypto Card Portal</h4>
-          <p>A secure gateway for seamless crypto-to-fiat conversions, enabling global payments via traditional card infrastructure.</p>
-        </section>
-      `,
-      'Quant Systems': `
-        <section>
-          <h3>Trading & Analytics</h3>
-          <h4>Algo Expert Hub</h4>
-          <p>A comprehensive platform for developing, backtesting, and deploying algorithmic trading strategies across multiple asset classes.</p>
-          <h4>Low-Latency Bridge</h4>
-          <p>A specialized C++ execution engine designed to minimize slippage by interacting directly with exchange memory pools.</p>
-          <h4>Market Sentiment Engine</h4>
-          <p>Uses Natural Language Processing to analyze social media and news feeds to predict short-term market volatility.</p>
-        </section>
-      `,
-      'Content & Media': `
-        <section>
-          <h3>Publications & News Platforms</h3>
-          <h4>Blog</h4>
-          <p>Aggregated articles from Medium, Dev.to, Substack, GitHub, and more. A comprehensive collection of technical insights, engineering practices, and thought leadership content.</p>
-          <p style="margin-top: 15px;">
-            <a href="/blog/" target="_blank" style="color: var(--portal-accent); text-decoration: underline;">Visit Blog →</a>
-          </p>
-          <h4>News Aggregator</h4>
-          <p>Real-time terminal news aggregator with curated technical sources. Stay updated with the latest developments in software engineering, blockchain, and technology.</p>
-          <p style="margin-top: 15px;">
-            <a href="/news/" target="_blank" style="color: var(--portal-accent); text-decoration: underline;">Visit News →</a>
-          </p>
-        </section>
-      `,
-      'Experimental': `
-        <section>
-          <h3>Tools & Open Source</h3>
-          <h4>Nuclear</h4>
-          <p>A free music delivery project that optimized user interface interactions, boosting engagement by 11%.</p>
-          <h4>AI Auto Job Apply</h4>
-          <p>An automated solution built with Python and TypeScript that leverages LLMs to customize resumes and apply to relevant positions.</p>
-          <h4>RBMiner Tools</h4>
-          <p>Hardware-level optimization scripts that provided a 20% efficiency boost for multi-GPU mining rigs.</p>
-        </section>
-      `
-    }
-  },
-  skills: {
-    title: 'Technical Arsenal',
-    tabs: ['Core Languages', 'Modern Frameworks', 'Infrastructure'],
-    content: {
-      'Core Languages': `
-        <section>
-          <h3>The Foundation</h3>
-          <ul>
-            <li><strong>High-Level</strong>: Python (Expert), JavaScript/TypeScript (Expert), PHP (Advanced).</li>
-            <li><strong>Systems & Trading</strong>: C++, C#, Java, MQL4/MQL5.</li>
-            <li><strong>Automation</strong>: Bash, PowerShell, Shell, Makefile.</li>
-          </ul>
-        </section>
-      `,
-      'Modern Frameworks': `
-        <section>
-          <h3>Application Development</h3>
-          <ul>
-            <li><strong>Web</strong>: React, Next.js, Django, Laravel, Express.js, CodeIgniter.</li>
-            <li><strong>Data Science</strong>: TensorFlow, PyTorch, NumPy, Pandas.</li>
-            <li><strong>Mobile</strong>: Flutter.</li>
-          </ul>
-        </section>
-      `,
-      'Infrastructure': `
-        <section>
-          <h3>Cloud & Operations</h3>
-          <ul>
-            <li><strong>Platforms</strong>: AWS (High Complexity), Google Cloud, DigitalOcean.</li>
-            <li><strong>Containerization</strong>: Docker, Kubernetes, Terraform.</li>
-            <li><strong>Persistence</strong>: PostgreSQL (TimescaleDB), MongoDB, Redis, MySQL, Oracle.</li>
-            <li><strong>Networking</strong>: MQTT, WebSockets, REST, gRPC.</li>
-          </ul>
-        </section>
-      `
-    }
-  },
-  about: {
-    title: 'Profile & Mission',
-    tabs: ['The Professional', 'The Vision', 'The Connection'],
-    content: {
-      'The Professional': `
-        <section>
-          <h3>Lead Software Engineer</h3>
-          <p>A visionary Technical Lead with 7+ years of experience in high-stakes engineering environments. From managing thousands of employees to developing sub-10ms trading algorithms, my career is defined by tackling "impossible" complexity.</p>
-          <p>My background in Business Management from <strong>ITS Surabaya</strong> allows me to bridge the gap between deep technical implementation and high-level business strategy.</p>
-        </section>
-      `,
-      'The Vision': `
-        <section>
-          <h3>Architecture as Art</h3>
-          <p>I believe that code is more than just instructions; it's a creative expression of efficiency. My mission is to build digital infrastructure that isn't just reliable, but beautiful in its execution.</p>
-          <blockquote>"Efficiency is the ultimate form of elegance."</blockquote>
-        </section>
-      `,
-      'The Connection': `
-        <section>
-          <h3>Get in Touch</h3>
-          <p>I am always looking for challenges that push the boundaries of what is technically possible.</p>
-          <div style="margin: 20px 0;">
-            <button onclick="window.ContactFormHandler && window.ContactFormHandler.show();" style="padding: 12px 30px; background: #000; border: 1px solid #fff; color: #fff; font-family: 'Monaco', 'Menlo', monospace; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: all 0.2s ease;" onmouseover="this.style.background='#fff'; this.style.color='#000';" onmouseout="this.style.background='#000'; this.style.color='#fff';">
-              Open Contact Form
-            </button>
-          </div>
-          <ul>
-            <li><strong>Schedule a Call</strong>: <a href="https://cal.com/oyi77" target="_blank">cal.com/oyi77</a></li>
-            <li><strong>Location</strong>: Southeast Asia</li>
-            <li><strong>Social</strong>: <a href="https://github.com/oyi77" target="_blank">GitHub</a></li>
-          </ul>
-        </section>
-      `
-    }
-  },
-  certifications: {
-    title: 'Validations & Education',
-    tabs: ['Technical', 'Leadership', 'Institutional'],
-    content: {
-      'Technical': `
-        <section>
-          <h3>HackerRank Verified</h3>
-          <ul>
-            <li><strong>SQL (Advanced)</strong>: Demonstrating mastery in complex query optimization and database design.</li>
-            <li><strong>Problem Solving (Intermediate)</strong>: Data structures and algorithmic proficiency.</li>
-            <li><strong>JavaScript / Python / REST API</strong>: Core language and integration validation.</li>
-          </ul>
-        </section>
-      `,
-      'Leadership': `
-        <section>
-          <h3>Professional Development</h3>
-          <ul>
-            <li><strong>Cert Prep: Scrum Master</strong>: Validated expertise in agile leadership.</li>
-            <li><strong>Inclusion & Belonging</strong>: Certified in creating high-performing, inclusive work cultures.</li>
-            <li><strong>Hybrid Team Management</strong>: Excellence in coordinating global, remote-first engineering teams.</li>
-          </ul>
-        </section>
-      `,
-      'Institutional': `
-        <section>
-          <h3>Academic Foundation</h3>
-          <h4>Institut Teknologi Sepuluh Nopember (ITS) Surabaya</h4>
-          <p>Bachelor of Business Management (GPA: 3.4/4.0)</p>
-          <p><em>Focus: Organizational Strategy & Strategic Implementation</em></p>
-        </section>
-      `
-    }
-  },
-  leadership: {
-    title: 'Impact & Strategy',
-    tabs: ['The Scale', 'The Growth', 'The Method'],
-    content: {
-      'The Scale': `
-        <section>
-          <h3>Leading 3,000+</h3>
-          <p>Leadership at scale isn't about micro-managing; it's about building systems that manage themselves. At GarudaMedia, I was responsible for the technical standards and infrastructure that supported a distributed network of thousands of employees.</p>
-        </section>
-      `,
-      'The Growth': `
-        <section>
-          <h3>Exponential Development</h3>
-          <p>I specialize in taking teams from "Startup Chaos" to "Enterprise Excellence." By implementing rigorous code review processes and modern CI/CD pipelines, I've consistently achieved 60% improvements in team delivery velocity.</p>
-        </section>
-      `,
-      'The Method': `
-        <section>
-          <h3>Radical Transparency</h3>
-          <p>My leadership philosophy is built on technical transparency and meritocracy. I foster environments where the best idea wins, and every engineer is empowered to take ownership of their work.</p>
-        </section>
-      `
-    }
-  },
-  'case-studies': {
-    title: 'Deep Research In-Sights',
-    tabs: ['Trading Tech', 'Scaling Tech', 'Business Tech'],
-    content: {
-      'Trading Tech': `
-        <section>
-          <h3>Case Study: Fomo Watcher</h3>
-          <p>The challenge was to identify "moon" events on-chain before they hit the mainstream. By building a multi-chain ingestion engine and applying pattern-matching algorithms, we filtered out noise and identified 70% of trending tokens early. This technical edge resulted in a $100K net profit for the campaign.</p>
-        </section>
-      `,
-      'Scaling Tech': `
-        <section>
-          <h3>Case Study: GarudaMedia Cloud Mesh</h3>
-          <p>Handling 100M+ page views monthly required a shift from static servers to a dynamic, auto-scaling mesh. We implemented Kubernetes clusters on AWS with persistent redis caching layers. Result: Zero downtime during traffic spikes and a 40% reduction in monthly cloud spend.</p>
-        </section>
-      `,
-      'Business Tech': `
-        <section>
-          <h3>Case Study: Viapulsa Transformation</h3>
-          <p>Viapulsa's legacy business was 100% manual. I architected a full-stack digital solution that automated user onboarding, credit verification, and payout processing. Result: A complete pivot to an online-first business model with a 30% increase in overall transactional throughput.</p>
-        </section>
-      `
-    }
-  },
-  examples: {
-    title: 'Demo Repository',
-    tabs: ['Live Platforms', 'Open Utilities', 'Bots'],
-    content: {
-      'Live Platforms': `
-        <section>
-          <h3>Public Projects</h3>
-          <ul>
-            <li><strong>CV OS</strong>: An interactive, retro-terminal resume experience. <a href="https://oyi77.github.io/oyi77" target="_blank">[Live Demo]</a></li>
-            <li><strong>AI Trade Pulse</strong>: Public facing dashboard for trading analytics and strategy resources.  <a href="https://aitradepulse.com" target="_blank">[Live Demo]</a></li>
-            <li><strong>Jual Buah</strong>: A high-performance e-commerce platform for fresh produce. <a href="https://jualbuah.com" target="_blank">[Live Demo]</a></li>
-          </ul>
-        </section>
-      `,
-      'Open Utilities': `
-        <section>
-          <h3>GitHub Highlights</h3>
-          <ul>
-            <li><strong>ai-auto-job-apply</strong>: A Python-based automation tool for the modern career search.</li>
-            <li><strong>wifi-jammer</strong>: A security research tool exploring network vulnerabilities.</li>
-            <li><strong>RBMiner</strong>: Hardware optimization suite for specialized mining operations.</li>
-          </ul>
-        </section>
-      `,
-      'Bots': `
-        <section>
-          <h3>Automation & AI</h3>
-          <ul>
-            <li><strong>Shopee Affiliate Bot</strong>: Multi-threaded crawler and automated poster for the Shopee network.</li>
-            <li><strong>Telegram AI Trade</strong>: Integration of OpenAI LLMs into real-time trading notifications via MQL5.</li>
-            <li><strong>TikTok Yap Assistant</strong>: An AI-driven content helper for social media automation.</li>
-          </ul>
-        </section>
-      `
-    }
+/**
+ * Builds the modalData object dynamically from window.JEKYLL_DATA.
+ * Sources: terminal.yml, companies.yml, case_studies.yml, led_projects.yml,
+ *          aggregated_posts.yml, portal.yml
+ * Falls back to sensible defaults when data is unavailable.
+ */
+function buildModalData() {
+  const D = window.JEKYLL_DATA || {};
+  const t = D.terminal || {};
+  const companies = (D.companies && D.companies.companies) || [];
+  const caseStudies = (D.case_studies && D.case_studies.case_studies) || [];
+  const ledProjects = (D.led_projects && D.led_projects.led_projects) || [];
+  const experience = t.experience || [];
+  const skills = t.skills || {};
+  const certs = t.certifications || [];
+  const projects = t.projects || [];
+  const sites = t.sites || [];
+  const links = t.links || [];
+  const education = t.education || {};
+  const contactForm = t.contact_form || {};
+
+  // --- Helpers ---
+  function esc(s) { return (s || '').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+  function companyByName(name) {
+    return companies.find(function(c) {
+      return c.name && c.name.toLowerCase().indexOf(name.toLowerCase()) >= 0;
+    });
   }
-};
+  function extractYears(period) {
+    var m = (period || '').match(/(\d{4})/g);
+    return m ? m.join('-') : period || '';
+  }
+  function buildExpSection(entry) {
+    var html = '<section>';
+    html += '<h3>' + esc(entry.company) + '</h3>';
+    html += '<em>' + esc(entry.role) + ' (' + extractYears(entry.period) + ')</em>';
+    if (entry.location) html += '<p>' + esc(entry.location) + '</p>';
+    if (entry.achievements && entry.achievements.length) {
+      html += '<ul>';
+      entry.achievements.forEach(function(a) { html += '<li>' + esc(a) + '</li>'; });
+      html += '</ul>';
+    }
+    html += '</section>';
+    return html;
+  }
+  function buildCaseStudySection(cs) {
+    var html = '<section>';
+    html += '<h3>Case Study: ' + esc(cs.title) + '</h3>';
+    if (cs.problem) html += '<p><strong>Challenge:</strong> ' + esc(cs.problem.trim()) + '</p>';
+    if (cs.solution) html += '<p><strong>Solution:</strong> ' + esc(cs.solution.trim()) + '</p>';
+    if (cs.metrics && cs.metrics.length) {
+      html += '<ul>';
+      cs.metrics.forEach(function(m) { html += '<li><strong>' + esc(m.metric) + '</strong>: ' + esc(m.value) + '</li>'; });
+      html += '</ul>';
+    }
+    if (cs.outcome) html += '<p><em>' + esc(cs.outcome.trim()) + '</em></p>';
+    html += '</section>';
+    return html;
+  }
+
+  // --- Posts (from aggregated_posts or fallback to experience-based insights) ---
+  var postsSection = (function() {
+    var posts = D.aggregated_posts || [];
+    // Group posts by category/source if available
+    var engineering = [], trading = [], blockchain = [];
+    if (Array.isArray(posts) && posts.length > 0) {
+      posts.forEach(function(p) {
+        var cats = ((p.categories || []).join(' ') + ' ' + (p.source || '') + ' ' + (p.title || '')).toLowerCase();
+        if (cats.indexOf('trade') >= 0 || cats.indexOf('algo') >= 0 || cats.indexOf('quant') >= 0) {
+          trading.push(p);
+        } else if (cats.indexOf('blockchain') >= 0 || cats.indexOf('crypto') >= 0 || cats.indexOf('web3') >= 0 || cats.indexOf('defi') >= 0) {
+          blockchain.push(p);
+        } else {
+          engineering.push(p);
+        }
+      });
+    }
+    function renderPostList(arr, fallbackHtml) {
+      if (!arr.length) return fallbackHtml;
+      var html = '<section><ul>';
+      arr.slice(0, 8).forEach(function(p) {
+        html += '<li>';
+        if (p.url) {
+          html += '<a href="' + esc(p.url) + '" target="_blank" rel="noopener"><strong>' + esc(p.title || 'Untitled') + '</strong></a>';
+        } else {
+          html += '<strong>' + esc(p.title || 'Untitled') + '</strong>';
+        }
+        if (p.date) html += ' <em>(' + esc(p.date.toString().substring(0, 10)) + ')</em>';
+        if (p.excerpt) html += '<br>' + esc(p.excerpt.substring(0, 150));
+        html += '</li>';
+      });
+      html += '</ul></section>';
+      return html;
+    }
+    // Fallback content derived from company achievements
+    var gm = companyByName('garuda');
+    var engFallback = '<section><h3>High-Scale Architecture & Leadership</h3><p>' + esc(t.bio || '') + '</p>';
+    engFallback += '<ul>';
+    if (gm) { engFallback += '<li><strong>Microservices at Scale</strong>: Managed a network of ' + esc(gm.team_size || '3000+') + ' employees at ' + esc(gm.name) + '.</li>'; }
+    engFallback += '<li><strong>Legacy Transformations</strong>: Migrating core PHP applications to modern Node.js environments.</li>';
+    engFallback += '<li><strong>CI/CD Excellence</strong>: Reduced deployment cycles by up to 60% through automation.</li></ul></section>';
+
+    var tradeFallback = '<section><h3>Quantitative Analysis & Algo Design</h3><ul>';
+    var atp = companyByName('aitradepulse');
+    if (atp) {
+      (atp.key_metrics || []).forEach(function(m) { tradeFallback += '<li><strong>' + esc(m.metric) + ' (' + esc(m.value) + ')</strong>: ' + esc(m.description) + '</li>'; });
+    }
+    tradeFallback += '</ul></section>';
+
+    var chainFallback = '<section><h3>On-Chain Dynamics & Web3 Security</h3><ul>';
+    var bw = companyByName('bitwyre') || {};
+    var bwProjects = ledProjects.filter(function(p) { return p.company === 'bitwyre'; });
+    bwProjects.forEach(function(p) {
+      chainFallback += '<li><strong>' + esc(p.name) + '</strong>: ' + esc((p.description || '').trim()) + '</li>';
+    });
+    if (!bwProjects.length) chainFallback += '<li>Fomo Watcher, DEX Clearing, OTC Portal — on-chain engineering at Bitwyre.</li>';
+    chainFallback += '</ul></section>';
+
+    return {
+      title: 'Featured Publications & Insights',
+      tabs: ['Engineering', 'Trading', 'Blockchain'],
+      content: {
+        'Engineering': renderPostList(engineering, engFallback),
+        'Trading': renderPostList(trading, tradeFallback),
+        'Blockchain': renderPostList(blockchain, chainFallback)
+      }
+    };
+  })();
+
+  // --- Achievements (from companies data) ---
+  var achievementsSection = (function() {
+    var gm = companyByName('garuda');
+    var sm = companyByName('solomon');
+    var bk = companyByName('berkah');
+    var vp = companies.find(function(c) { return c.name && c.name.toLowerCase().indexOf('viapulsa') >= 0; }) ||
+             { achievements: [] };
+
+    var winsHtml = '<section><h3>Hard Metrics of Success</h3><ul>';
+    // Pull quantifiable wins from all companies
+    companies.forEach(function(co) {
+      (co.key_metrics || []).forEach(function(m) {
+        if (m.value && m.value !== 'Confidential') {
+          winsHtml += '<li><strong>' + esc(m.value) + ' ' + esc(m.metric) + '</strong>: ' + esc(m.description) + ' (' + esc(co.name) + ')</li>';
+        }
+      });
+    });
+    winsHtml += '</ul></section>';
+
+    var firstsHtml = '<section><h3>Pioneering Legal Crypto in Indonesia</h3>';
+    if (sm) {
+      firstsHtml += '<p><strong>' + esc(sm.name) + ' (' + esc(sm.period) + ')</strong>: ' + esc((sm.description || '').trim()) + '</p>';
+      firstsHtml += '<h4>Key Metrics</h4><ul>';
+      (sm.key_metrics || []).forEach(function(m) { firstsHtml += '<li><strong>' + esc(m.metric) + '</strong>: ' + esc(m.value) + '</li>'; });
+      firstsHtml += '</ul>';
+    }
+    firstsHtml += '</section>';
+
+    var growthHtml = '<section><h3>Technical Leadership at Scale</h3>';
+    var compSummary = (D.companies && D.companies.summary) || {};
+    growthHtml += '<p>Led teams ranging from small, elite groups to massive networks of <strong>' + esc(compSummary.total_team_members_led || '3,000+') + ' employees</strong>.</p>';
+    if (bk) {
+      growthHtml += '<p>At ' + esc(bk.name) + ', expanded the engineering team by 3x while increasing delivery velocity by 60%.</p>';
+    }
+    growthHtml += '<h4>Mentorship & Culture</h4><p>Strong teams are built on a culture of belonging and radical transparency.</p></section>';
+
+    return {
+      title: 'Milestones & Impact',
+      tabs: ['Quantifiable Wins', 'Industry Firsts', 'Team Growth'],
+      content: {
+        'Quantifiable Wins': winsHtml,
+        'Industry Firsts': firstsHtml,
+        'Team Growth': growthHtml
+      }
+    };
+  })();
+
+  // --- Experience (from terminal.yml experience array) ---
+  var experienceSection = (function() {
+    // Split into current (contains "Present") and history
+    var current = experience.filter(function(e) { return (e.period || '').indexOf('Present') >= 0; });
+    var history = experience.filter(function(e) { return (e.period || '').indexOf('Present') < 0; });
+    // Also add AiTradePulse from companies if not in experience
+    var atpCompany = companyByName('aitradepulse');
+    var hasAtp = experience.some(function(e) { return (e.company || '').toLowerCase().indexOf('aitradepulse') >= 0; });
+    if (!hasAtp && atpCompany) {
+      current.push({
+        company: atpCompany.name,
+        role: atpCompany.role,
+        period: atpCompany.period,
+        location: atpCompany.location,
+        achievements: atpCompany.achievements || []
+      });
+    }
+    // Add older companies from companies.yml if not in terminal experience
+    ['solomon', 'garuda'].forEach(function(name) {
+      var co = companyByName(name);
+      var already = experience.some(function(e) { return (e.company || '').toLowerCase().indexOf(name) >= 0; });
+      if (!already && co) {
+        history.push({
+          company: co.name,
+          role: co.role,
+          period: co.period,
+          location: co.location,
+          achievements: co.achievements || []
+        });
+      }
+    });
+
+    return {
+      title: 'Professional Journey',
+      tabs: ['Current', 'History'],
+      content: {
+        'Current': current.length ? current.map(buildExpSection).join('') : '<section><p>Current experience data not available.</p></section>',
+        'History': history.length ? history.map(buildExpSection).join('') : '<section><p>Historical experience data not available.</p></section>'
+      }
+    };
+  })();
+
+  // --- Projects (from terminal.yml projects, led_projects, and sites) ---
+  var projectsSection = (function() {
+    var blockchain = [], quant = [], content = [], experimental = [];
+    // Categorize led_projects by company
+    ledProjects.forEach(function(p) {
+      var name = (p.name || '').toLowerCase();
+      var comp = (p.company || '').toLowerCase();
+      if (comp === 'bitwyre' || name.indexOf('dex') >= 0 || name.indexOf('card') >= 0 || name.indexOf('otc') >= 0) {
+        blockchain.push(p);
+      } else {
+        quant.push(p);
+      }
+    });
+    function renderLedProject(p) {
+      var html = '<h4>' + esc(p.name) + '</h4>';
+      html += '<p>' + esc((p.description || '').trim()) + '</p>';
+      if (p.outcomes && p.outcomes.length) {
+        html += '<ul>';
+        p.outcomes.slice(0, 3).forEach(function(o) { html += '<li>' + esc(o) + '</li>'; });
+        html += '</ul>';
+      }
+      return html;
+    }
+
+    var blockchainHtml = '<section><h3>On-Chain Engineering Highlights</h3>';
+    if (blockchain.length) {
+      blockchain.forEach(function(p) { blockchainHtml += renderLedProject(p); });
+    } else {
+      // Fallback to terminal.yml projects
+      projects.forEach(function(p) {
+        var desc = (p.description || '').toLowerCase();
+        if (desc.indexOf('blockchain') >= 0 || desc.indexOf('crypto') >= 0 || desc.indexOf('mining') >= 0) {
+          blockchainHtml += '<h4>' + esc(p.name) + '</h4><p>' + esc(p.description) + '</p>';
+        }
+      });
+    }
+    blockchainHtml += '</section>';
+
+    var quantHtml = '<section><h3>Trading & Analytics</h3>';
+    if (quant.length) {
+      quant.forEach(function(p) { quantHtml += renderLedProject(p); });
+    }
+    // Add AiTradePulse from companies
+    var atp = companyByName('aitradepulse');
+    if (atp) {
+      quantHtml += '<h4>' + esc(atp.name) + '</h4><p>' + esc((atp.description || '').trim()) + '</p>';
+    }
+    quantHtml += '</section>';
+
+    // Content & Media from sites
+    var contentHtml = '<section><h3>Publications & News Platforms</h3>';
+    var featuredSites = sites.filter(function(s) { return s.featured; });
+    if (featuredSites.length) {
+      featuredSites.forEach(function(s) {
+        contentHtml += '<h4>' + esc(s.name) + '</h4>';
+        contentHtml += '<p>' + esc(s.description) + '</p>';
+        contentHtml += '<p style="margin-top: 10px;"><a href="' + esc(s.url) + '" target="_blank" style="color: var(--portal-accent); text-decoration: underline;">' + esc(s.name) + ' &rarr;</a></p>';
+      });
+    }
+    contentHtml += '</section>';
+
+    // Experimental from terminal.yml open-source projects
+    var experimentalHtml = '<section><h3>Tools & Open Source</h3>';
+    projects.forEach(function(p) {
+      experimentalHtml += '<h4>' + esc(p.name) + '</h4>';
+      experimentalHtml += '<p>' + esc(p.description) + '</p>';
+      if (p.url) {
+        experimentalHtml += '<p><a href="' + esc(p.url) + '" target="_blank" style="color: var(--portal-accent);">[Source]</a></p>';
+      }
+    });
+    experimentalHtml += '</section>';
+
+    return {
+      title: 'Project Portfolio',
+      tabs: ['Blockchain & Web3', 'Quant Systems', 'Content & Media', 'Experimental'],
+      content: {
+        'Blockchain & Web3': blockchainHtml,
+        'Quant Systems': quantHtml,
+        'Content & Media': contentHtml,
+        'Experimental': experimentalHtml
+      }
+    };
+  })();
+
+  // --- Skills (from terminal.yml skills object) ---
+  var skillsSection = (function() {
+    var langs = skills.programming_languages || [];
+    var frameworks = (skills.frameworks || []);
+    var databases = (skills.databases || []);
+    var tools = (skills.tools || []);
+    var specialized = (skills.specialized || []);
+
+    // Separate languages into tiers
+    var highLevel = langs.filter(function(l) { return ['Python', 'JavaScript', 'TypeScript', 'PHP'].indexOf(l) >= 0; });
+    var systems = langs.filter(function(l) { return ['C++', 'Java', 'MQL4/MQL5', 'C#'].indexOf(l) >= 0; });
+    var automation = langs.filter(function(l) { return ['Bash', 'PowerShell', 'Shell'].indexOf(l) >= 0; });
+
+    var langHtml = '<section><h3>The Foundation</h3><ul>';
+    if (highLevel.length) langHtml += '<li><strong>High-Level</strong>: ' + highLevel.map(esc).join(', ') + '</li>';
+    if (systems.length) langHtml += '<li><strong>Systems & Trading</strong>: ' + systems.map(esc).join(', ') + '</li>';
+    if (automation.length) langHtml += '<li><strong>Automation</strong>: ' + automation.map(esc).join(', ') + '</li>';
+    langHtml += '</ul></section>';
+
+    var fwHtml = '<section><h3>Application Development</h3><ul>';
+    if (frameworks.length) fwHtml += '<li><strong>Web</strong>: ' + frameworks.map(esc).join(', ') + '</li>';
+    fwHtml += '<li><strong>Data Science</strong>: TensorFlow, PyTorch, NumPy, Pandas</li>';
+    fwHtml += '</ul></section>';
+
+    var infraHtml = '<section><h3>Cloud & Operations</h3><ul>';
+    var cloudTools = tools.filter(function(t) { return ['AWS', 'Google Cloud', 'DigitalOcean'].indexOf(t) >= 0; });
+    var containerTools = tools.filter(function(t) { return ['Docker', 'Kubernetes', 'Terraform'].indexOf(t) >= 0; });
+    if (cloudTools.length) infraHtml += '<li><strong>Platforms</strong>: ' + cloudTools.map(esc).join(', ') + '</li>';
+    if (containerTools.length) infraHtml += '<li><strong>Containerization</strong>: ' + containerTools.map(esc).join(', ') + '</li>';
+    if (databases.length) infraHtml += '<li><strong>Persistence</strong>: ' + databases.map(esc).join(', ') + '</li>';
+    if (specialized.length) infraHtml += '<li><strong>Specialized</strong>: ' + specialized.map(esc).join(', ') + '</li>';
+    infraHtml += '</ul></section>';
+
+    return {
+      title: 'Technical Arsenal',
+      tabs: ['Core Languages', 'Modern Frameworks', 'Infrastructure'],
+      content: {
+        'Core Languages': langHtml,
+        'Modern Frameworks': fwHtml,
+        'Infrastructure': infraHtml
+      }
+    };
+  })();
+
+  // --- About (from terminal.yml bio, education, links, contact_form) ---
+  var aboutSection = (function() {
+    var profHtml = '<section><h3>' + esc(t.title || 'Lead Software Engineer') + '</h3>';
+    profHtml += '<p>' + esc(t.bio || '') + '</p>';
+    if (education.institution) {
+      profHtml += '<p>Background in Business Management from <strong>' + esc(education.institution) + '</strong> (GPA: ' + esc(education.gpa || '') + ').</p>';
+    }
+    profHtml += '</section>';
+
+    var visionHtml = '<section><h3>Architecture as Art</h3>';
+    visionHtml += '<p>Code is more than just instructions; it\'s a creative expression of efficiency. The mission is to build digital infrastructure that isn\'t just reliable, but beautiful in its execution.</p>';
+    visionHtml += '<blockquote>"Efficiency is the ultimate form of elegance."</blockquote></section>';
+
+    var connectHtml = '<section><h3>Get in Touch</h3>';
+    connectHtml += '<p>Always looking for challenges that push the boundaries of what is technically possible.</p>';
+    connectHtml += '<div style="margin: 20px 0;">';
+    connectHtml += '<button onclick="window.ContactFormHandler && window.ContactFormHandler.show();" style="padding: 12px 30px; background: #000; border: 1px solid #fff; color: #fff; font-family: \'Monaco\', \'Menlo\', monospace; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: all 0.2s ease;" onmouseover="this.style.background=\'#fff\'; this.style.color=\'#000\';" onmouseout="this.style.background=\'#000\'; this.style.color=\'#fff\';">Open Contact Form</button>';
+    connectHtml += '</div><ul>';
+    if (contactForm.cal_com_url) {
+      connectHtml += '<li><strong>Schedule a Call</strong>: <a href="' + esc(contactForm.cal_com_url) + '" target="_blank">' + esc(contactForm.cal_com_url) + '</a></li>';
+    }
+    connectHtml += '<li><strong>Location</strong>: ' + esc(t.location || 'Southeast Asia') + '</li>';
+    // Add social links
+    var socialLinks = links.filter(function(l) { return ['GitHub', 'Twitter', 'Medium', 'LinkedIn'].indexOf(l.label) >= 0; });
+    if (socialLinks.length) {
+      connectHtml += '<li><strong>Social</strong>: ';
+      connectHtml += socialLinks.map(function(l) { return '<a href="' + esc(l.url) + '" target="_blank">' + esc(l.label) + '</a>'; }).join(' | ');
+      connectHtml += '</li>';
+    }
+    connectHtml += '</ul></section>';
+
+    return {
+      title: 'Profile & Mission',
+      tabs: ['The Professional', 'The Vision', 'The Connection'],
+      content: {
+        'The Professional': profHtml,
+        'The Vision': visionHtml,
+        'The Connection': connectHtml
+      }
+    };
+  })();
+
+  // --- Certifications (from terminal.yml certifications array) ---
+  var certificationsSection = (function() {
+    var technical = certs.filter(function(c) { return (c.issuer || '').toLowerCase() === 'hackerrank'; });
+    var leadership = certs.filter(function(c) {
+      var issuer = (c.issuer || '').toLowerCase();
+      return issuer === 'linkedin' || issuer === 'nasba';
+    });
+
+    var techHtml = '<section><h3>HackerRank Verified</h3><ul>';
+    if (technical.length) {
+      technical.forEach(function(c) { techHtml += '<li><strong>' + esc(c.name) + '</strong> (' + esc(c.issuer) + ')</li>'; });
+    } else {
+      techHtml += '<li>Certification data loading...</li>';
+    }
+    techHtml += '</ul></section>';
+
+    var leaderHtml = '<section><h3>Professional Development</h3><ul>';
+    if (leadership.length) {
+      leadership.forEach(function(c) { leaderHtml += '<li><strong>' + esc(c.name) + '</strong> (' + esc(c.issuer) + ')</li>'; });
+    } else {
+      leaderHtml += '<li>Certification data loading...</li>';
+    }
+    leaderHtml += '</ul></section>';
+
+    var instHtml = '<section><h3>Academic Foundation</h3>';
+    if (education.institution) {
+      instHtml += '<h4>' + esc(education.institution) + '</h4>';
+      instHtml += '<p>' + esc(education.degree || '') + ' (GPA: ' + esc(education.gpa || '') + '/4.0)</p>';
+      instHtml += '<p><em>Period: ' + esc(education.period || '') + '</em></p>';
+    }
+    instHtml += '</section>';
+
+    return {
+      title: 'Validations & Education',
+      tabs: ['Technical', 'Leadership', 'Institutional'],
+      content: {
+        'Technical': techHtml,
+        'Leadership': leaderHtml,
+        'Institutional': instHtml
+      }
+    };
+  })();
+
+  // --- Leadership (from companies data — scale, growth, method) ---
+  var leadershipSection = (function() {
+    var gm = companyByName('garuda');
+    var bk = companyByName('berkah');
+    var compSummary = (D.companies && D.companies.summary) || {};
+
+    var scaleHtml = '<section><h3>Leading ' + esc(compSummary.total_team_members_led || '3,000+') + '</h3>';
+    scaleHtml += '<p>Leadership at scale isn\'t about micro-managing; it\'s about building systems that manage themselves.</p>';
+    if (gm) {
+      scaleHtml += '<p>At ' + esc(gm.name) + ', responsible for the technical standards and infrastructure that supported a distributed network of ' + esc(gm.team_size || '3000+') + ' employees.</p>';
+    }
+    scaleHtml += '</section>';
+
+    var growthHtml = '<section><h3>Exponential Development</h3>';
+    growthHtml += '<p>Specializing in taking teams from "Startup Chaos" to "Enterprise Excellence."</p>';
+    if (bk) {
+      growthHtml += '<p>At ' + esc(bk.name) + ', grew engineering team from 10 to 30+ members while increasing delivery velocity by 60%.</p>';
+    }
+    growthHtml += '</section>';
+
+    var methodHtml = '<section><h3>Radical Transparency</h3>';
+    methodHtml += '<p>Leadership philosophy built on technical transparency and meritocracy. Fostering environments where the best idea wins, and every engineer is empowered to take ownership of their work.</p>';
+    methodHtml += '</section>';
+
+    return {
+      title: 'Impact & Strategy',
+      tabs: ['The Scale', 'The Growth', 'The Method'],
+      content: {
+        'The Scale': scaleHtml,
+        'The Growth': growthHtml,
+        'The Method': methodHtml
+      }
+    };
+  })();
+
+  // --- Case Studies (from case_studies.yml) ---
+  var caseStudiesSection = (function() {
+    // Map case studies to tabs
+    var tabMap = {};
+    var tabNames = [];
+    caseStudies.forEach(function(cs) {
+      var company = (cs.company || '').toLowerCase();
+      var tabName;
+      if (company.indexOf('bitwyre') >= 0 || company.indexOf('aitradepulse') >= 0) {
+        tabName = 'Trading Tech';
+      } else if (company.indexOf('garuda') >= 0) {
+        tabName = 'Scaling Tech';
+      } else {
+        tabName = 'Business Tech';
+      }
+      if (!tabMap[tabName]) { tabMap[tabName] = []; tabNames.push(tabName); }
+      tabMap[tabName].push(cs);
+    });
+    // Ensure all 3 tabs exist
+    ['Trading Tech', 'Scaling Tech', 'Business Tech'].forEach(function(tab) {
+      if (!tabMap[tab]) { tabMap[tab] = []; if (tabNames.indexOf(tab) < 0) tabNames.push(tab); }
+    });
+
+    var contentObj = {};
+    tabNames.forEach(function(tab) {
+      if (tabMap[tab].length) {
+        contentObj[tab] = tabMap[tab].map(buildCaseStudySection).join('');
+      } else {
+        contentObj[tab] = '<section><p>No case studies available in this category yet.</p></section>';
+      }
+    });
+
+    return {
+      title: 'Deep Research In-Sights',
+      tabs: ['Trading Tech', 'Scaling Tech', 'Business Tech'],
+      content: contentObj
+    };
+  })();
+
+  // --- Examples / Demo Repository (from terminal.yml sites + projects) ---
+  var examplesSection = (function() {
+    // Live Platforms from featured sites
+    var liveHtml = '<section><h3>Public Projects</h3><ul>';
+    sites.filter(function(s) { return s.featured; }).forEach(function(s) {
+      liveHtml += '<li><strong>' + esc(s.name) + '</strong>: ' + esc(s.description);
+      liveHtml += ' <a href="' + esc(s.url) + '" target="_blank">[Live Demo]</a></li>';
+    });
+    liveHtml += '</ul></section>';
+
+    // Open Utilities from terminal.yml projects (tools/utilities)
+    var utilProjects = projects.filter(function(p) {
+      var n = (p.name || '').toLowerCase();
+      return n.indexOf('auto-job') >= 0 || n.indexOf('wifi') >= 0 || n.indexOf('rbminer') >= 0 || n.indexOf('miner') >= 0 || n.indexOf('kemkes') >= 0 || n.indexOf('nuclear') >= 0;
+    });
+    var utilHtml = '<section><h3>GitHub Highlights</h3><ul>';
+    if (utilProjects.length) {
+      utilProjects.forEach(function(p) {
+        utilHtml += '<li><strong>' + esc(p.name) + '</strong>: ' + esc(p.description);
+        if (p.url) utilHtml += ' <a href="' + esc(p.url) + '" target="_blank">[Source]</a>';
+        utilHtml += '</li>';
+      });
+    }
+    utilHtml += '</ul></section>';
+
+    // Bots from terminal.yml projects
+    var botProjects = projects.filter(function(p) {
+      var n = (p.name || '').toLowerCase();
+      return n.indexOf('bot') >= 0 || n.indexOf('telegram') >= 0 || n.indexOf('tiktok') >= 0 || n.indexOf('shopee') >= 0;
+    });
+    var botHtml = '<section><h3>Automation & AI</h3><ul>';
+    if (botProjects.length) {
+      botProjects.forEach(function(p) {
+        botHtml += '<li><strong>' + esc(p.name) + '</strong>: ' + esc(p.description);
+        if (p.url) botHtml += ' <a href="' + esc(p.url) + '" target="_blank">[Source]</a>';
+        botHtml += '</li>';
+      });
+    }
+    botHtml += '</ul></section>';
+
+    return {
+      title: 'Demo Repository',
+      tabs: ['Live Platforms', 'Open Utilities', 'Bots'],
+      content: {
+        'Live Platforms': liveHtml,
+        'Open Utilities': utilHtml,
+        'Bots': botHtml
+      }
+    };
+  })();
+
+  return {
+    posts: postsSection,
+    achievements: achievementsSection,
+    experience: experienceSection,
+    projects: projectsSection,
+    skills: skillsSection,
+    about: aboutSection,
+    certifications: certificationsSection,
+    leadership: leadershipSection,
+    'case-studies': caseStudiesSection,
+    examples: examplesSection
+  };
+}
+
+// Build modal data from JEKYLL_DATA (deferred until DOM ready)
+let modalData = {};
 
 let currentSection = null;
 let currentTab = 0;
@@ -1371,6 +1543,8 @@ document.addEventListener('DOMContentLoaded', () => {
   updateTime();
   setInterval(updateTime, 1000);
   initToggle();
+  // Build modal data from JEKYLL_DATA (injected by Jekyll at build time)
+  modalData = buildModalData();
   initModal();
   initOnboarding();
   // Initialize metrics animation when expanded sections are shown

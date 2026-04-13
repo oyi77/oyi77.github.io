@@ -1,3 +1,5 @@
+---
+---
 <!DOCTYPE html>
 <html lang="en" itemscope itemtype="https://schema.org/Person">
 
@@ -150,6 +152,12 @@
     window.JEKYLL_DATA.companies = {{ site.data.companies | jsonify | default: 'null' }};
     window.JEKYLL_DATA.projects = {{ site.data.projects | jsonify | default: 'null' }};
     window.JEKYLL_DATA.terminal = {{ site.data.terminal | jsonify | default: 'null' }};
+    window.JEKYLL_DATA.portal = {{ site.data.portal | jsonify | default: 'null' }};
+    window.JEKYLL_DATA.case_studies = {{ site.data.case_studies | jsonify | default: 'null' }};
+    window.JEKYLL_DATA.led_projects = {{ site.data.led_projects | jsonify | default: 'null' }};
+    window.JEKYLL_DATA.aggregated_posts = {{ site.data.aggregated_posts | jsonify | default: 'null' }};
+    window.JEKYLL_DATA.github_stats = {{ site.data.github_stats | jsonify | default: 'null' }};
+    window.JEKYLL_DATA.repository_stats = {{ site.data.repository_stats | jsonify | default: 'null' }};
   </script>
 </head>
 
@@ -397,34 +405,17 @@
     </div>
 
     <!-- Metrics & Achievements Section (Stage 2: Arrow Down) -->
+    <!-- Data-driven from _data/portal.yml — edit YAML to update, no HTML changes needed -->
     <div class="metrics-sections" id="metrics-sections" aria-hidden="true">
       <!-- Metrics Dashboard -->
       <section class="metrics-dashboard" id="metrics-dashboard" aria-label="Professional metrics">
         <div class="metrics-grid">
+          {% for m in site.data.portal.metrics %}
           <div class="metric-card">
-            <div class="metric-value" data-target="7">0</div>
-            <div class="metric-label">Years Experience</div>
+            <div class="metric-value" data-target="{{ m.value }}">0</div>
+            <div class="metric-label">{{ m.label }}</div>
           </div>
-          <div class="metric-card">
-            <div class="metric-value" data-target="3000">0</div>
-            <div class="metric-label">Team Members Led</div>
-          </div>
-          <div class="metric-card">
-            <div class="metric-value" data-target="4">0</div>
-            <div class="metric-label">Companies</div>
-          </div>
-          <div class="metric-card">
-            <div class="metric-value" data-target="8">0</div>
-            <div class="metric-label">Projects</div>
-          </div>
-          <div class="metric-card">
-            <div class="metric-value" data-target="90">0</div>
-            <div class="metric-label">Win Rate %</div>
-          </div>
-          <div class="metric-card">
-            <div class="metric-value" data-target="100">0</div>
-            <div class="metric-label">Revenue Impact (USD)</div>
-          </div>
+          {% endfor %}
         </div>
       </section>
 
@@ -432,33 +423,14 @@
       <section class="achievement-highlights" id="achievement-highlights" aria-label="Key achievements">
         <h2 class="section-title">Key Achievements</h2>
         <div class="achievements-grid">
+          {% for a in site.data.portal.achievements %}
           <div class="achievement-card">
-            <div class="achievement-icon">$</div>
-            <div class="achievement-value" data-target="100" data-suffix="K">0</div>
-            <div class="achievement-unit">USD</div>
-            <div class="achievement-desc">Profit Generated (Fomo Watcher)</div>
+            <div class="achievement-icon">{% if a.icon == "team" %}👥{% elsif a.icon == "down" %}↓{% elsif a.icon == "btc" %}₿{% else %}{{ a.icon }}{% endif %}</div>
+            <div class="achievement-value" data-target="{{ a.value }}"{% if a.suffix %} data-suffix="{{ a.suffix }}"{% endif %}>0</div>
+            {% if a.unit %}<div class="achievement-unit">{{ a.unit }}</div>{% endif %}
+            <div class="achievement-desc">{{ a.description }}</div>
           </div>
-          <div class="achievement-card">
-            <div class="achievement-icon">👥</div>
-            <div class="achievement-value" data-target="3000" data-suffix="+">0</div>
-            <div class="achievement-desc">Team Members Led (GarudaMedia)</div>
-          </div>
-          <div class="achievement-card">
-            <div class="achievement-icon">%</div>
-            <div class="achievement-value" data-target="90" data-suffix="+">0</div>
-            <div class="achievement-desc">Trading Win Rate (AiTradePulse)</div>
-          </div>
-          <div class="achievement-card">
-            <div class="achievement-icon">↓</div>
-            <div class="achievement-value" data-target="40" data-suffix="+">0</div>
-            <div class="achievement-desc">Cost Reduction (GarudaMedia)</div>
-          </div>
-          <div class="achievement-card">
-            <div class="achievement-icon">₿</div>
-            <div class="achievement-value" data-target="5" data-suffix="B+">0</div>
-            <div class="achievement-unit">IDR</div>
-            <div class="achievement-desc">Monthly Volume (BerkahKarya)</div>
-          </div>
+          {% endfor %}
         </div>
       </section>
 

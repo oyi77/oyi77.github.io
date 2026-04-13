@@ -1,0 +1,44 @@
+# Portal Homepage Configuration
+# Single source of truth for metrics, achievements, and section content
+# Auto-consumed by index.html (Liquid) and portal.js (via JEKYLL_DATA)
+# Update this file to update the portal homepage - no JS/HTML edits needed.
+
+# --- Metrics Dashboard (top-level numbers) ---
+metrics:
+  - value: 7
+    label: "Years Experience"
+  - value: 3000
+    label: "Team Members Led"
+  - value: 4
+    label: "Companies"
+  - value: 8
+    label: "Projects"
+  - value: 90
+    label: "Win Rate %"
+  - value: 100
+    label: "Revenue Impact (USD)"
+
+# --- Achievement Highlights ---
+achievements:
+  - icon: "$"
+    value: 100
+    suffix: "K"
+    unit: "USD"
+    description: "Profit Generated (Fomo Watcher)"
+  - icon: "team"
+    value: 3000
+    suffix: "+"
+    description: "Team Members Led (GarudaMedia)"
+  - icon: "%"
+    value: 90
+    suffix: "+"
+    description: "Trading Win Rate (AiTradePulse)"
+  - icon: "down"
+    value: 40
+    suffix: "+"
+    description: "Cost Reduction (GarudaMedia)"
+  - icon: "btc"
+    value: 5
+    suffix: "B+"
+    unit: "IDR"
+    description: "Monthly Volume (BerkahKarya)"
