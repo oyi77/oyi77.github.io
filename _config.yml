@@ -46,7 +46,7 @@ remote_theme: mmistakes/minimal-mistakes
 permalink: /:categories/:title/
 paginate: 5 # amount of posts to show
 paginate_path: /page:num/
-timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezone: "Asia/Jakarta"
 
 # Directory Structure:
 # - _pages/          : Static pages (including resumes/)
@@ -60,14 +60,17 @@ include:
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
-# exclude:
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - _scripts/
+  - openspec/
+  - .opencode/
 
 # Plugins (previously gems:)
 plugins:
@@ -81,8 +84,8 @@ plugins:
 # Custom plugin configuration
 asset_optimization: true
 data_compression: true
-analytics: true
-analytics_provider: "none"  # Set to "google" or other provider if needed
+analytics: false
+analytics_provider: "none"
 
 author:
   name   : "Lead Software Engineer"

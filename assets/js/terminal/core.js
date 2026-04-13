@@ -11,10 +11,6 @@ class TerminalOS {
     this.historyIndex = -1;
     this.currentInput = '';
 
-    // User management
-    this.currentUser = 'guest'; // Start as guest
-    this.isRoot = false; // Track root access
-
     // Session tracking for uptime
     this.sessionStartTime = Date.now();
 

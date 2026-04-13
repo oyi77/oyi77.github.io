@@ -354,10 +354,7 @@
         <div class="modal-content" id="modal-content">
           <!-- Content will be dynamically inserted -->
         </div>
-        <div class="modal-pagination" id="modal-pagination" style="display: none;">
-          <button class="pagination-btn" id="prev-btn">← Previous</button>
-          <button class="pagination-btn" id="next-btn">Next →</button>
-        </div>
+
       </div>
 
     </div>
@@ -524,7 +521,7 @@
               opportunities or collaborations.</p>
 
             <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 30px;">
-              <button onclick="window.ContactFormHandler && window.ContactFormHandler.show(); document.getElementById('cta-modal').classList.remove('show');" class="section-link" style="min-width: 140px; border: none; background: transparent; cursor: pointer;">
+              <button id="cta-contact-btn" class="section-link" style="min-width: 140px; border: none; background: transparent; cursor: pointer;">
                 <span class="section-icon">✉</span>
                 <span class="section-text">Contact Form</span>
               </button>

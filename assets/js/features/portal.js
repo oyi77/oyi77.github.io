@@ -1637,6 +1637,15 @@ function initCTAModal() {
   if (closeBtn) closeBtn.addEventListener('click', closeModal);
   if (stayBtn) stayBtn.addEventListener('click', closeModal);
 
+  // Contact Form button (replaces inline onclick)
+  const contactBtn = document.getElementById('cta-contact-btn');
+  if (contactBtn) {
+    contactBtn.addEventListener('click', () => {
+      if (window.ContactFormHandler) window.ContactFormHandler.show();
+      closeModal();
+    });
+  }
+
   // Close on outside click
   modal.addEventListener('click', (e) => {
     if (e.target === modal) closeModal();
