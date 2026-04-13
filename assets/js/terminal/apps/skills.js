@@ -18,12 +18,20 @@ class SkillsApp {
     }
 
     async showStandardList(width) {
-        const skills = [
+        const data = window.JEKYLL_DATA?.terminal || {};
+        const dataSkills = data.skills || {};
+        const defaultSkills = [
             { cat: 'PROGRAMMING', items: ['Python', 'JS/TS', 'C++', 'PHP', 'MQL4/5'] },
             { cat: 'FRAMEWORKS', items: ['React', 'Node.js', 'Django', 'Laravel'] },
             { cat: 'INFRASTRUCTURE', items: ['Docker', 'K8s', 'AWS', 'GCP', 'CI/CD'] },
             { cat: 'SPECIALIZED', items: ['Blockchain', 'Algo Trading', 'Embedded'] }
         ];
+        const skills = Object.keys(dataSkills).length > 0
+            ? Object.entries(dataSkills).map(([key, items]) => ({
+                cat: key.replace(/_/g, ' ').toUpperCase(),
+                items: Array.isArray(items) ? items.map(i => typeof i === 'string' ? i : (i.name || i)) : [String(items)]
+            }))
+            : defaultSkills;
 
         this.terminal.write('\r\n' + TerminalUtils.center('\x1b[1;32mCAPABILITY MATRIX LOADING...\x1b[0m', width) + '\r\n');
         this.terminal.write('  ' + '\x1b[1;30m' + '-'.repeat(width - 10) + '\x1b[0m\r\n\r\n');

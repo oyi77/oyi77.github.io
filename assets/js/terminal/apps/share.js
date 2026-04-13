@@ -7,16 +7,41 @@ class ShareApp {
     }
 
     async run(args) {
+        const data = window.JEKYLL_DATA?.terminal || {};
         this.terminal.write('\r\n\x1b[1;32m[ GENERATING RECRUITER-READY SNIPPET ]\x1b[0m\r\n\r\n');
-        
+
+        const name = data.name || 'Lead Software Engineer';
+        const title = data.title || 'Lead Software Engineer (Remote Ready)';
+
+        // Build top skills from data
+        let topSkills = 'Python, React, Node.js, Smart Contracts, AWS';
+        if (data.skills && typeof data.skills === 'object') {
+            const allSkills = Object.values(data.skills).flat().map(s => typeof s === 'string' ? s : (s.name || s));
+            if (allSkills.length > 0) topSkills = allSkills.slice(0, 5).join(', ');
+        }
+
+        // Find portfolio URL from links
+        let portfolioUrl = 'https://oyi77.github.io';
+        if (data.links && Array.isArray(data.links)) {
+            const portfolioLink = data.links.find(l => /portfolio/i.test(l.label || l.name || ''));
+            if (portfolioLink) portfolioUrl = portfolioLink.url || portfolioUrl;
+        }
+
+        // Get first achievement
+        let keyAchievement = 'Reduced Dex Cleaning manual efforts by 60% @ Bitwyre.';
+        if (data.experience && data.experience.length > 0) {
+            const first = data.experience.find(e => e.highlight || e.achievement);
+            if (first) keyAchievement = `${first.highlight || first.achievement} @ ${first.company || first.name || ''}`;
+        }
+
         const snippet = `
-🚀 **Candidate Profile: Lead Software Engineer**
+🚀 **Candidate Profile: ${name}**
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📍 **Role:** Lead Software Engineer (Remote Ready)
+📍 **Role:** ${title}
 💼 **Experience:** 7+ Years (Blockchain, Trading, Full-Stack)
-🏆 **Key Achievement:** Reduced Dex Cleaning manual efforts by 60% @ Bitwyre.
-🛠️ **Stack:** Python, React, Node.js, Smart Contracts, AWS.
-🔗 **Interactive Portfolio:** https://oyi77.github.io
+🏆 **Key Achievement:** ${keyAchievement}
+🛠️ **Stack:** ${topSkills}
+🔗 **Interactive Portfolio:** ${portfolioUrl}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 `.trim();
 

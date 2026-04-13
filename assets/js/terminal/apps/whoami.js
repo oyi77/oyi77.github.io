@@ -7,6 +7,7 @@ class WhoAmIApp {
         }
 
         async run(args) {
+                const data = window.JEKYLL_DATA?.terminal || {};
                 const width = this.terminal.cols || 60;
 
                 this.terminal.write('\r\n' + TerminalUtils.center('\x1b[1;36m>> IDENTITY VERIFICATION SUCCESSFUL <<\x1b[0m', width) + '\r\n\r\n');
@@ -15,10 +16,10 @@ class WhoAmIApp {
                 await this.showCodingAnimation(width);
 
                 const info = [
-                        { label: 'NAME', val: 'Lead Software Engineer' },
-                        { label: 'ROLE', val: 'Lead Software Engineer / Technical Lead' },
+                        { label: 'NAME', val: data.name || 'Lead Software Engineer' },
+                        { label: 'ROLE', val: data.title || 'Lead Software Engineer / Technical Lead' },
                         { label: 'LEVEL', val: 'Elite / Multi-Company Technical Lead' },
-                        { label: 'LOC', val: 'Southeast Asia' }
+                        { label: 'LOC', val: data.location || 'Southeast Asia' }
                 ];
 
                 info.forEach(i => {
@@ -26,16 +27,19 @@ class WhoAmIApp {
                 });
 
                 this.terminal.write('\r\n  \x1b[1;33mEXPERIENCE SUMMARY:\x1b[0m\r\n');
-                const summary = "Highly accomplished and results-driven Software Engineer Lead with 7+ years of experience in full-stack development, blockchain, and embedded systems. Proven ability to lead cross-functional teams (up to 3000+ members), architect scalable solutions, and drive significant business impact.";
+                const summary = data.bio || "Highly accomplished and results-driven Software Engineer Lead with 7+ years of experience in full-stack development, blockchain, and embedded systems. Proven ability to lead cross-functional teams (up to 3000+ members), architect scalable solutions, and drive significant business impact.";
                 this.terminal.write(TerminalUtils.wrap(summary, width - 10) + '\r\n\r\n');
 
                 this.terminal.write('  \x1b[1;33mLEADERSHIP LOG:\x1b[0m\r\n');
-                const logs = [
+                const defaultLogs = [
                         { company: 'GarudaMedia', desc: '3000+ Employees Managed' },
                         { company: 'Solomon Mining', desc: 'First Legal Crypto' },
                         { company: 'BerkahKarya', desc: '5B+ Monthly turnover' },
                         { company: 'AiTradePulse', desc: '90%+ Winrate Algo' }
                 ];
+                const logs = (data.experience && data.experience.length > 0)
+                        ? data.experience.map(exp => ({ company: exp.company || exp.name || 'Unknown', desc: exp.highlight || exp.role || '' }))
+                        : defaultLogs;
 
                 logs.forEach((log, idx) => {
                         this.terminal.write(`  ${idx + 1}. \x1b[1;36m${log.company.padEnd(15)}\x1b[0m - ${log.desc}\r\n`);
@@ -43,8 +47,16 @@ class WhoAmIApp {
 
                 // Add links
                 this.terminal.write('\r\n  \x1b[1;33mLINKS:\x1b[0m\r\n');
-                this.terminal.write('  \x1b[1;36mCV OS:\x1b[0m \x1b]8;;https://oyi77.github.io/oyi77\x1b\\https://oyi77.github.io/oyi77\x1b]8;;\x1b\\\r\n');
-                this.terminal.write('  \x1b[1;36mLinktree:\x1b[0m \x1b]8;;https://linktr.ee/jokogendeng\x1b\\https://linktr.ee/jokogendeng\x1b]8;;\x1b\\\r\n');
+                const defaultLinks = [
+                        { label: 'CV OS', url: 'https://oyi77.github.io/oyi77' },
+                        { label: 'Linktree', url: 'https://linktr.ee/jokogendeng' }
+                ];
+                const links = (data.links && data.links.length > 0) ? data.links : defaultLinks;
+                links.forEach(link => {
+                        const label = link.label || link.name || 'Link';
+                        const url = link.url || '#';
+                        this.terminal.write(`  \x1b[1;36m${label}:\x1b[0m \x1b]8;;${url}\x1b\\${url}\x1b]8;;\x1b\\\r\n`);
+                });
 
                 this.terminal.write('\r\n  \x1b[1;30m' + '-'.repeat(width - 10) + '\x1b[0m\r\n');
                 this.terminal.write('  Type \x1b[1;32mcompanies\x1b[0m | \x1b[1;32mcv\x1b[0m | \x1b[1;32mskills\x1b[0m\r\n');

@@ -2,8 +2,8 @@ name: Update Blog Posts
 
 on:
   schedule:
-    # Run daily at 2 AM UTC
-    - cron: '0 2 * * *'
+    # Run daily at 2:15 AM UTC (staggered to avoid race conditions)
+    - cron: '15 2 * * *'
   workflow_dispatch:  # Allow manual trigger
 
 permissions:

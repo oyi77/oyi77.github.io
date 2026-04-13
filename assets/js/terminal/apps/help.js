@@ -34,7 +34,12 @@ class HelpApp {
       { cmd: 'projects', desc: 'GitHub projects listing (use --led for led projects)' },
       { cmd: 'sites', desc: 'Portfolio sites and links' },
       { cmd: 'case-studies', desc: 'Case studies portfolio (alias: cases)' },
-      { cmd: 'approaches', desc: 'Problem-solving approaches and methodologies' }
+      { cmd: 'approaches', desc: 'Problem-solving approaches and methodologies' },
+      { cmd: 'jobs', desc: 'List career history and work experience' },
+      { cmd: 'activity', desc: 'Show recent GitHub activity (--watch for live updates)' },
+      { cmd: 'resume', desc: 'Generate and display professional resume' },
+      { cmd: 'share', desc: 'Generate shareable recruiter snippet for clipboard' },
+      { cmd: 'github', desc: 'Display GitHub profile and repository statistics' }
     ];
 
     // Integrasi EcmaOS - Merge into Core

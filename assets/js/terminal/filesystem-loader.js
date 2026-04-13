@@ -74,6 +74,104 @@ class FileSystemLoader {
             } catch (e) {
                 console.warn('Error writing welcome message:', e);
             }
+
+            // Load Skills as individual files per category
+            if (data.terminal && data.terminal.skills && typeof data.terminal.skills === 'object') {
+                try {
+                    this.fs.createDirectory('/home/user/skills');
+                } catch (e) { /* directory may already exist */ }
+                Object.entries(data.terminal.skills).forEach(([category, items]) => {
+                    try {
+                        const skillList = Array.isArray(items)
+                            ? items.map(s => typeof s === 'string' ? s : (s.name || String(s))).join('\n')
+                            : String(items);
+                        const filename = category.toLowerCase().replace(/\s+/g, '_') + '.txt';
+                        this.fs.writeFile(`/home/user/skills/${filename}`, skillList);
+                    } catch (e) {
+                        console.warn('Error writing skill file:', e);
+                    }
+                });
+            }
+
+            // Load Experience as individual files per role
+            if (data.terminal && data.terminal.experience && Array.isArray(data.terminal.experience)) {
+                try {
+                    this.fs.createDirectory('/home/user/experience');
+                } catch (e) { /* directory may already exist */ }
+                data.terminal.experience.forEach(exp => {
+                    try {
+                        const company = (exp.company || exp.name || 'unknown').toLowerCase().replace(/\s+/g, '-');
+                        const role = (exp.role || 'role').toLowerCase().replace(/\s+/g, '-');
+                        const filename = `${company}-${role}.txt`.replace(/[^a-z0-9.\-_]/g, '');
+                        const content = [
+                            `Company: ${exp.company || exp.name || 'Unknown'}`,
+                            `Role: ${exp.role || ''}`,
+                            `Period: ${exp.period || ''}`,
+                            exp.location ? `Location: ${exp.location}` : '',
+                            '',
+                            exp.description || exp.highlight || ''
+                        ].filter(Boolean).join('\n');
+                        this.fs.writeFile(`/home/user/experience/${filename}`, content);
+                    } catch (e) {
+                        console.warn('Error writing experience file:', e);
+                    }
+                });
+            }
+
+            // Load Education
+            if (data.terminal && data.terminal.education) {
+                try {
+                    const edu = data.terminal.education;
+                    let content = '';
+                    if (Array.isArray(edu)) {
+                        content = edu.map(e => {
+                            return [
+                                `Institution: ${e.institution || e.school || ''}`,
+                                `Degree: ${e.degree || ''}`,
+                                `Field: ${e.field || ''}`,
+                                `Period: ${e.period || e.year || ''}`,
+                                ''
+                            ].join('\n');
+                        }).join('\n');
+                    } else {
+                        content = String(edu);
+                    }
+                    this.fs.writeFile('/home/user/education.txt', content);
+                } catch (e) {
+                    console.warn('Error writing education.txt:', e);
+                }
+            }
+
+            // Load Certifications as individual files
+            if (data.terminal && data.terminal.certifications && Array.isArray(data.terminal.certifications)) {
+                try {
+                    this.fs.createDirectory('/home/user/certifications');
+                } catch (e) { /* directory may already exist */ }
+                data.terminal.certifications.forEach(cert => {
+                    try {
+                        const name = (cert.name || cert.title || 'cert').toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9.\-_]/g, '');
+                        const content = [
+                            `Name: ${cert.name || cert.title || ''}`,
+                            `Issuer: ${cert.issuer || cert.organization || ''}`,
+                            cert.date ? `Date: ${cert.date}` : '',
+                            cert.url ? `URL: ${cert.url}` : '',
+                            cert.credential_id ? `Credential ID: ${cert.credential_id}` : ''
+                        ].filter(Boolean).join('\n');
+                        this.fs.writeFile(`/home/user/certifications/${name}.txt`, content);
+                    } catch (e) {
+                        console.warn('Error writing certification file:', e);
+                    }
+                });
+            }
+
+            // Load Summary/Bio
+            if (data.terminal && data.terminal.bio) {
+                try {
+                    this.fs.writeFile('/home/user/summary.txt', data.terminal.bio);
+                } catch (e) {
+                    console.warn('Error writing summary.txt:', e);
+                }
+            }
         } catch (error) {
             console.error('Error loading Jekyll data:', error);
         }

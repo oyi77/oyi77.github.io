@@ -1218,6 +1218,7 @@ function initMetricsAnimation() {
 
 function animateCounter(element) {
   const target = parseInt(element.getAttribute('data-target'));
+  if (isNaN(target)) return;
   const suffix = element.getAttribute('data-suffix') || '';
   const duration = 2000;
   const increment = target / (duration / 16);
@@ -1241,19 +1242,35 @@ function animateCounter(element) {
 // ============================================================================
 
 async function loadGitHubStats() {
+  const fallback = window.JEKYLL_DATA?.github_stats || {};
+  const elements = {
+    repos: document.getElementById('repo-count'),
+    stars: document.getElementById('github-stars'),
+    forks: document.getElementById('github-forks'),
+    contributions: document.getElementById('github-contributions')
+  };
+
+  // Show loading state
+  Object.values(elements).forEach(el => {
+    if (el) el.textContent = '...';
+  });
+
   try {
     const username = 'oyi77';
     const response = await fetch(`https://api.github.com/users/${username}`);
 
-    if (!response.ok) throw new Error('GitHub API error');
+    // Check rate limit
+    const remaining = parseInt(response.headers.get('X-RateLimit-Remaining'));
+    if (remaining === 0) {
+      console.warn('GitHub API rate limit reached, using build-time data');
+      applyGitHubFallback(elements, fallback);
+      return;
+    }
+
+    if (!response.ok) throw new Error(`GitHub API error: ${response.status}`);
 
     const data = await response.json();
-
-    // Update repository count
-    const repoCountEl = document.getElementById('repo-count');
-    if (repoCountEl) {
-      animateToValue(repoCountEl, data.public_repos || 0);
-    }
+    if (elements.repos) animateToValue(elements.repos, data.public_repos || 0);
 
     // Fetch repositories for stars/forks
     const reposResponse = await fetch(`https://api.github.com/users/${username}/repos?per_page=100&sort=updated`);
@@ -1267,54 +1284,52 @@ async function loadGitHubStats() {
         totalForks += repo.forks_count || 0;
       });
 
-      const starsEl = document.getElementById('github-stars');
-      const forksEl = document.getElementById('github-forks');
-
-      if (starsEl) animateToValue(starsEl, totalStars);
-      if (forksEl) animateToValue(forksEl, totalForks);
+      if (elements.stars) animateToValue(elements.stars, totalStars);
+      if (elements.forks) animateToValue(elements.forks, totalForks);
     }
 
-    // Contributions (approximate - GitHub API doesn't provide this directly)
-    const contributionsEl = document.getElementById('github-contributions');
-    if (contributionsEl) {
-      contributionsEl.textContent = 'Active';
+    if (elements.contributions) {
+      elements.contributions.textContent = 'Active';
     }
 
   } catch (error) {
     console.warn('Failed to load GitHub stats:', error);
-    // Set fallback values
-    const elements = ['repo-count', 'github-stars', 'github-forks', 'github-contributions'];
-    elements.forEach(id => {
-      const el = document.getElementById(id);
-      if (el) el.textContent = '--';
-    });
+    applyGitHubFallback(elements, fallback);
   }
+}
+
+function applyGitHubFallback(elements, fallback) {
+  if (elements.repos) elements.repos.textContent = fallback.public_repos || 'N/A';
+  if (elements.stars) elements.stars.textContent = fallback.total_stars || 'N/A';
+  if (elements.forks) elements.forks.textContent = fallback.total_forks || 'N/A';
+  if (elements.contributions) elements.contributions.textContent = fallback.status || 'N/A';
 }
 
 function animateToValue(element, target) {
   const current = parseInt(element.textContent) || 0;
-
-  // If we're already at the target (or starting from 0 to 0), just update and exit
-  if (current === target) {
+  if (isNaN(target) || current === target) {
     element.textContent = target;
     return;
   }
 
-  const increment = target > current ? 1 : -1;
   const duration = 1500;
-  const steps = Math.abs(target - current);
-  // Prevent division by zero or infinite delay
-  const delay = steps > 0 ? duration / steps : 0;
+  const startTime = performance.now();
+  const diff = target - current;
 
-  let currentValue = current;
-  const timer = setInterval(() => {
-    currentValue += increment;
-    element.textContent = currentValue;
-
-    if (currentValue === target) {
-      clearInterval(timer);
+  function update(now) {
+    const elapsed = now - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    // Ease-out cubic for smooth deceleration
+    const eased = 1 - Math.pow(1 - progress, 3);
+    element.textContent = Math.round(current + diff * eased);
+    if (progress < 1) {
+      requestAnimationFrame(update);
+    } else {
+      element.textContent = target;
     }
-  }, delay);
+  }
+
+  requestAnimationFrame(update);
 }
 
 // ============================================================================

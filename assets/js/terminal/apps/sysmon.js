@@ -9,6 +9,7 @@ class SysMonApp {
     }
 
     async run(args) {
+        const data = window.JEKYLL_DATA?.terminal || {};
         this.isRunning = true;
         const width = this.terminal.cols || 80;
 
@@ -19,6 +20,15 @@ class SysMonApp {
         const cores = navigator.hardwareConcurrency || 'N/A';
         const totalMem = navigator.deviceMemory ? `${navigator.deviceMemory}GB` : 'Unknown';
         const browser = this.getBrowserInfo();
+        const username = data.name || data.github_username || 'oyi77';
+
+        // Derive process names from skill categories
+        const defaultProcessNames = ['thinking', 'problem-solving', 'coding', 'leadership', 'architecting', 'debugging'];
+        let processNames = defaultProcessNames;
+        if (data.skills && typeof data.skills === 'object') {
+            const derived = Object.keys(data.skills).map(k => k.replace(/_/g, '-'));
+            if (derived.length > 0) processNames = derived;
+        }
 
         // Exit listener
         this.exitHandler = this.terminal.onData(() => {
@@ -55,21 +65,33 @@ class SysMonApp {
                 // Process List - Personal Activities
                 this.terminal.write('\x1b[1;30;47m  PID  USER     PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND      \x1b[0m\r\n');
                 
-                // Personal activity processes
-                const activities = [
-                    { pid: 1001, user: 'oyi77', cpu: 25.5, mem: 8.2, time: '2:15:30', cmd: 'thinking', status: 'R' },
-                    { pid: 1002, user: 'oyi77', cpu: 18.3, mem: 6.5, time: '1:45:12', cmd: 'problem-solving', status: 'R' },
-                    { pid: 1003, user: 'oyi77', cpu: 35.7, mem: 12.8, time: '3:22:45', cmd: 'coding', status: 'R' },
-                    { pid: 1004, user: 'oyi77', cpu: 12.1, mem: 4.3, time: '1:10:20', cmd: 'leadership', status: 'S' },
-                    { pid: 1005, user: 'oyi77', cpu: 8.9, mem: 3.1, time: '0:45:33', cmd: 'architecting', status: 'S' },
-                    { pid: 1006, user: 'oyi77', cpu: 5.2, mem: 2.4, time: '0:30:15', cmd: 'debugging', status: 'S' }
+                // Personal activity processes derived from skill categories
+                const defaultActivities = [
+                    { pid: 1001, cpu: 25.5, mem: 8.2, time: '2:15:30', cmd: 'thinking', status: 'R' },
+                    { pid: 1002, cpu: 18.3, mem: 6.5, time: '1:45:12', cmd: 'problem-solving', status: 'R' },
+                    { pid: 1003, cpu: 35.7, mem: 12.8, time: '3:22:45', cmd: 'coding', status: 'R' },
+                    { pid: 1004, cpu: 12.1, mem: 4.3, time: '1:10:20', cmd: 'leadership', status: 'S' },
+                    { pid: 1005, cpu: 8.9, mem: 3.1, time: '0:45:33', cmd: 'architecting', status: 'S' },
+                    { pid: 1006, cpu: 5.2, mem: 2.4, time: '0:30:15', cmd: 'debugging', status: 'S' }
                 ];
+                const activities = processNames.map((name, i) => {
+                    const def = defaultActivities[i] || defaultActivities[defaultActivities.length - 1];
+                    return {
+                        pid: 1001 + i,
+                        user: username,
+                        cpu: def.cpu + (Math.random() * 5 - 2.5),
+                        mem: def.mem + (Math.random() * 2 - 1),
+                        time: def.time,
+                        cmd: name,
+                        status: i < Math.ceil(processNames.length / 2) ? 'R' : 'S'
+                    };
+                });
                 
                 activities.forEach(proc => {
                     const virt = `${Math.floor(Math.random() * 200 + 100)}M`;
                     const res = `${Math.floor(proc.mem * 10)}M`;
                     const shr = `${Math.floor(proc.mem * 3)}M`;
-                    this.renderProcess(proc.pid, proc.user, 20, 0, virt, res, shr, proc.status, proc.cpu, proc.mem, proc.time, proc.cmd);
+                    this.renderProcess(proc.pid, proc.user || username, 20, 0, virt, res, shr, proc.status, proc.cpu, proc.mem, proc.time, proc.cmd);
                 });
 
                 this.terminal.write('\r\n\r\n' + TerminalUtils.center('\x1b[1;30m[ PRESS ANY KEY TO EXIT ]\x1b[0m', width));
