@@ -1381,6 +1381,69 @@ html {
     font-family: var(--portal-font-mono);
 }
 
+/* Small Mobile */
+@media (max-width: 480px) {
+    .portal-header h1 {
+        font-size: 1.2rem;
+    }
+
+    .portal-header .subtitle {
+        font-size: 0.7rem;
+    }
+
+    .access-cards {
+        gap: 8px;
+    }
+
+    .access-card {
+        padding: 12px;
+        font-size: 0.7rem;
+    }
+
+    .expanded-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        padding: 10px;
+    }
+
+    .portfolio-card {
+        padding: 12px;
+    }
+
+    .curated-section {
+        padding-right: 10px;
+    }
+
+    .modal-container {
+        width: 95%;
+        max-height: 90vh;
+        padding: 15px;
+    }
+
+    .modal-title {
+        font-size: 1rem;
+    }
+
+    .modal-tabs {
+        flex-wrap: wrap;
+        gap: 4px;
+    }
+
+    .modal-tab {
+        font-size: 0.7rem;
+        padding: 6px 10px;
+    }
+
+    .metrics-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
+
+    .achievements-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* Mobile Responsive */
 @media (max-width: 768px) {
     .metrics-grid {
@@ -2074,6 +2137,10 @@ html {
 
     .curated-grid {
         grid-template-columns: 1fr;
+    }
+
+    .curated-sections {
+        padding-right: 15px;
     }
 
     .date-display {

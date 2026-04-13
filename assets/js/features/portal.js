@@ -511,6 +511,14 @@ function buildModalData() {
       entry.achievements.forEach(function(a) { html += '<li>' + esc(a) + '</li>'; });
       html += '</ul>';
     }
+    // Surface company technologies and challenges from companies.yml
+    var company = companyByName(entry.company);
+    if (company && company.technologies && company.technologies.length) {
+      html += '<div class="tech-stack"><strong>Tech Stack:</strong> ' + company.technologies.map(esc).join(', ') + '</div>';
+    }
+    if (company && company.challenges && company.challenges.length) {
+      html += '<div class="challenges"><strong>Key Challenges:</strong> ' + company.challenges.map(function(c) { return esc(c.challenge || c); }).join(', ') + '</div>';
+    }
     html += '</section>';
     return html;
   }
@@ -525,6 +533,10 @@ function buildModalData() {
       html += '</ul>';
     }
     if (cs.outcome) html += '<p><em>' + esc(cs.outcome.trim()) + '</em></p>';
+    // Surface technical details from case_studies.yml
+    if (cs.architecture) html += '<div class="case-detail"><strong>Architecture:</strong> ' + esc(cs.architecture.trim()) + '</div>';
+    if (cs.implementation) html += '<div class="case-detail"><strong>Implementation:</strong> ' + esc(cs.implementation.trim()) + '</div>';
+    if (cs.my_role) html += '<div class="case-detail"><strong>My Role:</strong> ' + esc(cs.my_role.trim()) + '</div>';
     html += '</section>';
     return html;
   }
@@ -918,6 +930,12 @@ function buildModalData() {
     if (bk) {
       growthHtml += '<p>At ' + esc(bk.name) + ', grew engineering team from 10 to 30+ members while increasing delivery velocity by 60%.</p>';
     }
+    // Surface business impact from led projects
+    ledProjects.forEach(function(project) {
+      if (project.business_impact) {
+        growthHtml += '<div class="business-impact"><strong>Business Impact:</strong> ' + esc(project.business_impact.trim()) + ' (' + esc(project.name) + ')</div>';
+      }
+    });
     growthHtml += '</section>';
 
     var methodHtml = '<section><h3>Radical Transparency</h3>';

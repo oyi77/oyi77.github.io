@@ -189,7 +189,7 @@
                 github_username: "{{ site.github_username | default: 'oyi77' }}",
                 baseurl: "{{ site.baseurl | default: '' }}"
             },
-            terminal: {{ site.data.terminal | jsonify }},
+            terminal: {{ site.data.terminal | jsonify | default: 'null' }},
             companies: {{ site.data.companies | jsonify | default: 'null' }},
             projects: {{ site.data.projects | jsonify | default: 'null' }},
             case_studies: {{ site.data.case_studies | jsonify | default: 'null' }},

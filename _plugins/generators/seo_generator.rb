@@ -6,26 +6,27 @@ module Jekyll
     priority :normal
 
     def generate(site)
-      begin
-        seo_data = {
-          'meta_tags' => generate_meta_tags(site),
-          'structured_data' => generate_structured_data(site),
-          'sitemap_priorities' => generate_sitemap_priorities(site),
-          'generated_at' => Time.now.strftime('%Y-%m-%d %H:%M:%S UTC')
-        }
-        
-        # Write to data file
-        data_dir = File.join(site.source, '_data')
-        FileUtils.mkdir_p(data_dir)
-        
-        data_file = File.join(data_dir, 'seo.yml')
-        File.write(data_file, seo_data.to_yaml)
-        
-        Jekyll.logger.info "SEO Generator:", "Generated SEO metadata"
-      rescue => e
-        Jekyll.logger.warn "SEO Generator:", "Error: #{e.message}"
-        Jekyll.logger.debug "SEO Generator:", e.backtrace.join("\n")
-      end
+      seo_data = {
+        'meta_tags' => generate_meta_tags(site),
+        'structured_data' => generate_structured_data(site),
+        'sitemap_priorities' => generate_sitemap_priorities(site),
+        'generated_at' => Time.now.strftime('%Y-%m-%d %H:%M:%S UTC')
+      }
+
+      # Write to data file
+      data_dir = File.join(site.source, '_data')
+      FileUtils.mkdir_p(data_dir)
+
+      data_file = File.join(data_dir, 'seo.yml')
+      File.write(data_file, seo_data.to_yaml)
+
+      # Inject into site.data for template access
+      site.data['seo'] = seo_data
+
+      Jekyll.logger.info 'SEO Generator:', 'Generated SEO metadata'
+    rescue StandardError => e
+      Jekyll.logger.warn 'SEO Generator:', "Error: #{e.message}"
+      Jekyll.logger.debug 'SEO Generator:', e.backtrace.join("\n")
     end
 
     private
@@ -33,7 +34,7 @@ module Jekyll
     def generate_meta_tags(site)
       terminal_data = site.data['terminal'] || {}
       companies_data = site.data['companies'] || {}
-      
+
       {
         'title' => site.config['title'] || 'Portfolio',
         'description' => site.config['description'] || terminal_data['bio'] || '',
@@ -52,7 +53,7 @@ module Jekyll
     def generate_structured_data(site)
       terminal_data = site.data['terminal'] || {}
       companies_data = site.data['companies'] || {}
-      
+
       # Person schema
       person_schema = {
         '@context' => 'https://schema.org',
@@ -64,10 +65,10 @@ module Jekyll
         'sameAs' => extract_social_links(terminal_data),
         'knowsAbout' => extract_skills(terminal_data)
       }
-      
+
       # Add email if available
       person_schema['email'] = terminal_data['email'] if terminal_data['email']
-      
+
       # Add location
       if terminal_data['location']
         person_schema['address'] = {
@@ -75,7 +76,7 @@ module Jekyll
           'addressLocality' => terminal_data['location']
         }
       end
-      
+
       # Organization schemas for companies
       organizations = []
       if companies_data['companies']
@@ -88,7 +89,7 @@ module Jekyll
           }
         end
       end
-      
+
       {
         'person' => person_schema,
         'organizations' => organizations
@@ -101,47 +102,45 @@ module Jekyll
         '/terminal/' => 0.9,
         '/about/' => 0.8
       }
-      
+
       # Add post priorities
       site.posts.docs.each do |post|
         priorities[post.url] = 0.7
       end
-      
+
       # Add page priorities
       site.pages.each do |page|
         url = page.url
         next if url == '/' || priorities.key?(url)
-        
+
         priority = case url
-        when /terminal/
-          0.9
-        when /about|contact/
-          0.8
-        else
-          0.6
-        end
-        
+                   when /terminal/
+                     0.9
+                   when /about|contact/
+                     0.8
+                   else
+                     0.6
+                   end
+
         priorities[url] = priority
       end
-      
+
       priorities
     end
 
     def extract_keywords(site, terminal_data, companies_data)
       keywords = []
-      
+
       # From site config
-      if site.config['keywords']
-        keywords.concat(site.config['keywords'].split(',').map(&:strip))
-      end
-      
+      keywords.concat(site.config['keywords'].split(',').map(&:strip)) if site.config['keywords']
+
       # From skills
       if terminal_data['skills']
         terminal_data['skills'].values.flatten.each do |skill|
           keywords << skill.to_s
         end
       end
-      
+
       # From companies
       if companies_data['companies']
         companies_data['companies'].each do |company|
@@ -149,33 +148,32 @@ module Jekyll
           keywords.concat(company['technologies'] || [])
         end
       end
-      
+
       keywords.uniq.join(', ')
     end
 
     def extract_social_links(terminal_data)
       links = []
-      
+
       if terminal_data['links']
         terminal_data['links'].each do |link|
           links << link['url'] if link['url']
         end
       end
-      
+
       links
     end
 
     def extract_skills(terminal_data)
       skills = []
-      
+
       if terminal_data['skills']
         terminal_data['skills'].values.flatten.each do |skill|
           skills << skill.to_s
         end
       end
-      
+
       skills
     end
   end
 end
-

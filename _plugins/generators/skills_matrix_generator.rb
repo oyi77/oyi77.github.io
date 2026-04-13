@@ -63,6 +63,9 @@ module Jekyll
       data_file = File.join(data_dir, 'skills_matrix.yml')
       File.write(data_file, matrix.to_yaml)
 
+      # Inject into site.data for template access
+      site.data['skills_matrix'] = matrix
+
       total_skills = skills.values.flatten.length
       Jekyll.logger.info 'Skills Matrix:', "Generated matrix for #{total_skills} skills"
     rescue StandardError => e
