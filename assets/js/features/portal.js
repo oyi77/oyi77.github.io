@@ -265,11 +265,6 @@ function initToggle() {
     }
 
     if (e.key === 'Escape') {
-      // Trigger eye animation if in main
-      if (currentState === 'main') {
-        triggerEyeAnimation();
-      }
-
       if (currentState === 'metrics') {
         showExpanded();
       } else if (currentState === 'expanded') {
@@ -284,11 +279,6 @@ function initToggle() {
       e.preventDefault();
       showOnboarding();
     }
-  });
-
-  // Cursor leave animation
-  document.addEventListener('mouseleave', () => {
-    triggerEyeAnimation();
   });
 
   updateArrowVisibility();
@@ -473,16 +463,6 @@ function initArrowTooltips() {
   window.addEventListener('beforeunload', () => {
     tooltipIntervals.forEach(interval => clearInterval(interval));
   });
-}
-
-function triggerEyeAnimation() {
-  const eye = document.getElementById('eye-animation');
-  if (eye) {
-    eye.classList.add('active');
-    setTimeout(() => {
-      eye.classList.remove('active');
-    }, 3000);
-  }
 }
 
 // ============================================================================
@@ -1147,7 +1127,7 @@ function initModal() {
       openModal(section);
     });
     card.setAttribute('tabindex', '0');
-    card.addEventListener('keypress', (e) => {
+    card.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
         openModal(card.getAttribute('data-section'));
@@ -1548,14 +1528,22 @@ document.addEventListener('DOMContentLoaded', () => {
   initModal();
   initOnboarding();
   // Initialize metrics animation when expanded sections are shown
+  let githubStatsLoaded = false;
+  let metricsInitialized = false;
   const expandedSections = document.getElementById('expanded-sections');
   if (expandedSections) {
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
         if (mutation.target.classList.contains('show')) {
           setTimeout(() => {
-            initMetricsAnimation();
-            loadGitHubStats();
+            if (!metricsInitialized) {
+              initMetricsAnimation();
+              metricsInitialized = true;
+            }
+            if (!githubStatsLoaded) {
+              loadGitHubStats();
+              githubStatsLoaded = true;
+            }
           }, 100);
         }
       });
@@ -1569,11 +1557,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.clientY <= 0) {
       showCTAModal();
     }
-  });
-
-  // Cursor leave animation (Keep eye animation)
-  document.addEventListener('mouseleave', () => {
-    triggerEyeAnimation();
   });
 
   initCTAModal();
@@ -1613,84 +1596,4 @@ function showCTAModal() {
   }
 }
 
-// ============================================================================
-// ADVANCED ANIMATIONS LOGIC
-// ============================================================================
 
-const EyeFollower = {
-  activeEyes: [],
-  mousePos: { x: 0, y: 0 },
-  maxTravelX: 180,
-  maxTravelY: 80,
-
-  init() {
-    window.addEventListener('mousemove', (e) => {
-      this.mousePos.x = e.clientX;
-      this.mousePos.y = e.clientY;
-      this.update();
-    });
-  },
-
-  register(element) {
-    if (!this.activeEyes.includes(element)) {
-      this.activeEyes.push(element);
-    }
-  },
-
-  unregister(element) {
-    this.activeEyes = this.activeEyes.filter(e => e !== element);
-  },
-
-  update() {
-    if (this.activeEyes.length === 0) return;
-
-    this.activeEyes.forEach(eye => {
-      const rect = eye.getBoundingClientRect();
-      const centerX = rect.left + rect.width / 2;
-      const centerY = rect.top + rect.height / 2;
-
-      const dx = this.mousePos.x - centerX;
-      const dy = this.mousePos.y - centerY;
-
-      const pupilX = this.clamp(dx / 5, -this.maxTravelX, this.maxTravelX);
-      const pupilY = this.clamp(dy / 5, -this.maxTravelY, this.maxTravelY);
-
-      eye.style.setProperty('--pupil-x', `${pupilX}px`);
-      eye.style.setProperty('--pupil-y', `${pupilY}px`);
-    });
-  },
-
-  clamp(val, min, max) {
-    return Math.max(min, Math.min(max, val));
-  }
-};
-
-EyeFollower.init();
-
-function triggerEyeAnimation() {
-  const eye = document.getElementById('eye-animation');
-  if (eye && !eye.classList.contains('active')) {
-    eye.classList.add('active');
-    const svg = eye.querySelector('.scary-eye-svg');
-
-    // Safety check
-    if (!svg) return;
-
-    // Start closed
-    svg.classList.add('closed');
-    svg.classList.remove('crying'); // Reset state
-
-    // Animate opening
-    setTimeout(() => {
-      svg.classList.remove('closed');
-      EyeFollower.register(svg);
-    }, 1000);
-
-    setTimeout(() => {
-      eye.classList.remove('active');
-      EyeFollower.unregister(svg);
-    }, 5000);
-  }
-}
-
-// Removed triggerLimboAnimation as it is replaced by CTA Modal
