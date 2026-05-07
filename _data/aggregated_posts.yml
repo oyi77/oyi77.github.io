@@ -1,347 +1,28 @@
 ---
 posts:
-- title: oyi77 pushed joki-blast-engine
-  excerpt: '<div class="repo-push js-feed-item-view"><div class="body"> <!-- push
-    --> <div class="d-flex flex-items-baseline tmp-py-4"> <div class="d-flex flex-column
-    width-full"> <div class="color-fg-muted"> <span class="mr-2"><a class="d-inline-block"
-    href="/oyi77" rel="noreferrer"><img class="avatar avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=64&amp;v=4"
-    width="32" height="32" alt="@oyi77"></a></span> <a class="Link--primary no-underline
-    wb-break-all" href="/oyi77" rel="noreferrer">oyi77</a> pushed to <a class="branch-name"
-    href="/4yangXYAO/joki-blast-engine/tree/main" rel="noreferrer">main</a> in <a
-    class="Link--primary no-underline wb-break-all" href="/4yangXYAO/joki-blast-engine"
-    rel="noreferrer">4yangXYAO/joki-blast-engine</a> <span> · <relative-time tense="past"
-    datetime="2026-05-05T20:19:47Z" data-view-component="true">May 5, 2026 20:19</relative-time>
-    </span> <div class="Box tmp-p-3 mt-2 color-shadow-medium color-bg-overlay"> <span>1
-    commit to</span> <a class="branch-name" href="/4yangXYAO/joki-blast-engine/tree/main"
-    rel="noreferrer">main</a> <div class="commits pusher-is-only-committer"> <ul class="list-style-none">
-    <li class="d-flex flex-items-baseline"> <span> <a class="d-inline-block" href="/oyi77"
-    rel="noreferrer"><img class="mr-1 avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=32&amp;v=4"
-    width="16" height="16" alt="@oyi77"></a> </span> <code><a class="mr-1" href="/4yangXYAO/joki-blast-engine/commit/39e656b398e0af5363339af5b343352e96c82677"
-    rel="noreferrer">39e656b</a></code> <div class="dashboard-break-word lh-condensed">
-    <blockquote> feat(facebook): add robust Playwright stealth adapter with auto-bot
-    s… </blockquote> </div> </li> </ul> </div> </div> </div> </div> </div> </div></div>'
-  link: https://github.com/4yangXYAO/joki-blast-engine/compare/d14c4441af...39e656b398
-  source: GitHub
-  published_date: '2026-05-05T20:19:47Z'
-  author: |-
-    <author lang="en-US">
-      <name lang="en-US">oyi77</name>
-      <uri lang="en-US">https://github.com/oyi77</uri>
-    </author>
-  categories: []
-  tags: []
-- title: oyi77 pushed joki-blast-engine
-  excerpt: '<div class="repo-push js-feed-item-view"><div class="body"> <!-- push
-    --> <div class="d-flex flex-items-baseline tmp-py-4"> <div class="d-flex flex-column
-    width-full"> <div class="color-fg-muted"> <span class="mr-2"><a class="d-inline-block"
-    href="/oyi77" rel="noreferrer"><img class="avatar avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=64&amp;v=4"
-    width="32" height="32" alt="@oyi77"></a></span> <a class="Link--primary no-underline
-    wb-break-all" href="/oyi77" rel="noreferrer">oyi77</a> pushed to <a class="branch-name"
-    href="/4yangXYAO/joki-blast-engine/tree/main" rel="noreferrer">main</a> in <a
-    class="Link--primary no-underline wb-break-all" href="/4yangXYAO/joki-blast-engine"
-    rel="noreferrer">4yangXYAO/joki-blast-engine</a> <span> · <relative-time tense="past"
-    datetime="2026-05-05T19:17:09Z" data-view-component="true">May 5, 2026 19:17</relative-time>
-    </span> <div class="Box tmp-p-3 mt-2 color-shadow-medium color-bg-overlay"> <span>1
-    commit to</span> <a class="branch-name" href="/4yangXYAO/joki-blast-engine/tree/main"
-    rel="noreferrer">main</a> <div class="commits pusher-is-only-committer"> <ul class="list-style-none">
-    <li class="d-flex flex-items-baseline"> <span> <a class="d-inline-block" href="/oyi77"
-    rel="noreferrer"><img class="mr-1 avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=32&amp;v=4"
-    width="16" height="16" alt="@oyi77"></a> </span> <code><a class="mr-1" href="/4yangXYAO/joki-blast-engine/commit/d14c4441afa98c1d1b3c05ce2c3200d8c18f3a66"
-    rel="noreferrer">d14c444</a></code> <div class="dashboard-break-word lh-condensed">
-    <blockquote> feat(facebook): verify adapter tools, fix GQL notification extraction…
-    </blockquote> </div> </li> </ul> </div> </div> </div> </div> </div> </div></div>'
-  link: https://github.com/4yangXYAO/joki-blast-engine/compare/0911ac25d3...d14c4441af
-  source: GitHub
-  published_date: '2026-05-05T19:17:09Z'
-  author: |-
-    <author lang="en-US">
-      <name lang="en-US">oyi77</name>
-      <uri lang="en-US">https://github.com/oyi77</uri>
-    </author>
-  categories: []
-  tags: []
-- title: oyi77 pushed 1ai-poly-trader
-  excerpt: '<div class="repo-push js-feed-item-view"><div class="body"> <!-- push
-    --> <div class="d-flex flex-items-baseline tmp-py-4"> <div class="d-flex flex-column
-    width-full"> <div class="color-fg-muted"> <span class="mr-2"><a class="d-inline-block"
-    href="/oyi77" rel="noreferrer"><img class="avatar avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=64&amp;v=4"
-    width="32" height="32" alt="@oyi77"></a></span> <a class="Link--primary no-underline
-    wb-break-all" href="/oyi77" rel="noreferrer">oyi77</a> pushed to <a class="branch-name"
-    href="/oyi77/1ai-poly-trader/tree/main" rel="noreferrer">main</a> in <a class="Link--primary
-    no-underline wb-break-all" href="/oyi77/1ai-poly-trader" rel="noreferrer">oyi77/1ai-poly-trader</a>
-    <span> · <relative-time tense="past" datetime="2026-05-05T19:03:31Z" data-view-component="true">May
-    5, 2026 19:03</relative-time> </span> <div class="Box tmp-p-3 mt-2 color-shadow-medium
-    color-bg-overlay"> <span>1 commit to</span> <a class="branch-name" href="/oyi77/1ai-poly-trader/tree/main"
-    rel="noreferrer">main</a> <div class="commits pusher-is-only-committer"> <ul class="list-style-none">
-    <li class="d-flex flex-items-baseline"> <span> <a class="d-inline-block" href="/oyi77"
-    rel="noreferrer"><img class="mr-1 avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=32&amp;v=4"
-    width="16" height="16" alt="@oyi77"></a> </span> <code><a class="mr-1" href="/oyi77/1ai-poly-trader/commit/803e72a42ced5334294f3877789006e7628e4e7f"
-    rel="noreferrer">803e72a</a></code> <div class="dashboard-break-word lh-condensed">
-    <blockquote> fix: target Vercel output root </blockquote> </div> </li> </ul> </div>
-    </div> </div> </div> </div> </div></div>'
-  link: https://github.com/oyi77/1ai-poly-trader/compare/43889ad84b...803e72a42c
-  source: GitHub
-  published_date: '2026-05-05T19:03:31Z'
-  author: |-
-    <author lang="en-US">
-      <name lang="en-US">oyi77</name>
-      <uri lang="en-US">https://github.com/oyi77</uri>
-    </author>
-  categories: []
-  tags: []
-- title: oyi77 pushed 1ai-poly-trader
-  excerpt: '<div class="repo-push js-feed-item-view"><div class="body"> <!-- push
-    --> <div class="d-flex flex-items-baseline tmp-py-4"> <div class="d-flex flex-column
-    width-full"> <div class="color-fg-muted"> <span class="mr-2"><a class="d-inline-block"
-    href="/oyi77" rel="noreferrer"><img class="avatar avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=64&amp;v=4"
-    width="32" height="32" alt="@oyi77"></a></span> <a class="Link--primary no-underline
-    wb-break-all" href="/oyi77" rel="noreferrer">oyi77</a> pushed to <a class="branch-name"
-    href="/oyi77/1ai-poly-trader/tree/main" rel="noreferrer">main</a> in <a class="Link--primary
-    no-underline wb-break-all" href="/oyi77/1ai-poly-trader" rel="noreferrer">oyi77/1ai-poly-trader</a>
-    <span> · <relative-time tense="past" datetime="2026-05-05T19:01:29Z" data-view-component="true">May
-    5, 2026 19:01</relative-time> </span> <div class="Box tmp-p-3 mt-2 color-shadow-medium
-    color-bg-overlay"> <span>1 commit to</span> <a class="branch-name" href="/oyi77/1ai-poly-trader/tree/main"
-    rel="noreferrer">main</a> <div class="commits pusher-is-only-committer"> <ul class="list-style-none">
-    <li class="d-flex flex-items-baseline"> <span> <a class="d-inline-block" href="/oyi77"
-    rel="noreferrer"><img class="mr-1 avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=32&amp;v=4"
-    width="16" height="16" alt="@oyi77"></a> </span> <code><a class="mr-1" href="/oyi77/1ai-poly-trader/commit/43889ad84be4a0f82a2f18ef16f3cf13818591bb"
-    rel="noreferrer">43889ad</a></code> <div class="dashboard-break-word lh-condensed">
-    <blockquote> fix: restore Vercel SPA fallback </blockquote> </div> </li> </ul>
-    </div> </div> </div> </div> </div> </div></div>'
-  link: https://github.com/oyi77/1ai-poly-trader/compare/6cf97944eb...43889ad84b
-  source: GitHub
-  published_date: '2026-05-05T19:01:29Z'
-  author: |-
-    <author lang="en-US">
-      <name lang="en-US">oyi77</name>
-      <uri lang="en-US">https://github.com/oyi77</uri>
-    </author>
-  categories: []
-  tags: []
-- title: oyi77 pushed 1ai-poly-trader
-  excerpt: '<div class="repo-push js-feed-item-view"><div class="body"> <!-- push
-    --> <div class="d-flex flex-items-baseline tmp-py-4"> <div class="d-flex flex-column
-    width-full"> <div class="color-fg-muted"> <span class="mr-2"><a class="d-inline-block"
-    href="/oyi77" rel="noreferrer"><img class="avatar avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=64&amp;v=4"
-    width="32" height="32" alt="@oyi77"></a></span> <a class="Link--primary no-underline
-    wb-break-all" href="/oyi77" rel="noreferrer">oyi77</a> pushed to <a class="branch-name"
-    href="/oyi77/1ai-poly-trader/tree/main" rel="noreferrer">main</a> in <a class="Link--primary
-    no-underline wb-break-all" href="/oyi77/1ai-poly-trader" rel="noreferrer">oyi77/1ai-poly-trader</a>
-    <span> · <relative-time tense="past" datetime="2026-05-05T18:58:36Z" data-view-component="true">May
-    5, 2026 18:58</relative-time> </span> <div class="Box tmp-p-3 mt-2 color-shadow-medium
-    color-bg-overlay"> <span>1 commit to</span> <a class="branch-name" href="/oyi77/1ai-poly-trader/tree/main"
-    rel="noreferrer">main</a> <div class="commits pusher-is-only-committer"> <ul class="list-style-none">
-    <li class="d-flex flex-items-baseline"> <span> <a class="d-inline-block" href="/oyi77"
-    rel="noreferrer"><img class="mr-1 avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=32&amp;v=4"
-    width="16" height="16" alt="@oyi77"></a> </span> <code><a class="mr-1" href="/oyi77/1ai-poly-trader/commit/6cf97944eb14ce6b3bc177a4b76c92d26ace66c0"
-    rel="noreferrer">6cf9794</a></code> <div class="dashboard-break-word lh-condensed">
-    <blockquote> fix: serve docs pages without redirects </blockquote> </div> </li>
-    </ul> </div> </div> </div> </div> </div> </div></div>'
-  link: https://github.com/oyi77/1ai-poly-trader/compare/278fb38c69...6cf97944eb
-  source: GitHub
-  published_date: '2026-05-05T18:58:36Z'
-  author: |-
-    <author lang="en-US">
-      <name lang="en-US">oyi77</name>
-      <uri lang="en-US">https://github.com/oyi77</uri>
-    </author>
-  categories: []
-  tags: []
-- title: oyi77 pushed 1ai-poly-trader
-  excerpt: '<div class="repo-push js-feed-item-view"><div class="body"> <!-- push
-    --> <div class="d-flex flex-items-baseline tmp-py-4"> <div class="d-flex flex-column
-    width-full"> <div class="color-fg-muted"> <span class="mr-2"><a class="d-inline-block"
-    href="/oyi77" rel="noreferrer"><img class="avatar avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=64&amp;v=4"
-    width="32" height="32" alt="@oyi77"></a></span> <a class="Link--primary no-underline
-    wb-break-all" href="/oyi77" rel="noreferrer">oyi77</a> pushed to <a class="branch-name"
-    href="/oyi77/1ai-poly-trader/tree/main" rel="noreferrer">main</a> in <a class="Link--primary
-    no-underline wb-break-all" href="/oyi77/1ai-poly-trader" rel="noreferrer">oyi77/1ai-poly-trader</a>
-    <span> · <relative-time tense="past" datetime="2026-05-05T18:42:11Z" data-view-component="true">May
-    5, 2026 18:42</relative-time> </span> <div class="Box tmp-p-3 mt-2 color-shadow-medium
-    color-bg-overlay"> <span>2 commits to</span> <a class="branch-name" href="/oyi77/1ai-poly-trader/tree/main"
-    rel="noreferrer">main</a> <div class="commits pusher-is-only-committer"> <ul class="list-style-none">
-    <li class="d-flex flex-items-baseline"> <span> <a class="d-inline-block" href="/oyi77"
-    rel="noreferrer"><img class="mr-1 avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=32&amp;v=4"
-    width="16" height="16" alt="@oyi77"></a> </span> <code><a class="mr-1" href="/oyi77/1ai-poly-trader/commit/8561f013f00ab081efb16e7eb8b9f6db4f218a4b"
-    rel="noreferrer">8561f01</a></code> <div class="dashboard-break-word lh-condensed">
-    <blockquote> feat: add landing language selector </blockquote> </div> </li> <li
-    class="d-flex flex-items-baseline"> <span> <a class="d-inline-block" href="/oyi77"
-    rel="noreferrer"><img class="mr-1 avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=32&amp;v=4"
-    width="16" height="16" alt="@oyi77"></a> </span> <code><a class="mr-1" href="/oyi77/1ai-poly-trader/commit/278fb38c69ab0c2142e71bc103114221cc539625"
-    rel="noreferrer">278fb38</a></code> <div class="dashboard-break-word lh-condensed">
-    <blockquote> fix: normalize docs route slashes </blockquote> </div> </li> </ul>
-    </div> </div> </div> </div> </div> </div></div>'
-  link: https://github.com/oyi77/1ai-poly-trader/compare/2c27502837...278fb38c69
-  source: GitHub
-  published_date: '2026-05-05T18:42:11Z'
-  author: |-
-    <author lang="en-US">
-      <name lang="en-US">oyi77</name>
-      <uri lang="en-US">https://github.com/oyi77</uri>
-    </author>
-  categories: []
-  tags: []
-- title: oyi77 pushed joki-blast-engine
-  excerpt: '<div class="repo-push js-feed-item-view"><div class="body"> <!-- push
-    --> <div class="d-flex flex-items-baseline tmp-py-4"> <div class="d-flex flex-column
-    width-full"> <div class="color-fg-muted"> <span class="mr-2"><a class="d-inline-block"
-    href="/oyi77" rel="noreferrer"><img class="avatar avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=64&amp;v=4"
-    width="32" height="32" alt="@oyi77"></a></span> <a class="Link--primary no-underline
-    wb-break-all" href="/oyi77" rel="noreferrer">oyi77</a> pushed to <a class="branch-name"
-    href="/4yangXYAO/joki-blast-engine/tree/main" rel="noreferrer">main</a> in <a
-    class="Link--primary no-underline wb-break-all" href="/4yangXYAO/joki-blast-engine"
-    rel="noreferrer">4yangXYAO/joki-blast-engine</a> <span> · <relative-time tense="past"
-    datetime="2026-05-05T18:35:49Z" data-view-component="true">May 5, 2026 18:35</relative-time>
-    </span> <div class="Box tmp-p-3 mt-2 color-shadow-medium color-bg-overlay"> <span>1
-    commit to</span> <a class="branch-name" href="/4yangXYAO/joki-blast-engine/tree/main"
-    rel="noreferrer">main</a> <div class="commits pusher-is-only-committer"> <ul class="list-style-none">
-    <li class="d-flex flex-items-baseline"> <span> <a class="d-inline-block" href="/oyi77"
-    rel="noreferrer"><img class="mr-1 avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=32&amp;v=4"
-    width="16" height="16" alt="@oyi77"></a> </span> <code><a class="mr-1" href="/4yangXYAO/joki-blast-engine/commit/0911ac25d3fe3d7a65f33f9907af914ec3c8a631"
-    rel="noreferrer">0911ac2</a></code> <div class="dashboard-break-word lh-condensed">
-    <blockquote> docs: simplify README.md and add unified startup scripts </blockquote>
-    </div> </li> </ul> </div> </div> </div> </div> </div> </div></div>'
-  link: https://github.com/4yangXYAO/joki-blast-engine/compare/fdd93aa4c3...0911ac25d3
-  source: GitHub
-  published_date: '2026-05-05T18:35:49Z'
-  author: |-
-    <author lang="en-US">
-      <name lang="en-US">oyi77</name>
-      <uri lang="en-US">https://github.com/oyi77</uri>
-    </author>
-  categories: []
-  tags: []
-- title: oyi77 pushed joki-blast-engine
-  excerpt: '<div class="repo-push js-feed-item-view"><div class="body"> <!-- push
-    --> <div class="d-flex flex-items-baseline tmp-py-4"> <div class="d-flex flex-column
-    width-full"> <div class="color-fg-muted"> <span class="mr-2"><a class="d-inline-block"
-    href="/oyi77" rel="noreferrer"><img class="avatar avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=64&amp;v=4"
-    width="32" height="32" alt="@oyi77"></a></span> <a class="Link--primary no-underline
-    wb-break-all" href="/oyi77" rel="noreferrer">oyi77</a> pushed to <a class="branch-name"
-    href="/4yangXYAO/joki-blast-engine/tree/main" rel="noreferrer">main</a> in <a
-    class="Link--primary no-underline wb-break-all" href="/4yangXYAO/joki-blast-engine"
-    rel="noreferrer">4yangXYAO/joki-blast-engine</a> <span> · <relative-time tense="past"
-    datetime="2026-05-05T18:29:42Z" data-view-component="true">May 5, 2026 18:29</relative-time>
-    </span> <div class="Box tmp-p-3 mt-2 color-shadow-medium color-bg-overlay"> <span>1
-    commit to</span> <a class="branch-name" href="/4yangXYAO/joki-blast-engine/tree/main"
-    rel="noreferrer">main</a> <div class="commits pusher-is-only-committer"> <ul class="list-style-none">
-    <li class="d-flex flex-items-baseline"> <span> <a class="d-inline-block" href="/oyi77"
-    rel="noreferrer"><img class="mr-1 avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=32&amp;v=4"
-    width="16" height="16" alt="@oyi77"></a> </span> <code><a class="mr-1" href="/4yangXYAO/joki-blast-engine/commit/fdd93aa4c33da7900e3c7e4099fc9d84a7fbae79"
-    rel="noreferrer">fdd93aa</a></code> <div class="dashboard-break-word lh-condensed">
-    <blockquote> chore: organize documentation files into docs subdirectories </blockquote>
-    </div> </li> </ul> </div> </div> </div> </div> </div> </div></div>'
-  link: https://github.com/4yangXYAO/joki-blast-engine/compare/db12e3c41f...fdd93aa4c3
-  source: GitHub
-  published_date: '2026-05-05T18:29:42Z'
-  author: |-
-    <author lang="en-US">
-      <name lang="en-US">oyi77</name>
-      <uri lang="en-US">https://github.com/oyi77</uri>
-    </author>
-  categories: []
-  tags: []
-- title: oyi77 pushed joki-blast-engine
-  excerpt: '<div class="repo-push js-feed-item-view"><div class="body"> <!-- push
-    --> <div class="d-flex flex-items-baseline tmp-py-4"> <div class="d-flex flex-column
-    width-full"> <div class="color-fg-muted"> <span class="mr-2"><a class="d-inline-block"
-    href="/oyi77" rel="noreferrer"><img class="avatar avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=64&amp;v=4"
-    width="32" height="32" alt="@oyi77"></a></span> <a class="Link--primary no-underline
-    wb-break-all" href="/oyi77" rel="noreferrer">oyi77</a> pushed to <a class="branch-name"
-    href="/4yangXYAO/joki-blast-engine/tree/main" rel="noreferrer">main</a> in <a
-    class="Link--primary no-underline wb-break-all" href="/4yangXYAO/joki-blast-engine"
-    rel="noreferrer">4yangXYAO/joki-blast-engine</a> <span> · <relative-time tense="past"
-    datetime="2026-05-05T18:28:04Z" data-view-component="true">May 5, 2026 18:28</relative-time>
-    </span> <div class="Box tmp-p-3 mt-2 color-shadow-medium color-bg-overlay"> <span>2
-    commits to</span> <a class="branch-name" href="/4yangXYAO/joki-blast-engine/tree/main"
-    rel="noreferrer">main</a> <div class="commits pusher-is-only-committer"> <ul class="list-style-none">
-    <li class="d-flex flex-items-baseline"> <span> <a class="d-inline-block" href="/oyi77"
-    rel="noreferrer"><img class="mr-1 avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=32&amp;v=4"
-    width="16" height="16" alt="@oyi77"></a> </span> <code><a class="mr-1" href="/4yangXYAO/joki-blast-engine/commit/f1aec6431c25a27fcddf05df469e4364dae8f52e"
-    rel="noreferrer">f1aec64</a></code> <div class="dashboard-break-word lh-condensed">
-    <blockquote> test: fix missing vitest imports and typescript errors in tests </blockquote>
-    </div> </li> <li class="d-flex flex-items-baseline"> <span> <a class="d-inline-block"
-    href="/oyi77" rel="noreferrer"><img class="mr-1 avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=32&amp;v=4"
-    width="16" height="16" alt="@oyi77"></a> </span> <code><a class="mr-1" href="/4yangXYAO/joki-blast-engine/commit/f4bf8a5c62d4a55764dd3259bb901e590c977967"
-    rel="noreferrer">f4bf8a5</a></code> <div class="dashboard-break-word lh-condensed">
-    <blockquote> refactor: replace all explicit `any` types in routes &amp; workers
-    with p… </blockquote> </div> </li> <li class="f6 mt-2"> <a class="Link--secondary"
-    href="https://github.com/4yangXYAO/joki-blast-engine/compare/2db710f6e6...db12e3c41f"
-    rel="noreferrer">1 more commit »</a> </li> </ul> </div> </div> </div> </div> </div>
-    </div></div>'
-  link: https://github.com/4yangXYAO/joki-blast-engine/compare/2db710f6e6...db12e3c41f
-  source: GitHub
-  published_date: '2026-05-05T18:28:04Z'
-  author: |-
-    <author lang="en-US">
-      <name lang="en-US">oyi77</name>
-      <uri lang="en-US">https://github.com/oyi77</uri>
-    </author>
-  categories: []
-  tags: []
-- title: oyi77 pushed 1ai-poly-trader
-  excerpt: '<div class="repo-push js-feed-item-view"><div class="body"> <!-- push
-    --> <div class="d-flex flex-items-baseline tmp-py-4"> <div class="d-flex flex-column
-    width-full"> <div class="color-fg-muted"> <span class="mr-2"><a class="d-inline-block"
-    href="/oyi77" rel="noreferrer"><img class="avatar avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=64&amp;v=4"
-    width="32" height="32" alt="@oyi77"></a></span> <a class="Link--primary no-underline
-    wb-break-all" href="/oyi77" rel="noreferrer">oyi77</a> pushed to <a class="branch-name"
-    href="/oyi77/1ai-poly-trader/tree/main" rel="noreferrer">main</a> in <a class="Link--primary
-    no-underline wb-break-all" href="/oyi77/1ai-poly-trader" rel="noreferrer">oyi77/1ai-poly-trader</a>
-    <span> · <relative-time tense="past" datetime="2026-05-05T17:57:50Z" data-view-component="true">May
-    5, 2026 17:57</relative-time> </span> <div class="Box tmp-p-3 mt-2 color-shadow-medium
-    color-bg-overlay"> <span>1 commit to</span> <a class="branch-name" href="/oyi77/1ai-poly-trader/tree/main"
-    rel="noreferrer">main</a> <div class="commits pusher-is-only-committer"> <ul class="list-style-none">
-    <li class="d-flex flex-items-baseline"> <span> <a class="d-inline-block" href="/oyi77"
-    rel="noreferrer"><img class="mr-1 avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=32&amp;v=4"
-    width="16" height="16" alt="@oyi77"></a> </span> <code><a class="mr-1" href="/oyi77/1ai-poly-trader/commit/2c275028377eaaab37d7f215e6336e312e9ab0a6"
-    rel="noreferrer">2c27502</a></code> <div class="dashboard-break-word lh-condensed">
-    <blockquote> feat: redesign landing as investor dossier </blockquote> </div> </li>
-    </ul> </div> </div> </div> </div> </div> </div></div>'
-  link: https://github.com/oyi77/1ai-poly-trader/compare/0510471d56...2c27502837
-  source: GitHub
-  published_date: '2026-05-05T17:57:50Z'
-  author: |-
-    <author lang="en-US">
-      <name lang="en-US">oyi77</name>
-      <uri lang="en-US">https://github.com/oyi77</uri>
-    </author>
-  categories: []
-  tags: []
-- title: oyi77 contributed to diegosouzapw/OmniRoute
-  excerpt: '<div class="git-merge js-feed-item-view"><div class="body"> <!-- pull_request
-    --> <div class="d-flex flex-items-baseline tmp-py-4"> <div class="d-flex flex-column
-    width-full"> <div> <div class="d-flex flex-items-baseline"> <div class="color-fg-muted">
+- title: oyi77 commented on an issue in 1ai-poly-trader
+  excerpt: '<div class="issues_comment js-feed-item-view"><div class="body"> <!--
+    issue_comment --> <div class="d-flex flex-items-baseline tmp-py-4"> <div class="d-flex
+    flex-column width-full"> <div class="d-flex flex-items-baseline mb-2"> <div class="color-fg-muted">
     <span class="mr-2"><a class="d-inline-block" href="/oyi77" rel="noreferrer"><img
     class="avatar avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=64&amp;v=4"
     width="32" height="32" alt="@oyi77"></a></span> <a class="Link--primary no-underline
-    wb-break-all" href="/oyi77" rel="noreferrer">oyi77</a> merged <a class="Link--primary
-    no-underline wb-break-all" aria-label="diegosouzapw/OmniRoute#1945" href="https://github.com/diegosouzapw/OmniRoute/pull/1945"
-    rel="noreferrer">diegosouzapw/OmniRoute#1945</a> <span> · <relative-time tense="past"
-    datetime="2026-05-05T10:52:13-07:00" data-view-component="true">May 5, 2026 10:52</relative-time>
-    </span> </div> </div> </div> <div class="Box tmp-p-3 my-2 color-shadow-medium
-    color-bg-overlay"> <svg height="16" aria-label="Pull request" class="octicon octicon-git-pull-request
-    merge d-inline-block mt-1 float-left" viewBox="0 0 16 16" version="1.1" width="16"
-    role="img"><path d="M1.5 3.25a2.25 2.25 0 1 1 3 2.122v5.256a2.251 2.251 0 1 1-1.5
-    0V5.372A2.25 2.25 0 0 1 1.5 3.25Zm5.677-.177L9.573.677A.25.25 0 0 1 10 .854V2.5h1A2.5
-    2.5 0 0 1 13.5 5v5.628a2.251 2.251 0 1 1-1.5 0V5a1 1 0 0 0-1-1h-1v1.646a.25.25
-    0 0 1-.427.177L7.177 3.427a.25.25 0 0 1 0-.354ZM3.75 2.5a.75.75 0 1 0 0 1.5.75.75
-    0 0 0 0-1.5Zm0 9.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm8.25.75a.75.75 0 1 0
-    1.5 0 .75.75 0 0 0-1.5 0Z"></path></svg> <div class="tmp-ml-4"> <div> <span class="f4
-    lh-condensed text-bold color-fg-default"><a class="color-fg-default text-bold"
-    aria-label="fix: swap primary/legacy key derivation in encryption module (fixes
-    #1941)" href="https://github.com/diegosouzapw/OmniRoute/pull/1945" rel="noreferrer">fix:
-    swap primary/legacy key derivation in encryption module (fixes #1941)</a></span>
-    <span class="f4 color-fg-muted ml-1">#1945</span> <div class="lh-condensed mb-2
-    mt-1"> <h2 dir="auto">Summary</h2> <p dir="auto">Fixes a critical encryption key
-    derivation mismatch that caused persistent auth tag validation failures, token
-    decryption errors, and CPU s…</p> </div> </div> <div class="diffstat d-inline-block
-    mt-1"> <span class="color-fg-success">+327</span> <span class="color-fg-danger">-0</span>
-    </div> <div class="d-inline-block f6 color-fg-muted tmp-ml-3"> 9 comments </div>
-    </div> </div> </div> </div> </div></div>'
-  link: https://github.com/diegosouzapw/OmniRoute/pull/1945
+    wb-break-all" href="/oyi77" rel="noreferrer">oyi77</a> commented on <a class="Link--primary"
+    title="P1: Deploy Longshot Bias Detection Signal" href="https://github.com/oyi77/1ai-poly-trader/issues/4#issuecomment-4392518166"
+    rel="noreferrer">oyi77/1ai-poly-trader#4</a> <span> · <relative-time tense="past"
+    datetime="2026-05-06T15:01:24-07:00" data-view-component="true">May 6, 2026 15:01</relative-time>
+    </span> </div> </div> <div class="message markdown-body Box tmp-p-3 wb-break-all
+    color-shadow-medium color-bg-overlay"> <div class="f6 mb-1"> <a title="P1: Deploy
+    Longshot Bias Detection Signal" class="Link--secondary" href="https://github.com/oyi77/1ai-poly-trader/issues/4#issuecomment-4392518166"
+    rel="noreferrer"><img class="avatar mr-1 avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=32&amp;v=4"
+    width="16" height="16" alt="@oyi77"> <span class="Link--primary text-bold">oyi77</span>
+    commented <relative-time datetime="2026-05-06T22:01:24Z" class="no-wrap">May 6,
+    2026</relative-time></a> </div> ## Fix Proposal — Issue #4: Longshot Bias Detection
+    Signal ### Overview Add `LongshotBiasDetector` class that monitors realized win
+    rates at low pr… </div> </div> </div> </div></div>'
+  link: https://github.com/oyi77/1ai-poly-trader/issues/4#issuecomment-4392518166
   source: GitHub
-  published_date: '2026-05-05T17:52:13Z'
+  published_date: '2026-05-06T22:01:24Z'
   author: |-
     <author lang="en-US">
       <name lang="en-US">oyi77</name>
@@ -349,142 +30,30 @@ posts:
     </author>
   categories: []
   tags: []
-- title: oyi77 pushed 1ai-poly-trader
-  excerpt: '<div class="repo-push js-feed-item-view"><div class="body"> <!-- push
-    --> <div class="d-flex flex-items-baseline tmp-py-4"> <div class="d-flex flex-column
-    width-full"> <div class="color-fg-muted"> <span class="mr-2"><a class="d-inline-block"
-    href="/oyi77" rel="noreferrer"><img class="avatar avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=64&amp;v=4"
-    width="32" height="32" alt="@oyi77"></a></span> <a class="Link--primary no-underline
-    wb-break-all" href="/oyi77" rel="noreferrer">oyi77</a> pushed to <a class="branch-name"
-    href="/oyi77/1ai-poly-trader/tree/main" rel="noreferrer">main</a> in <a class="Link--primary
-    no-underline wb-break-all" href="/oyi77/1ai-poly-trader" rel="noreferrer">oyi77/1ai-poly-trader</a>
-    <span> · <relative-time tense="past" datetime="2026-05-05T17:14:19Z" data-view-component="true">May
-    5, 2026 17:14</relative-time> </span> <div class="Box tmp-p-3 mt-2 color-shadow-medium
-    color-bg-overlay"> <span>1 commit to</span> <a class="branch-name" href="/oyi77/1ai-poly-trader/tree/main"
-    rel="noreferrer">main</a> <div class="commits pusher-is-only-committer"> <ul class="list-style-none">
-    <li class="d-flex flex-items-baseline"> <span> <a class="d-inline-block" href="/oyi77"
-    rel="noreferrer"><img class="mr-1 avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=32&amp;v=4"
-    width="16" height="16" alt="@oyi77"></a> </span> <code><a class="mr-1" href="/oyi77/1ai-poly-trader/commit/0510471d5659e0fd9c61ae77cddbaeeef421b451"
-    rel="noreferrer">0510471</a></code> <div class="dashboard-break-word lh-condensed">
-    <blockquote> chore: ignore local verification artifacts </blockquote> </div> </li>
-    </ul> </div> </div> </div> </div> </div> </div></div>'
-  link: https://github.com/oyi77/1ai-poly-trader/compare/8e63e31726...0510471d56
-  source: GitHub
-  published_date: '2026-05-05T17:14:19Z'
-  author: |-
-    <author lang="en-US">
-      <name lang="en-US">oyi77</name>
-      <uri lang="en-US">https://github.com/oyi77</uri>
-    </author>
-  categories: []
-  tags: []
-- title: oyi77 pushed 1ai-poly-trader
-  excerpt: '<div class="repo-push js-feed-item-view"><div class="body"> <!-- push
-    --> <div class="d-flex flex-items-baseline tmp-py-4"> <div class="d-flex flex-column
-    width-full"> <div class="color-fg-muted"> <span class="mr-2"><a class="d-inline-block"
-    href="/oyi77" rel="noreferrer"><img class="avatar avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=64&amp;v=4"
-    width="32" height="32" alt="@oyi77"></a></span> <a class="Link--primary no-underline
-    wb-break-all" href="/oyi77" rel="noreferrer">oyi77</a> pushed to <a class="branch-name"
-    href="/oyi77/1ai-poly-trader/tree/main" rel="noreferrer">main</a> in <a class="Link--primary
-    no-underline wb-break-all" href="/oyi77/1ai-poly-trader" rel="noreferrer">oyi77/1ai-poly-trader</a>
-    <span> · <relative-time tense="past" datetime="2026-05-05T17:10:17Z" data-view-component="true">May
-    5, 2026 17:10</relative-time> </span> <div class="Box tmp-p-3 mt-2 color-shadow-medium
-    color-bg-overlay"> <span>2 commits to</span> <a class="branch-name" href="/oyi77/1ai-poly-trader/tree/main"
-    rel="noreferrer">main</a> <div class="commits pusher-is-only-committer"> <ul class="list-style-none">
-    <li class="d-flex flex-items-baseline"> <span> <a class="d-inline-block" href="/oyi77"
-    rel="noreferrer"><img class="mr-1 avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=32&amp;v=4"
-    width="16" height="16" alt="@oyi77"></a> </span> <code><a class="mr-1" href="/oyi77/1ai-poly-trader/commit/876fb38d9a075115680f95f2f0a750d6d9afec4e"
-    rel="noreferrer">876fb38</a></code> <div class="dashboard-break-word lh-condensed">
-    <blockquote> feat: add AGI genome lifecycle infrastructure </blockquote> </div>
-    </li> <li class="d-flex flex-items-baseline"> <span> <a class="d-inline-block"
-    href="/oyi77" rel="noreferrer"><img class="mr-1 avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=32&amp;v=4"
-    width="16" height="16" alt="@oyi77"></a> </span> <code><a class="mr-1" href="/oyi77/1ai-poly-trader/commit/44b47feca57dfa492efd14b3c54d90f7d9d13065"
-    rel="noreferrer">44b47fe</a></code> <div class="dashboard-break-word lh-condensed">
-    <blockquote> feat: add realtime AGI and event API integration </blockquote> </div>
-    </li> <li class="f6 mt-2"> <a class="Link--secondary" href="https://github.com/oyi77/1ai-poly-trader/compare/5d7f9a02fc...8e63e31726"
-    rel="noreferrer">4 more commits »</a> </li> </ul> </div> </div> </div> </div>
-    </div> </div></div>'
-  link: https://github.com/oyi77/1ai-poly-trader/compare/5d7f9a02fc...8e63e31726
-  source: GitHub
-  published_date: '2026-05-05T17:10:17Z'
-  author: |-
-    <author lang="en-US">
-      <name lang="en-US">oyi77</name>
-      <uri lang="en-US">https://github.com/oyi77</uri>
-    </author>
-  categories: []
-  tags: []
-- title: oyi77 pushed 1ai-poly-trader
-  excerpt: '<div class="repo-push js-feed-item-view"><div class="body"> <!-- push
-    --> <div class="d-flex flex-items-baseline tmp-py-4"> <div class="d-flex flex-column
-    width-full"> <div class="color-fg-muted"> <span class="mr-2"><a class="d-inline-block"
-    href="/oyi77" rel="noreferrer"><img class="avatar avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=64&amp;v=4"
-    width="32" height="32" alt="@oyi77"></a></span> <a class="Link--primary no-underline
-    wb-break-all" href="/oyi77" rel="noreferrer">oyi77</a> pushed to <a class="branch-name"
-    href="/oyi77/1ai-poly-trader/tree/main" rel="noreferrer">main</a> in <a class="Link--primary
-    no-underline wb-break-all" href="/oyi77/1ai-poly-trader" rel="noreferrer">oyi77/1ai-poly-trader</a>
-    <span> · <relative-time tense="past" datetime="2026-05-05T17:01:30Z" data-view-component="true">May
-    5, 2026 17:01</relative-time> </span> <div class="Box tmp-p-3 mt-2 color-shadow-medium
-    color-bg-overlay"> <span>2 commits to</span> <a class="branch-name" href="/oyi77/1ai-poly-trader/tree/main"
-    rel="noreferrer">main</a> <div class="commits pusher-is-only-committer"> <ul class="list-style-none">
-    <li class="d-flex flex-items-baseline"> <span> <a class="d-inline-block" href="/oyi77"
-    rel="noreferrer"><img class="mr-1 avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=32&amp;v=4"
-    width="16" height="16" alt="@oyi77"></a> </span> <code><a class="mr-1" href="/oyi77/1ai-poly-trader/commit/8b5b476a4ec2cda8a6644616ce91ee1765ed0430"
-    rel="noreferrer">8b5b476</a></code> <div class="dashboard-break-word lh-condensed">
-    <blockquote> docs: add onboarding guide + gitignore KG artifacts </blockquote>
-    </div> </li> <li class="d-flex flex-items-baseline"> <span> <a class="d-inline-block"
-    href="/oyi77" rel="noreferrer"><img class="mr-1 avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=32&amp;v=4"
-    width="16" height="16" alt="@oyi77"></a> </span> <code><a class="mr-1" href="/oyi77/1ai-poly-trader/commit/6d045f67878aa954bd4078835a76ee7dcecdbc66"
-    rel="noreferrer">6d045f6</a></code> <div class="dashboard-break-word lh-condensed">
-    <blockquote> feat: AGI allocation-based risk sizing + new alembic migrations </blockquote>
-    </div> </li> <li class="f6 mt-2"> <a class="Link--secondary" href="https://github.com/oyi77/1ai-poly-trader/compare/d1df035ca7...5d7f9a02fc"
-    rel="noreferrer">4 more commits »</a> </li> </ul> </div> </div> </div> </div>
-    </div> </div></div>'
-  link: https://github.com/oyi77/1ai-poly-trader/compare/d1df035ca7...5d7f9a02fc
-  source: GitHub
-  published_date: '2026-05-05T17:01:30Z'
-  author: |-
-    <author lang="en-US">
-      <name lang="en-US">oyi77</name>
-      <uri lang="en-US">https://github.com/oyi77</uri>
-    </author>
-  categories: []
-  tags: []
-- title: oyi77 opened a pull request in gbrain
-  excerpt: '<div class="git-pull-request js-feed-item-view"><div class="body"> <!--
-    pull_request --> <div class="d-flex flex-items-baseline tmp-py-4"> <div class="d-flex
-    flex-column width-full"> <div> <div class="d-flex flex-items-baseline"> <div class="color-fg-muted">
+- title: oyi77 commented on an issue in 1ai-poly-trader
+  excerpt: '<div class="issues_comment js-feed-item-view"><div class="body"> <!--
+    issue_comment --> <div class="d-flex flex-items-baseline tmp-py-4"> <div class="d-flex
+    flex-column width-full"> <div class="d-flex flex-items-baseline mb-2"> <div class="color-fg-muted">
     <span class="mr-2"><a class="d-inline-block" href="/oyi77" rel="noreferrer"><img
     class="avatar avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=64&amp;v=4"
     width="32" height="32" alt="@oyi77"></a></span> <a class="Link--primary no-underline
-    wb-break-all" href="/oyi77" rel="noreferrer">oyi77</a> opened <a class="Link--primary
-    no-underline wb-break-all" aria-label="garrytan/gbrain#652" href="https://github.com/garrytan/gbrain/pull/652"
-    rel="noreferrer">garrytan/gbrain#652</a> <span> · <relative-time tense="past"
-    datetime="2026-05-05T09:38:25-07:00" data-view-component="true">May 5, 2026 09:38</relative-time>
-    </span> </div> </div> </div> <div class="Box tmp-p-3 my-2 color-shadow-medium
-    color-bg-overlay"> <svg height="16" aria-label="Pull request" class="octicon octicon-git-pull-request
-    pull-request d-inline-block mt-1 float-left" viewBox="0 0 16 16" version="1.1"
-    width="16" role="img"><path d="M1.5 3.25a2.25 2.25 0 1 1 3 2.122v5.256a2.251 2.251
-    0 1 1-1.5 0V5.372A2.25 2.25 0 0 1 1.5 3.25Zm5.677-.177L9.573.677A.25.25 0 0 1
-    10 .854V2.5h1A2.5 2.5 0 0 1 13.5 5v5.628a2.251 2.251 0 1 1-1.5 0V5a1 1 0 0 0-1-1h-1v1.646a.25.25
-    0 0 1-.427.177L7.177 3.427a.25.25 0 0 1 0-.354ZM3.75 2.5a.75.75 0 1 0 0 1.5.75.75
-    0 0 0 0-1.5Zm0 9.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm8.25.75a.75.75 0 1 0
-    1.5 0 .75.75 0 0 0-1.5 0Z"></path></svg> <div class="tmp-ml-4"> <div> <span class="f4
-    lh-condensed text-bold color-fg-default"><a class="color-fg-default text-bold"
-    aria-label="fix: call initSchema() in connectEngine() to auto-apply migrations
-    on serve" href="https://github.com/garrytan/gbrain/pull/652" rel="noreferrer">fix:
-    call initSchema() in connectEngine() to auto-apply migrations on serve</a></span>
-    <span class="f4 color-fg-muted ml-1">#652</span> <div class="lh-condensed mb-2
-    mt-1"> <h2 dir="auto">Problem</h2> <p dir="auto">When <code class="notranslate">gbrain
-    serve</code> starts, it calls <code class="notranslate">connectEngine()</code>
-    → <code class="notranslate">engine.connect()</code> but <strong>never calls <code
-    class="notranslate">initSchema()</code></strong>. This means schema migrations
-    (including…</p> </div> </div> <div class="diffstat d-inline-block mt-1"> <span
-    class="color-fg-success">+1</span> <span class="color-fg-danger">-0</span> </div>
-    </div> </div> </div> </div> </div></div>'
-  link: https://github.com/garrytan/gbrain/pull/652
+    wb-break-all" href="/oyi77" rel="noreferrer">oyi77</a> commented on <a class="Link--primary"
+    title="P1: Add Price-Bucket Calibration Tracking to AGI Feedback Loop" href="https://github.com/oyi77/1ai-poly-trader/issues/3#issuecomment-4392518090"
+    rel="noreferrer">oyi77/1ai-poly-trader#3</a> <span> · <relative-time tense="past"
+    datetime="2026-05-06T15:01:22-07:00" data-view-component="true">May 6, 2026 15:01</relative-time>
+    </span> </div> </div> <div class="message markdown-body Box tmp-p-3 wb-break-all
+    color-shadow-medium color-bg-overlay"> <div class="f6 mb-1"> <a title="P1: Add
+    Price-Bucket Calibration Tracking to AGI Feedback Loop" class="Link--secondary"
+    href="https://github.com/oyi77/1ai-poly-trader/issues/3#issuecomment-4392518090"
+    rel="noreferrer"><img class="avatar mr-1 avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=32&amp;v=4"
+    width="16" height="16" alt="@oyi77"> <span class="Link--primary text-bold">oyi77</span>
+    commented <relative-time datetime="2026-05-06T22:01:22Z" class="no-wrap">May 6,
+    2026</relative-time></a> </div> ## Fix Proposal — Issue #3: Price-Bucket Calibration
+    Tracking ### Overview Extend existing `CalibrationTracker` with price-bucket aggregation.
+    Dete… </div> </div> </div> </div></div>'
+  link: https://github.com/oyi77/1ai-poly-trader/issues/3#issuecomment-4392518090
   source: GitHub
-  published_date: '2026-05-05T16:38:25Z'
+  published_date: '2026-05-06T22:01:22Z'
   author: |-
     <author lang="en-US">
       <name lang="en-US">oyi77</name>
@@ -492,41 +61,29 @@ posts:
     </author>
   categories: []
   tags: []
-- title: oyi77 opened a pull request in gbrain
-  excerpt: '<div class="git-pull-request js-feed-item-view"><div class="body"> <!--
-    pull_request --> <div class="d-flex flex-items-baseline tmp-py-4"> <div class="d-flex
-    flex-column width-full"> <div> <div class="d-flex flex-items-baseline"> <div class="color-fg-muted">
+- title: oyi77 commented on an issue in 1ai-poly-trader
+  excerpt: '<div class="issues_comment js-feed-item-view"><div class="body"> <!--
+    issue_comment --> <div class="d-flex flex-items-baseline tmp-py-4"> <div class="d-flex
+    flex-column width-full"> <div class="d-flex flex-items-baseline mb-2"> <div class="color-fg-muted">
     <span class="mr-2"><a class="d-inline-block" href="/oyi77" rel="noreferrer"><img
     class="avatar avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=64&amp;v=4"
     width="32" height="32" alt="@oyi77"></a></span> <a class="Link--primary no-underline
-    wb-break-all" href="/oyi77" rel="noreferrer">oyi77</a> opened <a class="Link--primary
-    no-underline wb-break-all" aria-label="oyi77/gbrain#1" href="https://github.com/oyi77/gbrain/pull/1"
-    rel="noreferrer">oyi77/gbrain#1</a> <span> · <relative-time tense="past" datetime="2026-05-05T09:37:40-07:00"
-    data-view-component="true">May 5, 2026 09:37</relative-time> </span> </div> </div>
-    </div> <div class="Box tmp-p-3 my-2 color-shadow-medium color-bg-overlay"> <svg
-    height="16" aria-label="Pull request" class="octicon octicon-git-pull-request
-    pull-request d-inline-block mt-1 float-left" viewBox="0 0 16 16" version="1.1"
-    width="16" role="img"><path d="M1.5 3.25a2.25 2.25 0 1 1 3 2.122v5.256a2.251 2.251
-    0 1 1-1.5 0V5.372A2.25 2.25 0 0 1 1.5 3.25Zm5.677-.177L9.573.677A.25.25 0 0 1
-    10 .854V2.5h1A2.5 2.5 0 0 1 13.5 5v5.628a2.251 2.251 0 1 1-1.5 0V5a1 1 0 0 0-1-1h-1v1.646a.25.25
-    0 0 1-.427.177L7.177 3.427a.25.25 0 0 1 0-.354ZM3.75 2.5a.75.75 0 1 0 0 1.5.75.75
-    0 0 0 0-1.5Zm0 9.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm8.25.75a.75.75 0 1 0
-    1.5 0 .75.75 0 0 0-1.5 0Z"></path></svg> <div class="tmp-ml-4"> <div> <span class="f4
-    lh-condensed text-bold color-fg-default"><a class="color-fg-default text-bold"
-    aria-label="fix: call initSchema() in connectEngine() to auto-apply migrations
-    on serve" href="https://github.com/oyi77/gbrain/pull/1" rel="noreferrer">fix:
-    call initSchema() in connectEngine() to auto-apply migrations on serve</a></span>
-    <span class="f4 color-fg-muted ml-1">#1</span> <div class="lh-condensed mb-2 mt-1">
-    <h2 dir="auto">Problem</h2> <p dir="auto">When <code class="notranslate">gbrain
-    serve</code> starts, it calls <code class="notranslate">connectEngine()</code>
-    → <code class="notranslate">engine.connect()</code> but <strong>never calls <code
-    class="notranslate">initSchema()</code></strong>. This means schema migrations
-    (including…</p> </div> </div> <div class="diffstat d-inline-block mt-1"> <span
-    class="color-fg-success">+1</span> <span class="color-fg-danger">-0</span> </div>
-    </div> </div> </div> </div> </div></div>'
-  link: https://github.com/oyi77/gbrain/pull/1
+    wb-break-all" href="/oyi77" rel="noreferrer">oyi77</a> commented on <a class="Link--primary"
+    title="P1: Add Maker/Taker Role Classification for Trade Analysis" href="https://github.com/oyi77/1ai-poly-trader/issues/2#issuecomment-4392517934"
+    rel="noreferrer">oyi77/1ai-poly-trader#2</a> <span> · <relative-time tense="past"
+    datetime="2026-05-06T15:01:21-07:00" data-view-component="true">May 6, 2026 15:01</relative-time>
+    </span> </div> </div> <div class="message markdown-body Box tmp-p-3 wb-break-all
+    color-shadow-medium color-bg-overlay"> <div class="f6 mb-1"> <a title="P1: Add
+    Maker/Taker Role Classification for Trade Analysis" class="Link--secondary" href="https://github.com/oyi77/1ai-poly-trader/issues/2#issuecomment-4392517934"
+    rel="noreferrer"><img class="avatar mr-1 avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=32&amp;v=4"
+    width="16" height="16" alt="@oyi77"> <span class="Link--primary text-bold">oyi77</span>
+    commented <relative-time datetime="2026-05-06T22:01:21Z" class="no-wrap">May 6,
+    2026</relative-time></a> </div> ## Fix Proposal — Issue #2: Maker/Taker Role Classification
+    ### Overview Add `TradeRole` enum + classification logic to track whether each
+    trade wa… </div> </div> </div> </div></div>'
+  link: https://github.com/oyi77/1ai-poly-trader/issues/2#issuecomment-4392517934
   source: GitHub
-  published_date: '2026-05-05T16:37:40Z'
+  published_date: '2026-05-06T22:01:21Z'
   author: |-
     <author lang="en-US">
       <name lang="en-US">oyi77</name>
@@ -534,31 +91,31 @@ posts:
     </author>
   categories: []
   tags: []
-- title: oyi77 created a branch
-  excerpt: <div class="git-branch js-feed-item-view"><div class="body"> <!-- create
-    --> <div class="d-flex flex-items-baseline tmp-py-4"> <div class="d-flex flex-column
-    width-full"> <div class="d-flex flex-items-baseline"> <div class="color-fg-muted">
+- title: oyi77 commented on an issue in 1ai-poly-trader
+  excerpt: '<div class="issues_comment js-feed-item-view"><div class="body"> <!--
+    issue_comment --> <div class="d-flex flex-items-baseline tmp-py-4"> <div class="d-flex
+    flex-column width-full"> <div class="d-flex flex-items-baseline mb-2"> <div class="color-fg-muted">
     <span class="mr-2"><a class="d-inline-block" href="/oyi77" rel="noreferrer"><img
     class="avatar avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=64&amp;v=4"
     width="32" height="32" alt="@oyi77"></a></span> <a class="Link--primary no-underline
-    wb-break-all" href="/oyi77" rel="noreferrer">oyi77</a> created a branch in <a
-    class="Link--primary no-underline wb-break-all" href="/oyi77/gbrain" rel="noreferrer">oyi77/gbrain</a>
-    <span> · <relative-time tense="past" datetime="2026-05-05T16:34:46Z" data-view-component="true">May
-    5, 2026 16:34</relative-time> </span> </div> </div> <div class="Box tmp-p-3 mt-2
-    color-shadow-medium color-bg-overlay"> <div> <div class="f4 lh-condensed text-bold
-    color-fg-default"> <div class="d-inline-block"> <div class="d-flex"> <div class="mr-2">
-    <a class="d-flex" href="/oyi77" rel="noreferrer"><img src="https://avatars.githubusercontent.com/u/14921983?s=40&amp;v=4"
-    alt="@oyi77" size="20" height="20" width="20" data-view-component="true" class="avatar
-    avatar-small circle"></a> </div> <div class="d-inline-block"> <a class="css-truncate
-    css-truncate-target branch-name v-align-middle" title="refs/heads/fix/serve-init-schema"
-    href="https://github.com/oyi77/gbrain/tree/refs/heads/fix/serve-init-schema" rel="noreferrer">refs/heads/fix/serve-init-schema</a>
-    in <a class="Link--primary text-bold no-underline wb-break-all d-inline-block"
-    href="/oyi77/gbrain" rel="noreferrer">oyi77/gbrain</a> </div> </div> </div> </div>
-    <p class="f6 color-fg-muted mt-2 mb-0"> <span>Updated May 5</span> </p> </div>
-    </div> </div> </div> </div></div>
-  link: https://github.com/oyi77/gbrain/compare/0000000000...06cdc1577c
+    wb-break-all" href="/oyi77" rel="noreferrer">oyi77</a> commented on <a class="Link--primary"
+    title="PRD: Multi-Platform DataProvider Abstraction &amp; Configurable API Versioning"
+    href="https://github.com/oyi77/1ai-poly-trader/issues/1#issuecomment-4392517416"
+    rel="noreferrer">oyi77/1ai-poly-trader#1</a> <span> · <relative-time tense="past"
+    datetime="2026-05-06T15:01:16-07:00" data-view-component="true">May 6, 2026 15:01</relative-time>
+    </span> </div> </div> <div class="message markdown-body Box tmp-p-3 wb-break-all
+    color-shadow-medium color-bg-overlay"> <div class="f6 mb-1"> <a title="PRD: Multi-Platform
+    DataProvider Abstraction &amp; Configurable API Versioning" class="Link--secondary"
+    href="https://github.com/oyi77/1ai-poly-trader/issues/1#issuecomment-4392517416"
+    rel="noreferrer"><img class="avatar mr-1 avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=32&amp;v=4"
+    width="16" height="16" alt="@oyi77"> <span class="Link--primary text-bold">oyi77</span>
+    commented <relative-time datetime="2026-05-06T22:01:16Z" class="no-wrap">May 6,
+    2026</relative-time></a> </div> ## Fix Proposal — Issue #1: Multi-Platform DataProvider
+    Abstraction ### Overview Implement a DataProvider ABC that Polymarket, Kalshi,
+    and future e… </div> </div> </div> </div></div>'
+  link: https://github.com/oyi77/1ai-poly-trader/issues/1#issuecomment-4392517416
   source: GitHub
-  published_date: '2026-05-05T16:34:46Z'
+  published_date: '2026-05-06T22:01:16Z'
   author: |-
     <author lang="en-US">
       <name lang="en-US">oyi77</name>
@@ -566,7 +123,253 @@ posts:
     </author>
   categories: []
   tags: []
-- title: oyi77 opened an issue in gbrain
+- title: oyi77 commented on an issue in 1ai-poly-trader
+  excerpt: '<div class="issues_comment js-feed-item-view"><div class="body"> <!--
+    issue_comment --> <div class="d-flex flex-items-baseline tmp-py-4"> <div class="d-flex
+    flex-column width-full"> <div class="d-flex flex-items-baseline mb-2"> <div class="color-fg-muted">
+    <span class="mr-2"><a class="d-inline-block" href="/oyi77" rel="noreferrer"><img
+    class="avatar avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=64&amp;v=4"
+    width="32" height="32" alt="@oyi77"></a></span> <a class="Link--primary no-underline
+    wb-break-all" href="/oyi77" rel="noreferrer">oyi77</a> commented on <a class="Link--primary"
+    title="[comprehensive] ALL untracked gaps + fix plan — 28 issues (P0-P3)" href="https://github.com/oyi77/1ai-poly-trader/issues/10#issuecomment-4392514236"
+    rel="noreferrer">oyi77/1ai-poly-trader#10</a> <span> · <relative-time tense="past"
+    datetime="2026-05-06T15:00:46-07:00" data-view-component="true">May 6, 2026 15:00</relative-time>
+    </span> </div> </div> <div class="message markdown-body Box tmp-p-3 wb-break-all
+    color-shadow-medium color-bg-overlay"> <div class="f6 mb-1"> <a title="[comprehensive]
+    ALL untracked gaps + fix plan — 28 issues (P0-P3)" class="Link--secondary" href="https://github.com/oyi77/1ai-poly-trader/issues/10#issuecomment-4392514236"
+    rel="noreferrer"><img class="avatar mr-1 avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=32&amp;v=4"
+    width="16" height="16" alt="@oyi77"> <span class="Link--primary text-bold">oyi77</span>
+    commented <relative-time datetime="2026-05-06T22:00:46Z" class="no-wrap">May 6,
+    2026</relative-time></a> </div> ## Fix Proposal — Issue #10: Comprehensive Untracked
+    Gaps (57 Gaps) ### Overview Issue #10 tracked 57 untracked gaps across 3 comment
+    waves. Many o… </div> </div> </div> </div></div>'
+  link: https://github.com/oyi77/1ai-poly-trader/issues/10#issuecomment-4392514236
+  source: GitHub
+  published_date: '2026-05-06T22:00:46Z'
+  author: |-
+    <author lang="en-US">
+      <name lang="en-US">oyi77</name>
+      <uri lang="en-US">https://github.com/oyi77</uri>
+    </author>
+  categories: []
+  tags: []
+- title: oyi77 commented on an issue in 1ai-poly-trader
+  excerpt: '<div class="issues_comment js-feed-item-view"><div class="body"> <!--
+    issue_comment --> <div class="d-flex flex-items-baseline tmp-py-4"> <div class="d-flex
+    flex-column width-full"> <div class="d-flex flex-items-baseline mb-2"> <div class="color-fg-muted">
+    <span class="mr-2"><a class="d-inline-block" href="/oyi77" rel="noreferrer"><img
+    class="avatar avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=64&amp;v=4"
+    width="32" height="32" alt="@oyi77"></a></span> <a class="Link--primary no-underline
+    wb-break-all" href="/oyi77" rel="noreferrer">oyi77</a> commented on <a class="Link--primary"
+    title="[deepinit] Comprehensive findings: 12 issues (P0-P3), IMPLEMENTATION_GAPS
+    cross-ref, fix plan" href="https://github.com/oyi77/1ai-poly-trader/issues/9#issuecomment-4392513503"
+    rel="noreferrer">oyi77/1ai-poly-trader#9</a> <span> · <relative-time tense="past"
+    datetime="2026-05-06T15:00:40-07:00" data-view-component="true">May 6, 2026 15:00</relative-time>
+    </span> </div> </div> <div class="message markdown-body Box tmp-p-3 wb-break-all
+    color-shadow-medium color-bg-overlay"> <div class="f6 mb-1"> <a title="[deepinit]
+    Comprehensive findings: 12 issues (P0-P3), IMPLEMENTATION_GAPS cross-ref, fix
+    plan" class="Link--secondary" href="https://github.com/oyi77/1ai-poly-trader/issues/9#issuecomment-4392513503"
+    rel="noreferrer"><img class="avatar mr-1 avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=32&amp;v=4"
+    width="16" height="16" alt="@oyi77"> <span class="Link--primary text-bold">oyi77</span>
+    commented <relative-time datetime="2026-05-06T22:00:40Z" class="no-wrap">May 6,
+    2026</relative-time></a> </div> ## Fix Proposal — Issue #9: Deepinit Cross-Reference
+    Findings ### Overview Issue #9 documented 12 findings (P0-P3) cross-referenced
+    against IMPLEME… </div> </div> </div> </div></div>'
+  link: https://github.com/oyi77/1ai-poly-trader/issues/9#issuecomment-4392513503
+  source: GitHub
+  published_date: '2026-05-06T22:00:40Z'
+  author: |-
+    <author lang="en-US">
+      <name lang="en-US">oyi77</name>
+      <uri lang="en-US">https://github.com/oyi77</uri>
+    </author>
+  categories: []
+  tags: []
+- title: oyi77 commented on an issue in 1ai-poly-trader
+  excerpt: '<div class="issues_comment js-feed-item-view"><div class="body"> <!--
+    issue_comment --> <div class="d-flex flex-items-baseline tmp-py-4"> <div class="d-flex
+    flex-column width-full"> <div class="d-flex flex-items-baseline mb-2"> <div class="color-fg-muted">
+    <span class="mr-2"><a class="d-inline-block" href="/oyi77" rel="noreferrer"><img
+    class="avatar avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=64&amp;v=4"
+    width="32" height="32" alt="@oyi77"></a></span> <a class="Link--primary no-underline
+    wb-break-all" href="/oyi77" rel="noreferrer">oyi77</a> commented on <a class="Link--primary"
+    title="[P0] AGI Orchestrator Silently Swallows All Errors — 7 try/except blocks"
+    href="https://github.com/oyi77/1ai-poly-trader/issues/8#issuecomment-4392498135"
+    rel="noreferrer">oyi77/1ai-poly-trader#8</a> <span> · <relative-time tense="past"
+    datetime="2026-05-06T14:57:58-07:00" data-view-component="true">May 6, 2026 14:57</relative-time>
+    </span> </div> </div> <div class="message markdown-body Box tmp-p-3 wb-break-all
+    color-shadow-medium color-bg-overlay"> <div class="f6 mb-1"> <a title="[P0] AGI
+    Orchestrator Silently Swallows All Errors — 7 try/except blocks" class="Link--secondary"
+    href="https://github.com/oyi77/1ai-poly-trader/issues/8#issuecomment-4392498135"
+    rel="noreferrer"><img class="avatar mr-1 avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=32&amp;v=4"
+    width="16" height="16" alt="@oyi77"> <span class="Link--primary text-bold">oyi77</span>
+    commented <relative-time datetime="2026-05-06T21:57:58Z" class="no-wrap">May 6,
+    2026</relative-time></a> </div> ## Fix Proposal — Issue #8: AGI Orchestrator Silent
+    Error Swallowing ### Severity: P0 — Critical (Silent Failure) ### Overview The
+    AGI improvement … </div> </div> </div> </div></div>'
+  link: https://github.com/oyi77/1ai-poly-trader/issues/8#issuecomment-4392498135
+  source: GitHub
+  published_date: '2026-05-06T21:57:58Z'
+  author: |-
+    <author lang="en-US">
+      <name lang="en-US">oyi77</name>
+      <uri lang="en-US">https://github.com/oyi77</uri>
+    </author>
+  categories: []
+  tags: []
+- title: oyi77 commented on an issue in 1ai-poly-trader
+  excerpt: '<div class="issues_comment js-feed-item-view"><div class="body"> <!--
+    issue_comment --> <div class="d-flex flex-items-baseline tmp-py-4"> <div class="d-flex
+    flex-column width-full"> <div class="d-flex flex-items-baseline mb-2"> <div class="color-fg-muted">
+    <span class="mr-2"><a class="d-inline-block" href="/oyi77" rel="noreferrer"><img
+    class="avatar avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=64&amp;v=4"
+    width="32" height="32" alt="@oyi77"></a></span> <a class="Link--primary no-underline
+    wb-break-all" href="/oyi77" rel="noreferrer">oyi77</a> commented on <a class="Link--primary"
+    title="[P0] pickle.load() Remote Code Execution Risk — 3 locations" href="https://github.com/oyi77/1ai-poly-trader/issues/7#issuecomment-4392497861"
+    rel="noreferrer">oyi77/1ai-poly-trader#7</a> <span> · <relative-time tense="past"
+    datetime="2026-05-06T14:57:55-07:00" data-view-component="true">May 6, 2026 14:57</relative-time>
+    </span> </div> </div> <div class="message markdown-body Box tmp-p-3 wb-break-all
+    color-shadow-medium color-bg-overlay"> <div class="f6 mb-1"> <a title="[P0] pickle.load()
+    Remote Code Execution Risk — 3 locations" class="Link--secondary" href="https://github.com/oyi77/1ai-poly-trader/issues/7#issuecomment-4392497861"
+    rel="noreferrer"><img class="avatar mr-1 avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=32&amp;v=4"
+    width="16" height="16" alt="@oyi77"> <span class="Link--primary text-bold">oyi77</span>
+    commented <relative-time datetime="2026-05-06T21:57:55Z" class="no-wrap">May 6,
+    2026</relative-time></a> </div> ## Fix Proposal — Issue #7: pickle.load() Remote
+    Code Execution Risk ### Severity: P0 — Critical (Security / Data Loss) ### Overview
+    Replace all `p… </div> </div> </div> </div></div>'
+  link: https://github.com/oyi77/1ai-poly-trader/issues/7#issuecomment-4392497861
+  source: GitHub
+  published_date: '2026-05-06T21:57:55Z'
+  author: |-
+    <author lang="en-US">
+      <name lang="en-US">oyi77</name>
+      <uri lang="en-US">https://github.com/oyi77</uri>
+    </author>
+  categories: []
+  tags: []
+- title: oyi77 commented on an issue in 1ai-poly-trader
+  excerpt: '<div class="issues_comment js-feed-item-view"><div class="body"> <!--
+    issue_comment --> <div class="d-flex flex-items-baseline tmp-py-4"> <div class="d-flex
+    flex-column width-full"> <div class="d-flex flex-items-baseline mb-2"> <div class="color-fg-muted">
+    <span class="mr-2"><a class="d-inline-block" href="/oyi77" rel="noreferrer"><img
+    class="avatar avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=64&amp;v=4"
+    width="32" height="32" alt="@oyi77"></a></span> <a class="Link--primary no-underline
+    wb-break-all" href="/oyi77" rel="noreferrer">oyi77</a> commented on <a class="Link--primary"
+    title="P1: Integrate Weather Market Data Sources &amp; NOAA Forecast Pipeline"
+    href="https://github.com/oyi77/1ai-poly-trader/issues/6#issuecomment-4392497486"
+    rel="noreferrer">oyi77/1ai-poly-trader#6</a> <span> · <relative-time tense="past"
+    datetime="2026-05-06T14:57:50-07:00" data-view-component="true">May 6, 2026 14:57</relative-time>
+    </span> </div> </div> <div class="message markdown-body Box tmp-p-3 wb-break-all
+    color-shadow-medium color-bg-overlay"> <div class="f6 mb-1"> <a title="P1: Integrate
+    Weather Market Data Sources &amp; NOAA Forecast Pipeline" class="Link--secondary"
+    href="https://github.com/oyi77/1ai-poly-trader/issues/6#issuecomment-4392497486"
+    rel="noreferrer"><img class="avatar mr-1 avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=32&amp;v=4"
+    width="16" height="16" alt="@oyi77"> <span class="Link--primary text-bold">oyi77</span>
+    commented <relative-time datetime="2026-05-06T21:57:50Z" class="no-wrap">May 6,
+    2026</relative-time></a> </div> ## Fix Proposal — Issue #6: Weather Market Data
+    Sources &amp;amp; NOAA Pipeline ### Overview Extend the existing weather pipeline
+    (Open-Meteo + NWS) with 6… </div> </div> </div> </div></div>'
+  link: https://github.com/oyi77/1ai-poly-trader/issues/6#issuecomment-4392497486
+  source: GitHub
+  published_date: '2026-05-06T21:57:50Z'
+  author: |-
+    <author lang="en-US">
+      <name lang="en-US">oyi77</name>
+      <uri lang="en-US">https://github.com/oyi77</uri>
+    </author>
+  categories: []
+  tags: []
+- title: oyi77 commented on an issue in 1ai-poly-trader
+  excerpt: '<div class="issues_comment js-feed-item-view"><div class="body"> <!--
+    issue_comment --> <div class="d-flex flex-items-baseline tmp-py-4"> <div class="d-flex
+    flex-column width-full"> <div class="d-flex flex-items-baseline mb-2"> <div class="color-fg-muted">
+    <span class="mr-2"><a class="d-inline-block" href="/oyi77" rel="noreferrer"><img
+    class="avatar avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=64&amp;v=4"
+    width="32" height="32" alt="@oyi77"></a></span> <a class="Link--primary no-underline
+    wb-break-all" href="/oyi77" rel="noreferrer">oyi77</a> commented on <a class="Link--primary"
+    title="P2: Blockchain CLOB Event Indexing &amp; Parquet Backtest Storage" href="https://github.com/oyi77/1ai-poly-trader/issues/5#issuecomment-4392497179"
+    rel="noreferrer">oyi77/1ai-poly-trader#5</a> <span> · <relative-time tense="past"
+    datetime="2026-05-06T14:57:46-07:00" data-view-component="true">May 6, 2026 14:57</relative-time>
+    </span> </div> </div> <div class="message markdown-body Box tmp-p-3 wb-break-all
+    color-shadow-medium color-bg-overlay"> <div class="f6 mb-1"> <a title="P2: Blockchain
+    CLOB Event Indexing &amp; Parquet Backtest Storage" class="Link--secondary" href="https://github.com/oyi77/1ai-poly-trader/issues/5#issuecomment-4392497179"
+    rel="noreferrer"><img class="avatar mr-1 avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=32&amp;v=4"
+    width="16" height="16" alt="@oyi77"> <span class="Link--primary text-bold">oyi77</span>
+    commented <relative-time datetime="2026-05-06T21:57:46Z" class="no-wrap">May 6,
+    2026</relative-time></a> </div> ## Fix Proposal — Issue #5: Blockchain CLOB Event
+    Indexing &amp;amp; Parquet Backtest Storage ### Overview Two architectural improvements:
+    (A) Direct Polyg… </div> </div> </div> </div></div>'
+  link: https://github.com/oyi77/1ai-poly-trader/issues/5#issuecomment-4392497179
+  source: GitHub
+  published_date: '2026-05-06T21:57:46Z'
+  author: |-
+    <author lang="en-US">
+      <name lang="en-US">oyi77</name>
+      <uri lang="en-US">https://github.com/oyi77</uri>
+    </author>
+  categories: []
+  tags: []
+- title: oyi77 commented on an issue in 1ai-poly-trader
+  excerpt: '<div class="issues_comment js-feed-item-view"><div class="body"> <!--
+    issue_comment --> <div class="d-flex flex-items-baseline tmp-py-4"> <div class="d-flex
+    flex-column width-full"> <div class="d-flex flex-items-baseline mb-2"> <div class="color-fg-muted">
+    <span class="mr-2"><a class="d-inline-block" href="/oyi77" rel="noreferrer"><img
+    class="avatar avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=64&amp;v=4"
+    width="32" height="32" alt="@oyi77"></a></span> <a class="Link--primary no-underline
+    wb-break-all" href="/oyi77" rel="noreferrer">oyi77</a> commented on <a class="Link--primary"
+    title="[comprehensive] ALL untracked gaps + fix plan — 28 issues (P0-P3)" href="https://github.com/oyi77/1ai-poly-trader/issues/10#issuecomment-4392448286"
+    rel="noreferrer">oyi77/1ai-poly-trader#10</a> <span> · <relative-time tense="past"
+    datetime="2026-05-06T14:50:42-07:00" data-view-component="true">May 6, 2026 14:50</relative-time>
+    </span> </div> </div> <div class="message markdown-body Box tmp-p-3 wb-break-all
+    color-shadow-medium color-bg-overlay"> <div class="f6 mb-1"> <a title="[comprehensive]
+    ALL untracked gaps + fix plan — 28 issues (P0-P3)" class="Link--secondary" href="https://github.com/oyi77/1ai-poly-trader/issues/10#issuecomment-4392448286"
+    rel="noreferrer"><img class="avatar mr-1 avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=32&amp;v=4"
+    width="16" height="16" alt="@oyi77"> <span class="Link--primary text-bold">oyi77</span>
+    commented <relative-time datetime="2026-05-06T21:50:42Z" class="no-wrap">May 6,
+    2026</relative-time></a> </div> ## Ultrawork Continuation — 2nd Batch Additional
+    Gaps (2026-05-07) ### Data Layer (backend/data/) **Data-2 (P2): orderbook_hft_ws.py
+    — silent disco… </div> </div> </div> </div></div>'
+  link: https://github.com/oyi77/1ai-poly-trader/issues/10#issuecomment-4392448286
+  source: GitHub
+  published_date: '2026-05-06T21:50:42Z'
+  author: |-
+    <author lang="en-US">
+      <name lang="en-US">oyi77</name>
+      <uri lang="en-US">https://github.com/oyi77</uri>
+    </author>
+  categories: []
+  tags: []
+- title: oyi77 commented on an issue in 1ai-poly-trader
+  excerpt: '<div class="issues_comment js-feed-item-view"><div class="body"> <!--
+    issue_comment --> <div class="d-flex flex-items-baseline tmp-py-4"> <div class="d-flex
+    flex-column width-full"> <div class="d-flex flex-items-baseline mb-2"> <div class="color-fg-muted">
+    <span class="mr-2"><a class="d-inline-block" href="/oyi77" rel="noreferrer"><img
+    class="avatar avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=64&amp;v=4"
+    width="32" height="32" alt="@oyi77"></a></span> <a class="Link--primary no-underline
+    wb-break-all" href="/oyi77" rel="noreferrer">oyi77</a> commented on <a class="Link--primary"
+    title="[comprehensive] ALL untracked gaps + fix plan — 28 issues (P0-P3)" href="https://github.com/oyi77/1ai-poly-trader/issues/10#issuecomment-4392413393"
+    rel="noreferrer">oyi77/1ai-poly-trader#10</a> <span> · <relative-time tense="past"
+    datetime="2026-05-06T14:44:22-07:00" data-view-component="true">May 6, 2026 14:44</relative-time>
+    </span> </div> </div> <div class="message markdown-body Box tmp-p-3 wb-break-all
+    color-shadow-medium color-bg-overlay"> <div class="f6 mb-1"> <a title="[comprehensive]
+    ALL untracked gaps + fix plan — 28 issues (P0-P3)" class="Link--secondary" href="https://github.com/oyi77/1ai-poly-trader/issues/10#issuecomment-4392413393"
+    rel="noreferrer"><img class="avatar mr-1 avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=32&amp;v=4"
+    width="16" height="16" alt="@oyi77"> <span class="Link--primary text-bold">oyi77</span>
+    commented <relative-time datetime="2026-05-06T21:44:22Z" class="no-wrap">May 6,
+    2026</relative-time></a> </div> ## Ultrawork Continuation — 12 Additional Gaps
+    Found (2026-05-07) The following gaps were discovered during continued ultrawork
+    audit. Adding as su… </div> </div> </div> </div></div>'
+  link: https://github.com/oyi77/1ai-poly-trader/issues/10#issuecomment-4392413393
+  source: GitHub
+  published_date: '2026-05-06T21:44:22Z'
+  author: |-
+    <author lang="en-US">
+      <name lang="en-US">oyi77</name>
+      <uri lang="en-US">https://github.com/oyi77</uri>
+    </author>
+  categories: []
+  tags: []
+- title: oyi77 opened an issue in 1ai-poly-trader
   excerpt: '<div class="issues_opened js-feed-item-view"><div class="body"> <!-- issues
     --> <div class="d-flex flex-items-baseline tmp-py-4"> <div class="d-flex flex-column
     width-full"> <div class="d-flex flex-items-baseline mb-2"> <div class="color-fg-muted">
@@ -574,26 +377,26 @@ posts:
     class="avatar avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=64&amp;v=4"
     width="32" height="32" alt="@oyi77"></a></span> <a class="Link--primary no-underline
     wb-break-all" href="/oyi77" rel="noreferrer">oyi77</a> opened an issue in <a class="Link--primary
-    no-underline wb-break-all" href="/garrytan/gbrain" rel="noreferrer">garrytan/gbrain</a>
-    <span> · <relative-time tense="past" datetime="2026-05-05T09:30:49-07:00" data-view-component="true">May
-    5, 2026 09:30</relative-time> </span> </div> </div> <div class="Box tmp-p-3 wb-break-all
-    color-shadow-medium color-bg-overlay"> <svg height="16" aria-label="Issue" class="octicon
-    octicon-issue-opened open d-inline-block mt-1 float-left" viewBox="0 0 16 16"
-    version="1.1" width="16" role="img"><path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5
-    0 0 0 0 3Z"></path><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0
-    1 0 13 0 6.5 6.5 0 0 0-13 0Z"></path></svg> <div class="tmp-ml-4"> <span class="f4
-    lh-condensed text-bold color-fg-default"> <a title="Bug: initSchema() not called
-    during serve — migrations skipped for existing databases" class="color-fg-default"
-    aria-label="Bug: initSchema() not called during serve — migrations skipped for
-    existing databases" href="/garrytan/gbrain/issues/651" rel="noreferrer">Bug: initSchema()
-    not called during serve — migrations skipped for existing databases</a> </span>
-    <span class="f4 color-fg-muted ml-1">#651</span> <div class="dashboard-break-word
-    lh-condensed mb-2 mt-1"> ## Bug Description When `gbrain serve` (or `gbrain serve
-    --http`) starts, it calls `connectEngine()` which calls `engine.connect()` and
-    then `conne… </div> </div> </div> </div> </div> </div></div>'
-  link: https://github.com/garrytan/gbrain/issues/651
+    no-underline wb-break-all" href="/oyi77/1ai-poly-trader" rel="noreferrer">oyi77/1ai-poly-trader</a>
+    <span> · <relative-time tense="past" datetime="2026-05-06T14:35:06-07:00" data-view-component="true">May
+    6, 2026 14:35</relative-time> </span> </div> </div> <div class="Box tmp-p-3 wb-break-all
+    color-shadow-medium color-bg-overlay"> <svg data-component="Octicon" height="16"
+    aria-label="Issue" class="octicon octicon-issue-opened open d-inline-block mt-1
+    float-left" viewBox="0 0 16 16" version="1.1" width="16" role="img"><path d="M8
+    9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path><path d="M8 0a8 8 0 1 1 0 16A8
+    8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Z"></path></svg> <div
+    class="tmp-ml-4"> <span class="f4 lh-condensed text-bold color-fg-default"> <a
+    title="[comprehensive] ALL untracked gaps + fix plan — 28 issues (P0-P3)" class="color-fg-default"
+    aria-label="[comprehensive] ALL untracked gaps + fix plan — 28 issues (P0-P3)"
+    href="/oyi77/1ai-poly-trader/issues/10" rel="noreferrer">[comprehensive] ALL untracked
+    gaps + fix plan — 28 issues (P0-P3)</a> </span> <span class="f4 color-fg-muted
+    ml-1">#10</span> <div class="dashboard-break-word lh-condensed mb-2 mt-1"> ##
+    Executive Summary Cross-ref analysis between `IMPLEMENTATION_GAPS.md` (Round 9),
+    GitHub Issues #1-9, and live codebase found **28 gaps with zero… </div> <div class="f6
+    color-fg-muted mt-1"> 4 comments </div> </div> </div> </div> </div> </div></div>'
+  link: https://github.com/oyi77/1ai-poly-trader/issues/10
   source: GitHub
-  published_date: '2026-05-05T16:30:49Z'
+  published_date: '2026-05-06T21:35:06Z'
   author: |-
     <author lang="en-US">
       <name lang="en-US">oyi77</name>
@@ -601,36 +404,28 @@ posts:
     </author>
   categories: []
   tags: []
-- title: oyi77 pushed joki-blast-engine
+- title: oyi77 pushed 1ai-poly-trader
   excerpt: '<div class="repo-push js-feed-item-view"><div class="body"> <!-- push
     --> <div class="d-flex flex-items-baseline tmp-py-4"> <div class="d-flex flex-column
     width-full"> <div class="color-fg-muted"> <span class="mr-2"><a class="d-inline-block"
     href="/oyi77" rel="noreferrer"><img class="avatar avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=64&amp;v=4"
     width="32" height="32" alt="@oyi77"></a></span> <a class="Link--primary no-underline
     wb-break-all" href="/oyi77" rel="noreferrer">oyi77</a> pushed to <a class="branch-name"
-    href="/4yangXYAO/joki-blast-engine/tree/main" rel="noreferrer">main</a> in <a
-    class="Link--primary no-underline wb-break-all" href="/4yangXYAO/joki-blast-engine"
-    rel="noreferrer">4yangXYAO/joki-blast-engine</a> <span> · <relative-time tense="past"
-    datetime="2026-05-05T15:53:00Z" data-view-component="true">May 5, 2026 15:53</relative-time>
-    </span> <div class="Box tmp-p-3 mt-2 color-shadow-medium color-bg-overlay"> <span>2
-    commits to</span> <a class="branch-name" href="/4yangXYAO/joki-blast-engine/tree/main"
+    href="/oyi77/1ai-poly-trader/tree/main" rel="noreferrer">main</a> in <a class="Link--primary
+    no-underline wb-break-all" href="/oyi77/1ai-poly-trader" rel="noreferrer">oyi77/1ai-poly-trader</a>
+    <span> · <relative-time tense="past" datetime="2026-05-06T21:06:18Z" data-view-component="true">May
+    6, 2026 21:06</relative-time> </span> <div class="Box tmp-p-3 mt-2 color-shadow-medium
+    color-bg-overlay"> <span>1 commit to</span> <a class="branch-name" href="/oyi77/1ai-poly-trader/tree/main"
     rel="noreferrer">main</a> <div class="commits pusher-is-only-committer"> <ul class="list-style-none">
     <li class="d-flex flex-items-baseline"> <span> <a class="d-inline-block" href="/oyi77"
     rel="noreferrer"><img class="mr-1 avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=32&amp;v=4"
-    width="16" height="16" alt="@oyi77"></a> </span> <code><a class="mr-1" href="/4yangXYAO/joki-blast-engine/commit/ac2156ef28253246ab078e45e6eaa640275e7db6"
-    rel="noreferrer">ac2156e</a></code> <div class="dashboard-break-word lh-condensed">
-    <blockquote> feat(rate-limiter): add circuit breaker + maxWait timeout </blockquote>
-    </div> </li> <li class="d-flex flex-items-baseline"> <span> <a class="d-inline-block"
-    href="/oyi77" rel="noreferrer"><img class="mr-1 avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=32&amp;v=4"
-    width="16" height="16" alt="@oyi77"></a> </span> <code><a class="mr-1" href="/4yangXYAO/joki-blast-engine/commit/897e754c058839495091576659e250cb437f6e70"
-    rel="noreferrer">897e754</a></code> <div class="dashboard-break-word lh-condensed">
-    <blockquote> chore(plan): update task 26 as complete - helmet verified </blockquote>
-    </div> </li> <li class="f6 mt-2"> <a class="Link--secondary" href="https://github.com/4yangXYAO/joki-blast-engine/compare/46d01b70a0...2db710f6e6"
-    rel="noreferrer">6 more commits »</a> </li> </ul> </div> </div> </div> </div>
-    </div> </div></div>'
-  link: https://github.com/4yangXYAO/joki-blast-engine/compare/46d01b70a0...2db710f6e6
+    width="16" height="16" alt="@oyi77"></a> </span> <code><a class="mr-1" href="/oyi77/1ai-poly-trader/commit/1172b7f18e0cc0f0d642373cf69b56535c89bcd0"
+    rel="noreferrer">1172b7f</a></code> <div class="dashboard-break-word lh-condensed">
+    <blockquote> docs(deepinit): update AGENTS.md hierarchy (79 files), delete stale
+    s… </blockquote> </div> </li> </ul> </div> </div> </div> </div> </div> </div></div>'
+  link: https://github.com/oyi77/1ai-poly-trader/compare/34d6ff8a55...1172b7f18e
   source: GitHub
-  published_date: '2026-05-05T15:53:00Z'
+  published_date: '2026-05-06T21:06:18Z'
   author: |-
     <author lang="en-US">
       <name lang="en-US">oyi77</name>
@@ -638,45 +433,35 @@ posts:
     </author>
   categories: []
   tags: []
-- title: oyi77 contributed to diegosouzapw/OmniRoute
-  excerpt: '<div class="git-merge js-feed-item-view"><div class="body"> <!-- pull_request
+- title: oyi77 opened an issue in 1ai-poly-trader
+  excerpt: '<div class="issues_opened js-feed-item-view"><div class="body"> <!-- issues
     --> <div class="d-flex flex-items-baseline tmp-py-4"> <div class="d-flex flex-column
-    width-full"> <div> <div class="d-flex flex-items-baseline"> <div class="color-fg-muted">
+    width-full"> <div class="d-flex flex-items-baseline mb-2"> <div class="color-fg-muted">
     <span class="mr-2"><a class="d-inline-block" href="/oyi77" rel="noreferrer"><img
     class="avatar avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=64&amp;v=4"
     width="32" height="32" alt="@oyi77"></a></span> <a class="Link--primary no-underline
-    wb-break-all" href="/oyi77" rel="noreferrer">oyi77</a> merged <a class="Link--primary
-    no-underline wb-break-all" aria-label="diegosouzapw/OmniRoute#1976" href="https://github.com/diegosouzapw/OmniRoute/pull/1976"
-    rel="noreferrer">diegosouzapw/OmniRoute#1976</a> <span> · <relative-time tense="past"
-    datetime="2026-05-05T08:34:05-07:00" data-view-component="true">May 5, 2026 08:34</relative-time>
-    </span> </div> </div> </div> <div class="Box tmp-p-3 my-2 color-shadow-medium
-    color-bg-overlay"> <svg height="16" aria-label="Pull request" class="octicon octicon-git-pull-request
-    merge d-inline-block mt-1 float-left" viewBox="0 0 16 16" version="1.1" width="16"
-    role="img"><path d="M1.5 3.25a2.25 2.25 0 1 1 3 2.122v5.256a2.251 2.251 0 1 1-1.5
-    0V5.372A2.25 2.25 0 0 1 1.5 3.25Zm5.677-.177L9.573.677A.25.25 0 0 1 10 .854V2.5h1A2.5
-    2.5 0 0 1 13.5 5v5.628a2.251 2.251 0 1 1-1.5 0V5a1 1 0 0 0-1-1h-1v1.646a.25.25
-    0 0 1-.427.177L7.177 3.427a.25.25 0 0 1 0-.354ZM3.75 2.5a.75.75 0 1 0 0 1.5.75.75
-    0 0 0 0-1.5Zm0 9.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm8.25.75a.75.75 0 1 0
-    1.5 0 .75.75 0 0 0-1.5 0Z"></path></svg> <div class="tmp-ml-4"> <div> <span class="f4
-    lh-condensed text-bold color-fg-default"><a class="color-fg-default text-bold"
-    aria-label="Feat/docs site overhaul" href="https://github.com/diegosouzapw/OmniRoute/pull/1976"
-    rel="noreferrer">Feat/docs site overhaul</a></span> <span class="f4 color-fg-muted
-    ml-1">#1976</span> <div class="lh-condensed mb-2 mt-1"> <h2 dir="auto">Summary</h2>
-    <ul dir="auto"> <li>Describe the user-facing or operational change.</li> </ul>
-    <h2 dir="auto">Related Issues</h2> <ul dir="auto"> <li>Closes #</li> <li>Related
-    to #</li> </ul> <h2 dir="auto">Validation</h2> <ul class="contains-task-list">
-    <li class="task-list-item"> <input type="checkbox" id="" disabled="" class="task-list-item-checkbox"
-    aria-label="Incomplete task"> <code class="notranslate">npm run lint</code> </li>
-    <li class="task-list-item"> <input type="checkbox" id="" disabled="" class="task-list-item-checkbox"
-    aria-label="Incomplete task"> <code class="notranslate">npm run test:unit</code>
-    </li> <li class="task-list-item"> <input type="checkbox" id="" disabled="" class="task-list-item-checkbox"
-    aria-label="Incomplete task"> <code class="notranslate">npm …</code> </li> </ul>
-    </div> </div> <div class="diffstat d-inline-block mt-1"> <span class="color-fg-success">+536</span>
-    <span class="color-fg-danger">-507</span> </div> <div class="d-inline-block f6
-    color-fg-muted tmp-ml-3"> 6 comments </div> </div> </div> </div> </div> </div></div>'
-  link: https://github.com/diegosouzapw/OmniRoute/pull/1976
+    wb-break-all" href="/oyi77" rel="noreferrer">oyi77</a> opened an issue in <a class="Link--primary
+    no-underline wb-break-all" href="/oyi77/1ai-poly-trader" rel="noreferrer">oyi77/1ai-poly-trader</a>
+    <span> · <relative-time tense="past" datetime="2026-05-06T14:05:43-07:00" data-view-component="true">May
+    6, 2026 14:05</relative-time> </span> </div> </div> <div class="Box tmp-p-3 wb-break-all
+    color-shadow-medium color-bg-overlay"> <svg data-component="Octicon" height="16"
+    aria-label="Issue" class="octicon octicon-issue-opened open d-inline-block mt-1
+    float-left" viewBox="0 0 16 16" version="1.1" width="16" role="img"><path d="M8
+    9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path><path d="M8 0a8 8 0 1 1 0 16A8
+    8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Z"></path></svg> <div
+    class="tmp-ml-4"> <span class="f4 lh-condensed text-bold color-fg-default"> <a
+    title="[deepinit] Comprehensive findings: 12 issues (P0-P3), IMPLEMENTATION_GAPS
+    cross-ref, fix plan" class="color-fg-default" aria-label="[deepinit] Comprehensive
+    findings: 12 issues (P0-P3), IMPLEMENTATION_GAPS cross-ref, fix plan" href="/oyi77/1ai-poly-trader/issues/9"
+    rel="noreferrer">[deepinit] Comprehensive findings: 12 issues (P0-P3), IMPLEMENTATION_GAPS
+    cross-ref, fix plan</a> </span> <span class="f4 color-fg-muted ml-1">#9</span>
+    <div class="dashboard-break-word lh-condensed mb-2 mt-1"> ## Deepinit Findings
+    Report — 2026-05-07 Full report: `.sisyphus/plans/deepinit-findings-report.md`
+    --- ## P0 — CRITICAL (Security / Data Loss) ###… </div> <div class="f6 color-fg-muted
+    mt-1"> 1 comment </div> </div> </div> </div> </div> </div></div>'
+  link: https://github.com/oyi77/1ai-poly-trader/issues/9
   source: GitHub
-  published_date: '2026-05-05T15:34:05Z'
+  published_date: '2026-05-06T21:05:43Z'
   author: |-
     <author lang="en-US">
       <name lang="en-US">oyi77</name>
@@ -684,40 +469,106 @@ posts:
     </author>
   categories: []
   tags: []
-- title: oyi77 pushed OmniRoute
-  excerpt: '<div class="repo-push js-feed-item-view"><div class="body"> <!-- push
+- title: oyi77 opened an issue in 1ai-poly-trader
+  excerpt: <div class="issues_opened js-feed-item-view"><div class="body"> <!-- issues
     --> <div class="d-flex flex-items-baseline tmp-py-4"> <div class="d-flex flex-column
-    width-full"> <div class="color-fg-muted"> <span class="mr-2"><a class="d-inline-block"
-    href="/oyi77" rel="noreferrer"><img class="avatar avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=64&amp;v=4"
+    width-full"> <div class="d-flex flex-items-baseline mb-2"> <div class="color-fg-muted">
+    <span class="mr-2"><a class="d-inline-block" href="/oyi77" rel="noreferrer"><img
+    class="avatar avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=64&amp;v=4"
     width="32" height="32" alt="@oyi77"></a></span> <a class="Link--primary no-underline
-    wb-break-all" href="/oyi77" rel="noreferrer">oyi77</a> pushed to <a class="branch-name"
-    href="/oyi77/OmniRoute/tree/feat/docs-site-overhaul" rel="noreferrer">feat/docs-site-overhaul</a>
-    in <a class="Link--primary no-underline wb-break-all" href="/oyi77/OmniRoute"
-    rel="noreferrer">oyi77/OmniRoute</a> <span> · <relative-time tense="past" datetime="2026-05-05T15:06:10Z"
-    data-view-component="true">May 5, 2026 15:06</relative-time> </span> <div class="Box
-    tmp-p-3 mt-2 color-shadow-medium color-bg-overlay"> <span>2 commits to</span>
-    <a class="branch-name" href="/oyi77/OmniRoute/tree/feat/docs-site-overhaul" rel="noreferrer">feat/docs-site-overhaul</a>
-    <div class="commits "> <ul class="list-style-none"> <li class="d-flex flex-items-baseline">
-    <span> <img class="mr-1 avatar-user" width="16" height="16" alt="" src="https://camo.githubusercontent.com/6569e833a285d14f6e9e57cd8f46cdebf45aa71e65d19acaac061be7f139ba65/68747470733a2f2f302e67726176617461722e636f6d2f6176617461722f34323265623531323130646231363564303662356633333464346335616335373f643d68747470732533412532462532466769746875622e6769746875626173736574732e636f6d253246696d6167657325324667726176617461727325324667726176617461722d757365722d3432302e706e6726723d6726733d313430"
-    data-canonical-src="https://0.gravatar.com/avatar/422eb51210db165d06b5f334d4c5ac57?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=140">
-    </span> <code><a class="mr-1" href="/oyi77/OmniRoute/commit/5aff529f0b287f5204901b415cee5784916f4293"
-    rel="noreferrer">5aff529</a></code> <div class="dashboard-break-word lh-condensed">
-    <blockquote> chore(release): v3.7.9 — gemini-cli cloud code separation </blockquote>
-    </div> </li> <li class="d-flex flex-items-baseline"> <span> <a class="d-inline-block"
-    href="/backryun" rel="noreferrer"><img class="mr-1 avatar-user" src="https://avatars.githubusercontent.com/u/24198422?s=32&amp;v=4"
-    width="16" height="16" alt="@backryun"></a> </span> <code><a class="mr-1" href="/oyi77/OmniRoute/commit/c49929327a5ba7f40adc57811c860582e508049c"
-    rel="noreferrer">c499293</a></code> <div class="dashboard-break-word lh-condensed">
-    <blockquote> chore(provider): Update Jina AI model catalog (<a class="issue-link
-    js-issue-link" data-error-text="Failed to load title" data-id="4368819901" data-permission-text="Title
-    is private" data-url="https://github.com/diegosouzapw/OmniRoute/issues/1874" data-hovercard-type="pull_request"
-    data-hovercard-url="/diegosouzapw/OmniRoute/pull/1874/hovercard" href="https://github.com/diegosouzapw/OmniRoute/pull/1874"
-    rel="noreferrer">diegosouzapw#1874</a>) </blockquote> </div> </li> <li class="f6
-    mt-2"> <a class="Link--secondary" href="https://github.com/oyi77/OmniRoute/compare/70ad8e34a8...15487ab57a"
-    rel="noreferrer">80 more commits »</a> </li> </ul> </div> </div> </div> </div>
+    wb-break-all" href="/oyi77" rel="noreferrer">oyi77</a> opened an issue in <a class="Link--primary
+    no-underline wb-break-all" href="/oyi77/1ai-poly-trader" rel="noreferrer">oyi77/1ai-poly-trader</a>
+    <span> · <relative-time tense="past" datetime="2026-05-06T14:03:33-07:00" data-view-component="true">May
+    6, 2026 14:03</relative-time> </span> </div> </div> <div class="Box tmp-p-3 wb-break-all
+    color-shadow-medium color-bg-overlay"> <svg data-component="Octicon" height="16"
+    aria-label="Issue" class="octicon octicon-issue-opened open d-inline-block mt-1
+    float-left" viewBox="0 0 16 16" version="1.1" width="16" role="img"><path d="M8
+    9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path><path d="M8 0a8 8 0 1 1 0 16A8
+    8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Z"></path></svg> <div
+    class="tmp-ml-4"> <span class="f4 lh-condensed text-bold color-fg-default"> <a
+    title="[P0] AGI Orchestrator Silently Swallows All Errors — 7 try/except blocks"
+    class="color-fg-default" aria-label="[P0] AGI Orchestrator Silently Swallows All
+    Errors — 7 try/except blocks" href="/oyi77/1ai-poly-trader/issues/8" rel="noreferrer">[P0]
+    AGI Orchestrator Silently Swallows All Errors — 7 try/except blocks</a> </span>
+    <span class="f4 color-fg-muted ml-1">#8</span> <div class="dashboard-break-word
+    lh-condensed mb-2 mt-1"> **Severity:** P0 — Critical (Silent Failure) **Description:**
+    `backend/core/agi_orchestrator.py:297-398` runs the entire AGI improvement cycle
+    (fee… </div> <div class="f6 color-fg-muted mt-1"> 1 comment </div> </div> </div>
+    </div> </div> </div></div>
+  link: https://github.com/oyi77/1ai-poly-trader/issues/8
+  source: GitHub
+  published_date: '2026-05-06T21:03:33Z'
+  author: |-
+    <author lang="en-US">
+      <name lang="en-US">oyi77</name>
+      <uri lang="en-US">https://github.com/oyi77</uri>
+    </author>
+  categories: []
+  tags: []
+- title: oyi77 opened an issue in 1ai-poly-trader
+  excerpt: <div class="issues_opened js-feed-item-view"><div class="body"> <!-- issues
+    --> <div class="d-flex flex-items-baseline tmp-py-4"> <div class="d-flex flex-column
+    width-full"> <div class="d-flex flex-items-baseline mb-2"> <div class="color-fg-muted">
+    <span class="mr-2"><a class="d-inline-block" href="/oyi77" rel="noreferrer"><img
+    class="avatar avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=64&amp;v=4"
+    width="32" height="32" alt="@oyi77"></a></span> <a class="Link--primary no-underline
+    wb-break-all" href="/oyi77" rel="noreferrer">oyi77</a> opened an issue in <a class="Link--primary
+    no-underline wb-break-all" href="/oyi77/1ai-poly-trader" rel="noreferrer">oyi77/1ai-poly-trader</a>
+    <span> · <relative-time tense="past" datetime="2026-05-06T14:03:23-07:00" data-view-component="true">May
+    6, 2026 14:03</relative-time> </span> </div> </div> <div class="Box tmp-p-3 wb-break-all
+    color-shadow-medium color-bg-overlay"> <svg data-component="Octicon" height="16"
+    aria-label="Issue" class="octicon octicon-issue-opened open d-inline-block mt-1
+    float-left" viewBox="0 0 16 16" version="1.1" width="16" role="img"><path d="M8
+    9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path><path d="M8 0a8 8 0 1 1 0 16A8
+    8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Z"></path></svg> <div
+    class="tmp-ml-4"> <span class="f4 lh-condensed text-bold color-fg-default"> <a
+    title="[P0] pickle.load() Remote Code Execution Risk — 3 locations" class="color-fg-default"
+    aria-label="[P0] pickle.load() Remote Code Execution Risk — 3 locations" href="/oyi77/1ai-poly-trader/issues/7"
+    rel="noreferrer">[P0] pickle.load() Remote Code Execution Risk — 3 locations</a>
+    </span> <span class="f4 color-fg-muted ml-1">#7</span> <div class="dashboard-break-word
+    lh-condensed mb-2 mt-1"> **Severity:** P0 — Critical (Security / Data Loss) **Description:**
+    `pickle.load()` deserializes untrusted files without integrity verification. A
+    … </div> <div class="f6 color-fg-muted mt-1"> 1 comment </div> </div> </div> </div>
+    </div> </div></div>
+  link: https://github.com/oyi77/1ai-poly-trader/issues/7
+  source: GitHub
+  published_date: '2026-05-06T21:03:23Z'
+  author: |-
+    <author lang="en-US">
+      <name lang="en-US">oyi77</name>
+      <uri lang="en-US">https://github.com/oyi77</uri>
+    </author>
+  categories: []
+  tags: []
+- title: oyi77 opened an issue in OmniRoute
+  excerpt: '<div class="issues_opened js-feed-item-view"><div class="body"> <!-- issues
+    --> <div class="d-flex flex-items-baseline tmp-py-4"> <div class="d-flex flex-column
+    width-full"> <div class="d-flex flex-items-baseline mb-2"> <div class="color-fg-muted">
+    <span class="mr-2"><a class="d-inline-block" href="/oyi77" rel="noreferrer"><img
+    class="avatar avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=64&amp;v=4"
+    width="32" height="32" alt="@oyi77"></a></span> <a class="Link--primary no-underline
+    wb-break-all" href="/oyi77" rel="noreferrer">oyi77</a> opened an issue in <a class="Link--primary
+    no-underline wb-break-all" href="/diegosouzapw/OmniRoute" rel="noreferrer">diegosouzapw/OmniRoute</a>
+    <span> · <relative-time tense="past" datetime="2026-05-06T13:40:06-07:00" data-view-component="true">May
+    6, 2026 13:40</relative-time> </span> </div> </div> <div class="Box tmp-p-3 wb-break-all
+    color-shadow-medium color-bg-overlay"> <svg data-component="Octicon" height="16"
+    aria-label="Issue" class="octicon octicon-issue-opened open d-inline-block mt-1
+    float-left" viewBox="0 0 16 16" version="1.1" width="16" role="img"><path d="M8
+    9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path><path d="M8 0a8 8 0 1 1 0 16A8
+    8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Z"></path></svg> <div
+    class="tmp-ml-4"> <span class="f4 lh-condensed text-bold color-fg-default"> <a
+    title="[Proposal] Submit OmniRoute as Official OpenCode Provider + Documentation"
+    class="color-fg-default" aria-label="[Proposal] Submit OmniRoute as Official OpenCode
+    Provider + Documentation" href="/diegosouzapw/OmniRoute/issues/2017" rel="noreferrer">[Proposal]
+    Submit OmniRoute as Official OpenCode Provider + Documentation</a> </span> <span
+    class="f4 color-fg-muted ml-1">#2017</span> <div class="dashboard-break-word lh-condensed
+    mb-2 mt-1"> # [Proposal] Submit OmniRoute as Official OpenCode Provider ## Summary
+    **Priority:** P1 **Effort:** Medium **Category:** Provider Integration Submi…
+    </div> <div class="f6 color-fg-muted mt-1"> 1 comment </div> </div> </div> </div>
     </div> </div></div>'
-  link: https://github.com/oyi77/OmniRoute/compare/70ad8e34a8...15487ab57a
+  link: https://github.com/diegosouzapw/OmniRoute/issues/2017
   source: GitHub
-  published_date: '2026-05-05T15:06:10Z'
+  published_date: '2026-05-06T20:40:06Z'
   author: |-
     <author lang="en-US">
       <name lang="en-US">oyi77</name>
@@ -725,29 +576,33 @@ posts:
     </author>
   categories: []
   tags: []
-- title: oyi77 pushed OmniRoute
-  excerpt: '<div class="repo-push js-feed-item-view"><div class="body"> <!-- push
+- title: oyi77 opened an issue in OmniRoute
+  excerpt: '<div class="issues_opened js-feed-item-view"><div class="body"> <!-- issues
     --> <div class="d-flex flex-items-baseline tmp-py-4"> <div class="d-flex flex-column
-    width-full"> <div class="color-fg-muted"> <span class="mr-2"><a class="d-inline-block"
-    href="/oyi77" rel="noreferrer"><img class="avatar avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=64&amp;v=4"
+    width-full"> <div class="d-flex flex-items-baseline mb-2"> <div class="color-fg-muted">
+    <span class="mr-2"><a class="d-inline-block" href="/oyi77" rel="noreferrer"><img
+    class="avatar avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=64&amp;v=4"
     width="32" height="32" alt="@oyi77"></a></span> <a class="Link--primary no-underline
-    wb-break-all" href="/oyi77" rel="noreferrer">oyi77</a> pushed to <a class="branch-name"
-    href="/oyi77/OmniRoute/tree/feat/docs-site-overhaul" rel="noreferrer">feat/docs-site-overhaul</a>
-    in <a class="Link--primary no-underline wb-break-all" href="/oyi77/OmniRoute"
-    rel="noreferrer">oyi77/OmniRoute</a> <span> · <relative-time tense="past" datetime="2026-05-05T13:55:24Z"
-    data-view-component="true">May 5, 2026 13:55</relative-time> </span> <div class="Box
-    tmp-p-3 mt-2 color-shadow-medium color-bg-overlay"> <span>1 commit to</span> <a
-    class="branch-name" href="/oyi77/OmniRoute/tree/feat/docs-site-overhaul" rel="noreferrer">feat/docs-site-overhaul</a>
-    <div class="commits pusher-is-only-committer"> <ul class="list-style-none"> <li
-    class="d-flex flex-items-baseline"> <span> <a class="d-inline-block" href="/oyi77"
-    rel="noreferrer"><img class="mr-1 avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=32&amp;v=4"
-    width="16" height="16" alt="@oyi77"></a> </span> <code><a class="mr-1" href="/oyi77/OmniRoute/commit/70ad8e34a80f56c56829cd9943230aa9c1ac7f74"
-    rel="noreferrer">70ad8e3</a></code> <div class="dashboard-break-word lh-condensed">
-    <blockquote> fix(docs): address PR code review feedback </blockquote> </div> </li>
-    </ul> </div> </div> </div> </div> </div> </div></div>'
-  link: https://github.com/oyi77/OmniRoute/compare/ecdf4ce350...70ad8e34a8
+    wb-break-all" href="/oyi77" rel="noreferrer">oyi77</a> opened an issue in <a class="Link--primary
+    no-underline wb-break-all" href="/diegosouzapw/OmniRoute" rel="noreferrer">diegosouzapw/OmniRoute</a>
+    <span> · <relative-time tense="past" datetime="2026-05-06T13:38:58-07:00" data-view-component="true">May
+    6, 2026 13:38</relative-time> </span> </div> </div> <div class="Box tmp-p-3 wb-break-all
+    color-shadow-medium color-bg-overlay"> <svg data-component="Octicon" height="16"
+    aria-label="Issue" class="octicon octicon-issue-opened open d-inline-block mt-1
+    float-left" viewBox="0 0 16 16" version="1.1" width="16" role="img"><path d="M8
+    9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path><path d="M8 0a8 8 0 1 1 0 16A8
+    8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Z"></path></svg> <div
+    class="tmp-ml-4"> <span class="f4 lh-condensed text-bold color-fg-default"> <a
+    title="[Proposal] OmniRoute CLI Integration Suite" class="color-fg-default" aria-label="[Proposal]
+    OmniRoute CLI Integration Suite" href="/diegosouzapw/OmniRoute/issues/2016" rel="noreferrer">[Proposal]
+    OmniRoute CLI Integration Suite</a> </span> <span class="f4 color-fg-muted ml-1">#2016</span>
+    <div class="dashboard-break-word lh-condensed mb-2 mt-1"> ## Summary **Priority:**
+    P0 **Effort:** High **Category:** Developer Experience Single cohesive CLI tool:
+    `omniroute` with modular subcommands for … </div> </div> </div> </div> </div>
+    </div></div>'
+  link: https://github.com/diegosouzapw/OmniRoute/issues/2016
   source: GitHub
-  published_date: '2026-05-05T13:55:24Z'
+  published_date: '2026-05-06T20:38:58Z'
   author: |-
     <author lang="en-US">
       <name lang="en-US">oyi77</name>
@@ -755,29 +610,30 @@ posts:
     </author>
   categories: []
   tags: []
-- title: oyi77 pushed OmniRoute
+- title: oyi77 pushed oh-my-openagent
   excerpt: '<div class="repo-push js-feed-item-view"><div class="body"> <!-- push
     --> <div class="d-flex flex-items-baseline tmp-py-4"> <div class="d-flex flex-column
     width-full"> <div class="color-fg-muted"> <span class="mr-2"><a class="d-inline-block"
     href="/oyi77" rel="noreferrer"><img class="avatar avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=64&amp;v=4"
     width="32" height="32" alt="@oyi77"></a></span> <a class="Link--primary no-underline
     wb-break-all" href="/oyi77" rel="noreferrer">oyi77</a> pushed to <a class="branch-name"
-    href="/oyi77/OmniRoute/tree/feat/docs-site-overhaul" rel="noreferrer">feat/docs-site-overhaul</a>
-    in <a class="Link--primary no-underline wb-break-all" href="/oyi77/OmniRoute"
-    rel="noreferrer">oyi77/OmniRoute</a> <span> · <relative-time tense="past" datetime="2026-05-05T13:22:58Z"
-    data-view-component="true">May 5, 2026 13:22</relative-time> </span> <div class="Box
-    tmp-p-3 mt-2 color-shadow-medium color-bg-overlay"> <span>1 commit to</span> <a
-    class="branch-name" href="/oyi77/OmniRoute/tree/feat/docs-site-overhaul" rel="noreferrer">feat/docs-site-overhaul</a>
-    <div class="commits pusher-is-only-committer"> <ul class="list-style-none"> <li
-    class="d-flex flex-items-baseline"> <span> <a class="d-inline-block" href="/oyi77"
-    rel="noreferrer"><img class="mr-1 avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=32&amp;v=4"
-    width="16" height="16" alt="@oyi77"></a> </span> <code><a class="mr-1" href="/oyi77/OmniRoute/commit/ecdf4ce350c16a02ac9f321e6ec87176911857cd"
-    rel="noreferrer">ecdf4ce</a></code> <div class="dashboard-break-word lh-condensed">
-    <blockquote> fix(docs): copy markdown files to npm package for runtime doc serving
+    href="/oyi77/oh-my-openagent/tree/fix/load-omo-config-agents" rel="noreferrer">fix/load-omo-config-agents</a>
+    in <a class="Link--primary no-underline wb-break-all" href="/oyi77/oh-my-openagent"
+    rel="noreferrer">oyi77/oh-my-openagent</a> <span> · <relative-time tense="past"
+    datetime="2026-05-06T20:27:00Z" data-view-component="true">May 6, 2026 20:27</relative-time>
+    </span> <div class="Box tmp-p-3 mt-2 color-shadow-medium color-bg-overlay"> <span>1
+    commit to</span> <a class="branch-name" href="/oyi77/oh-my-openagent/tree/fix/load-omo-config-agents"
+    rel="noreferrer">fix/load-omo-config-agents</a> <div class="commits pusher-is-only-committer">
+    <ul class="list-style-none"> <li class="d-flex flex-items-baseline"> <span> <a
+    class="d-inline-block" href="/oyi77" rel="noreferrer"><img class="mr-1 avatar-user"
+    src="https://avatars.githubusercontent.com/u/14921983?s=32&amp;v=4" width="16"
+    height="16" alt="@oyi77"></a> </span> <code><a class="mr-1" href="/oyi77/oh-my-openagent/commit/dfe1f7a29b45e8caf4896b6f5aec8403182bbfde"
+    rel="noreferrer">dfe1f7a</a></code> <div class="dashboard-break-word lh-condensed">
+    <blockquote> fix: load agents from oh-my-openagent config in mergeWithClaudeCodeAg…
     </blockquote> </div> </li> </ul> </div> </div> </div> </div> </div> </div></div>'
-  link: https://github.com/oyi77/OmniRoute/compare/e02d7a449b...ecdf4ce350
+  link: https://github.com/oyi77/oh-my-openagent/compare/be4c5152ae...dfe1f7a29b
   source: GitHub
-  published_date: '2026-05-05T13:22:58Z'
+  published_date: '2026-05-06T20:27:00Z'
   author: |-
     <author lang="en-US">
       <name lang="en-US">oyi77</name>
@@ -785,131 +641,196 @@ posts:
     </author>
   categories: []
   tags: []
-- title: oyi77 contributed to diegosouzapw/OmniRoute
-  excerpt: '<div class="git-merge js-feed-item-view"><div class="body"> <!-- pull_request
+- title: oyi77 pushed oh-my-openagent
+  excerpt: '<div class="repo-push js-feed-item-view"><div class="body"> <!-- push
     --> <div class="d-flex flex-items-baseline tmp-py-4"> <div class="d-flex flex-column
-    width-full"> <div> <div class="d-flex flex-items-baseline"> <div class="color-fg-muted">
+    width-full"> <div class="color-fg-muted"> <span class="mr-2"><a class="d-inline-block"
+    href="/oyi77" rel="noreferrer"><img class="avatar avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=64&amp;v=4"
+    width="32" height="32" alt="@oyi77"></a></span> <a class="Link--primary no-underline
+    wb-break-all" href="/oyi77" rel="noreferrer">oyi77</a> pushed to <a class="branch-name"
+    href="/oyi77/oh-my-openagent/tree/fix/load-omo-config-agents" rel="noreferrer">fix/load-omo-config-agents</a>
+    in <a class="Link--primary no-underline wb-break-all" href="/oyi77/oh-my-openagent"
+    rel="noreferrer">oyi77/oh-my-openagent</a> <span> · <relative-time tense="past"
+    datetime="2026-05-06T20:21:56Z" data-view-component="true">May 6, 2026 20:21</relative-time>
+    </span> <div class="Box tmp-p-3 mt-2 color-shadow-medium color-bg-overlay"> <span>1
+    commit to</span> <a class="branch-name" href="/oyi77/oh-my-openagent/tree/fix/load-omo-config-agents"
+    rel="noreferrer">fix/load-omo-config-agents</a> <div class="commits "> <ul class="list-style-none">
+    <li class="d-flex flex-items-baseline"> <span> <img class="mr-1 avatar-user" width="16"
+    height="16" alt="" src="https://camo.githubusercontent.com/d9487a282f9259725e8d049bd7660b92001f598e277eebade5c3afa7eeec5e83/68747470733a2f2f302e67726176617461722e636f6d2f6176617461722f62343565663265623562616161336638373662333732653339383936323838363f643d68747470732533412532462532466769746875622e6769746875626173736574732e636f6d253246696d6167657325324667726176617461727325324667726176617461722d757365722d3432302e706e6726723d6726733d313430"
+    data-canonical-src="https://0.gravatar.com/avatar/b45ef2eb5baaa3f876b372e398962886?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=140">
+    </span> <code><a class="mr-1" href="/oyi77/oh-my-openagent/commit/be4c5152aed9f80c57c7c4df36623fd95cc10835"
+    rel="noreferrer">be4c515</a></code> <div class="dashboard-break-word lh-condensed">
+    <blockquote> fix: load agents from oh-my-openagent config in mergeWithClaudeCodeAg…
+    </blockquote> </div> </li> </ul> </div> </div> </div> </div> </div> </div></div>'
+  link: https://github.com/oyi77/oh-my-openagent/compare/3e11eb3ce1...be4c5152ae
+  source: GitHub
+  published_date: '2026-05-06T20:21:56Z'
+  author: |-
+    <author lang="en-US">
+      <name lang="en-US">oyi77</name>
+      <uri lang="en-US">https://github.com/oyi77</uri>
+    </author>
+  categories: []
+  tags: []
+- title: oyi77 pushed 1ai-poly-trader
+  excerpt: '<div class="repo-push js-feed-item-view"><div class="body"> <!-- push
+    --> <div class="d-flex flex-items-baseline tmp-py-4"> <div class="d-flex flex-column
+    width-full"> <div class="color-fg-muted"> <span class="mr-2"><a class="d-inline-block"
+    href="/oyi77" rel="noreferrer"><img class="avatar avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=64&amp;v=4"
+    width="32" height="32" alt="@oyi77"></a></span> <a class="Link--primary no-underline
+    wb-break-all" href="/oyi77" rel="noreferrer">oyi77</a> pushed to <a class="branch-name"
+    href="/oyi77/1ai-poly-trader/tree/main" rel="noreferrer">main</a> in <a class="Link--primary
+    no-underline wb-break-all" href="/oyi77/1ai-poly-trader" rel="noreferrer">oyi77/1ai-poly-trader</a>
+    <span> · <relative-time tense="past" datetime="2026-05-06T20:11:22Z" data-view-component="true">May
+    6, 2026 20:11</relative-time> </span> <div class="Box tmp-p-3 mt-2 color-shadow-medium
+    color-bg-overlay"> <span>1 commit to</span> <a class="branch-name" href="/oyi77/1ai-poly-trader/tree/main"
+    rel="noreferrer">main</a> <div class="commits pusher-is-only-committer"> <ul class="list-style-none">
+    <li class="d-flex flex-items-baseline"> <span> <a class="d-inline-block" href="/oyi77"
+    rel="noreferrer"><img class="mr-1 avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=32&amp;v=4"
+    width="16" height="16" alt="@oyi77"></a> </span> <code><a class="mr-1" href="/oyi77/1ai-poly-trader/commit/34d6ff8a55d81982e6b036889137377af33375db"
+    rel="noreferrer">34d6ff8</a></code> <div class="dashboard-break-word lh-condensed">
+    <blockquote> fix(auto-trader): resolve all 9 throughput bottlenecks, activate
+    AGI … </blockquote> </div> </li> </ul> </div> </div> </div> </div> </div> </div></div>'
+  link: https://github.com/oyi77/1ai-poly-trader/compare/307b271c04...34d6ff8a55
+  source: GitHub
+  published_date: '2026-05-06T20:11:22Z'
+  author: |-
+    <author lang="en-US">
+      <name lang="en-US">oyi77</name>
+      <uri lang="en-US">https://github.com/oyi77</uri>
+    </author>
+  categories: []
+  tags: []
+- title: oyi77 pushed OmniRoute
+  excerpt: '<div class="repo-push js-feed-item-view"><div class="body"> <!-- push
+    --> <div class="d-flex flex-items-baseline tmp-py-4"> <div class="d-flex flex-column
+    width-full"> <div class="color-fg-muted"> <span class="mr-2"><a class="d-inline-block"
+    href="/oyi77" rel="noreferrer"><img class="avatar avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=64&amp;v=4"
+    width="32" height="32" alt="@oyi77"></a></span> <a class="Link--primary no-underline
+    wb-break-all" href="/oyi77" rel="noreferrer">oyi77</a> pushed to <a class="branch-name"
+    href="/oyi77/OmniRoute/tree/feat/manifest-routing" rel="noreferrer">feat/manifest-routing</a>
+    in <a class="Link--primary no-underline wb-break-all" href="/oyi77/OmniRoute"
+    rel="noreferrer">oyi77/OmniRoute</a> <span> · <relative-time tense="past" datetime="2026-05-06T20:07:34Z"
+    data-view-component="true">May 6, 2026 20:07</relative-time> </span> <div class="Box
+    tmp-p-3 mt-2 color-shadow-medium color-bg-overlay"> <span>1 commit to</span> <a
+    class="branch-name" href="/oyi77/OmniRoute/tree/feat/manifest-routing" rel="noreferrer">feat/manifest-routing</a>
+    <div class="commits pusher-is-only-committer"> <ul class="list-style-none"> <li
+    class="d-flex flex-items-baseline"> <span> <a class="d-inline-block" href="/oyi77"
+    rel="noreferrer"><img class="mr-1 avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=32&amp;v=4"
+    width="16" height="16" alt="@oyi77"></a> </span> <code><a class="mr-1" href="/oyi77/OmniRoute/commit/166e475985d548119dc39e00e8f700f459e255cc"
+    rel="noreferrer">166e475</a></code> <div class="dashboard-break-word lh-condensed">
+    <blockquote> fix: wire DB tier config persistence into tierResolver </blockquote>
+    </div> </li> </ul> </div> </div> </div> </div> </div> </div></div>'
+  link: https://github.com/oyi77/OmniRoute/compare/749a4d935f...166e475985
+  source: GitHub
+  published_date: '2026-05-06T20:07:34Z'
+  author: |-
+    <author lang="en-US">
+      <name lang="en-US">oyi77</name>
+      <uri lang="en-US">https://github.com/oyi77</uri>
+    </author>
+  categories: []
+  tags: []
+- title: oyi77 pushed OmniRoute
+  excerpt: '<div class="repo-push js-feed-item-view"><div class="body"> <!-- push
+    --> <div class="d-flex flex-items-baseline tmp-py-4"> <div class="d-flex flex-column
+    width-full"> <div class="color-fg-muted"> <span class="mr-2"><a class="d-inline-block"
+    href="/oyi77" rel="noreferrer"><img class="avatar avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=64&amp;v=4"
+    width="32" height="32" alt="@oyi77"></a></span> <a class="Link--primary no-underline
+    wb-break-all" href="/oyi77" rel="noreferrer">oyi77</a> pushed to <a class="branch-name"
+    href="/oyi77/OmniRoute/tree/fix/auto-combo-fuzzy-routing" rel="noreferrer">fix/auto-combo-fuzzy-routing</a>
+    in <a class="Link--primary no-underline wb-break-all" href="/oyi77/OmniRoute"
+    rel="noreferrer">oyi77/OmniRoute</a> <span> · <relative-time tense="past" datetime="2026-05-06T20:05:50Z"
+    data-view-component="true">May 6, 2026 20:05</relative-time> </span> <div class="Box
+    tmp-p-3 mt-2 color-shadow-medium color-bg-overlay"> <span>1 commit to</span> <a
+    class="branch-name" href="/oyi77/OmniRoute/tree/fix/auto-combo-fuzzy-routing"
+    rel="noreferrer">fix/auto-combo-fuzzy-routing</a> <div class="commits pusher-is-only-committer">
+    <ul class="list-style-none"> <li class="d-flex flex-items-baseline"> <span> <a
+    class="d-inline-block" href="/oyi77" rel="noreferrer"><img class="mr-1 avatar-user"
+    src="https://avatars.githubusercontent.com/u/14921983?s=32&amp;v=4" width="16"
+    height="16" alt="@oyi77"></a> </span> <code><a class="mr-1" href="/oyi77/OmniRoute/commit/c689411ad1fe92ba295d88e71e3cd378d7f29006"
+    rel="noreferrer">c689411</a></code> <div class="dashboard-break-word lh-condensed">
+    <blockquote> fix: correct handleComboChat signature in auto-combo redirect </blockquote>
+    </div> </li> </ul> </div> </div> </div> </div> </div> </div></div>'
+  link: https://github.com/oyi77/OmniRoute/compare/5e41bb9e77...c689411ad1
+  source: GitHub
+  published_date: '2026-05-06T20:05:50Z'
+  author: |-
+    <author lang="en-US">
+      <name lang="en-US">oyi77</name>
+      <uri lang="en-US">https://github.com/oyi77</uri>
+    </author>
+  categories: []
+  tags: []
+- title: oyi77 commented on an issue in OmniRoute
+  excerpt: "<div class=\"issues_comment js-feed-item-view\"><div class=\"body\"> <!--
+    issue_comment --> <div class=\"d-flex flex-items-baseline tmp-py-4\"> <div class=\"d-flex
+    flex-column width-full\"> <div class=\"d-flex flex-items-baseline mb-2\"> <div
+    class=\"color-fg-muted\"> <span class=\"mr-2\"><a class=\"d-inline-block\" href=\"/oyi77\"
+    rel=\"noreferrer\"><img class=\"avatar avatar-user\" src=\"https://avatars.githubusercontent.com/u/14921983?s=64&amp;v=4\"
+    width=\"32\" height=\"32\" alt=\"@oyi77\"></a></span> <a class=\"Link--primary
+    no-underline wb-break-all\" href=\"/oyi77\" rel=\"noreferrer\">oyi77</a> commented
+    on <a class=\"Link--primary\" title=\"[Feature] Manifest Routing Integration -
+    Tier Resolution &amp; Specificity Detection\" href=\"https://github.com/diegosouzapw/OmniRoute/issues/1957#issuecomment-4391549368\"
+    rel=\"noreferrer\">diegosouzapw/OmniRoute#1957</a> <span> · <relative-time tense=\"past\"
+    datetime=\"2026-05-06T12:54:03-07:00\" data-view-component=\"true\">May 6, 2026
+    12:54</relative-time> </span> </div> </div> <div class=\"message markdown-body
+    Box tmp-p-3 wb-break-all color-shadow-medium color-bg-overlay\"> <div class=\"f6
+    mb-1\"> <a title=\"[Feature] Manifest Routing Integration - Tier Resolution &amp;
+    Specificity Detection\" class=\"Link--secondary\" href=\"https://github.com/diegosouzapw/OmniRoute/issues/1957#issuecomment-4391549368\"
+    rel=\"noreferrer\"><img class=\"avatar mr-1 avatar-user\" src=\"https://avatars.githubusercontent.com/u/14921983?s=32&amp;v=4\"
+    width=\"16\" height=\"16\" alt=\"@oyi77\"> <span class=\"Link--primary text-bold\">oyi77</span>
+    commented <relative-time datetime=\"2026-05-06T19:54:03Z\" class=\"no-wrap\">May
+    6, 2026</relative-time></a> </div> ## \U0001F680 PR Opened This issue is now being
+    addressed in PR #2014 (feat/manifest-routing). Implementation summary: manifest-aware
+    tier routing — 5-tier … </div> </div> </div> </div></div>"
+  link: https://github.com/diegosouzapw/OmniRoute/issues/1957#issuecomment-4391549368
+  source: GitHub
+  published_date: '2026-05-06T19:54:03Z'
+  author: |-
+    <author lang="en-US">
+      <name lang="en-US">oyi77</name>
+      <uri lang="en-US">https://github.com/oyi77</uri>
+    </author>
+  categories: []
+  tags: []
+- title: oyi77 opened a pull request in OmniRoute
+  excerpt: '<div class="git-pull-request js-feed-item-view"><div class="body"> <!--
+    pull_request --> <div class="d-flex flex-items-baseline tmp-py-4"> <div class="d-flex
+    flex-column width-full"> <div> <div class="d-flex flex-items-baseline"> <div class="color-fg-muted">
     <span class="mr-2"><a class="d-inline-block" href="/oyi77" rel="noreferrer"><img
     class="avatar avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=64&amp;v=4"
     width="32" height="32" alt="@oyi77"></a></span> <a class="Link--primary no-underline
-    wb-break-all" href="/oyi77" rel="noreferrer">oyi77</a> merged <a class="Link--primary
-    no-underline wb-break-all" aria-label="diegosouzapw/OmniRoute#1969" href="https://github.com/diegosouzapw/OmniRoute/pull/1969"
-    rel="noreferrer">diegosouzapw/OmniRoute#1969</a> <span> · <relative-time tense="past"
-    datetime="2026-05-05T05:32:43-07:00" data-view-component="true">May 5, 2026 05:32</relative-time>
+    wb-break-all" href="/oyi77" rel="noreferrer">oyi77</a> opened <a class="Link--primary
+    no-underline wb-break-all" aria-label="diegosouzapw/OmniRoute#2014" href="https://github.com/diegosouzapw/OmniRoute/pull/2014"
+    rel="noreferrer">diegosouzapw/OmniRoute#2014</a> <span> · <relative-time tense="past"
+    datetime="2026-05-06T12:53:40-07:00" data-view-component="true">May 6, 2026 12:53</relative-time>
     </span> </div> </div> </div> <div class="Box tmp-p-3 my-2 color-shadow-medium
-    color-bg-overlay"> <svg height="16" aria-label="Pull request" class="octicon octicon-git-pull-request
-    merge d-inline-block mt-1 float-left" viewBox="0 0 16 16" version="1.1" width="16"
-    role="img"><path d="M1.5 3.25a2.25 2.25 0 1 1 3 2.122v5.256a2.251 2.251 0 1 1-1.5
-    0V5.372A2.25 2.25 0 0 1 1.5 3.25Zm5.677-.177L9.573.677A.25.25 0 0 1 10 .854V2.5h1A2.5
-    2.5 0 0 1 13.5 5v5.628a2.251 2.251 0 1 1-1.5 0V5a1 1 0 0 0-1-1h-1v1.646a.25.25
-    0 0 1-.427.177L7.177 3.427a.25.25 0 0 1 0-.354ZM3.75 2.5a.75.75 0 1 0 0 1.5.75.75
-    0 0 0 0-1.5Zm0 9.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm8.25.75a.75.75 0 1 0
-    1.5 0 .75.75 0 0 0-1.5 0Z"></path></svg> <div class="tmp-ml-4"> <div> <span class="f4
-    lh-condensed text-bold color-fg-default"><a class="color-fg-default text-bold"
-    aria-label="feat(docs): integrate multi-page documentation into OmniRoute dashboard
-    — Closes #1958" href="https://github.com/diegosouzapw/OmniRoute/pull/1969" rel="noreferrer">feat(docs):
-    integrate multi-page documentation into OmniRoute dashboard — Closes #1958</a></span>
-    <span class="f4 color-fg-muted ml-1">#1969</span> <div class="lh-condensed mb-2
-    mt-1"> <h2 dir="auto">Summary</h2> <p dir="auto">Implements the <strong>full Comprehensive
-    Documentation Site Overhaul</strong> (<a class="issue-link js-issue-link" data-error-text="Failed
-    to load title" data-id="4379607399" data-permission-text="Title is private" data-url="https://github.com/diegosouzapw/OmniRoute/issues/1958"
-    data-hovercard-type="issue" data-hovercard-url="/diegosouzapw/OmniRoute/issues/1958/hovercard"
-    href="https://github.com/diegosouzapw/OmniRoute/issues/1958" rel="noreferrer">#1958</a>)
-    — all 4 phases + all 5 gap closures — integrated into OmniRoute''s exi…</p> </div>
-    </div> <div class="diffstat d-inline-block mt-1"> <span class="color-fg-success">+4,985</span>
-    <span class="color-fg-danger">-611</span> </div> <div class="d-inline-block f6
-    color-fg-muted tmp-ml-3"> 6 comments </div> </div> </div> </div> </div> </div></div>'
-  link: https://github.com/diegosouzapw/OmniRoute/pull/1969
+    color-bg-overlay"> <svg data-component="Octicon" height="16" aria-label="Pull
+    request" class="octicon octicon-git-pull-request pull-request d-inline-block mt-1
+    float-left" viewBox="0 0 16 16" version="1.1" width="16" role="img"><path d="M1.5
+    3.25a2.25 2.25 0 1 1 3 2.122v5.256a2.251 2.251 0 1 1-1.5 0V5.372A2.25 2.25 0 0
+    1 1.5 3.25Zm5.677-.177L9.573.677A.25.25 0 0 1 10 .854V2.5h1A2.5 2.5 0 0 1 13.5
+    5v5.628a2.251 2.251 0 1 1-1.5 0V5a1 1 0 0 0-1-1h-1v1.646a.25.25 0 0 1-.427.177L7.177
+    3.427a.25.25 0 0 1 0-.354ZM3.75 2.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm0 9.5a.75.75
+    0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm8.25.75a.75.75 0 1 0 1.5 0 .75.75 0 0 0-1.5 0Z"></path></svg>
+    <div class="tmp-ml-4"> <div> <span class="f4 lh-condensed text-bold color-fg-default"><a
+    class="color-fg-default text-bold" aria-label="feat(multi): manifest-aware tier
+    routing — W1-W4 complete" href="https://github.com/diegosouzapw/OmniRoute/pull/2014"
+    rel="noreferrer">feat(multi): manifest-aware tier routing — W1-W4 complete</a></span>
+    <span class="f4 color-fg-muted ml-1">#2014</span> <div class="lh-condensed mb-2
+    mt-1"> <h2 dir="auto">Summary</h2> <p dir="auto">Implements manifest-aware tier
+    routing for OmniRoute — issue <a href="https://github.com/diegosouzapw/OmniRoute/issues/1957"
+    data-hovercard-type="issue" data-hovercard-url="/diegosouzapw/OmniRoute/issues/1957/hovercard"
+    rel="noreferrer">#1957</a>.</p> <h3 dir="auto">What was built</h3> <p dir="auto"><strong>Wave
+    1 — Types:</strong></p> <ul dir="auto"> <li> <code class="notranslate">tierTypes.ts</code>
+    — Provider tier enums, <code class="notranslate">Tie…</code> </li> </ul> </div>
+    </div> <div class="diffstat d-inline-block mt-1"> <span class="color-fg-success">+1,721</span>
+    <span class="color-fg-danger">-32</span> </div> <div class="d-inline-block f6
+    color-fg-muted tmp-ml-3"> 7 comments </div> </div> </div> </div> </div> </div></div>'
+  link: https://github.com/diegosouzapw/OmniRoute/pull/2014
   source: GitHub
-  published_date: '2026-05-05T12:32:43Z'
-  author: |-
-    <author lang="en-US">
-      <name lang="en-US">oyi77</name>
-      <uri lang="en-US">https://github.com/oyi77</uri>
-    </author>
-  categories: []
-  tags: []
-- title: oyi77 pushed OmniRoute
-  excerpt: '<div class="repo-push js-feed-item-view"><div class="body"> <!-- push
-    --> <div class="d-flex flex-items-baseline tmp-py-4"> <div class="d-flex flex-column
-    width-full"> <div class="color-fg-muted"> <span class="mr-2"><a class="d-inline-block"
-    href="/oyi77" rel="noreferrer"><img class="avatar avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=64&amp;v=4"
-    width="32" height="32" alt="@oyi77"></a></span> <a class="Link--primary no-underline
-    wb-break-all" href="/oyi77" rel="noreferrer">oyi77</a> pushed to <a class="branch-name"
-    href="/oyi77/OmniRoute/tree/feat/docs-site-overhaul" rel="noreferrer">feat/docs-site-overhaul</a>
-    in <a class="Link--primary no-underline wb-break-all" href="/oyi77/OmniRoute"
-    rel="noreferrer">oyi77/OmniRoute</a> <span> · <relative-time tense="past" datetime="2026-05-05T12:28:26Z"
-    data-view-component="true">May 5, 2026 12:28</relative-time> </span> <div class="Box
-    tmp-p-3 mt-2 color-shadow-medium color-bg-overlay"> <span>1 commit to</span> <a
-    class="branch-name" href="/oyi77/OmniRoute/tree/feat/docs-site-overhaul" rel="noreferrer">feat/docs-site-overhaul</a>
-    <div class="commits pusher-is-only-committer"> <ul class="list-style-none"> <li
-    class="d-flex flex-items-baseline"> <span> <a class="d-inline-block" href="/oyi77"
-    rel="noreferrer"><img class="mr-1 avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=32&amp;v=4"
-    width="16" height="16" alt="@oyi77"></a> </span> <code><a class="mr-1" href="/oyi77/OmniRoute/commit/e02d7a449bc02db642c7d6a4b2b1fc4f9dea9f4e"
-    rel="noreferrer">e02d7a4</a></code> <div class="dashboard-break-word lh-condensed">
-    <blockquote> feat(docs): auto-discover .md files at build time </blockquote> </div>
-    </li> </ul> </div> </div> </div> </div> </div> </div></div>'
-  link: https://github.com/oyi77/OmniRoute/compare/6f447edb8a...e02d7a449b
-  source: GitHub
-  published_date: '2026-05-05T12:28:26Z'
-  author: |-
-    <author lang="en-US">
-      <name lang="en-US">oyi77</name>
-      <uri lang="en-US">https://github.com/oyi77</uri>
-    </author>
-  categories: []
-  tags: []
-- title: oyi77 forked oyi77/gbrain from garrytan/gbrain
-  excerpt: <div class="fork js-feed-item-view"><div class="body"> <!-- fork --> <div
-    class="d-flex flex-items-baseline tmp-py-4"> <div class="d-flex flex-column width-full">
-    <div class="d-flex flex-items-baseline"> <div class="color-fg-muted"> <span class="mr-2"><a
-    class="d-inline-block" href="/oyi77" rel="noreferrer"><img class="avatar avatar-user"
-    src="https://avatars.githubusercontent.com/u/14921983?s=64&amp;v=4" width="32"
-    height="32" alt="@oyi77"></a></span> <a class="Link--primary no-underline wb-break-all"
-    href="/oyi77" rel="noreferrer">oyi77</a> forked <a class="Link--primary no-underline
-    wb-break-all" title="garrytan/gbrain" href="/garrytan/gbrain" rel="noreferrer">garrytan/gbrain</a>
-    from <a class="Link--primary no-underline wb-break-all" href="/oyi77/gbrain" rel="noreferrer">oyi77/gbrain</a>
-    <span> · <relative-time tense="past" datetime="2026-05-05T04:48:16-07:00" data-view-component="true">May
-    5, 2026 04:48</relative-time> </span> </div> </div> <div class="Box tmp-p-3 mt-2
-    color-shadow-medium color-bg-overlay"> <div> <div class="f4 lh-condensed text-bold
-    color-fg-default"> <a class="Link--primary text-bold no-underline wb-break-all
-    d-inline-block" href="/oyi77/gbrain" rel="noreferrer">oyi77/gbrain</a> </div>
-    <div class="dashboard-break-word color-fg-muted mt-1 repo-description"> <p>Garry's
-    Opinionated OpenClaw/Hermes Agent Brain</p> </div> <p class="f6 color-fg-muted
-    mt-2 mb-0"> <span>Updated May 5</span> </p> </div> </div> </div> </div> </div></div>
-  link: https://github.com/oyi77/gbrain
-  source: GitHub
-  published_date: '2026-05-05T11:48:16Z'
-  author: |-
-    <author lang="en-US">
-      <name lang="en-US">oyi77</name>
-      <uri lang="en-US">https://github.com/oyi77</uri>
-    </author>
-  categories: []
-  tags: []
-- title: oyi77 pushed OmniRoute
-  excerpt: '<div class="repo-push js-feed-item-view"><div class="body"> <!-- push
-    --> <div class="d-flex flex-items-baseline tmp-py-4"> <div class="d-flex flex-column
-    width-full"> <div class="color-fg-muted"> <span class="mr-2"><a class="d-inline-block"
-    href="/oyi77" rel="noreferrer"><img class="avatar avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=64&amp;v=4"
-    width="32" height="32" alt="@oyi77"></a></span> <a class="Link--primary no-underline
-    wb-break-all" href="/oyi77" rel="noreferrer">oyi77</a> pushed to <a class="branch-name"
-    href="/oyi77/OmniRoute/tree/feat/docs-site-overhaul" rel="noreferrer">feat/docs-site-overhaul</a>
-    in <a class="Link--primary no-underline wb-break-all" href="/oyi77/OmniRoute"
-    rel="noreferrer">oyi77/OmniRoute</a> <span> · <relative-time tense="past" datetime="2026-05-05T11:43:01Z"
-    data-view-component="true">May 5, 2026 11:43</relative-time> </span> <div class="Box
-    tmp-p-3 mt-2 color-shadow-medium color-bg-overlay"> <span>1 commit to</span> <a
-    class="branch-name" href="/oyi77/OmniRoute/tree/feat/docs-site-overhaul" rel="noreferrer">feat/docs-site-overhaul</a>
-    <div class="commits pusher-is-only-committer"> <ul class="list-style-none"> <li
-    class="d-flex flex-items-baseline"> <span> <a class="d-inline-block" href="/oyi77"
-    rel="noreferrer"><img class="mr-1 avatar-user" src="https://avatars.githubusercontent.com/u/14921983?s=32&amp;v=4"
-    width="16" height="16" alt="@oyi77"></a> </span> <code><a class="mr-1" href="/oyi77/OmniRoute/commit/6f447edb8a62c962637c6455ace168a954df8578"
-    rel="noreferrer">6f447ed</a></code> <div class="dashboard-break-word lh-condensed">
-    <blockquote> feat(docs): close all issue 1958 gaps - Mermaid, analytics, i18n,
-    Wha… </blockquote> </div> </li> </ul> </div> </div> </div> </div> </div> </div></div>'
-  link: https://github.com/oyi77/OmniRoute/compare/32f8b0333d...6f447edb8a
-  source: GitHub
-  published_date: '2026-05-05T11:43:01Z'
+  published_date: '2026-05-06T19:53:40Z'
   author: |-
     <author lang="en-US">
       <name lang="en-US">oyi77</name>
