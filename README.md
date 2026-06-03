@@ -1,21 +1,19 @@
-# 🖥️ Terminal OS Portfolio
+# 🖥️ oyi77.dev — Terminal OS Portfolio
 
-> **An immersive terminal-based operating system experience showcasing technical leadership and engineering excellence**
+> **Interactive portfolio with terminal OS, live metrics, and OSS contribution showcase.**
 
 [![Live Demo](https://img.shields.io/badge/Live-Demo-00ff00?style=for-the-badge)](https://oyi77.github.io/terminal/)
 [![GitHub Pages](https://img.shields.io/badge/GitHub-Pages-181717?style=for-the-badge&logo=github)](https://oyi77.github.io/)
-[![Portfolio](https://img.shields.io/badge/CV-OS-00ff00?style=for-the-badge)](https://oyi77.github.io/oyi77)
+[![Profile](https://img.shields.io/badge/GitHub-Profile-333?style=for-the-badge&logo=github)](https://github.com/oyi77/oyi77)
 
 ## 🎯 Overview
 
-A fully interactive hacker-themed terminal OS that simulates a complete boot experience from BIOS to command prompt. Built to showcase technical leadership and engineering excellence.
+A fully interactive hacker-themed terminal OS built with Jekyll + vanilla JS. Features boot sequence, virtual filesystem, 20+ commands, and real-time GitHub data. Showcases OSS contributions, projects, and technical work.
 
-### 🏢 Leadership Highlights
+### 👤 About
 
-- **GarudaMedia** - 3000+ employees
-- **Solomon Mining** - Indonesia's first legal crypto mining
-- **BerkahKarya** - 5B+ IDR monthly turnover
-- **AiTradePulse** - 90%+ win rate trading platform
+Built by [Paijo (oyi77)](https://github.com/oyi77) — OSS Contributor & Builder.  
+Contributor to OmniRoute, next.js, trpc, vuejs, prisma. Creator of 1ai-skills (1282+ agent skills), PolyEdge trading bot.
 
 ## ✨ Key Features
 
@@ -123,6 +121,6 @@ Open source and available for educational purposes.
 
 ---
 
-**Built with ❤️ by Lead Software Engineer**
+**Built by [oyi77](https://github.com/oyi77)**
 
 *"Code is poetry, terminals are art"* 🎨

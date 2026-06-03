@@ -13,12 +13,12 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: "Lead Software Engineer | Remote Available"
+title: "oyi77 • OSS Contributor & Builder"
 email: xji1d0d1@oyi77.anonaddy.me
 description: >- # this means to ignore newlines until "baseurl:"
-  Remote Lead Software Engineer with 7+ years of experience in full-stack development,
-  blockchain, and algorithmic trading. Expert in Python, JavaScript, React, Node.js. Led teams of 15 to 3,000+ members.
-  Available for remote positions. Interactive portfolio showcasing projects, achievements, and technical expertise.
+  OSS Contributor & Builder — 1ai-skills (1282+ agent skills), PolyEdge trading bot, 
+  contributor to OmniRoute, next.js, trpc, vuejs, prisma. 10y+ building for the open web.
+  Interactive portfolio with terminal OS, live metrics, and project showcase.
 twitter_username: 
 github_username: oyi77
 minimal_mistakes_skin: default
@@ -29,15 +29,17 @@ url: "https://oyi77.is-a.dev"
 baseurl: ""
 
 # SEO Keywords
-keywords: "remote software engineer, lead developer, blockchain developer, full-stack developer, algorithmic trading developer, technical lead, 7+ years experience, remote work, Python developer, JavaScript developer, React developer, Node.js developer"
+keywords: "open source contributor, AI agent skills, developer tools, Python, JavaScript, TypeScript, OSS contributor, GitHub, trading bot, Polymarket, Kalshi, OSINT, AI infrastructure, Indonesia developer"
 
 # Social Sharing
 social:
   type: "Person"
-  name: "Lead Software Engineer"
+  name: "Paijo (oyi77)"
   links:
     - "https://github.com/oyi77"
-    - "https://linktr.ee/jokogendeng"
+    - "https://medium.com/@oyi77"
+    - "https://dev.to/oyi77"
+    - "https://linkedin.com/in/fikriizzuddin"
 
 # Build settings
 markdown: kramdown
@@ -88,28 +90,34 @@ analytics: false
 analytics_provider: "none"
 
 author:
-  name   : "Lead Software Engineer"
+  name   : "Paijo (oyi77)"
   avatar : "/assets/images/bio-photo.jpg"
-  bio    : "A highly accomplished and results-driven Software Engineer Lead with 7+ years of experience in full-stack development, blockchain, and embedded systems. Proven ability to lead cross-functional teams, architect scalable solutions, and drive significant business impact through technology."
+  bio    : "OSS Contributor & Builder. Built 1ai-skills (1282+ agent skills), PolyEdge trading bot. Contributed to OmniRoute, next.js, trpc, vuejs, prisma. 10y+ of code, 149 repos."
   links:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/oyi77"
-    - label: "Portfolio"
-      icon: "fas fa-fw fa-link"
-      url: "https://linktr.ee/jokogendeng"
-    - label: "Website"
-      icon: "fas fa-fw fa-globe"
-      url: "https://oyi77.is-a.dev"
+    - label: "GitHub Profile"
+      icon: "fas fa-fw fa-user"
+      url: "https://github.com/oyi77/oyi77"
+    - label: "Medium"
+      icon: "fab fa-fw fa-medium"
+      url: "https://medium.com/@oyi77"
+    - label: "Dev.to"
+      icon: "fab fa-fw fa-dev"
+      url: "https://dev.to/oyi77"
 
 footer:
   links:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/oyi77"
-    - label: "Portfolio"
-      icon: "fas fa-fw fa-link"
-      url: "https://linktr.ee/jokogendeng"
+    - label: "Medium"
+      icon: "fab fa-fw fa-medium"
+      url: "https://medium.com/@oyi77"
+    - label: "Dev.to"
+      icon: "fab fa-fw fa-dev"
+      url: "https://dev.to/oyi77"
 
 defaults:
   # _posts

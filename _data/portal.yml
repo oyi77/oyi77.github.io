@@ -46,7 +46,7 @@ achievements:
 # --- Header ---
 header:
   title: "System Entry"
-  subtitle: "Lead Software Engineer"
+  subtitle: "OSS Contributor & Builder"
 
 # --- Access Cards ---
 access_cards:
@@ -115,4 +115,4 @@ portfolio_cards:
 
 # --- Footer ---
 footer:
-  text: "SOFTWARE ENGINEER | TECHNICAL LEAD | REMOTE_READY"
+  text: "OSS CONTRIBUTOR | BUILDER | OPEN_WEB"
