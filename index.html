@@ -1,448 +1,872 @@
----
----
 <!DOCTYPE html>
-<html lang="en" itemscope itemtype="https://schema.org/Person">
-
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#0a0a0a">
-
-  <!-- Primary Meta Tags -->
-  <title>oyi77 • OSS Contributor & Builder</title>
-  <meta name="title" content="oyi77 • OSS Contributor & Builder">
-  <meta name="description"
-    content="OSS Contributor & Builder — 1ai-skills (1282+ agent skills), PolyEdge trading bot. Contributor to OmniRoute, next.js, trpc, vuejs, prisma. Built for the open web since 2015.">
-  <meta name="keywords"
-    content="open source contributor, AI agent skills, developer tools, Python, JavaScript, TypeScript, OSS, GitHub, trading bot, Polymarket, OSINT">
-  <meta name="author" content="Paijo (oyi77)">
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <meta name="language" content="English">
-  <link rel="canonical" href="{{ site.url }}/">
-
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="profile">
-  <meta property="og:url" content="{{ site.url }}/">
-  <meta property="og:title" content="oyi77 • OSS Contributor & Builder">
-  <meta property="og:description"
-    content="OSS Contributor & Builder — 1ai-skills (1282+ agent skills), PolyEdge trading bot. Contributor to OmniRoute, next.js, trpc, vuejs, prisma.">
-  <meta property="og:image" content="{{ site.url }}/assets/images/bio-photo.png">
-  <meta property="og:site_name" content="oyi77.dev">
-  <meta property="og:locale" content="en_US">
-  <meta property="profile:username" content="oyi77">
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="{{ site.url }}/">
-  <meta name="twitter:title" content="oyi77 • OSS Contributor & Builder">
-  <meta name="twitter:description" content="OSS Contributor & Builder — building 1ai-skills (1282+ agent skills), PolyEdge trading bot. Contributing to OmniRoute, next.js, trpc.">
-  <meta name="twitter:image" content="{{ site.url }}/assets/images/bio-photo.png">
-  <meta name="twitter:site" content="@oyi77">
-
-  <!-- Schema.org Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Paijo (oyi77)",
-    "url": "{{ site.url }}",
-    "image": "{{ site.url }}/assets/images/bio-photo.png",
-    "sameAs": [
-      "https://github.com/oyi77",
-      "https://linkedin.com/in/fikriizzuddin",
-      "https://medium.com/@oyi77",
-      "https://dev.to/oyi77",
-      "https://oyi77.is-a.dev"
-    ],
-    "jobTitle": "OSS Contributor & Builder",
-    "description": "OSS Contributor & Builder — 1ai-skills (1282+ agent skills), PolyEdge trading bot. Contributor to OmniRoute, next.js, trpc, vuejs, prisma.",
-    "knowsAbout": [
-      "Python",
-      "JavaScript",
-      "TypeScript",
-      "AI Agent Infrastructure",
-      "Open Source",
-      "Developer Tools",
-      "Trading Systems",
-      "OSINT",
-      "Automation"
-    ],
-    "worksFor": {
-      "@type": "Organization",
-      "name": "Open Source"
-    }
-  }
-  </script>
-
-  <!-- Favicons -->
-  <link rel="icon" type="image/x-icon" href="/assets/images/favicons/favicon.ico">
-  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicons/favicon-16x16.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicons/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="48x48" href="/assets/images/favicons/favicon-48x48.png">
-  <link rel="icon" type="image/png" sizes="64x64" href="/assets/images/favicons/favicon-64x64.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="/assets/images/favicons/favicon-96x96.png">
-  <link rel="icon" type="image/png" sizes="128x128" href="/assets/images/favicons/favicon-128x128.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="/assets/images/favicons/favicon-192x192.png">
-  <link rel="icon" type="image/png" sizes="256x256" href="/assets/images/favicons/favicon-256x256.png">
-  
-  <!-- Apple Touch Icons -->
-  <link rel="apple-touch-icon" sizes="57x57" href="/assets/images/favicons/apple-touch-icon-57x57.png">
-  <link rel="apple-touch-icon" sizes="72x72" href="/assets/images/favicons/apple-touch-icon-72x72.png">
-  <link rel="apple-touch-icon" sizes="76x76" href="/assets/images/favicons/apple-touch-icon-76x76.png">
-  <link rel="apple-touch-icon" sizes="114x114" href="/assets/images/favicons/apple-touch-icon-114x114.png">
-  <link rel="apple-touch-icon" sizes="120x120" href="/assets/images/favicons/apple-touch-icon-120x120.png">
-  <link rel="apple-touch-icon" sizes="144x144" href="/assets/images/favicons/apple-touch-icon-144x144.png">
-  <link rel="apple-touch-icon" sizes="152x152" href="/assets/images/favicons/apple-touch-icon-152x152.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicons/apple-touch-icon-180x180.png">
-  
-  <!-- Android Chrome Icons -->
-  <link rel="icon" type="image/png" sizes="144x144" href="/assets/images/favicons/android-chrome-144x144.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="/assets/images/favicons/android-chrome-192x192.png">
-  
-  <!-- Windows Tiles -->
-  <meta name="msapplication-TileImage" content="/assets/images/favicons/mstile-144x144.png">
-  <meta name="msapplication-TileColor" content="#0d0d0d">
-  
-  <!-- Web Manifest -->
-  <link rel="manifest" href="/site.webmanifest">
-
-  <!-- Sitemap -->
-  <link rel="sitemap" type="application/xml" href="{{ site.url }}/sitemap.xml">
-
+  <title>Paijo oyi77 — OSS Contributor & Builder</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=swap"
-    rel="stylesheet" media="print" onload="this.media='all'">
-  <noscript><link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=swap"
-    rel="stylesheet"></noscript>
-  <link rel="stylesheet" href="/assets/css/portal.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Syne:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --brand: #1d9e75;
+      --brand-light: #23c28e;
+      --brand-glow: rgba(29, 158, 117, 0.3);
+      --bg: #0a0b0a;
+      --surface: #0f1211;
+      --surface-2: #151918;
+      --border: #1e2620;
+      --text: #e8ede9;
+      --text-muted: #6a7f72;
+      --text-dim: #4a5c52;
+      --radius: 12px;
+      --radius-lg: 20px;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    .bg-grid {
+      position: fixed; inset: 0;
+      background-image: radial-gradient(var(--border) 1px, transparent 1px);
+      background-size: 40px 40px;
+      opacity: 0.4;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .glow-orb {
+      position: fixed; top: -20%; right: -10%;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, var(--brand-glow) 0%, transparent 70%);
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .glow-orb-2 {
+      position: fixed; bottom: -20%; left: -10%;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(29,158,117,0.15) 0%, transparent 70%);
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 1;
+    }
 
-  <!-- Jekyll Data Injection for Homepage -->
-  <script>
-    window.JEKYLL_DATA = window.JEKYLL_DATA || {};
-    window.JEKYLL_DATA.companies = {{ site.data.companies | jsonify | default: 'null' }};
-    window.JEKYLL_DATA.projects = {{ site.data.projects | jsonify | default: 'null' }};
-    window.JEKYLL_DATA.terminal = {{ site.data.terminal | jsonify | default: 'null' }};
-    window.JEKYLL_DATA.portal = {{ site.data.portal | jsonify | default: 'null' }};
-    window.JEKYLL_DATA.case_studies = {{ site.data.case_studies | jsonify | default: 'null' }};
-    window.JEKYLL_DATA.led_projects = {{ site.data.led_projects | jsonify | default: 'null' }};
-    window.JEKYLL_DATA.aggregated_posts = {{ site.data.aggregated_posts | jsonify | default: 'null' }};
-    window.JEKYLL_DATA.github_stats = {{ site.data.github_stats | jsonify | default: 'null' }};
-    window.JEKYLL_DATA.repository_stats = {{ site.data.repository_stats | jsonify | default: 'null' }};
-  </script>
+    /* NAV */
+    nav {
+      padding: 20px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--brand); }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      background: var(--brand);
+      color: #000 !important;
+      padding: 8px 20px;
+      border-radius: 8px;
+      font-weight: 600 !important;
+    }
+    .nav-cta:hover { background: var(--brand-light) !important; }
+
+    /* HERO */
+    .hero {
+      padding: 100px 0 80px;
+      text-align: center;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      padding: 6px 16px;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+    }
+    .hero-badge .dot {
+      width: 8px; height: 8px;
+      background: var(--brand);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    .hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    .hero h1 .highlight {
+      background: linear-gradient(135deg, var(--brand), #4ad7b0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero p {
+      max-width: 680px;
+      margin: 0 auto 40px;
+      font-size: 1.125rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--brand);
+      color: #000;
+      padding: 14px 32px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-primary:hover {
+      background: var(--brand-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px var(--brand-glow);
+    }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 14px 32px;
+      border-radius: 10px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-secondary:hover {
+      border-color: var(--text-muted);
+      background: var(--surface-2);
+    }
+
+    /* STATS */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-bottom: 100px;
+    }
+    .stat-card {
+      background: var(--surface);
+      padding: 36px 24px;
+      text-align: center;
+    }
+    .stat-card .number {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--brand), #4ad7b0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .stat-card .label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    /* SECTION */
+    .section {
+      padding: 80px 0;
+    }
+    .section-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--brand);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .section-desc {
+      color: var(--text-muted);
+      max-width: 600px;
+      margin-bottom: 48px;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    /* PROJECT GRID */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 20px;
+    }
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      transition: all 0.25s;
+    }
+    .project-card:hover {
+      border-color: var(--brand);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+    }
+    .project-icon {
+      width: 44px; height: 44px;
+      border-radius: 10px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      margin-bottom: 16px;
+    }
+    .project-card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .project-card .desc {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .project-tags span {
+      font-size: 0.7rem;
+      padding: 3px 10px;
+      border-radius: 100px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+    }
+    .project-tags .active { color: var(--brand); border-color: var(--brand); }
+
+    /* OSS TABLE */
+    .oss-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--surface);
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .oss-table th {
+      text-align: left;
+      padding: 16px 20px;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+      font-weight: 500;
+    }
+    .oss-table td {
+      padding: 16px 20px;
+      font-size: 0.875rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .oss-table tr:last-child td { border-bottom: none; }
+    .oss-table tr:hover td { background: var(--surface-2); }
+    .oss-name { font-weight: 600; color: var(--text); }
+    .oss-stars { color: var(--text-muted); font-size: 0.8rem; }
+    .oss-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.75rem;
+      color: var(--brand);
+    }
+    .oss-status::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--brand);
+      border-radius: 50%;
+    }
+
+    /* CASE STUDIES */
+    .case-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 20px;
+    }
+    .case-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+    }
+    .case-card .company {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--brand);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .case-card h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 8px; }
+    .case-card .desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 12px; }
+    .case-card .tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+    .case-card .tech span {
+      font-size: 0.65rem;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: var(--surface-2);
+      color: var(--text-dim);
+    }
+    .case-result {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      color: var(--brand);
+      font-weight: 500;
+    }
+
+    /* ECOSYSTEM */
+    .eco-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+    }
+    .eco-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s;
+    }
+    .eco-card:hover {
+      border-color: var(--brand);
+      transform: translateY(-2px);
+    }
+    .eco-card .role {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-dim);
+      margin-bottom: 8px;
+    }
+    .eco-card h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 4px; }
+    .eco-card p { font-size: 0.8rem; color: var(--text-muted); }
+
+    /* MANIFESTO */
+    .manifesto {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 48px;
+      margin: 80px 0;
+    }
+    .manifesto-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+    @media (max-width: 768px) { .manifesto-grid { grid-template-columns: 1fr; } }
+    .manifesto h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .manifesto p {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 48px 0;
+      text-align: center;
+    }
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 20px;
+    }
+    .social-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+      transition: color 0.2s;
+    }
+    .social-links a:hover { color: var(--text); }
+    footer p { font-size: 0.8rem; color: var(--text-dim); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .hero { padding: 60px 0 40px; }
+      .nav-links { display: none; }
+      .project-grid { grid-template-columns: 1fr; }
+      .case-grid { grid-template-columns: 1fr; }
+      .eco-grid { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: 1fr 1fr; }
+      .oss-table { font-size: 0.8rem; }
+    }
+
+    /* BACK TO TOP */
+    .back-top {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--brand);
+      color: #000;
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      opacity: 0;
+      transition: all 0.3s;
+      z-index: 100;
+    }
+    .back-top.visible { opacity: 1; }
+    .back-top:hover { transform: translateY(-3px); }
+  </style>
 </head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="glow-orb"></div>
+  <div class="glow-orb-2"></div>
 
-<body itemscope itemtype="https://schema.org/Person">
-  <div class="bg-grid" aria-hidden="true"></div>
-  <div class="bg-glow" aria-hidden="true"></div>
+  <!-- NAV -->
+  <div class="container">
+    <nav>
+      <a href="/" class="nav-logo">oyi77<span>.</span></a>
+      <div class="nav-links">
+        <a href="#projects">Projects</a>
+        <a href="#oss">OSS</a>
+        <a href="#cases">Case Studies</a>
+        <a href="#ecosystem">Ecosystem</a>
+        <a href="https://github.com/oyi77" class="nav-cta" target="_blank">GitHub →</a>
+      </div>
+    </nav>
+  </div>
 
-  <div id="portal-wrapper">
-    <!-- Date Display - Top Left -->
-    <div class="date-display">
-      <div class="current-date" id="current-date">LOADING...</div>
-    </div>
-
-    <!-- Time Display - Top Right -->
-    <div class="time-display">
-      <div class="current-time" id="current-time">00:00:00</div>
-    </div>
-
-    <!-- Help Button - Top Right -->
-    <button class="help-btn" id="help-btn" aria-label="Show help / Onboarding">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none"
-        stroke="currentColor" stroke-width="2">
-        <circle cx="12" cy="12" r="10"></circle>
-        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
-        <line x1="12" y1="17" x2="12.01" y2="17"></line>
-      </svg>
-    </button>
-
-    <!-- Social Buttons - Bottom Right -->
-    <div class="social-buttons">
-      <a href="https://github.com/oyi77" class="social-btn" target="_blank" rel="noopener noreferrer"
-        aria-label="GitHub Profile">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <path
-            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-        </svg>
-      </a>
-    </div>
-
-    <!-- Single Toggle Button - Moves between states -->
-    <div class="toggle-container" id="toggle-container">
-      <button class="see-more-btn" id="see-more-btn" aria-label="Toggle Navigation">
-        <span class="arrow">→</span>
-      </button>
-    </div>
-
-    <!-- Right Toggle Button for Main Page -->
-    <div class="toggle-container toggle-right" id="main-right-toggle" style="display: none;">
-      <button class="see-more-btn" id="main-right-btn" aria-label="Go to expanded view">
-        <span class="arrow">→</span>
-      </button>
-    </div>
-
-    <!-- Dual Arrow Buttons for Expanded View -->
-    <div class="dual-arrow-container" id="dual-arrow-container" style="display: none;">
-      <button class="nav-arrow-btn nav-arrow-left" id="nav-arrow-left" aria-label="Go back to main">
-        <span class="arrow">←</span>
-      </button>
-      <button class="nav-arrow-btn nav-arrow-down" id="nav-arrow-down" aria-label="Go to achievements">
-        <span class="arrow">↓</span>
-      </button>
-    </div>
-
-    <!-- Main Content Wrapper -->
-    <div class="main-content" id="main-content">
-
-      <header class="header" role="banner">
-        <h1>{{ site.data.portal.header.title | default: "System Entry" }}</h1>
-        <div class="name" itemprop="name">{{ site.data.portal.header.subtitle | default: "Lead Software Engineer" }}</div>
-      </header>
-
-      <main role="main">
-        <nav class="access-grid" aria-label="Portfolio access options">
-          {% for card in site.data.portal.access_cards %}
-          <a href="{{ card.href }}" class="access-card" {% if card.download %}download{% endif %} aria-label="{{ card.aria_label }}">
-            <span class="card-label">{{ card.label }}</span>
-            <h2 class="card-title">{{ card.title }}</h2>
-            <p class="card-desc">{{ card.description }}</p>
-            <span class="card-footer">{{ card.footer }}</span>
-          </a>
-          {% endfor %}
-        </nav>
-
-        <footer class="footer" role="contentinfo" itemprop="jobTitle">
-          {{ site.data.portal.footer.text | default: "SOFTWARE ENGINEER | TECHNICAL LEAD | REMOTE_READY" }}
-        </footer>
-    </div>
-
-    <!-- Expanded Portfolio Sections - Full Screen Overlay -->
-    <div class="expanded-sections" id="expanded-sections" aria-hidden="true">
-
-      <!-- Portfolio Cards Grid (Stage 1: Arrow Right) -->
-      <div class="expanded-grid" id="expanded-grid">
-        {% for card in site.data.portal.portfolio_cards %}
-        <div class="portfolio-card" data-section="{{ card.section }}" role="button" tabindex="0">
-          <div class="card-icon">{{ card.icon }}</div>
-          <h3 class="card-title">{{ card.title }}</h3>
-          <p class="card-desc">{{ card.description }}</p>
-        </div>
-        {% endfor %}
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge">
+        <span class="dot"></span>
+        Open Source Contributor & Builder
+      </div>
+      <h1>
+        Hi, I'm <span class="highlight">Paijo</span><br>
+        I Build for the <span class="highlight">Open Web</span>
+      </h1>
+      <p>
+        From AI agent infrastructure to trading systems and developer tooling — 
+        I build things that push the boundaries of what's possible. <br>
+        <strong>10+ years</strong> of code · <strong>150+</strong> repos · 
+        <strong>1282+</strong> AI agent skills
+      </p>
+      <div class="hero-actions">
+        <a href="https://github.com/oyi77" class="btn-primary" target="_blank">
+          GitHub Profile →
+        </a>
+        <a href="#projects" class="btn-secondary">
+          View Projects ↓
+        </a>
       </div>
     </div>
+  </section>
 
-    </main>
-
-    <!-- Modal System -->
-    <div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modal-title">
-      <div class="modal-container">
-        <div class="modal-header">
-          <h2 class="modal-title" id="modal-title">Section Title</h2>
-          <button class="modal-close" id="modal-close" aria-label="Close modal">&times;</button>
-        </div>
-        <div class="modal-tabs" id="modal-tabs" role="tablist">
-          <!-- Tabs will be dynamically inserted -->
-        </div>
-        <div class="modal-content" id="modal-content">
-          <!-- Content will be dynamically inserted -->
-        </div>
-
+  <!-- STATS -->
+  <div class="container">
+    <div class="stats">
+      <div class="stat-card">
+        <div class="number">150+</div>
+        <div class="label">GitHub Repositories</div>
       </div>
-
+      <div class="stat-card">
+        <div class="number">1,282</div>
+        <div class="label">AI Agent Skills</div>
+      </div>
+      <div class="stat-card">
+        <div class="number">10+</div>
+        <div class="label">Years Building</div>
+      </div>
+      <div class="stat-card">
+        <div class="number">9</div>
+        <div class="label">OSS PRs Merged</div>
+      </div>
+      <div class="stat-card">
+        <div class="number">20+</div>
+        <div class="label">Services in Ecosystem</div>
+      </div>
     </div>
+  </div>
 
-    <!-- Curated Portfolio Section (Left Navigation) -->
-    <div class="curated-sections" id="curated-sections" aria-hidden="true">
-      <div class="curated-container">
-        <div class="curated-header">
-          <h2 class="section-title">Curated Portfolio</h2>
-        </div>
-        <div class="curated-controls">
-          <p class="curated-description">Auto-discovered GitHub Pages and portfolio links</p>
-          <button class="curated-refresh-btn" id="curated-refresh-btn" aria-label="Refresh scan"
-            title="Refresh GitHub Pages scan">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none"
-              stroke="currentColor" stroke-width="2">
-              <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2" />
-            </svg>
-          </button>
-        </div>
-        <div class="curated-grid" id="curated-grid">
-          <!-- Content will be injected here -->
-        </div>
-
-        <!-- Skeleton Loader for Curated Portfolio -->
-        <div class="curated-grid" id="curated-skeleton" style="display: none;" aria-hidden="true">
-          <div class="curated-card skeleton-card">
-            <div class="skeleton-line width-20 mb-10"></div>
-            <div class="skeleton-line width-60 mb-10"></div>
-            <div class="skeleton-line width-40"></div>
+  <!-- PROJECTS -->
+  <section class="section" id="projects">
+    <div class="container">
+      <div class="section-label">✦ Flagship Projects</div>
+      <h2 class="section-title">What I'm Building</h2>
+      <p class="section-desc">Production-grade systems spanning AI infrastructure, trading, and developer tooling.</p>
+      <div class="project-grid">
+        <div class="project-card">
+          <div class="project-icon">🧠</div>
+          <h3>1ai-skills</h3>
+          <div class="desc">1,282 production-ready AI agent skills with auto-evolution. Self-learning meta-skills that improve across sessions.</div>
+          <div class="project-tags">
+            <span class="active">Active</span>
+            <span>AI Agents</span>
+            <span>Auto-Evolve</span>
           </div>
-          <div class="curated-card skeleton-card">
-            <div class="skeleton-line width-20 mb-10"></div>
-            <div class="skeleton-line width-50 mb-10"></div>
-            <div class="skeleton-line width-30"></div>
+        </div>
+        <div class="project-card">
+          <div class="project-icon">📈</div>
+          <h3>PolyEdge</h3>
+          <div class="desc">AI-powered prediction market bot. 14 strategies + AGI orchestrator for Polymarket & Kalshi. Bounded autonomy, evolutionary composition.</div>
+          <div class="project-tags">
+            <span class="active">Active</span>
+            <span>Trading</span>
+            <span>Prediction Markets</span>
           </div>
-          <div class="curated-card skeleton-card">
-            <div class="skeleton-line width-20 mb-10"></div>
-            <div class="skeleton-line width-70 mb-10"></div>
-            <div class="skeleton-line width-40"></div>
+        </div>
+        <div class="project-card">
+          <div class="project-icon">🌐</div>
+          <h3>1proxy</h3>
+          <div class="desc">Ultimate public proxy grabber & rotator — collect, validate, and rotate proxies at scale.</div>
+          <div class="project-tags">
+            <span class="active">Active</span>
+            <span>Infrastructure</span>
+            <span>Networking</span>
           </div>
-          <div class="curated-card skeleton-card">
-            <div class="skeleton-line width-20 mb-10"></div>
-            <div class="skeleton-line width-60 mb-10"></div>
-            <div class="skeleton-line width-50"></div>
+        </div>
+        <div class="project-card">
+          <div class="project-icon">🔀</div>
+          <h3>cloudflare-router</h3>
+          <div class="desc">Cloudflare tunnel + nginx subdomain router for ecosystem service mesh.</div>
+          <div class="project-tags">
+            <span class="active">Active</span>
+            <span>Infrastructure</span>
+            <span>Networking</span>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-icon">🤖</div>
+          <h3>OmniRoute</h3>
+          <div class="desc">AI gateway for multi-provider LLMs — smart routing, load balancing, retries, fallbacks, and caching. 9+ PRs merged.</div>
+          <div class="project-tags">
+            <span class="active">Contributor</span>
+            <span>AI Gateway</span>
+            <span>⭐5.7k</span>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-icon">🏗️</div>
+          <h3>1ai-ecosystem</h3>
+          <div class="desc">Full-stack AI company infrastructure. 20+ services: ads, social, content, trading, proxy, phone farm — 1 human, infinite AI.</div>
+          <div class="project-tags">
+            <span class="active">Active</span>
+            <span>Ecosystem</span>
+            <span>1-Man Company</span>
           </div>
         </div>
       </div>
     </div>
+  </section>
 
-    <!-- Metrics & Achievements Section (Stage 2: Arrow Down) -->
-    <!-- Data-driven from _data/portal.yml — edit YAML to update, no HTML changes needed -->
-    <div class="metrics-sections" id="metrics-sections" aria-hidden="true">
-      <!-- Metrics Dashboard -->
-      <section class="metrics-dashboard" id="metrics-dashboard" aria-label="Professional metrics">
-        <div class="metrics-grid">
-          {% for m in site.data.portal.metrics %}
-          <div class="metric-card">
-            <div class="metric-value" data-target="{{ m.value }}">0</div>
-            <div class="metric-label">{{ m.label }}</div>
-          </div>
-          {% endfor %}
-        </div>
-      </section>
-
-      <!-- Achievement Highlights -->
-      <section class="achievement-highlights" id="achievement-highlights" aria-label="Key achievements">
-        <h2 class="section-title">Key Achievements</h2>
-        <div class="achievements-grid">
-          {% for a in site.data.portal.achievements %}
-          <div class="achievement-card">
-            <div class="achievement-icon">{% if a.icon == "team" %}👥{% elsif a.icon == "down" %}↓{% elsif a.icon == "btc" %}₿{% else %}{{ a.icon }}{% endif %}</div>
-            <div class="achievement-value" data-target="{{ a.value }}"{% if a.suffix %} data-suffix="{{ a.suffix }}"{% endif %}>0</div>
-            {% if a.unit %}<div class="achievement-unit">{{ a.unit }}</div>{% endif %}
-            <div class="achievement-desc">{{ a.description }}</div>
-          </div>
-          {% endfor %}
-        </div>
-      </section>
-
-      <!-- Social Proof -->
-      <section class="social-proof" id="social-proof" aria-label="GitHub statistics">
-        <h2 class="section-title">GitHub Activity</h2>
-        <div class="social-stats-grid">
-          <div class="social-stat-card">
-            <div class="social-stat-value" id="repo-count">--</div>
-            <div class="social-stat-label">Repositories</div>
-          </div>
-          <div class="social-stat-card">
-            <div class="social-stat-value" id="github-stars">--</div>
-            <div class="social-stat-label">Stars</div>
-          </div>
-          <div class="social-stat-card">
-            <div class="social-stat-value" id="github-forks">--</div>
-            <div class="social-stat-label">Forks</div>
-          </div>
-          <div class="social-stat-card">
-            <div class="social-stat-value" id="github-contributions">--</div>
-            <div class="social-stat-label">Contributions</div>
-          </div>
-        </div>
-        <div class="social-links">
-          <a href="https://github.com/oyi77" target="_blank" rel="noopener noreferrer" class="social-link">
-            View GitHub Profile →
-          </a>
-        </div>
-      </section>
+  <!-- OSS CONTRIBUTIONS -->
+  <section class="section" id="oss">
+    <div class="container">
+      <div class="section-label">🌟 Open Source</div>
+      <h2 class="section-title">Upstream Contributions</h2>
+      <p class="section-desc">I contribute to projects used by millions — from PRs merged to open proposals.</p>
+      <table class="oss-table">
+        <thead>
+          <tr>
+            <th>Project</th>
+            <th>Contribution</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="oss-name">OmniRoute</span> <span class="oss-stars">⭐5.7k</span></td>
+            <td>Test coverage to 60%+ (353 new tests), SessionPool refactor, Qwen Web provider, plugin system</td>
+            <td><span class="oss-status">9+ PRs merged</span></td>
+          </tr>
+          <tr>
+            <td><span class="oss-name">next.js</span> <span class="oss-stars">⭐127k</span></td>
+            <td>Dead code & duplicate removal in core framework</td>
+            <td><span class="oss-status">Open PR</span></td>
+          </tr>
+          <tr>
+            <td><span class="oss-name">trpc</span> <span class="oss-stars">⭐36k</span></td>
+            <td>Code comment cleanup and documentation improvements</td>
+            <td><span class="oss-status">Open PR</span></td>
+          </tr>
+          <tr>
+            <td><span class="oss-name">vuejs/core</span> <span class="oss-stars">⭐48k</span></td>
+            <td>Dev warning for silent catch in compat mode</td>
+            <td><span class="oss-status">Open PR</span></td>
+          </tr>
+          <tr>
+            <td><span class="oss-name">prisma</span> <span class="oss-stars">⭐41k</span></td>
+            <td>Duplicate word removal in test comments</td>
+            <td><span class="oss-status">Open PR</span></td>
+          </tr>
+          <tr>
+            <td><span class="oss-name">excalidraw</span> <span class="oss-stars">⭐88k</span></td>
+            <td>Typo fixes in code comments</td>
+            <td><span class="oss-status">Open PR</span></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+  </section>
 
-    <!-- Onboarding Popup -->
-    <div id="onboarding-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="onboarding-title">
-      <div class="modal-container onboarding-modal-content">
-        <div class="modal-header">
-          <h3 class="modal-title" id="onboarding-title">Welcome! Navigation Guide</h3>
-          <button class="modal-close" id="onboarding-close">×</button>
+  <!-- CASE STUDIES -->
+  <section class="section" id="cases">
+    <div class="container">
+      <div class="section-label">📊 Case Studies</div>
+      <h2 class="section-title">Real Problems, Real Solutions</h2>
+      <p class="section-desc">Technical implementations with measurable business impact.</p>
+      <div class="case-grid">
+        <div class="case-card">
+          <div class="company">BITWYRE — Onchain Trader</div>
+          <h3>Fomo Watcher — 70% Accuracy</h3>
+          <div class="desc">Trading prediction system that detects on-chain signals and executes trades with 70% accuracy across multiple DEX pairs.</div>
+          <div class="tech">
+            <span>Python</span>
+            <span>Blockchain APIs</span>
+            <span>ML</span>
+            <span>WebSocket</span>
+          </div>
+          <span class="case-result">✓ 70% accuracy</span>
         </div>
-        <div class="modal-content">
-          <div class="onboarding-content">
-            <div class="onboarding-section">
-              <div class="onboarding-icon">→</div>
-              <h4>Navigate Right</h4>
-              <p>From the main page, press <strong>Arrow Right</strong> or click the arrow button to view the expanded
-                portfolio sections.</p>
-            </div>
-            <div class="onboarding-section">
-              <div class="onboarding-icon">← ↓</div>
-              <h4>From Expanded View</h4>
-              <p>You can navigate <strong>Left</strong> to go back to the main page, or <strong>Down</strong> to see
-                achievements and metrics.</p>
-            </div>
-            <div class="onboarding-section">
-              <div class="onboarding-icon">←</div>
-              <h4>Curated Portfolio</h4>
-              <p>From the main page, press <strong>Arrow Left</strong> to discover auto-scanned GitHub Pages and curated
-                portfolio links.</p>
-            </div>
-            <div class="onboarding-section">
-              <div class="onboarding-icon">⌨️</div>
-              <h4>Keyboard Shortcuts</h4>
-              <p>Use arrow keys for navigation, <strong>ESC</strong> to go back, and <strong>?</strong> or the help
-                button to see this guide again.</p>
-            </div>
+        <div class="case-card">
+          <div class="company">AITRADEPULSE — Technical Lead</div>
+          <h3>90%+ Win Rate Algo Trading</h3>
+          <div class="desc">Algorithmic trading platform with multi-asset support, real-time signal processing, and automated execution.</div>
+          <div class="tech">
+            <span>Python</span>
+            <span>MQL4/MQL5</span>
+            <span>Trading APIs</span>
           </div>
-          <div class="onboarding-footer">
-            <button class="pagination-btn" id="onboarding-got-it"
-              style="width: 200px; padding: 15px; font-weight: bold;">
-              Got it!
-            </button>
+          <span class="case-result">✓ 90%+ win rate</span>
+        </div>
+        <div class="case-card">
+          <div class="company">GARUDAMEDIA — Engineering Manager</div>
+          <h3>Scaling for 3000+ Employees</h3>
+          <div class="desc">Infrastructure scaling and team leadership for enterprise-grade systems serving thousands of employees.</div>
+          <div class="tech">
+            <span>AWS</span>
+            <span>Docker</span>
+            <span>Kubernetes</span>
+            <span>PostgreSQL</span>
           </div>
+          <span class="case-result">✓ 3000+ users</span>
+        </div>
+        <div class="case-card">
+          <div class="company">BITWYRE — Lead Developer</div>
+          <h3>DEX Clearing Algorithm</h3>
+          <div class="desc">Multi-chain DEX clearing and settlement engine with smart contract integration for automated trading.</div>
+          <div class="tech">
+            <span>Python</span>
+            <span>Smart Contracts</span>
+            <span>Blockchain</span>
+          </div>
+          <span class="case-result">✓ 5 team lead</span>
+        </div>
+        <div class="case-card">
+          <div class="company">VIAPULSA — Technical Lead</div>
+          <h3>Offline → Online Migration</h3>
+          <div class="desc">Full digital transformation of traditional business operations into automated digital workflows.</div>
+          <div class="tech">
+            <span>Automation</span>
+            <span>Web Platform</span>
+            <span>Integration</span>
+          </div>
+          <span class="case-result">✓ 18 team lead</span>
+        </div>
+        <div class="case-card">
+          <div class="company">LINGUISE — Sr Full Stack</div>
+          <h3>API Migration PHP → Node.js</h3>
+          <div class="desc">Complete API migration from legacy PHP to modern Node.js architecture with improved performance.</div>
+          <div class="tech">
+            <span>Node.js</span>
+            <span>API Architecture</span>
+            <span>React</span>
+          </div>
+          <span class="case-result">✓ 3 team lead</span>
         </div>
       </div>
     </div>
+  </section>
 
-    <!-- CTA Modal for Exit Intent -->
-    <div id="cta-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="cta-title">
-      <div class="modal-container cta-modal-content">
-        <div class="modal-header">
-          <h3 class="modal-title" id="cta-title">Wait! Before you go...</h3>
-          <button class="modal-close" id="cta-close">×</button>
+  <!-- BERKAHKARYA ECOSYSTEM -->
+  <section class="section" id="ecosystem">
+    <div class="container">
+      <div class="section-label">🏭 BerkahKarya</div>
+      <h2 class="section-title">The 1-Man Company Ecosystem</h2>
+      <p class="section-desc">
+        A production-grade AI company — 20+ services run by AI, managed by AI, 
+        with humans as stakeholders. <strong>Proof of Concept for the future of work.</strong>
+      </p>
+      <div class="eco-grid">
+        <a href="https://berkahkarya.org" class="eco-card" target="_blank">
+          <div class="role">Company Site</div>
+          <h4>BerkahKarya</h4>
+          <p>AI Ecosystem for Indonesian businesses — ads, content, trading, agent services</p>
+        </a>
+        <a href="https://aitradepulse.com" class="eco-card" target="_blank">
+          <div class="role">Trading</div>
+          <h4>aitradepulse</h4>
+          <p>Algorithmic trading signals & automation for Forex, Crypto, and Indices</p>
+        </a>
+        <a href="https://github.com/oyi77/1ai-skills" class="eco-card" target="_blank">
+          <div class="role">AI Infrastructure</div>
+          <h4>1ai-skills</h4>
+          <p>1282 production-ready agent skills with auto-evolution</p>
+        </a>
+        <a href="https://github.com/oyi77/OmniRoute" class="eco-card" target="_blank">
+          <div class="role">AI Gateway</div>
+          <h4>OmniRoute</h4>
+          <p>Multi-provider LLM routing, load balancing, caching</p>
+        </a>
+        <a href="https://github.com/oyi77/1ai-ecosystem" class="eco-card" target="_blank">
+          <div class="role">Monorepo</div>
+          <h4>1ai-ecosystem</h4>
+          <p>Full-stack AI company infrastructure — 20+ services</p>
+        </a>
+        <a href="https://github.com/oyi77" class="eco-card" target="_blank">
+          <div class="role">GitHub</div>
+          <h4>All Repos →</h4>
+          <p>150+ repositories — OSS, tools, experiments, production systems</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MANIFESTO -->
+  <div class="container">
+    <div class="manifesto">
+      <div class="manifesto-grid">
+        <div>
+          <h3>The Vision</h3>
+          <p>
+            Technology should liberate humans — not trap them in wage slavery. 
+            1ai-ecosystem is a living proof that AI and humans can work symbiotically: 
+            AI operates the company, manages other AI, generates revenue autonomously — 
+            while humans act as <strong>stakeholders</strong>, not operators.
+            <br><br>
+            This is a <strong>Proof of Concept</strong> for a 1-Man Company. 
+            The goal is to fund human freedom, not perpetuate exploitation.
+          </p>
         </div>
-        <div class="modal-content">
-          <div style="text-align: center; padding: 20px 0;">
-            <p style="font-size: 1.1rem; margin-bottom: 30px;">Let's stay in touch. Connect with me for future
-              opportunities or collaborations.</p>
-
-            <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 30px;">
-              <button id="cta-contact-btn" class="section-link" style="min-width: 140px; border: none; background: transparent; cursor: pointer;">
-                <span class="section-icon">✉</span>
-                <span class="section-text">Contact Form</span>
-              </button>
-              <a href="https://cal.com/oyi77" target="_blank" class="section-link" style="min-width: 140px;">
-                <span class="section-icon">📅</span>
-                <span class="section-text">Schedule Call</span>
-              </a>
-              <a href="https://github.com/oyi77" target="_blank" class="section-link" style="min-width: 140px;">
-                <span class="section-icon">🐙</span>
-                <span class="section-text">GitHub</span>
-              </a>
-              <a href="/assets/pdf/CV.pdf" target="_blank" class="section-link" style="min-width: 140px;">
-                <span class="section-icon">📄</span>
-                <span class="section-text">Resume</span>
-              </a>
-            </div>
-
-            <button class="pagination-btn" id="cta-stay-btn" style="width: 200px; padding: 15px; font-weight: bold;">
-              Return to Portfolio
-            </button>
-          </div>
+        <div>
+          <h3>Visi</h3>
+          <p>
+            Teknologi seharusnya membebaskan manusia — bukan menjebak mereka dalam 
+            perbudakan upah. 1ai-ecosystem adalah bukti nyata bahwa AI dan manusia 
+            bisa bekerja sama secara simbiotik: AI mengoperasikan perusahaan, 
+            mengelola AI lain, menghasilkan pendapatan secara otonom — sementara 
+            manusia bertindak sebagai <strong>stakeholder</strong>, bukan operator.
+            <br><br>
+            Ini adalah <strong>Proof of Concept</strong> untuk 1-Man Company. 
+            Tujuannya adalah mendanai kebebasan manusia, bukan melanggengkan eksploitasi.
+          </p>
         </div>
       </div>
     </div>
+  </div>
 
-    <script src="/assets/js/features/portal.js?v=1.1"></script>
-    <script src="/assets/js/widgets/contact-form-handler.js"></script>
-    <script src="/assets/js/widgets/contact-widget.js"></script>
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="social-links">
+        <a href="https://github.com/oyi77" target="_blank">GitHub</a>
+        <a href="https://linkedin.com/in/fikriizzuddin" target="_blank">LinkedIn</a>
+        <a href="https://oyi77.is-a.dev" target="_blank">Portfolio</a>
+        <a href="https://berkahkarya.org" target="_blank">BerkahKarya</a>
+        <a href="https://medium.com/@oyi77" target="_blank">Medium</a>
+      </div>
+      <p>Built with ❤️ for the open web · oyi77 / Paijo · 2026</p>
+    </div>
+  </footer>
+
+  <button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      document.getElementById('backTop').classList.toggle('visible', window.scrollY > 400);
+    });
+  </script>
 </body>
+</html>
