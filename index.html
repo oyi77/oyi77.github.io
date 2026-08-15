@@ -32,32 +32,35 @@
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
     }
-    .bg-grid {
-      position: fixed; inset: 0;
-      background-image: radial-gradient(var(--border) 1px, transparent 1px);
-      background-size: 40px 40px;
-      opacity: 0.4;
-      pointer-events: none;
-      z-index: 0;
-    }
+   .bg-grid {
+     position: fixed; inset: 0;
+     background-image: radial-gradient(var(--border) 0.5px, transparent 0.5px);
+     background-size: 20px 20px;
+     opacity: 0.15;
+     pointer-events: none;
+     z-index: 0;
+   }
     .glow-orb {
       position: fixed; top: -20%; right: -10%;
       width: 600px; height: 600px;
-      background: radial-gradient(circle, var(--brand-glow) 0%, transparent 70%);
-      border-radius: 50%;
-      filter: blur(80px);
-      pointer-events: none;
-      z-index: 0;
-    }
-    .glow-orb-2 {
-      position: fixed; bottom: -20%; left: -10%;
-      width: 500px; height: 500px;
-      background: radial-gradient(circle, rgba(29,158,117,0.15) 0%, transparent 70%);
-      border-radius: 50%;
-      filter: blur(80px);
-      pointer-events: none;
-      z-index: 0;
-    }
+   .glow-orb {
+     position: fixed; top: -15%; right: -5%;
+     width: 400px; height: 400px;
+     background: radial-gradient(circle, var(--brand-glow) 0%, transparent 60%);
+     border-radius: 50%;
+     filter: blur(60px);
+     pointer-events: none;
+     z-index: 0;
+   }
+   .glow-orb-2 {
+     position: fixed; bottom: -10%; left: -5%;
+     width: 350px; height: 350px;
+     background: radial-gradient(circle, rgba(29,158,117,0.08) 0%, transparent 50%);
+     border-radius: 50%;
+     filter: blur(40px);
+     pointer-events: none;
+     z-index: 0;
+   }
     .container {
       max-width: 1200px;
       margin: 0 auto;
@@ -512,35 +515,26 @@
     <nav>
       <a href="/" class="nav-logo">oyi77<span>.</span></a>
       <div class="nav-links">
-        <a href="#projects">Projects</a>
-        <a href="#oss">OSS</a>
-        <a href="#cases">Case Studies</a>
-        <a href="#ecosystem">Ecosystem</a>
-        <a href="/terminal/" class="nav-terminal">Terminal OS</a>
-        <a href="https://github.com/oyi77" class="nav-cta" target="_blank">GitHub →</a>
-      </div>
-    </nav>
-  </div>
 
-  <!-- HERO -->
-  <section class="hero">
+  <!-- AREAS -->
+  <section class="section" style="padding: 0; margin: 0 0 48px;">
     <div class="container">
-      <div class="hero-badge">
-        <span class="dot"></span>
-        Open Source Contributor & Builder
+      <div class="areas-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; padding: 24px; background: var(--surface); border-radius: var(--radius); margin: 0 auto; max-width: 600px;">
+        <div style="text-align: center; padding: 8px 0;">
+          <div style="font-size: 2rem; margin-bottom: 4px;">🧠</div>
+          <div style="color: var(--text-muted); font-size: 0.7rem;">AI Agent Infra</div>
+        </div>
+        <div style="text-align: center; padding: 8px 0;">
+          <div style="font-size: 2rem; margin-bottom: 4px;">📈</div>
+          <div style="color: var(--text-muted); font-size: 0.7rem;">Prediction Markets</div>
+        </div>
+        <div style="text-align: center; padding: 8px 0;">
+          <div style="font-size: 2rem; margin-bottom: 4px;">🏗️</div>
+          <div style="color: var(--text-muted); font-size: 0.7rem;">1‑Man Co.</div>
+        </div>
       </div>
-      <h1>
-        Hi, I'm <span class="highlight">Paijo</span><br>
-        I Build for the <span class="highlight">Open Web</span>
-      </h1>
-      <p>
-        From AI agent infrastructure to trading systems and developer tooling — 
-        I build things that push the boundaries of what's possible. <br>
-        <strong>10+ years</strong> of code · <strong>150+</strong> repos · 
-        <strong>1282+</strong> AI agent skills
-      </p>
-      <div class="hero-actions">
-        <a href="https://github.com/oyi77" class="btn-primary" target="_blank">
+    </div>
+  </section>
           GitHub Profile →
         </a>
         <a href="/terminal/" class="btn-secondary">
