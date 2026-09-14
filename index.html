@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicons/apple-touch-icon-180x180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--bg:#070a09;--panel:#0d1312;--panel2:#111917;--line:#1c2622;--tx:#edf3ee;--mut:#7fa093;--dim:#4d6159;--brand:#1d9e75;--brand2:#23c28e;--mint:#4ad7b0;--gold:#ffd166;--g1:#23c28e;--g2:#4ad7b0;--g3:#ffd166;--ease:cubic-bezier(.16,1,.3,1);--r:14px;--rl:22px}
@@ -27,7 +27,7 @@ body{font-family:Inter,-apple-system,sans-serif;background:var(--bg);color:var(-
 #prog{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--g1),var(--g2),var(--g3));z-index:100}
 .wrap{max-width:1200px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
 nav.top{position:sticky;top:12px;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:12px 20px;margin-top:12px;border:1px solid var(--line);border-radius:16px;background:rgba(10,14,13,.72);backdrop-filter:blur(24px) saturate(1.4);-webkit-backdrop-filter:blur(24px) saturate(1.4)}
-.logo{font-family:Syne,sans-serif;font-weight:800;font-size:1.2rem;color:var(--tx);text-decoration:none}
+.logo{font-family:'Space Grotesk',Inter,-apple-system,sans-serif;font-weight:800;font-size:1.2rem;color:var(--tx);text-decoration:none}
 .logo b{color:var(--brand2)}
 .nlinks{display:flex;gap:26px;align-items:center}
 .nlinks a{color:var(--mut);text-decoration:none;font-size:.85rem;font-weight:500;transition:color .2s}
@@ -42,7 +42,7 @@ nav.top{position:sticky;top:12px;z-index:50;display:flex;align-items:center;just
 .badge{display:inline-flex;align-items:center;gap:9px;background:rgba(35,194,142,.08);border:1px solid rgba(35,194,142,.35);padding:7px 18px;border-radius:100px;font-size:.78rem;color:var(--mint);margin-bottom:28px;font-family:'JetBrains Mono',monospace}
 .badge .dot{width:8px;height:8px;background:var(--brand2);border-radius:50%;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(35,194,142,.5)}50%{opacity:.5;box-shadow:0 0 0 7px rgba(35,194,142,0)}}
-.hero h1{font-family:Syne,sans-serif;font-size:clamp(2.15rem,4vw,3.25rem);font-weight:800;line-height:1.09;margin-bottom:18px;letter-spacing:-.01em;text-wrap:balance}
+.hero h1{font-family:'Space Grotesk',Inter,-apple-system,sans-serif;font-size:clamp(2.15rem,4vw,3.25rem);font-weight:800;line-height:1.09;margin-bottom:18px;letter-spacing:-.01em;text-wrap:balance}
 .grad{background:linear-gradient(90deg,var(--g1),var(--g2),var(--g3),var(--g1));background-size:250% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:gmove 5s linear infinite}
 @keyframes gmove{to{background-position:250% center}}
 .hero p.sub{max-width:60ch;font-size:1rem;color:var(--mut);line-height:1.7;margin-bottom:26px}
@@ -70,12 +70,12 @@ nav.top{position:sticky;top:12px;z-index:50;display:flex;align-items:center;just
 @keyframes scroll{to{transform:translateX(-50%)}}
 .sec{padding:72px 0 8px}
 .kick{font-family:'JetBrains Mono',monospace;font-size:.72rem;text-transform:uppercase;letter-spacing:3px;color:var(--brand2);margin-bottom:12px}
-h2.st{font-family:Syne,sans-serif;font-size:clamp(1.55rem,2.8vw,2.1rem);font-weight:800;margin-bottom:14px;letter-spacing:-.005em}
+h2.st{font-family:'Space Grotesk',Inter,-apple-system,sans-serif;font-size:clamp(1.55rem,2.8vw,2.1rem);font-weight:800;margin-bottom:14px;letter-spacing:-.005em}
 .sdesc{color:var(--mut);max-width:64ch;margin-bottom:36px;line-height:1.75}
 .bento{display:grid;grid-template-columns:repeat(6,1fr);gap:18px}
 .stat{grid-column:span 2;background:linear-gradient(180deg,var(--panel),#0a0f0e);border:1px solid var(--line);border-radius:var(--rl);padding:28px 22px;text-align:center;transition:transform .3s var(--ease),border-color .3s,box-shadow .3s;transform-style:preserve-3d}
 .stat:hover{border-color:rgba(35,194,142,.5);box-shadow:0 18px 50px rgba(0,0,0,.4)}
-.stat .n{font-family:Syne,sans-serif;font-size:2rem;font-weight:800;background:linear-gradient(135deg,var(--brand2),var(--mint));-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat .n{font-family:'Space Grotesk',Inter,-apple-system,sans-serif;font-size:2rem;font-weight:800;background:linear-gradient(135deg,var(--brand2),var(--mint));-webkit-background-clip:text;background-clip:text;color:transparent}
 .stat .l{font-size:.82rem;color:var(--mut);margin-top:6px}
 .stat.big{grid-column:span 3}
 .stat.big .n{font-size:2.35rem}
@@ -121,12 +121,12 @@ table.oss{width:100%;border-collapse:collapse;background:var(--panel);border-rad
 .ec p{font-size:.79rem;color:var(--mut)}
 .deal{margin:90px 0 10px;border-radius:26px;padding:64px 48px;text-align:center;background:radial-gradient(ellipse 70% 120% at 50% -20%,rgba(35,194,142,.16),transparent),linear-gradient(180deg,#0d1512,#080c0b);border:1px solid rgba(35,194,142,.3);position:relative;overflow:hidden}
 .deal::before{content:'';position:absolute;top:0;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,var(--brand2),var(--gold),transparent)}
-.deal h2{font-family:Syne,sans-serif;font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;margin-bottom:12px;text-wrap:balance}
+.deal h2{font-family:'Space Grotesk',Inter,-apple-system,sans-serif;font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;margin-bottom:12px;text-wrap:balance}
 .deal p{color:var(--mut);max-width:600px;margin:0 auto 32px}
 .deal .acts{justify-content:center;margin-bottom:0}
 .vision{background:var(--panel);border:1px solid var(--line);border-radius:var(--rl);padding:48px;margin:70px 0 30px}
 .vgrid{display:grid;grid-template-columns:1fr 1fr;gap:48px}
-.vision h3{font-family:Syne,sans-serif;font-size:1.2rem;margin-bottom:14px}
+.vision h3{font-family:'Space Grotesk',Inter,-apple-system,sans-serif;font-size:1.2rem;margin-bottom:14px}
 .vision p{font-size:.86rem;color:var(--mut);line-height:1.85}
 footer{border-top:1px solid var(--line);padding:44px 0 60px;text-align:center}
 .soc{display:flex;justify-content:center;gap:26px;margin-bottom:18px;flex-wrap:wrap}
