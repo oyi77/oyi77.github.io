@@ -12,7 +12,9 @@ class GitHubClient {
       console.log('GitHub username loaded from JEKYLL_DATA:', this.username);
     }
   }
-} catch (e) { }
+
+  async getUsername() {
+    if (this.username) return this.username;
 
 // Try to get from _config.yml
 try {
