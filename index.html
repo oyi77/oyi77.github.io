@@ -1,903 +1,433 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Paijo oyi77 — OSS Contributor & Builder</title>
-  <link rel="icon" href="/assets/images/favicons/favicon.ico" sizes="any">
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicons/favicon-32x32.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicons/apple-touch-icon-180x180.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Syne:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --brand: #1d9e75;
-      --brand-light: #23c28e;
-      --brand-glow: rgba(29, 158, 117, 0.3);
-      --bg: #0a0b0a;
-      --surface: #0f1211;
-      --surface-2: #151918;
-      --border: #1e2620;
-      --text: #e8ede9;
-      --text-muted: #6a7f72;
-      --text-dim: #4a5c52;
-      --radius: 12px;
-      --radius-lg: 20px;
-    }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
-   .bg-grid {
-     position: fixed; inset: 0;
-     background-image: radial-gradient(var(--border) 0.5px, transparent 0.5px);
-     background-size: 20px 20px;
-     opacity: 0.15;
-     pointer-events: none;
-     z-index: 0;
-   }
-   .glow-orb {
-     position: fixed; top: -15%; right: -5%;
-     width: 400px; height: 400px;
-     background: radial-gradient(circle, var(--brand-glow) 0%, transparent 60%);
-     border-radius: 50%;
-     filter: blur(60px);
-     pointer-events: none;
-     z-index: 0;
-   }
-   .glow-orb-2 {
-     position: fixed; bottom: -10%; left: -5%;
-     width: 350px; height: 350px;
-     background: radial-gradient(circle, rgba(29,158,117,0.08) 0%, transparent 50%);
-     border-radius: 50%;
-     filter: blur(40px);
-     pointer-events: none;
-     z-index: 0;
-   }
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-      position: relative;
-      z-index: 1;
-    }
-
-    /* NAV */
-    nav {
-      padding: 20px 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-logo {
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 1.25rem;
-      color: var(--text);
-      text-decoration: none;
-    }
-    .nav-logo span { color: var(--brand); }
-    .nav-links {
-      display: flex;
-      gap: 32px;
-      align-items: center;
-    }
-    .nav-links a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 0.875rem;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--text); }
-    .nav-cta {
-      background: var(--brand);
-      color: #000 !important;
-      padding: 8px 20px;
-      border-radius: 8px;
-      font-weight: 600 !important;
-    }
-    .nav-cta:hover { background: var(--brand-light) !important; }
-    .nav-terminal {
-      color: var(--brand-light) !important;
-      font-weight: 600;
-    }
-    .nav-terminal:hover { color: var(--text) !important; }
-
-    /* HERO */
-    .hero {
-      padding: 100px 0 80px;
-      text-align: center;
-    }
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--surface-2);
-      border: 1px solid var(--border);
-      padding: 6px 16px;
-      border-radius: 100px;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      margin-bottom: 32px;
-    }
-    .hero-badge .dot {
-      width: 8px; height: 8px;
-      background: var(--brand);
-      border-radius: 50%;
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
-    }
-    .hero h1 {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
-      font-weight: 800;
-      line-height: 1.1;
-      margin-bottom: 20px;
-    }
-    .hero h1 .highlight {
-      background: linear-gradient(135deg, var(--brand), #4ad7b0);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .hero p {
-      max-width: 680px;
-      margin: 0 auto 40px;
-      font-size: 1.125rem;
-      color: var(--text-muted);
-      line-height: 1.7;
-    }
-    .hero-actions {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--brand);
-      color: #000;
-      padding: 14px 32px;
-      border-radius: 10px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      text-decoration: none;
-      transition: all 0.2s;
-    }
-    .btn-primary:hover {
-      background: var(--brand-light);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px var(--brand-glow);
-    }
-    .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 14px 32px;
-      border-radius: 10px;
-      font-weight: 500;
-      font-size: 0.95rem;
-      text-decoration: none;
-      transition: all 0.2s;
-    }
-    .btn-secondary:hover {
-      border-color: var(--text-muted);
-      background: var(--surface-2);
-    }
-
-    /* STATS */
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1px;
-      background: var(--border);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      margin-bottom: 100px;
-    }
-    .stat-card {
-      background: var(--surface);
-      padding: 36px 24px;
-      text-align: center;
-    }
-    .stat-card .number {
-      font-family: 'Syne', sans-serif;
-      font-size: 2.5rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, var(--brand), #4ad7b0);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .stat-card .label {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-top: 6px;
-    }
-
-    /* SECTION */
-    .section {
-      padding: 80px 0;
-    }
-    .section-label {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: var(--brand);
-      margin-bottom: 12px;
-    }
-    .section-title {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(1.75rem, 4vw, 2.5rem);
-      font-weight: 700;
-      margin-bottom: 16px;
-    }
-    .section-desc {
-      color: var(--text-muted);
-      max-width: 600px;
-      margin-bottom: 48px;
-      font-size: 1rem;
-      line-height: 1.7;
-    }
-
-    /* PROJECT GRID */
-    .project-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-      gap: 20px;
-    }
-    .project-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 28px;
-      transition: all 0.25s;
-    }
-    .project-card:hover {
-      border-color: var(--brand);
-      transform: translateY(-4px);
-      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
-    }
-    .project-icon {
-      width: 44px; height: 44px;
-      border-radius: 10px;
-      background: var(--surface-2);
-      border: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.25rem;
-      margin-bottom: 16px;
-    }
-    .project-card h3 {
-      font-size: 1.1rem;
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-    .project-card .desc {
-      font-size: 0.875rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-      margin-bottom: 16px;
-    }
-    .project-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-    .project-tags span {
-      font-size: 0.7rem;
-      padding: 3px 10px;
-      border-radius: 100px;
-      background: var(--surface-2);
-      border: 1px solid var(--border);
-      color: var(--text-muted);
-    }
-    .project-tags .active { color: var(--brand); border-color: var(--brand); }
-
-    /* OSS TABLE */
-    .oss-table {
-      width: 100%;
-      border-collapse: collapse;
-      background: var(--surface);
-      border-radius: var(--radius);
-      overflow: hidden;
-      border: 1px solid var(--border);
-    }
-    .oss-table th {
-      text-align: left;
-      padding: 16px 20px;
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: var(--text-muted);
-      border-bottom: 1px solid var(--border);
-      font-weight: 500;
-    }
-    .oss-table td {
-      padding: 16px 20px;
-      font-size: 0.875rem;
-      border-bottom: 1px solid var(--border);
-    }
-    .oss-table tr:last-child td { border-bottom: none; }
-    .oss-table tr:hover td { background: var(--surface-2); }
-    .oss-name { font-weight: 600; color: var(--text); }
-    .oss-stars { color: var(--text-muted); font-size: 0.8rem; }
-    .oss-status {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      font-size: 0.75rem;
-      color: var(--brand);
-    }
-    .oss-status::before {
-      content: '';
-      width: 6px; height: 6px;
-      background: var(--brand);
-      border-radius: 50%;
-    }
-
-    /* CASE STUDIES */
-    .case-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      gap: 20px;
-    }
-    .case-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 28px;
-    }
-    .case-card .company {
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: var(--brand);
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-    .case-card h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 8px; }
-    .case-card .desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 12px; }
-    .case-card .tech {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 12px;
-    }
-    .case-card .tech span {
-      font-size: 0.65rem;
-      padding: 2px 8px;
-      border-radius: 4px;
-      background: var(--surface-2);
-      color: var(--text-dim);
-    }
-    .case-result {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.8rem;
-      color: var(--brand);
-      font-weight: 500;
-    }
-
-    /* ECOSYSTEM */
-    .eco-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 16px;
-    }
-    .eco-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 24px;
-      text-decoration: none;
-      color: inherit;
-      transition: all 0.2s;
-    }
-    .eco-card:hover {
-      border-color: var(--brand);
-      transform: translateY(-2px);
-    }
-    .eco-card .role {
-      font-size: 0.65rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: var(--text-dim);
-      margin-bottom: 8px;
-    }
-    .eco-card h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 4px; }
-    .eco-card p { font-size: 0.8rem; color: var(--text-muted); }
-
-    /* MANIFESTO */
-    .manifesto {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 48px;
-      margin: 80px 0;
-    }
-    .manifesto-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
-    }
-    @media (max-width: 768px) { .manifesto-grid { grid-template-columns: 1fr; } }
-    .manifesto h3 {
-      font-family: 'Syne', sans-serif;
-      font-size: 1.25rem;
-      font-weight: 700;
-      margin-bottom: 16px;
-    }
-    .manifesto p {
-      font-size: 0.875rem;
-      color: var(--text-muted);
-      line-height: 1.8;
-    }
-
-    /* FOOTER */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 48px 0;
-      text-align: center;
-    }
-    .social-links {
-      display: flex;
-      justify-content: center;
-      gap: 24px;
-      margin-bottom: 20px;
-    }
-    .social-links a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 0.875rem;
-      transition: color 0.2s;
-    }
-    .social-links a:hover { color: var(--text); }
-    footer p { font-size: 0.8rem; color: var(--text-dim); }
-
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      .hero { padding: 60px 0 40px; }
-      .nav-links { display: none; }
-      .project-grid { grid-template-columns: 1fr; }
-      .case-grid { grid-template-columns: 1fr; }
-      .eco-grid { grid-template-columns: 1fr; }
-      .stats { grid-template-columns: 1fr 1fr; }
-      .oss-table { font-size: 0.8rem; }
-    }
-
-    /* BACK TO TOP */
-    .back-top {
-      position: fixed;
-      bottom: 32px;
-      right: 32px;
-      width: 44px; height: 44px;
-      border-radius: 50%;
-      background: var(--brand);
-      color: #000;
-      border: none;
-      font-size: 1.2rem;
-      cursor: pointer;
-      opacity: 0;
-      transition: all 0.3s;
-      z-index: 100;
-    }
-    .back-top.visible { opacity: 1; }
-    .back-top:hover { transform: translateY(-3px); }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paijo oyi77 — Systems That Print Leverage</title>
+<meta name="description" content="Paijo (oyi77): AI agent infrastructure, prediction markets, 1-Man Company architecture. 150+ repos, 1282 agent skills, 350+ merged OSS PRs. Open for partnerships.">
+<meta name="theme-color" content="#070a09">
+<link rel="icon" href="/assets/images/favicons/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicons/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicons/apple-touch-icon-180x180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#070a09;--panel:#0d1312;--panel2:#111917;--line:#1c2622;--tx:#edf3ee;--mut:#7fa093;--dim:#4d6159;--brand:#1d9e75;--brand2:#23c28e;--mint:#4ad7b0;--gold:#ffd166;--g1:#23c28e;--g2:#4ad7b0;--g3:#ffd166;--ease:cubic-bezier(.16,1,.3,1);--r:14px;--rl:22px}
+html{scroll-behavior:smooth}
+body{font-family:Inter,-apple-system,sans-serif;background:var(--bg);color:var(--tx);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+::selection{background:rgba(35,194,142,.35)}
+#net{position:fixed;inset:0;z-index:0;opacity:.55;pointer-events:none}
+.blob{position:fixed;border-radius:50%;filter:blur(110px);pointer-events:none;z-index:0}
+.blob.a{width:640px;height:640px;top:-220px;right:-160px;background:radial-gradient(circle,rgba(29,158,117,.28),transparent 70%)}
+.blob.b{width:560px;height:560px;bottom:-200px;left:-140px;background:radial-gradient(circle,rgba(255,209,102,.10),transparent 70%)}
+.gridmask{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:radial-gradient(rgba(127,160,147,.35) .6px,transparent .6px);background-size:26px 26px;opacity:.14;-webkit-mask-image:radial-gradient(ellipse 90% 65% at 50% 0%,#000 30%,transparent 75%);mask-image:radial-gradient(ellipse 90% 65% at 50% 0%,#000 30%,transparent 75%)}
+#glow{position:fixed;width:520px;height:520px;border-radius:50%;pointer-events:none;z-index:2;background:radial-gradient(circle,rgba(35,194,142,.10),transparent 65%);transform:translate(-50%,-50%);left:50%;top:30%}
+#prog{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--g1),var(--g2),var(--g3));z-index:100}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
+nav.top{position:sticky;top:12px;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:12px 20px;margin-top:12px;border:1px solid var(--line);border-radius:16px;background:rgba(10,14,13,.72);backdrop-filter:blur(24px) saturate(1.4);-webkit-backdrop-filter:blur(24px) saturate(1.4)}
+.logo{font-family:Syne,sans-serif;font-weight:800;font-size:1.2rem;color:var(--tx);text-decoration:none}
+.logo b{color:var(--brand2)}
+.nlinks{display:flex;gap:26px;align-items:center}
+.nlinks a{color:var(--mut);text-decoration:none;font-size:.85rem;font-weight:500;transition:color .2s}
+.nlinks a:hover{color:var(--tx)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 30px;border-radius:12px;font-weight:600;font-size:.93rem;text-decoration:none;transition:transform .25s var(--ease),box-shadow .25s,background .2s,border-color .2s;will-change:transform}
+.btn-p{background:linear-gradient(135deg,var(--brand),var(--brand2));color:#02120c;box-shadow:0 6px 28px rgba(29,158,117,.35)}
+.btn-p:hover{box-shadow:0 10px 40px rgba(35,194,142,.5)}
+.btn-g{border:1px solid var(--line);color:var(--tx);background:rgba(255,255,255,.02)}
+.btn-g:hover{border-color:var(--brand2);background:rgba(35,194,142,.08)}
+.btn-s{background:var(--brand);color:#000!important;padding:8px 20px;border-radius:9px;font-weight:600!important;font-size:.85rem}
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding:96px 0 64px}
+.badge{display:inline-flex;align-items:center;gap:9px;background:rgba(35,194,142,.08);border:1px solid rgba(35,194,142,.35);padding:7px 18px;border-radius:100px;font-size:.78rem;color:var(--mint);margin-bottom:28px;font-family:'JetBrains Mono',monospace}
+.badge .dot{width:8px;height:8px;background:var(--brand2);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(35,194,142,.5)}50%{opacity:.5;box-shadow:0 0 0 7px rgba(35,194,142,0)}}
+.hero h1{font-family:Syne,sans-serif;font-size:clamp(2.6rem,5.4vw,4.4rem);font-weight:800;line-height:1.04;margin-bottom:22px;letter-spacing:-.02em}
+.grad{background:linear-gradient(90deg,var(--g1),var(--g2),var(--g3),var(--g1));background-size:250% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:gmove 5s linear infinite}
+@keyframes gmove{to{background-position:250% center}}
+.hero p.sub{max-width:560px;font-size:1.08rem;color:var(--mut);line-height:1.75;margin-bottom:30px}
+.hero p.sub strong{color:var(--tx)}
+.acts{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:34px}
+.live{display:flex;gap:12px;flex-wrap:wrap}
+.chip{font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--mint);background:rgba(35,194,142,.06);border:1px solid rgba(35,194,142,.28);padding:7px 14px;border-radius:9px;display:inline-flex;gap:8px;align-items:center}
+.chip i{width:7px;height:7px;border-radius:50%;background:var(--brand2);animation:pulse 1.6s infinite;font-style:normal}
+.chip b{color:var(--tx)}
+.term{background:#0a0f0e;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.55),0 0 0 1px rgba(35,194,142,.08),0 0 90px rgba(29,158,117,.12);transform:perspective(1100px) rotateY(-7deg) rotateX(3deg);transition:transform .5s var(--ease)}
+.term:hover{transform:perspective(1100px) rotateY(-2deg) rotateX(1deg)}
+.tbar{position:relative;display:flex;align-items:center;gap:7px;padding:12px 16px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.015)}
+.tbar i{width:11px;height:11px;border-radius:50%;font-style:normal}
+.tbar i:nth-child(1){background:#ff5f57}.tbar i:nth-child(2){background:#febc2e}.tbar i:nth-child(3){background:#28c840}
+.tbar span{margin-left:8px;font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--dim)}
+.tbar .shine{height:2px;background:linear-gradient(90deg,transparent,var(--brand2),transparent);background-size:200% 100%;animation:shim 2.8s linear infinite;position:absolute;left:0;right:0;top:0;opacity:.5}
+@keyframes shim{from{background-position:200% 0}to{background-position:-200% 0}}
+.tbody{font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.9;padding:20px 20px 26px;min-height:340px;color:#c9d8d0;white-space:pre-wrap}
+.tbody .p{color:var(--brand2)}.tbody .c{color:var(--gold)}.tbody .d{color:var(--dim)}
+.caret{display:inline-block;width:9px;height:17px;background:var(--brand2);vertical-align:-3px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.marq{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(255,255,255,.012);overflow:hidden;white-space:nowrap;padding:14px 0;margin:10px 0 0}
+.mtrack{display:inline-block;animation:scroll 38s linear infinite;font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--mut)}
+.mtrack b{color:var(--mint);font-weight:700}
+@keyframes scroll{to{transform:translateX(-50%)}}
+.sec{padding:88px 0 8px}
+.kick{font-family:'JetBrains Mono',monospace;font-size:.72rem;text-transform:uppercase;letter-spacing:3px;color:var(--brand2);margin-bottom:12px}
+h2.st{font-family:Syne,sans-serif;font-size:clamp(1.8rem,3.6vw,2.6rem);font-weight:800;margin-bottom:14px;letter-spacing:-.01em}
+.sdesc{color:var(--mut);max-width:620px;margin-bottom:44px;line-height:1.7}
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:18px}
+.stat{grid-column:span 2;background:linear-gradient(180deg,var(--panel),#0a0f0e);border:1px solid var(--line);border-radius:var(--rl);padding:34px 26px;text-align:center;transition:transform .3s var(--ease),border-color .3s,box-shadow .3s;transform-style:preserve-3d}
+.stat:hover{border-color:rgba(35,194,142,.5);box-shadow:0 18px 50px rgba(0,0,0,.4)}
+.stat .n{font-family:Syne,sans-serif;font-size:2.6rem;font-weight:800;background:linear-gradient(135deg,var(--brand2),var(--mint));-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat .l{font-size:.82rem;color:var(--mut);margin-top:6px}
+.stat.big{grid-column:span 3}
+.stat.big .n{font-size:3.2rem}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:18px}
+.card{background:linear-gradient(180deg,var(--panel),#090d0c);border:1px solid var(--line);border-radius:var(--r);padding:28px;transition:transform .25s var(--ease),border-color .25s,box-shadow .25s;transform-style:preserve-3d;position:relative;overflow:hidden}
+.card::after{content:'';position:absolute;inset:0;background:radial-gradient(600px 120px at var(--mx,50%) -20%,rgba(35,194,142,.12),transparent 70%);opacity:0;transition:opacity .3s;pointer-events:none}
+.card:hover{border-color:rgba(35,194,142,.55);box-shadow:0 16px 46px rgba(0,0,0,.45)}
+.card:hover::after{opacity:1}
+.ic{width:46px;height:46px;border-radius:12px;background:rgba(35,194,142,.08);border:1px solid rgba(35,194,142,.3);display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:16px}
+.card h3{font-size:1.08rem;font-weight:700;margin-bottom:8px}
+.card h3 a{color:var(--tx);text-decoration:none}.card h3 a:hover{color:var(--mint)}
+.card .d{font-size:.86rem;color:var(--mut);line-height:1.65;margin-bottom:16px}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tags span{font-size:.68rem;padding:3px 11px;border-radius:100px;background:rgba(255,255,255,.03);border:1px solid var(--line);color:var(--mut);font-family:'JetBrains Mono',monospace}
+.tags .hot{color:#02120c;background:linear-gradient(135deg,var(--brand2),var(--mint));border:none;font-weight:700}
+.tags .gold{color:var(--gold);border-color:rgba(255,209,102,.4)}
+table.oss{width:100%;border-collapse:collapse;background:var(--panel);border-radius:var(--r);overflow:hidden;border:1px solid var(--line);font-size:.87rem}
+.oss th{text-align:left;padding:15px 20px;font-size:.7rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--mut);border-bottom:1px solid var(--line);font-weight:600;font-family:'JetBrains Mono',monospace}
+.oss td{padding:15px 20px;border-bottom:1px solid var(--line);vertical-align:top}
+.oss tr:last-child td{border-bottom:none}
+.oss tr{transition:background .2s}.oss tr:hover td{background:rgba(35,194,142,.04)}
+.oss .nm{font-weight:700;color:var(--tx);white-space:nowrap}
+.oss .st2{color:var(--mut);font-size:.78rem;font-family:'JetBrains Mono',monospace}
+.oss .ok{display:inline-flex;align-items:center;gap:6px;font-size:.75rem;color:var(--mint);white-space:nowrap;font-weight:600}
+.oss .ok::before{content:'';width:6px;height:6px;background:var(--brand2);border-radius:50%;box-shadow:0 0 8px var(--brand2)}
+.oss a{color:var(--mint);text-decoration:none}.oss a:hover{text-decoration:underline}
+.note{margin-top:16px;font-size:.8rem;color:var(--dim)}
+.note b{color:var(--mut)}
+.cases{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:18px}
+.case{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:28px;transition:transform .25s var(--ease),border-color .25s}
+.case:hover{border-color:rgba(255,209,102,.45);transform:translateY(-4px)}
+.case .co{font-size:.68rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--gold);font-weight:700;margin-bottom:8px;font-family:'JetBrains Mono',monospace}
+.case h3{font-size:1.02rem;font-weight:700;margin-bottom:8px}
+.case .d{font-size:.84rem;color:var(--mut);line-height:1.6;margin-bottom:12px}
+.case .th{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.case .th span{font-size:.63rem;padding:2px 9px;border-radius:5px;background:rgba(255,255,255,.03);color:var(--dim);font-family:'JetBrains Mono',monospace}
+.case .r{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:var(--mint);font-weight:600}
+.eco{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:15px}
+.ec{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:24px;text-decoration:none;color:inherit;transition:transform .25s var(--ease),border-color .25s;display:block}
+.ec:hover{border-color:var(--brand2);transform:translateY(-3px)}
+.ec .role{font-size:.62rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--dim);margin-bottom:8px;font-family:'JetBrains Mono',monospace}
+.ec h4{font-size:.95rem;font-weight:700;margin-bottom:4px}
+.ec p{font-size:.79rem;color:var(--mut)}
+.deal{margin:90px 0 10px;border-radius:26px;padding:64px 48px;text-align:center;background:radial-gradient(ellipse 70% 120% at 50% -20%,rgba(35,194,142,.16),transparent),linear-gradient(180deg,#0d1512,#080c0b);border:1px solid rgba(35,194,142,.3);position:relative;overflow:hidden}
+.deal::before{content:'';position:absolute;top:0;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,var(--brand2),var(--gold),transparent)}
+.deal h2{font-family:Syne,sans-serif;font-size:clamp(1.9rem,4vw,2.9rem);font-weight:800;margin-bottom:14px}
+.deal p{color:var(--mut);max-width:600px;margin:0 auto 32px}
+.deal .acts{justify-content:center;margin-bottom:0}
+.vision{background:var(--panel);border:1px solid var(--line);border-radius:var(--rl);padding:48px;margin:70px 0 30px}
+.vgrid{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.vision h3{font-family:Syne,sans-serif;font-size:1.2rem;margin-bottom:14px}
+.vision p{font-size:.86rem;color:var(--mut);line-height:1.85}
+footer{border-top:1px solid var(--line);padding:44px 0 60px;text-align:center}
+.soc{display:flex;justify-content:center;gap:26px;margin-bottom:18px;flex-wrap:wrap}
+.soc a{color:var(--mut);text-decoration:none;font-size:.85rem;transition:color .2s}.soc a:hover{color:var(--mint)}
+footer p{font-size:.76rem;color:var(--dim)}
+#top{position:fixed;bottom:30px;right:30px;width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--brand2));color:#02120c;border:none;font-size:1.2rem;cursor:pointer;opacity:0;transition:all .3s;z-index:100;font-weight:700}
+#top.on{opacity:1}#top:hover{transform:translateY(-3px)}
+.rv{opacity:0;transform:translateY(42px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.rv.l{transform:translateX(-46px)}.rv.r{transform:translateX(46px)}.rv.s{transform:scale(.92)}
+.rv.in{opacity:1;transform:none}
+@media(max-width:960px){.hero{grid-template-columns:1fr;padding:64px 0 44px}.term{transform:none}.nlinks{display:none}.sec{padding:60px 0 4px}.bento{grid-template-columns:1fr 1fr}.stat,.stat.big{grid-column:span 1}.vgrid{grid-template-columns:1fr;gap:28px}.deal{padding:48px 26px}.vision{padding:34px 26px}.oss{font-size:.78rem}.oss td,.oss th{padding:11px 12px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}.rv{opacity:1;transform:none}#net,#glow{display:none}}
+</style>
 </head>
 <body>
-  <div class="bg-grid"></div>
-  <div class="glow-orb"></div>
-  <div class="glow-orb-2"></div>
-
-  <!-- NAV -->
-  <div class="container">
-    <nav>
-      <a href="/" class="nav-logo">oyi77<span>.</span></a>
-      <div class="nav-links">
-        <a href="#projects">Projects</a>
-        <a href="#oss">OSS</a>
-        <a href="#cases">Case Studies</a>
-        <a href="#ecosystem">Ecosystem</a>
-        <a href="/terminal/" class="nav-terminal">Terminal OS</a>
-        <a href="https://github.com/oyi77" class="nav-cta" target="_blank">GitHub →</a>
-      </div>
-    </nav>
-  </div>
-
-  <!-- HERO -->
-    <section class="hero">
-      <div class="container">
-        <div class="hero-badge">
-          <span class="dot"></span>
-          Open Source Contributor & Builder
-        </div>
-        <h1>
-          Hi, I'm <span class="highlight">Paijo</span><br>
-          I Build for the Open Web
-        </h1>
-        <p>
-          AI agent infrastructure, prediction markets, and 1‑Man Company architecture.
-          I turn open‑source skill (1,282 skills, 150 repos) into production‑grade systems.
-        </p>
-        <div class="hero-actions">
-          <a href="/terminal/" class="btn-primary" target="_blank">
-            Launch Terminal OS →
-          </a>
-          <a href="https://github.com/oyi77" class="btn-secondary" target="_blank">
-            GitHub Profile →
-          </a>
-          <a href="#projects" class="btn-secondary">
-            View Projects ↓
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- AREAS -->
-    <section class="section" style="padding: 0; margin: 0 0 48px;">
-      <div class="container">
-        <div class="areas-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; padding: 24px; background: var(--surface); border-radius: var(--radius); margin: 0 auto; max-width: 600px;">
-          <div style="text-align: center; padding: 8px 0;">
-            <div style="font-size: 2rem; margin-bottom: 4px;">🧠</div>
-            <div style="color: var(--text-muted); font-size: 0.7rem;">AI Agent Infra</div>
-          </div>
-          <div style="text-align: center; padding: 8px 0;">
-            <div style="font-size: 2rem; margin-bottom: 4px;">📈</div>
-            <div style="color: var(--text-muted); font-size: 0.7rem;">Prediction Markets</div>
-          </div>
-          <div style="text-align: center; padding: 8px 0;">
-            <div style="font-size: 2rem; margin-bottom: 4px;">🏗️</div>
-            <div style="color: var(--text-muted); font-size: 0.7rem;">1‑Man Co.</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-  <!-- STATS -->
-  <div class="container">
-    <div class="stats">
-      <div class="stat-card">
-        <div class="number">150+</div>
-        <div class="label">GitHub Repositories</div>
-      </div>
-      <div class="stat-card">
-        <div class="number">1,282</div>
-        <div class="label">AI Agent Skills</div>
-      </div>
-      <div class="stat-card">
-        <div class="number">10+</div>
-        <div class="label">Years Building</div>
-      </div>
-      <div class="stat-card">
-        <div class="number">350+</div>
-        <div class="label">OSS PRs Merged</div>
-      </div>
-      <div class="stat-card">
-        <div class="number">20+</div>
-        <div class="label">Services in Ecosystem</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- PROJECTS -->
-  <section class="section" id="projects">
-    <div class="container">
-      <div class="section-label">✦ Flagship Projects</div>
-      <h2 class="section-title">What I'm Building</h2>
-      <p class="section-desc">Production-grade systems spanning AI infrastructure, trading, and developer tooling.</p>
-      <div class="project-grid">
-        <div class="project-card">
-          <div class="project-icon">🧠</div>
-          <h3>1ai-skills</h3>
-          <div class="desc">1,282 production-ready AI agent skills with auto-evolution. Self-learning meta-skills that improve across sessions.</div>
-          <div class="project-tags">
-            <span class="active">Active</span>
-            <span>AI Agents</span>
-            <span>Auto-Evolve</span>
-          </div>
-        </div>
-        <div class="project-card">
-          <div class="project-icon">📈</div>
-          <h3>PolyEdge</h3>
-          <div class="desc">AI-powered prediction market bot. 14 strategies + AGI orchestrator for Polymarket & Kalshi. Bounded autonomy, evolutionary composition.</div>
-          <div class="project-tags">
-            <span class="active">Active</span>
-            <span>Trading</span>
-            <span>Prediction Markets</span>
-          </div>
-        </div>
-        <div class="project-card">
-          <div class="project-icon">🌐</div>
-          <h3>1proxy</h3>
-          <div class="desc">Ultimate public proxy grabber & rotator — collect, validate, and rotate proxies at scale.</div>
-          <div class="project-tags">
-            <span class="active">Active</span>
-            <span>Infrastructure</span>
-            <span>Networking</span>
-          </div>
-        </div>
-        <div class="project-card">
-          <div class="project-icon">🔀</div>
-          <h3>cloudflare-router</h3>
-          <div class="desc">Cloudflare tunnel + nginx subdomain router for ecosystem service mesh.</div>
-          <div class="project-tags">
-            <span class="active">Active</span>
-            <span>Infrastructure</span>
-            <span>Networking</span>
-          </div>
-        </div>
-        <div class="project-card">
-          <div class="project-icon">🤖</div>
-          <h3>OmniRoute</h3>
-          <div class="desc">AI gateway for multi-provider LLMs — smart routing, load balancing, retries, fallbacks, and caching. 187 upstream PRs merged.</div>
-          <div class="project-tags">
-            <span class="active">Contributor</span>
-            <span>AI Gateway</span>
-            <span>⭐66k</span>
-          </div>
-        </div>
-        <div class="project-card">
-          <div class="project-icon">🏗️</div>
-          <h3>1ai-ecosystem</h3>
-          <div class="desc">Full-stack AI company infrastructure. 20+ services: ads, social, content, trading, proxy, phone farm — 1 human, infinite AI.</div>
-          <div class="project-tags">
-            <span class="active">Active</span>
-            <span>Ecosystem</span>
-            <span>1-Man Company</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- OSS CONTRIBUTIONS -->
-  <section class="section" id="oss">
-    <div class="container">
-      <div class="section-label">🌟 Open Source</div>
-      <h2 class="section-title">Upstream Contributions</h2>
-      <p class="section-desc">I contribute to projects used by millions — from PRs merged to open proposals.</p>
-      <table class="oss-table">
-        <thead>
-          <tr>
-            <th>Project</th>
-            <th>Contribution</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><span class="oss-name">OmniRoute</span> <span class="oss-stars">⭐66k</span></td>
-            <td>Test coverage to 60%+ (353 new tests), SessionPool refactor, Qwen Web provider, plugin system</td>
-            <td><span class="oss-status">187 upstream PRs merged</span></td>
-          </tr>
-          <tr>
-            <td><span class="oss-name">next.js</span> <span class="oss-stars">⭐142k</span></td>
-            <td>Dead code & duplicate removal in core framework</td>
-            <td><span class="oss-status">Open PR</span></td>
-          </tr>
-          <tr>
-            <td><span class="oss-name">trpc</span> <span class="oss-stars">⭐41k</span></td>
-            <td>Code comment cleanup and documentation improvements</td>
-            <td><span class="oss-status">Open PR</span></td>
-          </tr>
-          <tr>
-            <td><span class="oss-name">vuejs/core</span> <span class="oss-stars">⭐54k</span></td>
-            <td>Dev warning for silent catch in compat mode</td>
-            <td><span class="oss-status">Merged PR</span></td>
-          </tr>
-          <tr>
-            <td><span class="oss-name">prisma</span> <span class="oss-stars">⭐41k</span></td>
-            <td>Duplicate word removal in test comments</td>
-            <td><span class="oss-status">Open PR</span></td>
-          </tr>
-          <tr>
-            <td><span class="oss-name">excalidraw</span> <span class="oss-stars">⭐132k</span></td>
-            <td>Typo fixes in code comments</td>
-            <td><span class="oss-status">Open PR</span></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- CASE STUDIES -->
-  <section class="section" id="cases">
-    <div class="container">
-      <div class="section-label">📊 Case Studies</div>
-      <h2 class="section-title">Real Problems, Real Solutions</h2>
-      <p class="section-desc">Technical implementations with measurable business impact.</p>
-      <div class="case-grid">
-        <div class="case-card">
-          <div class="company">BITWYRE — Onchain Trader</div>
-          <h3>Fomo Watcher — 70% Accuracy</h3>
-          <div class="desc">Trading prediction system that detects on-chain signals and executes trades with 70% accuracy across multiple DEX pairs.</div>
-          <div class="tech">
-            <span>Python</span>
-            <span>Blockchain APIs</span>
-            <span>ML</span>
-            <span>WebSocket</span>
-          </div>
-          <span class="case-result">✓ 70% accuracy</span>
-        </div>
-        <div class="case-card">
-          <div class="company">AITRADEPULSE — Technical Lead</div>
-          <h3>90%+ Win Rate Algo Trading</h3>
-          <div class="desc">Algorithmic trading platform with multi-asset support, real-time signal processing, and automated execution.</div>
-          <div class="tech">
-            <span>Python</span>
-            <span>MQL4/MQL5</span>
-            <span>Trading APIs</span>
-          </div>
-          <span class="case-result">✓ 90%+ win rate</span>
-        </div>
-        <div class="case-card">
-          <div class="company">GARUDAMEDIA — Engineering Manager</div>
-          <h3>Scaling for 3000+ Employees</h3>
-          <div class="desc">Infrastructure scaling and team leadership for enterprise-grade systems serving thousands of employees.</div>
-          <div class="tech">
-            <span>AWS</span>
-            <span>Docker</span>
-            <span>Kubernetes</span>
-            <span>PostgreSQL</span>
-          </div>
-          <span class="case-result">✓ 3000+ users</span>
-        </div>
-        <div class="case-card">
-          <div class="company">BITWYRE — Lead Developer</div>
-          <h3>DEX Clearing Algorithm</h3>
-          <div class="desc">Multi-chain DEX clearing and settlement engine with smart contract integration for automated trading.</div>
-          <div class="tech">
-            <span>Python</span>
-            <span>Smart Contracts</span>
-            <span>Blockchain</span>
-          </div>
-          <span class="case-result">✓ 5 team lead</span>
-        </div>
-        <div class="case-card">
-          <div class="company">VIAPULSA — Technical Lead</div>
-          <h3>Offline → Online Migration</h3>
-          <div class="desc">Full digital transformation of traditional business operations into automated digital workflows.</div>
-          <div class="tech">
-            <span>Automation</span>
-            <span>Web Platform</span>
-            <span>Integration</span>
-          </div>
-          <span class="case-result">✓ 18 team lead</span>
-        </div>
-        <div class="case-card">
-          <div class="company">LINGUISE — Sr Full Stack</div>
-          <h3>API Migration PHP → Node.js</h3>
-          <div class="desc">Complete API migration from legacy PHP to modern Node.js architecture with improved performance.</div>
-          <div class="tech">
-            <span>Node.js</span>
-            <span>API Architecture</span>
-            <span>React</span>
-          </div>
-          <span class="case-result">✓ 3 team lead</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- BERKAHKARYA ECOSYSTEM -->
-  <section class="section" id="ecosystem">
-    <div class="container">
-      <div class="section-label">🏭 BerkahKarya</div>
-      <h2 class="section-title">The 1-Man Company Ecosystem</h2>
-      <p class="section-desc">
-        A production-grade AI company — 20+ services run by AI, managed by AI, 
-        with humans as stakeholders. <strong>Proof of Concept for the future of work.</strong>
-      </p>
-      <div class="eco-grid">
-        <a href="https://berkahkarya.org" class="eco-card" target="_blank">
-          <div class="role">Company Site</div>
-          <h4>BerkahKarya</h4>
-          <p>AI Ecosystem for Indonesian businesses — ads, content, trading, agent services</p>
-        </a>
-        <a href="https://github.com/oyi77/1proxy" class="eco-card" target="_blank">
-          <div class="role">Trading infra · API</div>
-          <h4>aitradepulse API</h4>
-          <p>Private API endpoint (proxy validation) behind the ecosystem — documented in 1proxy</p>
-        </a>
-        <a href="https://github.com/oyi77/1ai-skills" class="eco-card" target="_blank">
-          <div class="role">AI Infrastructure</div>
-          <h4>1ai-skills</h4>
-          <p>1282 production-ready agent skills with auto-evolution</p>
-        </a>
-        <a href="https://github.com/oyi77/OmniRoute" class="eco-card" target="_blank">
-          <div class="role">AI Gateway</div>
-          <h4>OmniRoute</h4>
-          <p>Multi-provider LLM routing, load balancing, caching</p>
-        </a>
-        <a href="https://github.com/oyi77/1ai-ecosystem" class="eco-card" target="_blank">
-          <div class="role">Monorepo · private</div>
-          <h4>1ai-ecosystem</h4>
-          <p>Full-stack AI company infrastructure — 20+ services. Repo is currently private — access on request</p>
-        </a>
-        <a href="https://github.com/oyi77" class="eco-card" target="_blank">
-          <div class="role">GitHub</div>
-          <h4>All Repos →</h4>
-          <p>150+ repositories — OSS, tools, experiments, production systems</p>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- MANIFESTO -->
-  <div class="container">
-    <div class="manifesto">
-      <div class="manifesto-grid">
-        <div>
-          <h3>The Vision</h3>
-          <p>
-            Technology should liberate humans — not trap them in wage slavery. 
-            1ai-ecosystem is a living proof that AI and humans can work symbiotically: 
-            AI operates the company, manages other AI, generates revenue autonomously — 
-            while humans act as <strong>stakeholders</strong>, not operators.
-            <br><br>
-            This is a <strong>Proof of Concept</strong> for a 1-Man Company. 
-            The goal is to fund human freedom, not perpetuate exploitation.
-          </p>
-        </div>
-        <div>
-          <h3>Visi</h3>
-          <p>
-            Teknologi seharusnya membebaskan manusia — bukan menjebak mereka dalam 
-            perbudakan upah. 1ai-ecosystem adalah bukti nyata bahwa AI dan manusia 
-            bisa bekerja sama secara simbiotik: AI mengoperasikan perusahaan, 
-            mengelola AI lain, menghasilkan pendapatan secara otonom — sementara 
-            manusia bertindak sebagai <strong>stakeholder</strong>, bukan operator.
-            <br><br>
-            Ini adalah <strong>Proof of Concept</strong> untuk 1-Man Company. 
-            Tujuannya adalah mendanai kebebasan manusia, bukan melanggengkan eksploitasi.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="container">
-      <div class="social-links">
-        <a href="https://github.com/oyi77" target="_blank">GitHub</a>
-        <a href="https://linkedin.com/in/fikriizzuddin" target="_blank">LinkedIn</a>
-        <a href="https://oyi77.is-a.dev" target="_blank">Portfolio</a>
-        <a href="https://berkahkarya.org" target="_blank">BerkahKarya</a>
-        <a href="https://medium.com/@oyi77" target="_blank">Medium</a>
-      </div>
-      <p>Built with ❤️ for the open web · oyi77 / Paijo · 2026</p>
-    </div>
-  </footer>
-
-  <button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-
-  <script>
-    window.addEventListener('scroll', () => {
-      document.getElementById('backTop').classList.toggle('visible', window.scrollY > 400);
-    });
-  </script>
+<canvas id="net"></canvas>
+<div class="blob a"></div>
+<div class="blob b"></div>
+<div class="gridmask"></div>
+<div id="glow"></div>
+<div id="prog"></div>
+<div class="wrap">
+<nav class="top">
+<a href="/" class="logo">oyi77<b>.</b></a>
+<div class="nlinks">
+<a href="#projects">Projects</a>
+<a href="#oss">Upstream</a>
+<a href="#cases">Proof</a>
+<a href="#ecosystem">Ecosystem</a>
+<a href="/terminal/">Terminal OS</a>
+<a href="https://github.com/oyi77" class="btn btn-s" target="_blank" rel="noopener">GitHub</a>
+</div>
+</nav>
+</div>
+<div class="wrap">
+<section class="hero">
+<div>
+<div class="badge rv"><span class="dot"></span>SYSTEMS THAT PRINT LEVERAGE</div>
+<h1 class="rv">Hi, I&#39;m <span class="grad">Paijo</span>.<br>I ship systems<br>that <span class="grad">run themselves</span>.</h1>
+<p class="sub rv">AI agent infrastructure, prediction markets, 1-Man Company architecture. <strong>1282 agent skills</strong>, <strong>150+ repos</strong>, <strong>350+ merged OSS PRs</strong> — open source first, production always.</p>
+<div class="acts rv">
+<a href="/terminal/" class="btn btn-p" data-mag>Launch Terminal OS &#8594;</a>
+<a href="https://github.com/oyi77" class="btn btn-g" target="_blank" rel="noopener" data-mag>GitHub Profile &#8599;</a>
+<a href="#projects" class="btn btn-g" data-mag>See the proof &#8595;</a>
+</div>
+<div class="live rv">
+<span class="chip"><i></i>agents <b>1,282</b></span>
+<span class="chip"><i></i>repos <b>150+</b></span>
+<span class="chip"><i></i>OSS merged <b>350+</b></span>
+<span class="chip"><i></i>status <b id="liveStat">ONLINE</b></span>
+</div>
+</div>
+<div class="term rv s" id="termMock">
+<div class="tbar"><i></i><i></i><i></i><span>guest@oyi-os: portfolio</span><div class="shine"></div></div>
+<div class="tbody" id="termBody"><span class="p">guest@oyi-os</span><span class="d">:~$</span> <span id="typeLine"></span><span class="caret"></span></div>
+</div>
+</section>
+</div>
+<div class="marq"><div class="wrap"><span class="mtrack" id="mtrack"><b>1282</b> AGENT SKILLS &nbsp;•&nbsp; <b>150+</b> REPOS &nbsp;•&nbsp; <b>350+</b> MERGED PRS &nbsp;•&nbsp; UPSTREAM <b>66k⭐</b> OMNIROUTE &nbsp;•&nbsp; NEXT.JS <b>142k⭐</b> &nbsp;•&nbsp; EXCALIDRAW <b>132k⭐</b> &nbsp;•&nbsp; 1-MAN COMPANY &nbsp;•&nbsp; </span></div></div>
+<div class="wrap">
+<section class="sec" id="stats">
+<div class="kick rv">Live numbers</div>
+<h2 class="st rv">Receipts, not promises.</h2>
+<p class="sdesc rv">Verified against the GitHub API on 2026-09-15. Upstream OmniRoute sits at 66,101 stars; my fork carries 2. 187 of my PRs are merged upstream there; 350+ merged across all of OSS.</p>
+<div class="bento">
+<div class="stat big rv"><div class="n" data-count="1282">0</div><div class="l">production AI agent skills</div></div>
+<div class="stat big rv"><div class="n" data-count="350" data-suffix="+">0</div><div class="l">OSS PRs merged, all repos</div></div>
+<div class="stat rv"><div class="n" data-count="150" data-suffix="+">0</div><div class="l">GitHub repositories</div></div>
+<div class="stat rv"><div class="n" data-count="187">0</div><div class="l">upstream PRs merged (OmniRoute)</div></div>
+<div class="stat rv"><div class="n" data-count="66" data-prefix="" data-suffix="k">0</div><div class="l">upstream OmniRoute stars</div></div>
+</div>
+</section>
+<section class="sec" id="projects">
+<div class="kick rv">Flagship builds</div>
+<h2 class="st rv">What I ship.</h2>
+<p class="sdesc rv">Production-grade systems spanning AI infrastructure, trading, and developer tooling. Hover a card — it tilts. Click through — it is all public.</p>
+<div class="cards">
+<div class="card rv" data-tilt><div class="ic">🧠</div><h3><a href="https://github.com/oyi77/1ai-skills" target="_blank" rel="noopener">1ai-skills</a></h3><div class="d">1282 production-ready AI agent skills with auto-evolution. Self-learning meta-skills that improve across sessions.</div><div class="tags"><span class="hot">ACTIVE</span><span>AI Agents</span><span>Auto-Evolve</span></div></div>
+<div class="card rv" data-tilt><div class="ic">📈</div><h3><a href="https://github.com/oyi77/1ai-trade-dex" target="_blank" rel="noopener">1ai-trade-dex · PolyEdge</a></h3><div class="d">AI-powered prediction market bot. 14 strategies + AGI orchestrator for Polymarket and Kalshi. Bounded autonomy, evolutionary composition.</div><div class="tags"><span class="hot">ACTIVE</span><span>Trading</span><span>Prediction</span></div></div>
+<div class="card rv" data-tilt><div class="ic">🌐</div><h3><a href="https://github.com/oyi77/1proxy" target="_blank" rel="noopener">1proxy</a></h3><div class="d">Ultimate public proxy grabber and rotator — collect, validate, and rotate proxies at scale. Powers the 1proxy-api backend.</div><div class="tags"><span class="hot">ACTIVE</span><span>Infra</span><span>Networking</span></div></div>
+<div class="card rv" data-tilt><div class="ic">🔀</div><h3><a href="https://github.com/oyi77/cloudflare-router" target="_blank" rel="noopener">cloudflare-router</a></h3><div class="d">Cloudflare tunnel + nginx subdomain router for the ecosystem service mesh.</div><div class="tags"><span class="hot">ACTIVE</span><span>Infra</span><span>Mesh</span></div></div>
+<div class="card rv" data-tilt><div class="ic">🤖</div><h3><a href="https://github.com/oyi77/OmniRoute" target="_blank" rel="noopener">OmniRoute (fork)</a></h3><div class="d">My working fork of the multi-provider LLM gateway. 187 of my PRs merged upstream (66k stars); fork holds 2.</div><div class="tags"><span>FORK</span><span>AI Gateway</span><span class="gold">66k upstream</span></div></div>
+<div class="card rv" data-tilt><div class="ic">🏭️</div><h3><a href="https://github.com/oyi77/1ai-ecosystem" target="_blank" rel="noopener">1ai-ecosystem</a></h3><div class="d">Full-stack 1-Man Company infrastructure, 20+ services. Currently private — access on request.</div><div class="tags"><span>PRIVATE</span><span>Ecosystem</span><span>20+ services</span></div></div>
+</div>
+</section>
+<section class="sec" id="oss">
+<div class="kick rv">Upstream proof</div>
+<h2 class="st rv">Merged where it counts.</h2>
+<p class="sdesc rv">Not drive-by typos for clout — real executor, provider, and framework patches. Star counts and PR states verified against the GitHub API on 2026-09-15.</p>
+<table class="oss rv">
+<thead><tr><th>Project</th><th>Contribution</th><th>Status</th></tr></thead>
+<tbody>
+<tr>
+<td><span class="nm">OmniRoute</span> <span class="st2">⭐66k</span></td>
+<td>187 upstream PRs merged — executors, providers, TLS, chat admission, quota</td>
+<td><span class="ok">187 upstream PRs merged</span></td>
+</tr>
+<tr>
+<td><span class="nm">next.js</span> <span class="st2">⭐142k</span></td>
+<td>Dead code and duplicate-word removal in core framework</td>
+<td><span class="ok">Open PR</span></td>
+</tr>
+<tr>
+<td><span class="nm">trpc</span> <span class="st2">⭐41k</span></td>
+<td>Duplicate-word cleanup in code comments</td>
+<td><span class="ok">Open PR</span></td>
+</tr>
+<tr>
+<td><span class="nm">vuejs/core</span> <span class="st2">⭐54k</span></td>
+<td>Dev warning for silent catch in compat mode</td>
+<td><span class="ok">Merged PR</span></td>
+</tr>
+<tr>
+<td><span class="nm">prisma</span> <span class="st2">⭐48k</span></td>
+<td>Duplicate word removal in test comments</td>
+<td><span class="ok">Open PR</span></td>
+</tr>
+<tr>
+<td><span class="nm">excalidraw</span> <span class="st2">⭐132k</span></td>
+<td>Typo fixes in code comments</td>
+<td><span class="ok">Open PR</span></td>
+</tr>
+</tbody>
+</table>
+<p class="note rv">Upstream is <b>diegosouzapw/OmniRoute</b> (66,101 stars). My fork <b>oyi77/OmniRoute</b> holds 2 stars — the work lives upstream, which is exactly the point. The vuejs/core patch merged 2026-06-11.</p>
+</section>
+<section class="sec" id="cases">
+<div class="kick rv">Battle record</div>
+<h2 class="st rv">Real problems, real solutions.</h2>
+<p class="sdesc rv">Technical implementations with measurable business impact across trading, enterprise, and platform work.</p>
+<div class="cases">
+<div class="case rv"><div class="co">BITWYRE — Onchain Trader</div><h3>Fomo Watcher — 70% Accuracy</h3><div class="d">Trading prediction system that detects on-chain signals and executes trades with 70% accuracy across multiple DEX pairs.</div><div class="th"><span>Python</span><span>Blockchain APIs</span><span>ML</span><span>WebSocket</span></div><span class="r">✓ 70% accuracy</span></div>
+<div class="case rv"><div class="co">AITRADEPULSE — Technical Lead</div><h3>90%+ Win Rate Algo Trading</h3><div class="d">Algorithmic trading platform with multi-asset support, real-time signal processing, and automated execution.</div><div class="th"><span>Python</span><span>MQL4/MQL5</span><span>Trading APIs</span></div><span class="r">✓ 90%+ win rate</span></div>
+<div class="case rv"><div class="co">GARUDAMEDIA — Engineering Manager</div><h3>Scaling for 3000+ Employees</h3><div class="d">Infrastructure scaling and team leadership for enterprise-grade systems serving thousands of employees.</div><div class="th"><span>AWS</span><span>Docker</span><span>Kubernetes</span><span>PostgreSQL</span></div><span class="r">✓ 3000+ users</span></div>
+<div class="case rv"><div class="co">BITWYRE — Lead Developer</div><h3>DEX Clearing Algorithm</h3><div class="d">Multi-chain DEX clearing and settlement engine with smart contract integration for automated trading.</div><div class="th"><span>Python</span><span>Smart Contracts</span><span>Blockchain</span></div><span class="r">✓ Settlement engine</span></div>
+<div class="case rv"><div class="co">VIAPULSA — Technical Lead</div><h3>Offline to Online Migration</h3><div class="d">Full digital transformation of traditional business operations into automated digital workflows.</div><div class="th"><span>Automation</span><span>Web Platform</span><span>Integration</span></div><span class="r">✓ Full migration</span></div>
+<div class="case rv"><div class="co">LINGUISE — Sr Full Stack</div><h3>API Migration PHP to Node.js</h3><div class="d">Complete API migration from legacy PHP to modern Node.js architecture with improved performance.</div><div class="th"><span>Node.js</span><span>API Architecture</span><span>React</span></div><span class="r">✓ Modern stack</span></div>
+</div>
+</section>
+<section class="sec" id="ecosystem">
+<div class="kick rv">The 1-man company</div>
+<h2 class="st rv">Twenty services. One human.</h2>
+<p class="sdesc rv">A production-grade AI company: AI operates, manages other AI, generates revenue autonomously — humans act as <strong>stakeholders</strong>, not operators.</p>
+<div class="eco">
+<a href="https://berkahkarya.org" class="ec rv" target="_blank" rel="noopener"><div class="role">Company Site</div><h4>BerkahKarya</h4><p>AI ecosystem for Indonesian businesses — ads, content, trading, agent services</p></a>
+<a href="https://github.com/oyi77/1proxy" class="ec rv" target="_blank" rel="noopener"><div class="role">Trading infra · API</div><h4>1proxy-api backend</h4><p>Private API endpoint (proxy validation) — documented in the 1proxy repo</p></a>
+<a href="https://github.com/oyi77/1ai-skills" class="ec rv" target="_blank" rel="noopener"><div class="role">AI Infrastructure</div><h4>1ai-skills</h4><p>1282 production-ready agent skills with auto-evolution</p></a>
+<a href="https://github.com/oyi77/OmniRoute" class="ec rv" target="_blank" rel="noopener"><div class="role">AI Gateway</div><h4>OmniRoute (my fork)</h4><p>Multi-provider LLM routing, load balancing, caching — 187 PRs merged upstream</p></a>
+<a href="https://github.com/oyi77/1ai-ecosystem" class="ec rv" target="_blank" rel="noopener"><div class="role">Monorepo · private</div><h4>1ai-ecosystem</h4><p>Full-stack AI company infrastructure, 20+ services — access on request</p></a>
+<a href="https://github.com/oyi77" class="ec rv" target="_blank" rel="noopener"><div class="role">GitHub</div><h4>All repos</h4><p>150+ repositories — OSS, tools, experiments, production systems</p></a>
+</div>
+</section>
+</div>
+<div class="wrap">
+<div class="deal rv s">
+<h2>Have a system that needs to <span class="grad">run itself?</span></h2>
+<p>Open for partnerships on AI agent ecosystems, prediction-market infrastructure, and 1-Man Company architecture. Bring the problem — I bring receipts.</p>
+<div class="acts">
+<a href="https://github.com/oyi77" class="btn btn-p" target="_blank" rel="noopener" data-mag>Start on GitHub &#8599;</a>
+<a href="https://linkedin.com/in/fikriizzuddin" class="btn btn-g" target="_blank" rel="noopener" data-mag>Connect on LinkedIn</a>
+<a href="/terminal/" class="btn btn-g" data-mag>Or explore the Terminal OS &#8594;</a>
+</div>
+</div>
+<div class="vision rv">
+<div class="vgrid">
+<div>
+<h3>The <span class="grad">Vision</span></h3>
+<p>Technology should liberate humans — not trap them in wage slavery. 1ai-ecosystem is living proof that AI and humans work symbiotically: AI operates the company, manages other AI, generates revenue autonomously — while humans act as <strong>stakeholders</strong>, not operators.<br><br>This is a <strong>Proof of Concept</strong> for a 1-Man Company. The goal is to fund human freedom, not perpetuate exploitation.</p>
+</div>
+<div>
+<h3><span class="grad">Visi</span></h3>
+<p>Teknologi seharusnya membebaskan manusia — bukan menjebak mereka dalam perbudakan upah. 1ai-ecosystem adalah bukti nyata bahwa AI dan manusia bisa bekerja sama secara simbiotik: AI mengoperasikan perusahaan, mengelola AI lain, menghasilkan pendapatan secara otonom — sementara manusia bertindak sebagai <strong>stakeholder</strong>, bukan operator.<br><br>Ini adalah <strong>Proof of Concept</strong> untuk 1-Man Company. Tujuannya mendanai kebebasan manusia, bukan melanggengkan eksploitasi.</p>
+</div>
+</div>
+</div>
+</div>
+<footer>
+<div class="wrap">
+<div class="soc">
+<a href="https://github.com/oyi77" target="_blank" rel="noopener">GitHub</a>
+<a href="https://linkedin.com/in/fikriizzuddin" target="_blank" rel="noopener">LinkedIn</a>
+<a href="https://medium.com/@oyi77" target="_blank" rel="noopener">Medium</a>
+<a href="https://berkahkarya.org" target="_blank" rel="noopener">BerkahKarya</a>
+<a href="/terminal/">Terminal OS</a>
+</div>
+<p>Built for the open web · oyi77 / Paijo · 2026 · All numbers verified against public APIs on 2026-09-15</p>
+</div>
+</footer>
+<button id="top" aria-label="Back to top">↑</button>
+<script>
+(function(){
+"use strict";
+var reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+/* Scroll progress + back-to-top */
+var prog=document.getElementById('prog'),top=document.getElementById('top');
+function onScroll(){
+var h=document.documentElement.scrollHeight-window.innerHeight;
+prog.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+top.classList.toggle('on',window.scrollY>500);
+}
+window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+top.addEventListener('click',function(){window.scrollTo({top:0,behavior:reduced?'auto':'smooth'})});
+/* Particle network */
+var cv=document.getElementById('net');
+if(!reduced&&cv){
+var ctx=cv.getContext('2d'),W,H,pts=[],N=window.innerWidth<700?45:85;
+function size(){W=cv.width=window.innerWidth;H=cv.height=window.innerHeight;}
+size();window.addEventListener('resize',size);
+for(var i=0;i<N;i++)pts.push({x:Math.random()*2000%window.innerWidth,y:Math.random()*2000%window.innerHeight,vx:(Math.random()-.5)*.45,vy:(Math.random()-.5)*.45,r:Math.random()*1.6+.5});
+(function loop(){
+ctx.clearRect(0,0,W,H);
+for(var k=0;k<pts.length;k++){var a=pts[k];a.x+=a.vx;a.y+=a.vy;
+if(a.x<0||a.x>W)a.vx*=-1;if(a.y<0||a.y>H)a.vy*=-1;
+ctx.beginPath();ctx.arc(a.x,a.y,a.r,0,7);ctx.fillStyle='rgba(74,215,176,.55)';ctx.fill();}
+for(var m=0;m<pts.length;m++)for(var n=m+1;n<pts.length;n++){
+var dx=pts[m].x-pts[n].x,dy=pts[m].y-pts[n].y,d=Math.sqrt(dx*dx+dy*dy);
+if(d<150){ctx.beginPath();ctx.moveTo(pts[m].x,pts[m].y);ctx.lineTo(pts[n].x,pts[n].y);
+ctx.strokeStyle='rgba(35,194,142,'+(0.09*(1-d/150)).toFixed(3)+')';ctx.lineWidth=1;ctx.stroke();}}
+requestAnimationFrame(loop);})();
+}
+/* Cursor glow */
+var glow=document.getElementById('glow'),gx=window.innerWidth/2,gy=window.innerHeight*0.3,tx=gx,ty=gy;
+window.addEventListener('mousemove',function(e){tx=e.clientX;ty=e.clientY;},{passive:true});
+(function follow(){
+gx+=(tx-gx)*.08;gy+=(ty-gy)*.08;
+glow.style.left=gx+'px';glow.style.top=gy+'px';
+requestAnimationFrame(follow);})();
+/* Staggered spring reveals */
+var io=new IntersectionObserver(function(es){
+es.forEach(function(e,i){
+if(e.isIntersecting){var el=e.target;
+setTimeout(function(){el.classList.add('in')},(Array.prototype.indexOf.call(el.parentNode.children,el)%6)*80);
+io.unobserve(el);}});
+},{threshold:.12});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+function forceSee(){var h=window.innerHeight||800;document.querySelectorAll('.rv:not(.in)').forEach(function(el){try{var r=el.getBoundingClientRect();if(r.top<h&&r.bottom>0)el.classList.add('in');}catch(e){}});}
+setTimeout(forceSee,700);
+/* Magnetic buttons */
+if(!reduced)document.querySelectorAll('[data-mag]').forEach(function(b){
+b.addEventListener('mousemove',function(e){
+var r=b.getBoundingClientRect(),x=e.clientX-r.left-r.width/2,y=e.clientY-r.top-r.height/2;
+b.style.transform='translate('+(x*.22)+'px,'+(y*.28)+'px) scale(1.04)';});
+b.addEventListener('mouseleave',function(){b.style.transform='';});});
+/* 3D tilt cards */
+if(!reduced)document.querySelectorAll('[data-tilt]').forEach(function(c){
+c.addEventListener('mousemove',function(e){
+var r=c.getBoundingClientRect(),px=(e.clientX-r.left)/r.width,py=(e.clientY-r.top)/r.height;
+c.style.setProperty('--mx',(px*100)+'%');
+c.style.transform='perspective(900px) rotateX('+((.5-py)*7).toFixed(2)+'deg) rotateY('+((px-.5)*9).toFixed(2)+'deg) translateY(-4px)';});
+c.addEventListener('mouseleave',function(){c.style.transform='';});});
+/* Animated counters */
+function count(el){
+var to=parseFloat(el.getAttribute('data-count')),pre=el.getAttribute('data-prefix')||'',suf=el.getAttribute('data-suffix')||'';
+var t0=null,D=1600;
+function fr(v){return v>=100?v.toLocaleString('en-US', {maximumFractionDigits:0}):Math.round(v)+'';}
+function step(t){
+if(!t0)t0=t;var p=Math.min(1,(t-t0)/D),e=1-Math.pow(1-p,3);
+el.textContent=pre+fr(to*e)+suf;
+if(p<1)requestAnimationFrame(step);else el.textContent=pre+fr(to)+suf;}
+requestAnimationFrame(step);}
+var cio=new IntersectionObserver(function(es){
+es.forEach(function(e){if(e.isIntersecting){count(e.target);cio.unobserve(e.target);}});},{threshold:.5});
+document.querySelectorAll('[data-count]').forEach(function(el){cio.observe(el)});
+setTimeout(function(){var h=window.innerHeight||800;document.querySelectorAll('[data-count]').forEach(function(el){try{var r=el.getBoundingClientRect();if(r.top<h&&r.bottom>0&&el.textContent.trim()==='0'){count(el);try{cio.unobserve(el);}catch(e){}}}catch(e){}});},1000);
+/* Marquee: duplicate track 2x for seamless -50% loop */
+var mt=document.getElementById('mtrack');
+if(mt){mt.innerHTML+=mt.innerHTML;}
+/* Live status chip */
+var liveStat=document.getElementById('liveStat'),flip=false;
+setInterval(function(){flip=!flip;liveStat.textContent=flip?'ONLINE':'SHIPPING';},1600);
+/* Terminal typing loop */
+var lines=[
+['$ ','whoami --deal',''],
+['','oyi77 \u00b7 systems engineer','d'],
+['$ ','cat thesis.txt',''],
+['','one human + infinite agents','d'],
+['$ ','./close --fast',''],
+['','proof over promises','c']
+];
+var body=document.getElementById('termBody'),tl=document.getElementById('typeLine');
+var li=0,ci=0,mode='type';
+function esc(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function promptH(){return '<span class="p">guest@oyi-os</span><span class="d">:~$</span> ';}
+function render(){
+var h='';
+for(var k=0;k<li;k++){var L=lines[k];
+if(L[2]){h+='<span class="'+L[2]+'">'+esc(L[1])+'</span><br>';}
+else{h+=promptH()+esc(L[1])+'<br>';}}
+body.innerHTML=h+promptH()+'<span id="typeLine"></span><span class="caret"></span>';
+tl=document.getElementById('typeLine');}
+function tick(){
+var cur=lines[li][1].slice(0,++ci);
+tl.textContent=cur;
+if(ci>=lines[li][1].length){setTimeout(next,lines[li][2]?900:350);}
+else setTimeout(tick,34+Math.random()*46);}
+function next(){
+li++;ci=0;
+if(li>=lines.length){setTimeout(function(){li=0;ci=0;render();tick();},2600);return;}
+render();setTimeout(tick,120);}
+render();tick();
+})();
+</script>
 </body>
 </html>
