@@ -193,11 +193,11 @@ footer p{font-size:.76rem;color:var(--dim)}
 <h2 class="st rv">Receipts, not promises.</h2>
 <p class="sdesc rv">Verified against the GitHub API on 2026-09-15. Upstream OmniRoute sits at 66,101 stars; my fork carries 2. 187 of my PRs are merged upstream there; 350+ merged across all of OSS.</p>
 <div class="bento">
-<div class="stat big rv"><div class="n" data-count="1282">0</div><div class="l">production AI agent skills</div></div>
-<div class="stat big rv"><div class="n" data-count="350" data-suffix="+">0</div><div class="l">OSS PRs merged, all repos</div></div>
-<div class="stat rv"><div class="n" data-count="150" data-suffix="+">0</div><div class="l">GitHub repositories</div></div>
-<div class="stat rv"><div class="n" data-count="187">0</div><div class="l">upstream PRs merged (OmniRoute)</div></div>
-<div class="stat rv"><div class="n" data-count="66" data-prefix="" data-suffix="k">0</div><div class="l">upstream OmniRoute stars</div></div>
+<div class="stat big rv"><div class="n" data-count="1282">1,282</div><div class="l">production AI agent skills</div></div>
+<div class="stat big rv"><div class="n" data-count="350" data-suffix="+">350+</div><div class="l">OSS PRs merged, all repos</div></div>
+<div class="stat rv"><div class="n" data-count="150" data-suffix="+">150+</div><div class="l">GitHub repositories</div></div>
+<div class="stat rv"><div class="n" data-count="187">187</div><div class="l">upstream PRs merged (OmniRoute)</div></div>
+<div class="stat rv"><div class="n" data-count="66" data-prefix="" data-suffix="k">66k</div><div class="l">upstream OmniRoute stars</div></div>
 </div>
 </section>
 <section class="sec" id="projects">
@@ -380,6 +380,7 @@ c.style.transform='perspective(900px) rotateX('+((.5-py)*7).toFixed(2)+'deg) rot
 c.addEventListener('mouseleave',function(){c.style.transform='';});});
 /* Animated counters */
 function count(el){
+el.dataset.done='1';
 var to=parseFloat(el.getAttribute('data-count')),pre=el.getAttribute('data-prefix')||'',suf=el.getAttribute('data-suffix')||'';
 var t0=null,D=1600;
 function fr(v){return v>=100?v.toLocaleString('en-US', {maximumFractionDigits:0}):Math.round(v)+'';}
@@ -389,9 +390,9 @@ el.textContent=pre+fr(to*e)+suf;
 if(p<1)requestAnimationFrame(step);else el.textContent=pre+fr(to)+suf;}
 requestAnimationFrame(step);}
 var cio=new IntersectionObserver(function(es){
-es.forEach(function(e){if(e.isIntersecting){count(e.target);cio.unobserve(e.target);}});},{threshold:.5});
+es.forEach(function(e){if(e.isIntersecting&&!e.target.dataset.done){count(e.target);cio.unobserve(e.target);}});},{threshold:.5});
 document.querySelectorAll('[data-count]').forEach(function(el){cio.observe(el)});
-setTimeout(function(){var h=window.innerHeight||800;document.querySelectorAll('[data-count]').forEach(function(el){try{var r=el.getBoundingClientRect();if(r.top<h&&r.bottom>0&&el.textContent.trim()==='0'){count(el);try{cio.unobserve(el);}catch(e){}}}catch(e){}});},1000);
+setTimeout(function(){var h=window.innerHeight||800;document.querySelectorAll('[data-count]').forEach(function(el){try{var r=el.getBoundingClientRect();if(r.top<h&&r.bottom>0&&!el.dataset.done){count(el);try{cio.unobserve(el);}catch(e){}}}catch(e){}});},1000);
 /* Marquee: duplicate track 2x for seamless -50% loop */
 var mt=document.getElementById('mtrack');
 if(mt){mt.innerHTML+=mt.innerHTML;}
